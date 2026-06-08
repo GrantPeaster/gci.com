@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Georgia Civil</title>
+
+  <!-- Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <div class="top-nav">
+    <ul>
+      <li><a href="#why">WHY GCI</a></li>
+      <li><a href="#services">SERVICES</a></li>
+      <li><a href="#portfolio">PORTFOLIO</a></li>
+    </ul>
+  </div>
+
+  <!-- MAIN NAVIGATION WITH LOGO -->
+  <nav>
+    <img src="assets/img/download.png" alt="Georgia Civil Logo" class="logo">
+    <ul>
+      <li><a href="#civil">Civil Engineering</a></li>
+      <li><a href="#landscape">Landscape Architecture</a></li>
+      <li><a href="#survey">Land Surveying</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <img src="assets/img/SecondaryLogoGCI.png" class="hero-logo" alt="Georgia Civil Logo">
+    <h1>Your Complete Project Partner</h1>
+    <p>Growing, Creating, Innovating</p>
+    <a href="#about" class="btn-primary learn-more-btn">Learn More</a>
+  </header>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section about-section">
+    <div class="about-wrapper">
+
+      <h2>About Georgia Civil</h2>
+
+      <div class="about-box">
+        <p>
+          Every project we touch shapes the future of our region — growing the landscape, creating the drawings and plans that make development possible, and innovating with technology that most firms our size simply don’t have access to.
+        </p>
+
+        <p>
+          We put surveyors, civil engineers, and land planners on your team so you never have to settle for delays, gaps in communication, or inflated costs that come with transactional services.
+        </p>
+
+        <p>
+          That’s what we mean by your complete project partner. One team. One relationship. Every phase.
+        </p>
+
+        <p class="gci-tagline">
+          Growing. Creating. Innovating. G…C…I…
+        </p>
+      </div>
+
+      <!-- FINAL TRACED + TALLER HILLS SVG (BEHIND THE BOX) -->
+      <svg class="gci-swoosh" viewBox="0 0 600 260" fill="none" stroke="#B18750" stroke-linecap="round">
+
+        <path class="swoosh-line" stroke-width="5"
+              d="M0 215 C90 185, 160 235, 240 210 S360 245, 450 225 S560 255, 600 235" />
+
+        <path class="swoosh-line" stroke-width="4.5"
+              d="M20 195 C110 170, 175 210, 255 190 S370 220, 455 205 S545 235, 585 220" />
+
+        <path class="swoosh-line" stroke-width="4"
+              d="M40 175 C130 155, 195 185, 275 170 S380 200, 460 190 S530 215, 570 205" />
+
+        <path class="swoosh-line" stroke-width="3.5"
+              d="M60 155 C150 140, 215 165, 295 155 S395 185, 470 178 S515 200, 555 190" />
+
+        <path class="swoosh-line" stroke-width="3"
+              d="M80 138 C165 125, 235 145, 315 138 S405 165, 475 160 S505 180, 540 172" />
+
+        <path class="swoosh-line" stroke-width="2.7"
+              d="M105 122 C185 112, 255 128, 330 125 S415 150, 485 148 S505 165, 520 160" />
+
+      </svg>
+
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Message"></textarea>
+        <button class="btn-secondary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SMOOTH SCROLL -->
+  <script>
+    const learnMoreBtn = document.querySelector('.learn-more-btn');
+    if (learnMoreBtn) {
+      learnMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('#about').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    }
+  </script>
+
+  <!-- SWOOSH ANIMATION -->
+  <script>
+    const swooshLines = document.querySelectorAll('.swoosh-line');
+
+    swooshLines.forEach(line => {
+      const length = line.getTotalLength();
+      line.style.setProperty('--len', length);
+    });
+
+    window.addEventListener('load', () => {
+      document.querySelector('.gci-swoosh').classList.add('animate');
+    });
+  </script>
+
+</body>
+</html>
