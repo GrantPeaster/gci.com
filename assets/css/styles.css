@@ -1,0 +1,243 @@
+/* ============================================
+   GEORGIA CIVIL BRAND VARIABLES
+============================================ */
+:root {
+  --gc-red: #CA2131;
+  --gc-brass: #B18750;
+  --gc-blue: #020534;
+  --gc-gray: #787878;
+  --gc-white: #FFFFFF;
+  --gc-black: #000000;
+
+  --font-body: "Montserrat", sans-serif;
+  --font-heading: "Times New Roman MT Condensed", serif;
+  --font-nav: "Roboto", sans-serif;
+}
+
+/* ============================================
+   GLOBAL
+============================================ */
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--gc-blue);
+  color: var(--gc-white);
+  scroll-behavior: smooth;
+}
+
+.section {
+  padding: 80px 20px;
+}
+
+h1, h2 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   TOP NAV BAR (WHY GCI / SERVICES / PORTFOLIO)
+============================================ */
+.top-nav {
+  background: var(--gc-blue);
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.top-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.top-nav a {
+  font-family: var(--font-nav);
+  text-transform: uppercase;
+  letter-spacing: 0.139em;
+  color: var(--gc-brass);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.top-nav a:hover {
+  color: var(--gc-red);
+}
+
+/* ============================================
+   MAIN NAVIGATION (LOGO + 3 LINKS)
+============================================ */
+nav {
+  background: var(--gc-blue);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  height: 55px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 25px;
+}
+
+nav a {
+  font-family: var(--font-nav);
+  text-transform: uppercase;
+  letter-spacing: 0.139em;
+  color: var(--gc-white);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--gc-brass);
+}
+
+/* ============================================
+   HERO
+============================================ */
+.hero {
+  text-align: center;
+  padding: 120px 20px 100px;
+  background: var(--gc-blue);
+}
+
+.hero-logo {
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  background: var(--gc-blue);
+  color: var(--gc-white);
+  border: 2px solid var(--gc-brass);
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: var(--gc-brass);
+  color: var(--gc-blue);
+}
+
+/* ============================================
+   ABOUT SECTION + BACKGROUND HILLS
+============================================ */
+.about-section {
+  position: relative;
+  overflow: visible;
+  background: var(--gc-blue);
+}
+
+.about-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.about-box {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 3;
+  backdrop-filter: blur(6px);
+}
+
+.gci-tagline {
+  margin-top: 20px;
+  font-weight: 600;
+  color: var(--gc-brass);
+}
+
+/* ============================================
+   ROLLING HILLS SVG (BEHIND ABOUT BOX)
+============================================ */
+.gci-swoosh {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110%;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.gci-swoosh.animate {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.swoosh-line {
+  stroke-dasharray: var(--len);
+  stroke-dashoffset: var(--len);
+  animation: draw 2.4s ease forwards;
+}
+
+.swoosh-line:nth-child(2) { animation-delay: 0.15s; }
+.swoosh-line:nth-child(3) { animation-delay: 0.3s; }
+.swoosh-line:nth-child(4) { animation-delay: 0.45s; }
+.swoosh-line:nth-child(5) { animation-delay: 0.6s; }
+.swoosh-line:nth-child(6) { animation-delay: 0.75s; }
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ============================================
+   CONTACT SECTION
+============================================ */
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--gc-gray);
+  font-family: var(--font-body);
+}
+
+.btn-secondary {
+  background: var(--gc-red);
+  color: var(--gc-white);
+  padding: 12px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--gc-brass);
+  color: var(--gc-blue);
+}
