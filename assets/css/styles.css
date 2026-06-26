@@ -561,3 +561,17 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
   .hero-copy h1 { font-size: clamp(2.6rem,11vw,3.4rem); }
 }
 .hero .wrap { max-width: none; width: 100%; margin-inline: 0; }
+.div-hero { position: relative; color: #fff;
+  background: var(--blue) center / cover no-repeat;
+  min-height: clamp(420px, 60vh, 600px); display: flex; align-items: center; }
+.div-hero::before { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(2,5,52,.92) 0%, rgba(2,5,52,.80) 32%, rgba(2,5,52,.32) 62%, rgba(2,5,52,0) 88%); }
+.div-hero .wrap { position: relative; z-index: 1; width: 100%; }
+.div-hero-copy { max-width: 540px; text-align: left; }
+.div-hero-copy .eyebrow { color: var(--red); }
+.div-hero-copy h1 { color: #fff; font-size: clamp(2.3rem,5vw,3.5rem); line-height: 1.04; margin: .18em 0 .5em; }
+.div-hero-copy p { color: rgba(255,255,255,.86); max-width: 46ch; font-size: 1.05rem; line-height: 1.6; margin-bottom: 30px; }
+@media (max-width: 700px){
+  .div-hero { min-height: 0; padding-block: clamp(48px,12vw,76px); background-position: center; }
+  .div-hero::before { background: linear-gradient(180deg, rgba(2,5,52,.74), rgba(2,5,52,.88)); }
+}
