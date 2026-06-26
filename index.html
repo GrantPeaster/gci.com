@@ -19,8 +19,8 @@
 <body data-page="">
   <div data-header></div>
 
-  <!-- HERO: rotating project images + "Built on Better Planning" + project name (parens) + scroll cue -->
-  <section class="hero" aria-label="Introduction">
+  <!-- HERO: rotating project images + left-aligned pitch + CTA + project name (parens) + scroll cue -->
+  <section class="hero hero-pitch" aria-label="Introduction">
     <div class="hero-slides">
       <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA"
            style="background-color:#0a1150;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
@@ -28,7 +28,12 @@
            style="background-color:#0d1a55;background-image:url(assets/img/hero-farmview.jpg)"></div>
     </div>
     <div class="wrap">
-      <h1>Built on Better<br>Planning.</h1>
+      <div class="hero-content">
+        <h1>Built on<br>Better Planning<span class="accent-dot">.</span></h1>
+        <p class="lead">Georgia Civil partners early to deliver smarter plans, smoother approvals, and
+          stronger results. From concept to construction, we build value into every acre.</p>
+        <a class="btn btn-accent btn-arrow" href="contact.html">Start a Conversation</a>
+      </div>
     </div>
     <p class="hero-project" aria-live="polite">(Morgan Medical Center · Madison, GA)</p>
     <a class="scroll-cue" href="#divisions" aria-label="Scroll to content">
@@ -39,7 +44,7 @@
   </section>
 
   <!-- SUBSECTION 1: Divisions — flip cards (front = division image, back = 3 points -> division page) -->
-  <section id="divisions" class="divisions-feature">
+  <section id="divisions" class="divisions-feature section-topo">
     <div class="wrap">
       <div class="grid cols-3">
         <a class="flip" href="land-planning.html" aria-label="Land Planning">
@@ -102,22 +107,9 @@
     </div>
   </section>
 
-  <!-- SUBSECTION 2: Better Planning, Better Outcomes (pitch, relocated below divisions) -->
-  <section id="better-outcomes" class="section-paper">
-    <div class="wrap">
-      <div>
-        <h2>Better Planning,<br>Better Outcomes.</h2>
-        <p class="lead mt-s">Every developable acre has value. Our job is to help clients maximize that
-          value before costly commitments are made. By integrating feasibility, planning, surveying, and
-          engineering early, we help avoid surprises and create projects that work on paper, in permitting,
-          and in the field.</p>
-        <a class="btn btn-accent mt-s" href="project-spotlight.html">See Results &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SUBSECTION 3: News (LinkedIn) -->
-  <section class="section-blue">
+  <!-- SUBSECTION 2: News (LinkedIn) -->
+  <hr class="brand-accent-bar" aria-hidden="true">
+  <section class="section-blue section-topo-dark">
     <div class="wrap">
       <div class="split" style="margin-bottom:48px">
         <h2>News</h2>
