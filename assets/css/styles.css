@@ -514,7 +514,13 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
   background: var(--blue); display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
   font-family: var(--utility); letter-spacing: .06em; font-size: .9rem; color: #fff; margin-bottom: 20px; }
 .tl-step h3 { color: #fff; font-size: clamp(1.05rem,1.5vw,1.3rem); line-height: 1.2; margin-bottom: 12px; }
-.tl-step p { color: rgba(255,255,255,.72); font-size: .92rem; line-height: 1.55; }
+.tl-step p { color: rgba(255,255,255,.72); font-size: .92rem; line-height: 1.55; } .timeline { list-style: none;padding-left: 0;margin-left: 0;
+counter-reset: none;
+}
+.timeline > li::marker {
+  content: "";
+}
+
 
 @media (max-width: 900px){
   .proc-grid { grid-template-columns: 1fr; }
