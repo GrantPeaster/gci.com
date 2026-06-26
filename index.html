@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgia Civil — Built on Better Planning</title>
+  <meta name="description" content="Georgia Civil integrates land planning, surveying, civil engineering, and landscape architecture from day one — helping clients make smarter decisions before costly commitments are made.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#020534">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body data-page="">
+  <div data-header></div>
+
+  <!-- HERO: rotating project images + "Built on Better Planning" + project name (parens) + scroll cue -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-slides">
+      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA"
+           style="background-color:#0a1150;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
+      <div class="hero-slide" data-project="Farmview Market · Madison, GA"
+           style="background-color:#0d1a55;background-image:url(assets/img/hero-farmview.jpg)"></div>
+    </div>
+    <div class="wrap">
+      <h1>Built on Better<br>Planning.</h1>
+    </div>
+    <p class="hero-project" aria-live="polite">(Morgan Medical Center · Madison, GA)</p>
+    <a class="scroll-cue" href="#divisions" aria-label="Scroll to content">
+      <svg viewBox="0 0 24 40" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M12 4v26M5 23l7 7 7-7"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- SUBSECTION 1: Divisions — flip cards (front = division image, back = 3 points -> division page) -->
+  <section id="divisions" class="divisions-feature">
+    <div class="wrap">
+      <div class="grid cols-3">
+        <a class="flip" href="land-planning.html" aria-label="Land Planning">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="fimg" style="background-color:#0a1150;background-image:url(assets/img/div-land-planning.jpg)"></div>
+              <div class="fc-overlay"></div>
+              <h3>Land Planning</h3>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-label">Land Planning</span>
+              <ul>
+                <li>Feasibility &amp; site optimization</li>
+                <li>Constraints found early</li>
+                <li>Maximized developable acreage</li>
+              </ul>
+              <span class="flip-cta">Explore Land Planning &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="flip" href="land-surveying.html" aria-label="Land Surveying">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="fimg" style="background-color:#13183f;background-image:url(assets/img/div-land-surveying.jpg)"></div>
+              <div class="fc-overlay"></div>
+              <h3>Land Surveying</h3>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-label">Land Surveying</span>
+              <ul>
+                <li>LiDAR &amp; drone capture</li>
+                <li>Construction staking</li>
+                <li>ALTA / NSPS surveys</li>
+              </ul>
+              <span class="flip-cta">Explore Land Surveying &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="flip" href="civil-engineering.html" aria-label="Civil Engineering">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <div class="fimg" style="background-color:#241025;background-image:url(assets/img/div-civil-engineering.jpg)"></div>
+              <div class="fc-overlay"></div>
+              <h3>Civil Engineering</h3>
+            </div>
+            <div class="flip-face flip-back">
+              <span class="card-label">Civil Engineering</span>
+              <ul>
+                <li>Grading, drainage &amp; utilities</li>
+                <li>SiteOps optimization</li>
+                <li>Tough-site engineering</li>
+              </ul>
+              <span class="flip-cta">Explore Civil Engineering &rarr;</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSECTION 2: Better Planning, Better Outcomes (pitch, relocated below divisions) -->
+  <section id="better-outcomes" class="section-paper">
+    <div class="wrap">
+      <div>
+        <h2>Better Planning,<br>Better Outcomes.</h2>
+        <p class="lead mt-s">Every developable acre has value. Our job is to help clients maximize that
+          value before costly commitments are made. By integrating feasibility, planning, surveying, and
+          engineering early, we help avoid surprises and create projects that work on paper, in permitting,
+          and in the field.</p>
+        <a class="btn btn-accent mt-s" href="project-spotlight.html">See Results &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBSECTION 3: News (LinkedIn) -->
+  <section class="section-blue">
+    <div class="wrap">
+      <div class="split" style="margin-bottom:48px">
+        <h2>News</h2>
+        <p class="lead">Project milestones, team news, and what we're learning on the ground. Follow
+          along on LinkedIn for the latest.</p>
+      </div>
+      <div class="news">
+        <a class="news-card" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+          <span class="date">Latest</span>
+          <h3>Bana 85 grading plan clears review</h3>
+          <p style="color:var(--ink-55);font-size:.92rem">Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
+          <span class="more">Read on LinkedIn &rarr;</span>
+        </a>
+        <a class="news-card" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+          <span class="date">Recent</span>
+          <h3>Welcoming new survey crew members</h3>
+          <p style="color:var(--ink-55);font-size:.92rem">Growing our LiDAR and field capability to keep pace with active project work.</p>
+          <span class="more">Read on LinkedIn &rarr;</span>
+        </a>
+        <a class="news-card" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+          <span class="date">Recent</span>
+          <h3>Prowell Park master plan refined</h3>
+          <p style="color:var(--ink-55);font-size:.92rem">Balancing drainage, buffering, and neighborhood compatibility while preserving the owner's vision.</p>
+          <span class="more">Read on LinkedIn &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div data-footer></div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

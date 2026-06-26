@@ -1,0 +1,11 @@
+{
+  "name": "Georgia Civil",
+  "short_name": "GCI",
+  "icons": [
+    { "src": "assets/img/favicon-192x192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "assets/img/favicon-512x512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#020534",
+  "background_color": "#020534",
+  "display": "standalone"
+}
