@@ -100,7 +100,7 @@ function heroCarousel() {
   let i = 0;
   const show = (n) => {
     slides.forEach((s, k) => s.classList.toggle('active', k === n));
-    if (nameEl) nameEl.textContent = '(' + (slides[n].dataset.project || '') + ')';
+    if (nameEl) nameEl.textContent = slides[n].dataset.project || '';
   };
   show(0);
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
