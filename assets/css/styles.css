@@ -547,3 +547,16 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
   .lp-hero { min-height: 0; padding-block: clamp(48px,12vw,76px); background-position: center; }
   .lp-hero::before { background: linear-gradient(180deg, rgba(2,5,52,.74), rgba(2,5,52,.88)); }
 }
+.hero { align-items: center; }
+.hero-slide::after { background: linear-gradient(90deg, rgba(2,5,52,.97) 0%, rgba(2,5,52,.9) 26%, rgba(2,5,52,.55) 50%, rgba(2,5,52,.15) 75%, rgba(2,5,52,.05) 100%); }
+.hero-copy { max-width: 560px; }
+.hero-copy h1 { position: relative; padding-left: 26px; max-width: none; line-height: 1.02; }
+.hero-copy h1::before { content: ""; position: absolute; left: 0; top: .1em; bottom: .12em; width: 4px; background: var(--red); border-radius: 2px; }
+.hero-copy h1 .dot { color: var(--red); }
+.hero-copy p { color: rgba(255,255,255,.86); max-width: 44ch; margin: 20px 0 28px 26px; line-height: 1.6; font-size: 1.05rem; }
+.hero-copy .btn { margin-left: 26px; }
+.hero-project { text-shadow: 0 1px 6px rgba(0,0,0,.55); }
+@media (max-width: 720px){
+  .hero-slide::after { background: linear-gradient(180deg, rgba(2,5,52,.7), rgba(2,5,52,.9)); }
+  .hero-copy h1 { font-size: clamp(2.6rem,11vw,3.4rem); }
+}
