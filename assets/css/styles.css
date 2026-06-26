@@ -201,6 +201,16 @@ section { padding-block: clamp(56px, 9vw, 120px); }
   font-size: 0.68rem; font-weight: 700; color: var(--red); }
 .flip:hover .flip-cta, .flip:focus-within .flip-cta { text-decoration: underline; text-underline-offset: 4px; }
 
+/* Mobile: cards stack vertically and have no hover, so flipping is
+   triggered by scroll position (JS toggles .is-flipped on .flip-inner)
+   instead of :hover/:focus-within. Scoped to the same breakpoint where
+   the divisions grid switches to a single column. */
+@media (max-width: 860px) {
+  .flip-inner.is-flipped { transform: rotateY(180deg); }
+  .flip-inner.is-flipped ~ .flip-cta,
+  .flip.is-flipped .flip-cta { text-decoration: underline; text-underline-offset: 4px; }
+}
+
 /* Photo slot — drop a real image in via inline background-image; falls back to brand blue + label */
 .photoslot { position: relative; min-height: 320px; background: #0a1150 center/cover no-repeat;
   background-blend-mode: normal; }
@@ -335,7 +345,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .flip:hover .flip-inner, .flip:focus-within .flip-inner { transform: none; }
+  .flip:hover .flip-inner, .flip:focus-within .flip-inner, .flip-inner.is-flipped { transform: none; }
   .flip-inner { min-height: auto; }
   .flip-face { position: relative; }
   .flip-back { transform: none; }
