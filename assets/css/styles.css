@@ -1,3 +1,4 @@
+
 /* ============================================================
    GEORGIA CIVIL — Brand Stylesheet
    Colors, type, and components per the GCI Brand ID.
@@ -130,7 +131,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 .hero-slide.active { opacity: 1; }
 .hero-slide::after { content:""; position:absolute; inset:0;
   background: linear-gradient(180deg, rgba(2,5,52,0.55) 0%, rgba(2,5,52,0.86) 100%); }
-.hero .wrap { position: relative; z-index: 2; padding-bottom: clamp(48px, 8vw, 90px);
+.hero .wrap { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(48px, 8vw, 90px);
   padding-top: clamp(60px, 10vw, 120px); }
 .hero h1 { color: #fff; max-width: 16ch; }
 .hero .eyebrow { color: var(--brass); }
@@ -539,6 +540,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 .hero-pitch .wrap { padding-block: clamp(60px, 10vw, 120px); }
 .hero-content {
   max-width: 46ch;
+  margin-inline: 0;
+  text-align: left;
   padding-left: clamp(18px, 2.2vw, 26px);
   border-left: 3px solid var(--red);
 }
