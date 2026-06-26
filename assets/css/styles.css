@@ -526,3 +526,51 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
   .tl-step { flex: none; padding-right: 0; }
   .tl-node { margin-bottom: 14px; }
 }
+
+/* ============================================================
+   2026-06 UPDATE 2 — Hero rebuilt as left-aligned pitch + CTA;
+   topo-line section textures; brand-accent divider rule.
+   (Carousel slides / hero-project caption / scroll-cue unchanged.)
+   ============================================================ */
+
+/* Hero: switch from bottom-anchored centered h1 to a left-aligned
+   content block with accent bar, lead copy, and CTA button. */
+.hero-pitch { align-items: center; }
+.hero-pitch .wrap { padding-block: clamp(60px, 10vw, 120px); }
+.hero-content {
+  max-width: 46ch;
+  padding-left: clamp(18px, 2.2vw, 26px);
+  border-left: 3px solid var(--red);
+}
+.hero-content h1 { color: #fff; max-width: 14ch; }
+.hero-content .accent-dot { color: var(--red); }
+.hero-content .lead { color: rgba(255,255,255,0.82); margin-top: 0.7em; }
+.hero-content .btn { margin-top: clamp(20px, 3vw, 30px); }
+
+/* Topo-line section textures (uses existing contour SVG assets as a
+   faint full-bleed background, echoing the brand's topographic motif) */
+.section-topo { position: relative; overflow: hidden; }
+.section-topo::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.06;
+  background: url(../img/contour-wide.svg) center/cover no-repeat;
+}
+.section-topo > .wrap { position: relative; z-index: 1; }
+
+.section-topo-dark { position: relative; overflow: hidden; }
+.section-topo-dark::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.16;
+  background: url(../img/contour-wide.svg) center/cover no-repeat;
+}
+.section-topo-dark > .wrap { position: relative; z-index: 1; }
+
+/* Brand-accent divider — thin gradient rule used between sections */
+.brand-accent-bar {
+  height: 3px; border: 0; margin: 0;
+  background: linear-gradient(90deg, var(--red) 0%, rgba(202,33,49,0.15) 65%, transparent 100%);
+}
+
+@media (max-width: 620px) {
+  .hero-content { border-left-width: 2px; padding-left: 16px; }
+}
