@@ -130,7 +130,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 .hero-slide.active { opacity: 1; }
 .hero-slide::after { content:""; position:absolute; inset:0;
   background: linear-gradient(180deg, rgba(2,5,52,0.55) 0%, rgba(2,5,52,0.86) 100%); }
-.hero .wrap { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(48px, 8vw, 90px);
+.hero .wrap { position: relative; z-index: 2; padding-bottom: clamp(48px, 8vw, 90px);
   padding-top: clamp(60px, 10vw, 120px); }
 .hero h1 { color: #fff; max-width: 16ch; }
 .hero .eyebrow { color: var(--brass); }
@@ -201,16 +201,6 @@ section { padding-block: clamp(56px, 9vw, 120px); }
   font-size: 0.68rem; font-weight: 700; color: var(--red); }
 .flip:hover .flip-cta, .flip:focus-within .flip-cta { text-decoration: underline; text-underline-offset: 4px; }
 
-/* Mobile: cards stack vertically and have no hover, so flipping is
-   triggered by scroll position (JS toggles .is-flipped on .flip-inner)
-   instead of :hover/:focus-within. Scoped to the same breakpoint where
-   the divisions grid switches to a single column. */
-@media (max-width: 860px) {
-  .flip-inner.is-flipped { transform: rotateY(180deg); }
-  .flip-inner.is-flipped ~ .flip-cta,
-  .flip.is-flipped .flip-cta { text-decoration: underline; text-underline-offset: 4px; }
-}
-
 /* Photo slot — drop a real image in via inline background-image; falls back to brand blue + label */
 .photoslot { position: relative; min-height: 320px; background: #0a1150 center/cover no-repeat;
   background-blend-mode: normal; }
@@ -261,7 +251,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
   flex-direction: column; gap: 10px; min-height: 200px; }
 .news-card .date { font-family: var(--utility); text-transform: uppercase; letter-spacing: 0.1em;
   font-size: 0.62rem; color: var(--gray); }
-.news-card h3 { font-size: 1.25rem; color: var(--blue); }
+.news-card h3 { font-size: 1.25rem; }
 .news-card .more { margin-top: auto; color: var(--red); font-family: var(--utility);
   text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.66rem; }
 
@@ -345,7 +335,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  .flip:hover .flip-inner, .flip:focus-within .flip-inner, .flip-inner.is-flipped { transform: none; }
+  .flip:hover .flip-inner, .flip:focus-within .flip-inner { transform: none; }
   .flip-inner { min-height: auto; }
   .flip-face { position: relative; }
   .flip-back { transform: none; }
@@ -538,51 +528,16 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 }
 
 /* ============================================================
-   2026-06 UPDATE 2 — Hero rebuilt as left-aligned pitch + CTA;
-   topo-line section textures; brand-accent divider rule.
-   (Carousel slides / hero-project caption / scroll-cue unchanged.)
+   Land Planning split hero (dark band, copy left / image right)
    ============================================================ */
-
-/* Hero: switch from bottom-anchored centered h1 to a left-aligned
-   content block with accent bar, lead copy, and CTA button. */
-.hero-pitch { align-items: center; }
-.hero-pitch .wrap { padding-block: clamp(60px, 10vw, 120px); }
-.hero-content {
-  max-width: 46ch;
-  margin-inline: 0;
-  text-align: left;
-  padding-left: clamp(18px, 2.2vw, 26px);
-  border-left: 3px solid var(--red);
-}
-.hero-content h1 { color: #fff; max-width: 14ch; }
-.hero-content .accent-dot { color: var(--red); }
-.hero-content .lead { color: rgba(255,255,255,0.82); margin-top: 0.7em; }
-.hero-content .btn { margin-top: clamp(20px, 3vw, 30px); }
-
-/* Topo-line section textures (uses existing contour SVG assets as a
-   faint full-bleed background, echoing the brand's topographic motif) */
-.section-topo { position: relative; overflow: hidden; }
-.section-topo::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  opacity: 0.06;
-  background: url(../img/contour-wide.svg) center/cover no-repeat;
-}
-.section-topo > .wrap { position: relative; z-index: 1; }
-
-.section-topo-dark { position: relative; overflow: hidden; }
-.section-topo-dark::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  opacity: 0.16;
-  background: url(../img/contour-wide.svg) center/cover no-repeat;
-}
-.section-topo-dark > .wrap { position: relative; z-index: 1; }
-
-/* Brand-accent divider — thin gradient rule used between sections */
-.brand-accent-bar {
-  height: 3px; border: 0; margin: 0;
-  background: linear-gradient(90deg, var(--red) 0%, rgba(202,33,49,0.15) 65%, transparent 100%);
-}
-
-@media (max-width: 620px) {
-  .hero-content { border-left-width: 2px; padding-left: 16px; }
-}
+.lp-hero { background: var(--blue); color: #fff; }
+.lp-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(32px,5vw,64px); align-items: center; }
+.lp-hero-copy .eyebrow { color: var(--red); }
+.lp-hero-copy h1 { color: #fff; font-size: clamp(2.3rem,5vw,3.5rem); line-height: 1.04; margin: .18em 0 .5em; }
+.lp-hero-copy p { color: rgba(255,255,255,.78); max-width: 46ch; font-size: 1.05rem; line-height: 1.6; margin-bottom: 30px; }
+.lp-hero-media { position: relative; border-radius: 4px; overflow: hidden; }
+.lp-hero-media img { width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/3; }
+.lp-hero-caption { position: absolute; right: 12px; bottom: 12px; font-family: var(--utility);
+  text-transform: uppercase; letter-spacing: .12em; font-size: .68rem; color: #fff;
+  background: rgba(2,5,52,.72); padding: 7px 12px; border-radius: 3px; }
+@media (max-width: 820px){ .lp-hero-grid { grid-template-columns: 1fr; gap: 28px; } }
