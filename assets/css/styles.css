@@ -560,3 +560,4 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
   .hero-slide::after { background: linear-gradient(180deg, rgba(2,5,52,.7), rgba(2,5,52,.9)); }
   .hero-copy h1 { font-size: clamp(2.6rem,11vw,3.4rem); }
 }
+.hero .wrap { max-width: none; }
