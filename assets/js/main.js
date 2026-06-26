@@ -148,8 +148,52 @@ function formHandler() {
   });
 }
 
+function flipCardsOnScroll() {
+  const cards = Array.from(document.querySelectorAll('.flip'));
+  if (!cards.length) return;
+
+  const isMobile = () => window.matchMedia('(max-width: 860px)').matches;
+  const noHover = () => window.matchMedia('(hover: none)').matches;
+  const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let observer = null;
+
+  const teardown = () => {
+    if (observer) { observer.disconnect(); observer = null; }
+    cards.forEach(c => c.querySelector('.flip-inner')?.classList.remove('is-flipped'));
+  };
+
+  const setup = () => {
+    if (observer) return; // already running
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const inner = entry.target.querySelector('.flip-inner');
+        if (!inner) return;
+        inner.classList.toggle('is-flipped', entry.isIntersecting);
+      });
+    }, {
+      // Card flips once it's well into the viewport (avoids flipping
+      // the instant it edges onscreen) and flips back once it's mostly
+      // scrolled past, so only the card currently "in focus" shows its back.
+      rootMargin: '-30% 0px -30% 0px',
+      threshold: 0,
+    });
+    cards.forEach(c => observer.observe(c));
+  };
+
+  const evaluate = () => {
+    if (isMobile() && noHover() && !reduceMotion()) setup();
+    else teardown();
+  };
+
+  evaluate();
+  window.addEventListener('resize', evaluate);
+  window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change', evaluate);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   mountChrome();
   heroCarousel();
   formHandler();
+  flipCardsOnScroll();
 });
