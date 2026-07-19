@@ -178,9 +178,13 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 .flip-inner { position: relative; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.8,.2,1);
   min-height: 380px; }
 .flip:hover .flip-inner, .flip:focus-within .flip-inner { transform: rotateY(180deg); }
-.flip-face { position: absolute; inset: 0; backface-visibility: hidden; overflow: hidden;
+.flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; overflow: hidden;
   display: flex; flex-direction: column; justify-content: flex-end; }
-.flip-front { background: var(--blue); color: #fff; padding: 26px; }
+/* iOS Safari: children with their own stacking context (z-index, position)
+   ignore the parent's backface-visibility and bleed through mirrored.
+   Hiding backfaces on descendants too closes that hole. */
+.flip-face * { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.flip-front { background: var(--blue); color: #fff; padding: 26px; transform: rotateY(0deg); }
 .flip-front .fimg { position: absolute; inset: 0; background-size: cover; background-position: center;
   opacity: 0.92; }
 .flip-front .fc-overlay { position:absolute; inset:0; background:
@@ -256,7 +260,8 @@ section { padding-block: clamp(56px, 9vw, 120px); }
   flex-direction: column; gap: 10px; min-height: 200px; }
 .news-card .date { font-family: var(--utility); text-transform: uppercase; letter-spacing: 0.1em;
   font-size: 0.62rem; color: var(--gray); }
-.news-card h3 { font-size: 1.25rem; }
+.news-card h3 { font-size: 1.25rem; color: var(--blue); }
+.section-blue .news-card h3 { color: var(--blue); }
 .news-card .more { margin-top: auto; color: var(--red); font-family: var(--utility);
   text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.66rem; }
 
