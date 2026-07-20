@@ -647,19 +647,23 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 /* --- Bottom: News + Careers --- */
 .about-bottom { background: var(--paper); position: relative; overflow: hidden;
   padding-block: clamp(44px, 6vw, 80px); }
-.about-bottom .wrap { display: grid; grid-template-columns: 1.8fr 1fr;
+.about-bottom .wrap { display: grid; grid-template-columns: 1fr minmax(320px, 420px);
   gap: clamp(30px, 4vw, 60px); align-items: start; }
 
-/* News: narrow intro column + rotating card row */
-.about-news { display: grid; grid-template-columns: minmax(140px, 180px) 1fr;
-  gap: clamp(20px, 2.4vw, 36px); align-items: start; }
-.about-news .eyebrow { color: var(--red); }
-.about-news-intro h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: .45em; }
-.about-news-intro p { font-size: .9rem; color: var(--ink-70); margin-bottom: 1.3em; }
+/* News: header row above cards, cards fill full column width */
+.about-news { display: flex; flex-direction: column; gap: 20px; }
+.about-news-intro { display: flex; align-items: baseline; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px 20px; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.about-news-intro h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: 0; }
+.about-news-intro p { display: none; }  /* drop the sub-label, header is self-explanatory */
 .about-news-intro .view-all { font-family: var(--utility); text-transform: uppercase;
-  letter-spacing: 0.1em; font-size: 0.66rem; font-weight: 700; color: var(--red); }
+  letter-spacing: 0.1em; font-size: 0.66rem; font-weight: 700; color: var(--red); white-space: nowrap; }
 .about-news-intro .view-all:hover { text-decoration: underline; text-underline-offset: 3px; }
 .about-news #news-feed { gap: 16px; }
+
+/* Cap blurb text so cards stay uniform height instead of running long */
+.news-card:has(.nc-img) .nc-body p { display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Careers column, divided from News by a hairline */
 .about-careers { border-left: 1px solid var(--line); padding-left: clamp(28px, 3.4vw, 56px); }
@@ -689,7 +693,6 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 @media (max-width: 900px){
   .about-hero .wrap { grid-template-columns: 1fr; }
   .about-visual { aspect-ratio: 4 / 3; max-width: 520px; width: 100%; }
-  .about-news { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px){
   .form-row { grid-template-columns: 1fr; }
