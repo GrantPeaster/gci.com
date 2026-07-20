@@ -123,17 +123,39 @@ function formHandler() {
       if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
         return showErr(email, 'Enter a valid email address so we can reply.');
       }
+      const fileInput = form.querySelector('input[type=file]');
+      if (fileInput && fileInput.files.length) {
+        const f = fileInput.files[0];
+        const ext = (f.name.split('.').pop() || '').toLowerCase();
+        if (!['pdf', 'doc', 'docx'].includes(ext)) {
+          return showErr(fileInput, 'Please attach a PDF or Word document (.pdf, .doc, .docx).');
+        }
+        if (f.size > 5 * 1024 * 1024) {
+          return showErr(fileInput, 'Please keep the résumé under 5 MB.');
+        }
+      }
       clearErr();
       const btn = form.querySelector('button[type=submit]');
       const label = btn ? btn.innerHTML : '';
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
       try {
-        const data = Object.fromEntries(new FormData(form).entries());
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data),
-        });
+        const hasFile = !!form.querySelector('input[type=file]');
+        let res;
+        if (hasFile) {
+          // multipart so the résumé attaches; let the browser set the boundary
+          res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form),
+          });
+        } else {
+          const data = Object.fromEntries(new FormData(form).entries());
+          res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data),
+          });
+        }
         const out = await res.json().catch(() => ({}));
         if (res.ok && out.success) {
           form.innerHTML = '<p class="form-note" style="font-size:1rem">Thanks — your message has been sent. We\u2019ll be in touch shortly.</p>';
@@ -209,7 +231,17 @@ function renderNews() {
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const fmt = (d) => new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-  const card = (p) => `
+  const card = (p) => p.image ? `
+        <a class="news-card" href="${esc(p.url || PAGE)}" target="_blank" rel="noopener">
+          <span class="nc-tab" aria-hidden="true"></span>
+          <div class="nc-img" style="background-image:url('${esc(p.image)}')"></div>
+          <div class="nc-body">
+            <span class="date">${esc(fmt(p.date))}</span>
+            <h3>${esc(p.title)}</h3>
+            <p>${esc(p.blurb || '')}</p>
+            <span class="more">Read on LinkedIn &rarr;</span>
+          </div>
+        </a>` : `
         <a class="news-card" href="${esc(p.url || PAGE)}" target="_blank" rel="noopener">
           <span class="date">${esc(fmt(p.date))}</span>
           <h3>${esc(p.title)}</h3>
@@ -253,7 +285,7 @@ function renderNews() {
     if (posts.length <= SLOTS || reduce) return; // no rotation needed / motion suppressed
 
     let start = 0, timer = null;
-    const SLIDE_MS = 60; // must match the .12s transition in styles.css
+    const SLIDE_MS = 120; // must match the .12s transition in styles.css
     const tick = () => {
       start = (start + SLOTS) % posts.length; // page in a fresh set of 3
       grid.classList.add('is-out');            // slide current cards left + fade
