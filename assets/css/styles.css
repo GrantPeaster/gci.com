@@ -611,3 +611,86 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 .hero-project { right: 16px; bottom: 14px; font-family: var(--utility); font-style: normal;
   text-transform: uppercase; letter-spacing: .12em; font-size: .68rem; color: #fff;
   background: rgba(2,5,52,.6); padding: 7px 12px; border-radius: 3px; }
+
+/* ============================================================
+   ABOUT PAGE REDESIGN (2026-07)
+   Hero = who-we-are copy + framed project visual (red square = signature).
+   Bottom = rotating News feed + Careers form, split by a hairline.
+   ============================================================ */
+
+/* --- Hero --- */
+.about-hero { position: relative; background: #fff; overflow: hidden;
+  padding-block: clamp(44px, 7vw, 92px); }
+.about-hero::before { content: ""; position: absolute; left: -6%; top: 0; bottom: 0; width: 62%;
+  background: url(../img/contour-wide.svg) left center / cover no-repeat;
+  opacity: .06; pointer-events: none; }
+.about-hero .wrap { position: relative; z-index: 1; display: grid;
+  grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+.about-hero .eyebrow { color: var(--red); }
+.about-hero h1 { font-size: clamp(2.5rem, 5.2vw, 4.4rem); max-width: 13ch; margin-bottom: .32em; }
+.about-hero h1 .dot { color: var(--red); }
+.about-hero .lead { margin-bottom: 1.05em; max-width: 46ch; }
+.about-hero .body { color: var(--ink-70); max-width: 52ch; font-size: .96rem; margin-bottom: 0; }
+
+/* Framed visual: photo, the signature red square, and two supporting marks */
+.about-visual { position: relative; aspect-ratio: 4 / 3; }
+.av-media { position: absolute; inset: 8% 0 8% 14%;
+  background: #0a1150 center / cover no-repeat; box-shadow: 0 18px 44px rgba(2,5,52,.16); }
+.av-frame { position: absolute; top: 5%; left: 30%; width: 47%; aspect-ratio: 1;
+  border: 6px solid var(--red); z-index: 2; }
+.av-accent { position: absolute; left: 7%; top: 47%; width: 12px; height: 12px;
+  background: var(--red); z-index: 2; }
+.av-dots { position: absolute; left: 5%; bottom: 3%; width: 96px; height: 56px; z-index: 2;
+  background-image: radial-gradient(var(--gray) 1.3px, transparent 1.6px);
+  background-size: 15px 15px; opacity: .45; }
+
+/* --- Bottom: News + Careers --- */
+.about-bottom { background: var(--paper); position: relative; overflow: hidden;
+  padding-block: clamp(44px, 6vw, 80px); }
+.about-bottom .wrap { display: grid; grid-template-columns: 1.8fr 1fr;
+  gap: clamp(30px, 4vw, 60px); align-items: start; }
+
+/* News: narrow intro column + rotating card row */
+.about-news { display: grid; grid-template-columns: minmax(140px, 180px) 1fr;
+  gap: clamp(20px, 2.4vw, 36px); align-items: start; }
+.about-news .eyebrow { color: var(--red); }
+.about-news-intro h2 { font-size: clamp(1.9rem, 3vw, 2.6rem); margin-bottom: .45em; }
+.about-news-intro p { font-size: .9rem; color: var(--ink-70); margin-bottom: 1.3em; }
+.about-news-intro .view-all { font-family: var(--utility); text-transform: uppercase;
+  letter-spacing: 0.1em; font-size: 0.66rem; font-weight: 700; color: var(--red); }
+.about-news-intro .view-all:hover { text-decoration: underline; text-underline-offset: 3px; }
+.about-news #news-feed { gap: 16px; }
+
+/* Careers column, divided from News by a hairline */
+.about-careers { border-left: 1px solid var(--line); padding-left: clamp(28px, 3.4vw, 56px); }
+.about-careers .eyebrow { color: var(--red); }
+.about-careers h2 .dot { color: var(--red); }
+.about-careers h2 { margin-bottom: .45em; }
+.about-careers .lead { font-size: 1rem; margin-bottom: 1.5em; }
+.about-careers .form { max-width: none; }
+.about-careers .form .btn { width: 100%; justify-content: center; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+/* --- News card imagery + red corner tab (feed-driven, both pages) --- */
+.news-card { position: relative; overflow: hidden; }
+.news-card:has(.nc-img) { padding: 0; gap: 0; }
+.nc-tab { position: absolute; top: 0; left: 0; width: 30px; height: 30px; background: var(--red); z-index: 3; }
+.nc-img { aspect-ratio: 16 / 10; background: #0a1150 center / cover no-repeat; }
+.nc-body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 18px 20px 22px; }
+.news-card:has(.nc-img) h3 { font-size: 1.05rem; }
+.news-card:has(.nc-img) .nc-body p { color: var(--ink-55); font-size: .84rem; margin: 0; }
+
+/* --- Responsive --- */
+@media (max-width: 1024px){
+  .about-bottom .wrap { grid-template-columns: 1fr; }
+  .about-careers { border-left: 0; padding-left: 0; border-top: 1px solid var(--line);
+    padding-top: clamp(30px, 5vw, 48px); }
+}
+@media (max-width: 900px){
+  .about-hero .wrap { grid-template-columns: 1fr; }
+  .about-visual { aspect-ratio: 4 / 3; max-width: 520px; width: 100%; }
+  .about-news { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px){
+  .form-row { grid-template-columns: 1fr; }
+}
