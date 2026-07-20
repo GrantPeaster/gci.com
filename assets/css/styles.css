@@ -255,7 +255,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 
 /* News cards */
 .news { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-#news-feed { transition: opacity .25s ease; }
+#news-feed { transition: opacity .15s ease; }
 @media (max-width: 860px){ .news { grid-template-columns: 1fr; } }
 .news-card { border: 1px solid var(--line); background: #fff; padding: 26px; display: flex;
   flex-direction: column; gap: 10px; min-height: 200px; }
