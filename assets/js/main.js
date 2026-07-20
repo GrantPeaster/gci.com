@@ -253,7 +253,7 @@ function renderNews() {
     if (posts.length <= SLOTS || reduce) return; // no rotation needed / motion suppressed
 
     let start = 0, timer = null;
-    const SLIDE_MS = 120; // must match the .12s transition in styles.css
+    const SLIDE_MS = 60; // must match the .12s transition in styles.css
     const tick = () => {
       start = (start + SLOTS) % posts.length; // page in a fresh set of 3
       grid.classList.add('is-out');            // slide current cards left + fade
