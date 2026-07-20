@@ -253,10 +253,17 @@ function renderNews() {
     if (posts.length <= SLOTS || reduce) return; // no rotation needed / motion suppressed
 
     let start = 0, timer = null;
+    const SLIDE_MS = 120; // must match the .12s transition in styles.css
     const tick = () => {
-      start = (start + 1) % posts.length;
-      grid.style.opacity = '0';
-      setTimeout(() => { grid.innerHTML = view(start); grid.style.opacity = '1'; }, 140);
+      start = (start + SLOTS) % posts.length; // page in a fresh set of 3
+      grid.classList.add('is-out');            // slide current cards left + fade
+      setTimeout(() => {
+        grid.classList.remove('is-out');
+        grid.innerHTML = view(start);
+        grid.classList.add('is-in');           // drop new cards in from the right (no transition)
+        void grid.offsetWidth;                 // force reflow so the offset applies first
+        grid.classList.remove('is-in');        // animate them into place
+      }, SLIDE_MS);
     };
     const play = () => { if (!timer) timer = setInterval(tick, ROTATE_MS); };
     const stop = () => { clearInterval(timer); timer = null; };
