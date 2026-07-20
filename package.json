@@ -1,0 +1,9 @@
+{
+  "name": "gci-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Georgia Civil marketing site — static pages plus Netlify functions for the LinkedIn news feed.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
