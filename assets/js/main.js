@@ -256,7 +256,7 @@ function renderNews() {
     const tick = () => {
       start = (start + 1) % posts.length;
       grid.style.opacity = '0';
-      setTimeout(() => { grid.innerHTML = view(start); grid.style.opacity = '1'; }, 240);
+      setTimeout(() => { grid.innerHTML = view(start); grid.style.opacity = '1'; }, 140);
     };
     const play = () => { if (!timer) timer = setInterval(tick, ROTATE_MS); };
     const stop = () => { clearInterval(timer); timer = null; };
