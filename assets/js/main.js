@@ -191,9 +191,87 @@ function flipCardsOnScroll() {
   window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change', evaluate);
 }
 
+/* ---------- News feed (LinkedIn-backed, rotating, date-filtered) ----------
+   Data source order:
+     1. Live Netlify function  /.netlify/functions/linkedin-news  (once deployed)
+     2. Static seed            assets/data/news.json               (always present)
+     3. Whatever HTML is already in #news-feed                     (JS-off fallback)
+   Only posts within the last MAX_AGE_MONTHS are shown; newest first.       */
+function renderNews() {
+  const grid = document.getElementById('news-feed');
+  if (!grid) return;
+
+  const MAX_AGE_MONTHS = 18;   // rolling window — change to 12 for a tighter cutoff
+  const SLOTS = 3;             // cards visible at once (matches the 3-col grid)
+  const ROTATE_MS = 7000;      // advance the window every N ms when there are extras
+  const PAGE = 'https://www.linkedin.com/company/georgia-civil-inc-/';
+
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = (d) => new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  const card = (p) => `
+        <a class="news-card" href="${esc(p.url || PAGE)}" target="_blank" rel="noopener">
+          <span class="date">${esc(fmt(p.date))}</span>
+          <h3>${esc(p.title)}</h3>
+          <p style="color:var(--ink-55);font-size:.92rem">${esc(p.blurb || '')}</p>
+          <span class="more">Read on LinkedIn &rarr;</span>
+        </a>`;
+
+  const load = async () => {
+    let posts = null;
+    try {
+      const r = await fetch('/.netlify/functions/linkedin-news', { cache: 'no-store' });
+      if (r.ok) posts = await r.json();
+    } catch (_) { /* not on Netlify yet — fall through to the seed */ }
+    if (!Array.isArray(posts) || !posts.length) {
+      try {
+        const r = await fetch('assets/data/news.json', { cache: 'no-store' });
+        if (r.ok) posts = await r.json();
+      } catch (_) { /* keep the hardcoded fallback cards */ }
+    }
+    return Array.isArray(posts) ? posts : [];
+  };
+
+  load().then((all) => {
+    const cutoff = new Date();
+    cutoff.setMonth(cutoff.getMonth() - MAX_AGE_MONTHS);
+    const posts = all
+      .filter((p) => p && p.date && !isNaN(new Date(p.date).valueOf()) && new Date(p.date) >= cutoff)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (!posts.length) return; // nothing qualifies — leave existing cards in place
+
+    const view = (start) => {
+      const out = [];
+      for (let i = 0; i < Math.min(SLOTS, posts.length); i++) out.push(posts[(start + i) % posts.length]);
+      return out.map(card).join('');
+    };
+
+    grid.innerHTML = view(0);
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (posts.length <= SLOTS || reduce) return; // no rotation needed / motion suppressed
+
+    let start = 0, timer = null;
+    const tick = () => {
+      start = (start + 1) % posts.length;
+      grid.style.opacity = '0';
+      setTimeout(() => { grid.innerHTML = view(start); grid.style.opacity = '1'; }, 240);
+    };
+    const play = () => { if (!timer) timer = setInterval(tick, ROTATE_MS); };
+    const stop = () => { clearInterval(timer); timer = null; };
+    grid.addEventListener('mouseenter', stop);   // pause while reading
+    grid.addEventListener('mouseleave', play);
+    grid.addEventListener('focusin', stop);      // pause during keyboard focus
+    grid.addEventListener('focusout', play);
+    play();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   mountChrome();
   heroCarousel();
   formHandler();
   flipCardsOnScroll();
+  renderNews();
 });
