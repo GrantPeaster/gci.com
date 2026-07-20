@@ -255,8 +255,19 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 
 /* News cards */
 .news { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-#news-feed { transition: opacity .15s ease; }
-@media (max-width: 860px){ .news { grid-template-columns: 1fr; } }
+/* Horizontal slide transition for the rotating feed. overflow:hidden keeps the
+   off-position cards from ever spilling past the grid (no stray h-scroll). */
+#news-feed { overflow: hidden; }
+#news-feed > .news-card { transition: transform .12s ease, opacity .12s ease; }
+#news-feed.is-out > .news-card { transform: translateX(-32px); opacity: 0; }
+#news-feed.is-in  > .news-card { transform: translateX(32px);  opacity: 0; transition: none; }
+@media (max-width: 860px){
+  .news { grid-template-columns: 1fr; }
+  /* Stacked layout: push the slide a little further so the whole trio
+     reads as sliding across, then the new trio slides in behind it. */
+  #news-feed.is-out > .news-card { transform: translateX(-48px); }
+  #news-feed.is-in  > .news-card { transform: translateX(48px); }
+}
 .news-card { border: 1px solid var(--line); background: #fff; padding: 26px; display: flex;
   flex-direction: column; gap: 10px; min-height: 200px; }
 .news-card .date { font-family: var(--utility); text-transform: uppercase; letter-spacing: 0.1em;
