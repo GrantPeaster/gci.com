@@ -19,99 +19,107 @@
 <body data-page="about">
   <div data-header></div>
 
-  <section class="page-hero">
+  <!-- HERO: who we are + framed project visual -->
+  <section class="about-hero">
     <div class="wrap">
-    </div>
-  </section>
-
-  <!-- SHORTENED PITCH (from the former Why GCI page) -->
-  <section>
-    <div class="wrap split">
-      <div class="maxw-readable">
+      <div class="about-hero-copy">
         <span class="eyebrow">Who we are</span>
-        <h2>Built on better planning.</h2>
+        <h1>Built on better planning<span class="dot">.</span></h1>
         <p class="lead">At GCI, we believe successful projects are built on better planning. Most firms get
           involved after the critical decisions are made — our approach begins earlier.</p>
-        <p>By integrating land planning, surveying, civil engineering, and landscape architecture from the
-          very beginning, we help owners, developers, municipalities, and institutions understand what a
-          site can realistically support — identifying constraints before they become costly delays, and
-          making the decisions that matter most while they still carry the greatest impact.</p>
+        <p class="body">By integrating land planning, surveying, civil engineering, and landscape
+          architecture from the very beginning, we help owners, developers, municipalities, and
+          institutions understand what a site can realistically support — identifying constraints before
+          they become costly delays, and making the decisions that matter most while they still carry
+          the greatest impact.</p>
       </div>
-      <div class="callout">Because successful projects aren't built on assumptions. They're built on better planning.</div>
+      <div class="about-visual" aria-hidden="true">
+        <div class="av-media" style="background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
+        <span class="av-frame"></span>
+        <span class="av-accent"></span>
+        <span class="av-dots"></span>
+      </div>
     </div>
   </section>
 
-  <!-- NEWS (LinkedIn) -->
-  <section class="section-blue">
+  <!-- NEWS + CAREERS -->
+  <section class="about-bottom">
     <div class="wrap">
-      <div style="margin-bottom:48px">
-        <div><span class="eyebrow brass">From the field</span><h2>News</h2>
-          <p style="color:rgba(255,255,255,.72);margin-top:8px;max-width:42ch">View our team and stay updated with the latest developments.</p></div>
+      <!-- News (LinkedIn-backed rotating feed) -->
+      <div class="about-news">
+        <div class="about-news-intro">
+          <span class="eyebrow">From the field</span>
+          <h2>News</h2>
+          <p>View our team and stay updated with the latest developments.</p>
+          <a class="view-all" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">View all news &rarr;</a>
+        </div>
+        <div class="news" id="news-feed">
+          <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+            <span class="date">Latest</span>
+            <h3>Bana 85 grading plan clears review</h3>
+            <p style="color:var(--ink-55);font-size:.92rem">Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
+            <span class="more">Read on LinkedIn &rarr;</span>
+          </a>
+          <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+            <span class="date">Recent</span>
+            <h3>Welcoming new survey crew members</h3>
+            <p style="color:var(--ink-55);font-size:.92rem">Growing our LiDAR and field capability to keep pace with active project work.</p>
+            <span class="more">Read on LinkedIn &rarr;</span>
+          </a>
+          <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+            <span class="date">Recent</span>
+            <h3>Prowell Park master plan refined</h3>
+            <p style="color:var(--ink-55);font-size:.92rem">Balancing drainage, buffering, and neighborhood compatibility while preserving the owner's vision.</p>
+            <span class="more">Read on LinkedIn &rarr;</span>
+          </a>
+        </div>
       </div>
-      <div class="news" id="news-feed">
-        <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
-          <span class="date">Latest</span>
-          <h3>Bana 85 grading plan clears review</h3>
-          <p style="color:var(--ink-55);font-size:.92rem">Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
-          <span class="more">Read on LinkedIn &rarr;</span>
-        </a>
-        <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
-          <span class="date">Recent</span>
-          <h3>Welcoming new survey crew members</h3>
-          <p style="color:var(--ink-55);font-size:.92rem">Growing our LiDAR and field capability to keep pace with active project work.</p>
-          <span class="more">Read on LinkedIn &rarr;</span>
-        </a>
-        <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
-          <span class="date">Recent</span>
-          <h3>Prowell Park master plan refined</h3>
-          <p style="color:var(--ink-55);font-size:.92rem">Balancing drainage, buffering, and neighborhood compatibility while preserving the owner's vision.</p>
-          <span class="more">Read on LinkedIn &rarr;</span>
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- JOIN OUR TEAM — direct message form -->
-  <section>
-    <div class="wrap split">
-      <div>
+      <!-- Careers / Join our team -->
+      <div class="about-careers">
         <span class="eyebrow">Careers</span>
-        <h2>Join our team.</h2>
+        <h2>Join our team<span class="dot">.</span></h2>
         <p class="lead">At GCI you won't be siloed into a single discipline — planners, surveyors, and
           engineers work side by side from day one, so your work has measurable impact across real
           developments. Send us a message and a member of our team will follow up.</p>
+        <!-- Web3Forms — free, no backend; works on GitHub Pages once the access key is set. -->
+        <form class="form" data-contact action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+          <!-- Get a free access key at https://web3forms.com and paste it below. -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New careers inquiry — Georgia Civil">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name">
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email">
+            </div>
+          </div>
+          <div>
+            <label for="interest">Area of interest</label>
+            <select id="interest" name="interest">
+              <option>Land Planning</option>
+              <option>Land Surveying</option>
+              <option>Civil Engineering</option>
+              <option>Landscape Architecture</option>
+              <option>General inquiry</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Your message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us a little about yourself and what you're looking for."></textarea>
+          </div>
+          <div>
+            <label for="resume">Résumé (PDF or Word, optional)</label>
+            <input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+          </div>
+          <button class="btn btn-accent" type="submit">Send message &rarr;</button>
+          <p class="form-note">We review every message. Qualified candidates will hear back from a member of the team.</p>
+        </form>
       </div>
-      <!-- Web3Forms — free, no backend; works on GitHub Pages once the access key is set. -->
-      <form class="form" data-contact action="https://api.web3forms.com/submit" method="POST">
-        <!-- Get a free access key at https://web3forms.com and paste it below. -->
-        <input type="hidden" name="access_key" value=4c1dc681-6cb8-4efa-bfb8-f94b2a7f37e3>
-        <input type="hidden" name="subject" value="New careers inquiry — Georgia Civil">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required autocomplete="name">
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email">
-        </div>
-        <div>
-          <label for="interest">Area of interest</label>
-          <select id="interest" name="interest">
-            <option>Land Planning</option>
-            <option>Land Surveying</option>
-            <option>Civil Engineering</option>
-            <option>Landscape Architecture</option>
-            <option>General inquiry</option>
-          </select>
-        </div>
-        <div>
-          <label for="message">Your message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Tell us a little about yourself and what you're looking for."></textarea>
-        </div>
-        <button class="btn btn-accent" type="submit">Send message &rarr;</button>
-        <p class="form-note">We review every message. Qualified candidates will hear back from a member of the team.</p>
-      </form>
     </div>
   </section>
 
