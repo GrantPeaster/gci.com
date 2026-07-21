@@ -16,105 +16,106 @@
   <meta name="theme-color" content="#020534">
   <link rel="manifest" href="site.webmanifest">
   <style>
-    /* == CAPABILITY CARD v2 == */
+    /* == CAPABILITY CARD v5 — navy background == */
 
-    .cardx2-page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+    body { background: #020534; }
+
+    .cardx2-page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
 
     /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
     /* HERO */
-    .cardx2-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; border-radius: 16px; overflow: hidden; margin-bottom: 4rem; }
-    .cardx2-hero .hero-text { background: #020534; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
-    .cardx2-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #b8952a; font-weight: 600; }
+    .cardx2-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; border-radius: 12px; overflow: hidden; margin-bottom: 0; }
+    .cardx2-hero .hero-text { background: #0a1245; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; border: 1px solid rgba(255,255,255,0.07); }
+    .cardx2-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ca2131; font-weight: 600; }
     .cardx2-hero h1 { font-size: 2.25rem; font-weight: 700; color: #fff; line-height: 1.15; }
-    .cardx2-hero .vp { font-size: 1.05rem; color: rgba(255,255,255,.75); line-height: 1.5; }
-    .cardx2-hero .d { font-size: .875rem; color: rgba(255,255,255,.5); line-height: 1.65; }
-    .cardx2-hero .visual { background-size: cover; background-position: center; background-color: #1a2060; }
+    .cardx2-hero .vp { font-size: 1.05rem; color: rgba(255,255,255,.7); line-height: 1.5; }
+    .cardx2-hero .d { font-size: .875rem; color: rgba(255,255,255,.45); line-height: 1.65; }
+    .cardx2-hero .visual { background-size: cover; background-position: center; background-color: #0a1245; border: 1px solid rgba(255,255,255,0.07); border-left: none; }
 
     /* Section shell */
-    .cardx2-sec { margin-bottom: 3.5rem; }
-    .cardx2-sec-head { margin-bottom: 1.75rem; }
-    .cardx2-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #888; font-weight: 600; margin-bottom: .4rem; }
-    .cardx2-sec-head h2 { font-size: 1.5rem; font-weight: 700; }
+    .cardx2-sec { margin-bottom: 0; }
+    .cardx2-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.35); font-weight: 600; margin-bottom: .4rem; }
+    .cardx2-eyebrow.red { color: #ca2131; }
+    .cardx2-sec h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; }
 
-    /* Pill badge */
-    .pill-brass { display: inline-block; background: #faeeda; color: #854f0b; font-size: .72rem; padding: 3px 9px; border-radius: 4px; font-weight: 600; margin-bottom: .65rem; }
-    .pill-red   { display: inline-block; background: #fde8e8; color: #8b1a1a; font-size: .72rem; padding: 3px 9px; border-radius: 4px; font-weight: 600; margin-bottom: .65rem; }
+    /* CTA button */
+    .btn-card-accent { display: inline-block; background: #ca2131; color: #fff; text-decoration: none; padding: .6rem 1.25rem; border-radius: 6px; font-size: .875rem; font-weight: 600; }
+    .btn-card-accent:hover { background: #a81a28; }
 
-    /* Check list */
-    .card-check2 { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .6rem; }
-    .card-check2 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .875rem; line-height: 1.5; color: #444; }
-    .card-check2 .ck { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; color: #c8932a; }
+    /* DIVIDER */
+    .cardx2-divider { display: flex; align-items: center; margin: 2.75rem 0; }
+    .cardx2-divider .line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+    .cardx2-divider .badge { display: flex; align-items: center; gap: .5rem; padding: .4rem 1rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; background: rgba(255,255,255,0.05); white-space: nowrap; }
+    .cardx2-divider .badge svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; }
+    .cardx2-divider .badge span { font-size: .72rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: .06em; text-transform: uppercase; }
 
-    /* OUTCOMES + WHY */
-    .split-pair { display: grid; grid-template-columns: 5fr 4fr; border: 1px solid #e2e2e2; border-radius: 12px; overflow: hidden; }
-    .split-left { padding: 2rem 2.25rem; border-right: 1px solid #e2e2e2; }
-    .split-right { padding: 2rem 1.75rem; background: #f9f8f6; }
-    .split-left h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: .35rem; }
-    .split-left .narrative { font-size: .875rem; color: #555; line-height: 1.7; margin-bottom: 1.25rem; }
-    .split-right h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+    /* OUTCOMES */
+    .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+    .oc { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 1.1rem; background: #fff; text-align: center; transition: border-color .2s; }
+    .oc:hover { border-color: #ca2131; }
+    .oc svg { width: 28px; height: 28px; color: #ca2131; margin: 0 auto .75rem; display: block; }
+    .oc p { font-size: .82rem; color: #444; line-height: 1.4; font-weight: 500; }
 
     /* SERVICES ACCORDION */
-    .svc-group { border: 1px solid #e2e2e2; border-radius: 10px; overflow: hidden; margin-bottom: .5rem; }
-    .svc-group-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; cursor: pointer; background: #fff; font-size: .9rem; font-weight: 600; user-select: none; transition: background .2s; }
-    .svc-group-header:hover { background: #f5f4f2; }
-    .svc-group-header .phase-label { display: flex; align-items: center; gap: .6rem; }
-    .svc-group-header .phase-icon { width: 18px; height: 18px; color: #c8932a; }
-    .svc-chevron { width: 16px; height: 16px; color: #aaa; transition: transform .3s; flex-shrink: 0; }
+    .svc-wrap { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+    .svc-group { border-bottom: 1px solid #eeecec; }
+    .svc-group:last-child { border-bottom: none; }
+    .svc-group-header { display: flex; align-items: center; justify-content: space-between; padding: .95rem 1.25rem; cursor: pointer; background: #fff; font-size: .88rem; font-weight: 600; color: #111; user-select: none; transition: background .2s; }
+    .svc-group-header:hover { background: #fdf4f4; }
+    .svc-group-header .phase-label { display: flex; align-items: center; gap: .6rem; color: #111; }
+    .svc-group-header .phase-icon { width: 17px; height: 17px; color: #ca2131; }
+    .svc-chevron { width: 15px; height: 15px; color: #999; transition: transform .3s; flex-shrink: 0; }
     .svc-group.open .svc-chevron { transform: rotate(180deg); }
     .svc-items { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
     .svc-group.open .svc-items { max-height: 400px; }
-    .svc-item { display: flex; align-items: center; gap: .75rem; padding: .75rem 1.25rem; border-top: 1px solid #f0efed; font-size: .875rem; color: #555; }
-    .svc-item-icon { width: 15px; height: 15px; color: #bbb; }
+    .svc-item { display: flex; align-items: center; gap: .65rem; padding: .7rem 1.25rem; border-top: 1px solid #f3f1f1; font-size: .84rem; color: #333; }
+    .svc-item svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; }
 
     /* GCI ADVANTAGE */
-    .advantage-band { background: #020534; border-radius: 12px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-    .advantage-band .cardx2-eyebrow { color: #b8952a; }
+    .advantage-band { background: #0a1245; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
     .advantage-band h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-    .flow-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
-    .step-pill { background: rgba(255,255,255,.1); color: rgba(255,255,255,.85); padding: .35rem .9rem; border-radius: 20px; font-size: .8rem; font-weight: 600; }
-    .arrow-sep { color: rgba(255,255,255,.35); }
-    .advantage-band .card-check2 li { color: rgba(255,255,255,.75); }
-    .advantage-band .ck { color: #b8952a; }
+    .flow-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
+    .step-pill { background: rgba(255,255,255,0.08); color: rgba(255,255,255,.85); padding: .3rem .9rem; border-radius: 20px; font-size: .78rem; font-weight: 600; }
+    .arrow-sep { color: #ca2131; font-size: .85rem; font-weight: 700; }
+    .card-check3 { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .65rem; }
+    .card-check3 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.7); }
+    .card-check3 svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; margin-top: 2px; }
 
-    /* SPOTLIGHT + TESTIMONIALS */
-    .story-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
-    .story-left h2 { font-size: 1.2rem; font-weight: 700; margin: .35rem 0 .5rem; }
-    .spot-meta { font-size: .78rem; color: #999; margin-bottom: 1.25rem; }
-    .story-beat { margin-bottom: 1rem; }
-    .beat-label { display: inline-block; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: #854f0b; background: #faeeda; padding: 2px 7px; border-radius: 3px; font-weight: 600; margin-bottom: .3rem; }
-    .story-beat p { font-size: .875rem; color: #555; line-height: 1.65; }
-    .story-right { background: #f9f8f6; border: 1px solid #e2e2e2; border-radius: 12px; padding: 1.75rem; }
-    .story-right h2 { font-size: 1rem; font-weight: 700; margin: .35rem 0 1.25rem; }
-    .qx blockquote { border-left: 2px solid #c8932a; padding-left: .85rem; margin-bottom: 1.25rem; font-style: italic; font-size: .9rem; line-height: 1.7; color: #333; }
-    .qx blockquote cite { display: block; font-style: normal; font-size: .75rem; color: #999; margin-top: .4rem; }
+    /* SPOTLIGHT */
+    .spot-card { border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 1fr 2fr; border: 1px solid rgba(255,255,255,0.08); }
+    .spot-left { background: #0a1245; padding: 2rem 1.75rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,0.08); }
+    .spot-left h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin: .4rem 0 .5rem; line-height: 1.3; }
+    .spot-meta { font-size: .73rem; color: rgba(255,255,255,.35); line-height: 1.6; }
+    .stat-row { display: flex; flex-direction: column; gap: .5rem; margin-top: 1.5rem; }
+    .stat-item .num { font-size: 1.75rem; font-weight: 700; color: #ca2131; line-height: 1; display: block; }
+    .stat-item .lbl { font-size: .68rem; color: rgba(255,255,255,.35); margin-top: .2rem; text-transform: uppercase; letter-spacing: .06em; display: block; }
+    .spot-right { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; background: #fff; }
+    .story-beat { border-left: 2px solid #ca2131; padding-left: 1rem; }
+    .beat-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: #ca2131; font-weight: 600; margin-bottom: .25rem; display: block; }
+    .story-beat p { font-size: .84rem; color: #444; line-height: 1.55; }
 
     /* INDUSTRIES */
-    .ind-row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: .75rem; }
-    .ind-item2 { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1.1rem .5rem; border: 1px solid #e2e2e2; border-radius: 12px; font-size: .75rem; color: #666; text-align: center; background: #fff; transition: border-color .2s, background .2s; }
-    .ind-item2:hover { border-color: #c8932a; background: #fdf9f2; }
-    .ind-item2 svg { width: 22px; height: 22px; color: #c8932a; }
+    .ind-row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: .65rem; }
+    .ind-item2 { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1.1rem .5rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; font-size: .73rem; color: #333; text-align: center; background: #fff; transition: border-color .2s; }
+    .ind-item2:hover { border-color: #ca2131; }
+    .ind-item2 svg { width: 22px; height: 22px; color: #ca2131; }
 
     /* CTA */
-    .cta-band2 { background: #020534; border-radius: 12px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+    .cta-band2 { background: #0a1245; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
     .cta-band2 h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: .35rem 0 1rem; }
-    .cta-band2 .cardx2-eyebrow { color: #b8952a; }
     .cta-meta { display: flex; flex-direction: column; gap: .9rem; }
-    .cta-meta .lab { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); display: block; margin-bottom: .2rem; }
-    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.8); font-size: .875rem; text-decoration: none; }
+    .cta-meta .lab { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.3); display: block; margin-bottom: .15rem; }
+    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.75); font-size: .875rem; text-decoration: none; }
     .cta-meta a:hover { color: #fff; }
 
     /* Responsive */
     @media (max-width: 700px) {
-      .cardx2-hero,
-      .split-pair,
-      .advantage-band,
-      .story-pair,
-      .cta-band2 { grid-template-columns: 1fr; }
-      .cardx2-hero .visual { min-height: 220px; }
-      .split-left { border-right: none; border-bottom: 1px solid #e2e2e2; }
+      .cardx2-hero, .advantage-band, .spot-card, .cta-band2 { grid-template-columns: 1fr; }
+      .cardx2-hero .visual { min-height: 220px; border-left: 1px solid rgba(255,255,255,0.07); border-top: none; }
+      .outcomes-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -129,101 +130,129 @@
         <span class="eyebrow">Practical, Site-Focused Design</span>
         <h1>Civil Engineering</h1>
         <p class="vp">Practical Solutions Built Around Site Operations.</p>
-        <p class="d">Construction-focused designs informed by real site operations — built to work in the field, not just on paper.</p>
-        <a class="btn btn-accent" href="contact.html">Talk with our team &rarr;</a>
+        <p class="d">Construction-focused designs built to work in the field, not just on paper.</p>
+        <a class="btn-card-accent" href="contact.html">Talk with our team &rarr;</a>
       </div>
       <div class="visual" style="background-image:url(assets/img/div-civil-engineering.jpg)" role="img" aria-label="Civil Engineering project imagery"></div>
     </section>
 
-    <!-- OUTCOMES + WHY -->
-    <section class="cardx2-sec reveal" id="rv1">
-      <div class="cardx2-sec-head">
-        <div class="cardx2-eyebrow">What we deliver</div>
-        <h2>Outcomes and approach</h2>
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv1">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <span>What we deliver</span>
       </div>
-      <div class="split-pair">
-        <div class="split-left">
-          <span class="pill-brass">What we help clients achieve</span>
-          <h2>Outcomes that matter</h2>
-          <p class="narrative">Our work is measured by how well it performs once construction begins. We design for the field — accounting for how crews actually work, where equipment moves, and where problems tend to emerge — so the plan you approve is the project that gets built.</p>
-          <ul class="card-check2">
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Designs that build cleanly in the field</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Fewer change orders and delays</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Coordinated, on-time delivery</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Performance balanced with cost</span></li>
-          </ul>
+      <div class="line"></div>
+    </div>
+
+    <!-- OUTCOMES -->
+    <section class="cardx2-sec reveal" id="rv2">
+      <div class="cardx2-eyebrow">Outcomes</div>
+      <h2>Built to perform in the field</h2>
+      <div class="outcomes-grid">
+        <div class="oc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>
+          <p>Designs that build cleanly in the field</p>
         </div>
-        <div class="split-right">
-          <span class="pill-red">Why clients choose GCI</span>
-          <h3>What sets us apart</h3>
-          <ul class="card-check2">
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Practical construction-focused designs</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Strong understanding of site operations</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Coordination that reduces project delays</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Solutions that balance performance and cost</span></li>
-          </ul>
+        <div class="oc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <p>Fewer change orders and delays</p>
+        </div>
+        <div class="oc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <p>Coordinated, on-time delivery</p>
+        </div>
+        <div class="oc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <p>Performance balanced with cost</p>
+        </div>
+        <div class="oc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <p>Strong understanding of site operations</p>
+        </div>
+        <div class="oc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <p>Practical, construction-focused design</p>
         </div>
       </div>
     </section>
+
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv3">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>Services</span>
+      </div>
+      <div class="line"></div>
+    </div>
 
     <!-- SERVICES ACCORDION -->
-    <section class="cardx2-sec reveal" id="rv2">
-      <div class="cardx2-sec-head">
-        <div class="cardx2-eyebrow">Services snapshot</div>
-        <h2>Find your need</h2>
-      </div>
-
-      <div class="svc-group open" id="grp-site">
-        <div class="svc-group-header" onclick="toggleGroup('grp-site')" aria-expanded="true">
-          <span class="phase-label">
-            <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            Site design
-          </span>
-          <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    <section class="cardx2-sec reveal" id="rv4">
+      <div class="cardx2-eyebrow">Services snapshot</div>
+      <h2>Find your need</h2>
+      <div class="svc-wrap">
+        <div class="svc-group open" id="grp-site">
+          <div class="svc-group-header" onclick="toggleGroup('grp-site')" aria-expanded="true">
+            <span class="phase-label">
+              <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Site design
+            </span>
+            <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="svc-items">
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Site Development Design</div>
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>Grading Plans</div>
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M6.34 6.34 3.51 3.51M2 12H6M6.34 17.66l-2.83 2.83M12 22v-4M17.66 17.66l2.83 2.83M22 12h-4M17.66 6.34l2.83-2.83"/></svg>Drainage Design</div>
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20"/></svg>Stormwater Management</div>
+          </div>
         </div>
-        <div class="svc-items">
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Site Development Design</div>
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>Grading Plans</div>
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M6.34 6.34 3.51 3.51M2 12H6M6.34 17.66l-2.83 2.83M12 22v-4M17.66 17.66l2.83 2.83M22 12h-4M17.66 6.34l2.83-2.83"/></svg>Drainage Design</div>
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20"/></svg>Stormwater Management</div>
+        <div class="svc-group" id="grp-infra">
+          <div class="svc-group-header" onclick="toggleGroup('grp-infra')" aria-expanded="false">
+            <span class="phase-label">
+              <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 6h18M3 18h18"/></svg>
+              Infrastructure and environmental
+            </span>
+            <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="svc-items">
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Utility Design</div>
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 12 8 9 8 5a4 4 0 0 1 8 0c0 4-4 7-4 7z"/></svg>Erosion Control</div>
+          </div>
         </div>
-      </div>
-
-      <div class="svc-group" id="grp-infra">
-        <div class="svc-group-header" onclick="toggleGroup('grp-infra')" aria-expanded="false">
-          <span class="phase-label">
-            <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 6h18M3 18h18"/></svg>
-            Infrastructure and environmental
-          </span>
-          <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-        <div class="svc-items">
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Utility Design</div>
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 12 8 9 8 5a4 4 0 0 1 8 0c0 4-4 7-4 7z"/></svg>Erosion Control</div>
-        </div>
-      </div>
-
-      <div class="svc-group" id="grp-admin">
-        <div class="svc-group-header" onclick="toggleGroup('grp-admin')" aria-expanded="false">
-          <span class="phase-label">
-            <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-            Construction and permitting
-          </span>
-          <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-        <div class="svc-items">
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>Construction Administration</div>
-          <div class="svc-item"><svg class="svc-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Permitting Support</div>
+        <div class="svc-group" id="grp-admin">
+          <div class="svc-group-header" onclick="toggleGroup('grp-admin')" aria-expanded="false">
+            <span class="phase-label">
+              <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Construction and permitting
+            </span>
+            <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="svc-items">
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>Construction Administration</div>
+            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Permitting Support</div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv5">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>The GCI advantage</span>
+      </div>
+      <div class="line"></div>
+    </div>
+
     <!-- GCI ADVANTAGE -->
-    <section class="cardx2-sec reveal" id="rv3">
+    <section class="cardx2-sec reveal" id="rv6">
       <div class="advantage-band">
         <div>
-          <div class="cardx2-eyebrow">The GCI advantage</div>
-          <h2>One team. Three disciplines.</h2>
+          <div class="cardx2-eyebrow red">One team. Three disciplines.</div>
+          <h2>Less friction. Faster delivery.</h2>
           <div class="flow-steps">
             <span class="step-pill">Planning</span>
             <span class="arrow-sep">&rarr;</span>
@@ -232,27 +261,41 @@
             <span class="step-pill">Engineering</span>
           </div>
         </div>
-        <ul class="card-check2">
-          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Less coordination between consultants</span></li>
-          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Faster project delivery</span></li>
-          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Fewer communication gaps</span></li>
-          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Better project visibility</span></li>
-          <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Reduced risk of redesigns</span></li>
+        <ul class="card-check3">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Less coordination between consultants</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Faster project delivery</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fewer communication gaps</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Better project visibility</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reduced risk of redesigns</li>
         </ul>
       </div>
     </section>
 
-    <!-- SPOTLIGHT + TESTIMONIALS -->
-    <section class="cardx2-sec reveal" id="rv4">
-      <div class="cardx2-sec-head">
-        <div class="cardx2-eyebrow">Project spotlight and client voice</div>
-        <h2>In practice</h2>
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv7">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Project spotlight</span>
       </div>
-      <div class="story-pair">
-        <div class="story-left">
-          <span class="pill-brass">Project spotlight</span>
-          <h2>Camp Buckhead</h2>
-          <p class="spot-meta">Residential &middot; Thrive More Advisors &middot; 291 acres</p>
+      <div class="line"></div>
+    </div>
+
+    <!-- SPOTLIGHT -->
+    <section class="cardx2-sec reveal" id="rv8">
+      <div class="spot-card">
+        <div class="spot-left">
+          <div>
+            <div class="cardx2-eyebrow red">Camp Buckhead</div>
+            <h2>291 acres. Zero public infrastructure.</h2>
+            <p class="spot-meta">Residential &middot; Thrive More Advisors &middot; Morgan County, GA</p>
+          </div>
+          <div class="stat-row">
+            <div class="stat-item"><span class="num">291</span><span class="lbl">Acres developed</span></div>
+            <div class="stat-item"><span class="num">31</span><span class="lbl">Lake lots delivered</span></div>
+          </div>
+        </div>
+        <div class="spot-right">
           <div class="story-beat">
             <span class="beat-label">Challenge</span>
             <p>Severe soils ruled out individual septic, with no public sewer or water across 291 acres.</p>
@@ -266,23 +309,23 @@
             <p>Successful permitting and a cohesive, high-end 31-lake-lot community.</p>
           </div>
         </div>
-        <div class="story-right">
-          <span class="pill-red">What clients say</span>
-          <h2>In their words</h2>
-          <div class="qx">
-            <blockquote>&ldquo;Because we handle the survey, the staking, and the as-builts in-house, we keep oversight of how a project actually gets built — which speeds permitting and saves clients time.&rdquo;<cite>Jason Brown &middot; Director, Civil Engineering</cite></blockquote>
-            <blockquote>&ldquo;[Client testimonial to come.]&rdquo;<cite>[Client name, company]</cite></blockquote>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- INDUSTRIES -->
-    <section class="cardx2-sec reveal" id="rv5">
-      <div class="cardx2-sec-head">
-        <div class="cardx2-eyebrow">Industries we serve</div>
-        <h2>Who we work with</h2>
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv9">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        <span>Industries</span>
       </div>
+      <div class="line"></div>
+    </div>
+
+    <!-- INDUSTRIES -->
+    <section class="cardx2-sec reveal" id="rv10">
+      <div class="cardx2-eyebrow">Industries we serve</div>
+      <h2>Who we work with</h2>
       <div class="ind-row2">
         <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><div>Residential</div></div>
         <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M10 21v-5h4v5"/></svg><div>Commercial</div></div>
@@ -294,13 +337,23 @@
       </div>
     </section>
 
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv11">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Get in touch</span>
+      </div>
+      <div class="line"></div>
+    </div>
+
     <!-- CTA -->
-    <section class="cardx2-sec reveal" id="rv6">
+    <section class="cardx2-sec reveal" id="rv12">
       <div class="cta-band2">
         <div>
-          <div class="cardx2-eyebrow">Talk with our team</div>
+          <div class="cardx2-eyebrow red">Talk with our team</div>
           <h2>Let's discuss your project.</h2>
-          <a class="btn btn-accent" href="contact.html">Schedule a project discussion &rarr;</a>
+          <a class="btn-card-accent" href="contact.html">Schedule a project discussion &rarr;</a>
         </div>
         <div class="cta-meta">
           <div><span class="lab">Phone</span><a href="tel:+17063421104">706-342-1104 Ext. 52</a></div>
@@ -317,10 +370,9 @@
   <script>
     function toggleGroup(id) {
       const g = document.getElementById(id);
-      const expanded = g.classList.toggle('open');
-      g.querySelector('.svc-group-header').setAttribute('aria-expanded', expanded);
+      const open = g.classList.toggle('open');
+      g.querySelector('.svc-group-header').setAttribute('aria-expanded', open);
     }
-
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.07 });
