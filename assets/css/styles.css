@@ -660,8 +660,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
   letter-spacing: 0.1em; font-size: 0.66rem; font-weight: 700; color: var(--red); white-space: nowrap; }
 .about-news-intro .view-all:hover { text-decoration: underline; text-underline-offset: 3px; }
 .about-news #news-feed { gap: 16px; }
-.about-news #news-feed { grid-template-columns: 1fr; }
-.about-news .nc-img { aspect-ratio: 16 / 7; }
+.about-news #news-feed { grid-template-columns: 1fr; max-width: 400px; overflow: hidden; }
+.about-news .nc-img { aspect-ratio: 16 / 10; }
 .about-news .news-card:has(.nc-img) .nc-body p { -webkit-line-clamp: 2; }
 
 /* Cap blurb text so cards stay uniform height instead of running long */
