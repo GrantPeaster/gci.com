@@ -26,10 +26,10 @@
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* HERO — full-width photo with text overlay */
+    /* HERO */
     .lp-hero { position: relative; min-height: 460px; border-radius: 12px; overflow: hidden; display: flex; align-items: flex-end; }
     .lp-hero .visual { position: absolute; inset: 0; background-size: cover; background-position: center; background-color: #0a1245; }
-    .lp-hero .visual-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(2,5,52,0.92) 45%, rgba(2,5,52,0.4) 100%); }
+    .lp-hero .visual-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(2,5,52,0.92) 45%, rgba(2,5,52,0.35) 100%); }
     .lp-hero .hero-text { position: relative; z-index: 1; padding: 3.5rem 2.75rem; max-width: 560px; display: flex; flex-direction: column; gap: 1rem; }
     .lp-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ca2131; font-weight: 600; }
     .lp-hero h1 { font-size: 2.5rem; font-weight: 700; color: #fff; line-height: 1.1; }
@@ -53,18 +53,17 @@
     .cardx2-divider .badge svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; }
     .cardx2-divider .badge span { font-size: .72rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: .06em; text-transform: uppercase; }
 
-    /* OUTCOMES — 2-col editorial left / scannable right */
+    /* OUTCOMES */
     .outcomes-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; }
-    .outcomes-left { background: #fff; padding: 2.25rem 2rem; }
-    .outcomes-left h3 { font-size: 1.1rem; font-weight: 700; color: #111; margin-bottom: .75rem; }
-    .outcomes-left p { font-size: .875rem; color: #555; line-height: 1.7; margin-bottom: 1.25rem; }
-    .outcomes-right { background: #0a1245; padding: 2.25rem 2rem; }
+    .outcomes-left { background: #fff; padding: 2rem 1.75rem; }
+    .outcomes-left h3 { font-size: 1rem; font-weight: 700; color: #111; margin-bottom: 1rem; }
+    .outcomes-right { background: #0a1245; padding: 2rem 1.75rem; }
     .outcomes-right h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-    .oc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .7rem; }
-    .oc-list li { display: flex; align-items: flex-start; gap: .65rem; font-size: .875rem; color: rgba(255,255,255,.75); line-height: 1.45; }
-    .oc-list svg { width: 15px; height: 15px; color: #ca2131; flex-shrink: 0; margin-top: 2px; }
+    .oc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .65rem; }
+    .oc-list li { display: flex; align-items: flex-start; gap: .65rem; font-size: .875rem; line-height: 1.45; }
+    .oc-list li svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; }
 
-    /* SERVICES — 2-col icon grid (different from CE accordion) */
+    /* SERVICES */
     .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; }
     .svc-tile { background: #fff; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1.1rem 1.25rem; display: flex; align-items: center; gap: .85rem; transition: border-color .2s; }
     .svc-tile:hover { border-color: #ca2131; }
@@ -81,7 +80,7 @@
     .card-check3 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.7); }
     .card-check3 svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; margin-top: 2px; }
 
-    /* SPOTLIGHT — horizontal timeline beats */
+    /* SPOTLIGHT */
     .spot-card { background: #fff; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; }
     .spot-header { background: #0a1245; padding: 1.75rem 2rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .spot-header-left h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin: .3rem 0 .4rem; line-height: 1.3; }
@@ -89,7 +88,7 @@
     .spot-stats { display: flex; gap: 2rem; align-items: center; flex-shrink: 0; }
     .stat-item .num { font-size: 1.75rem; font-weight: 700; color: #ca2131; line-height: 1; display: block; }
     .stat-item .lbl { font-size: .68rem; color: rgba(255,255,255,.35); margin-top: .2rem; text-transform: uppercase; letter-spacing: .06em; display: block; white-space: nowrap; }
-    .spot-beats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .spot-beats { display: grid; grid-template-columns: repeat(3, 1fr); }
     .spot-beat { padding: 1.5rem 1.75rem; border-right: 1px solid #f0efed; }
     .spot-beat:last-child { border-right: none; }
     .beat-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: #ca2131; font-weight: 600; margin-bottom: .35rem; display: block; }
@@ -119,7 +118,6 @@
       .spot-beat { border-right: none; border-bottom: 1px solid #f0efed; }
       .spot-beat:last-child { border-bottom: none; }
       .spot-header { flex-direction: column; gap: 1rem; }
-      .spot-stats { gap: 1.5rem; }
     }
   </style>
 </head>
@@ -128,7 +126,7 @@
 
   <div class="cardx2-page">
 
-    <!-- HERO — full-width overlay layout -->
+    <!-- HERO -->
     <section class="lp-hero reveal" id="rv0">
       <div class="visual" style="background-image:url(assets/img/div-land-planning.jpg)" role="img" aria-label="Land Planning project imagery"></div>
       <div class="visual-overlay"></div>
@@ -146,20 +144,19 @@
       <div class="line"></div>
       <div class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        <span>What we deliver</span>
+        <span>What We Deliver</span>
       </div>
       <div class="line"></div>
     </div>
 
-    <!-- OUTCOMES — editorial split -->
+    <!-- OUTCOMES -->
     <section class="cardx2-sec reveal" id="rv2">
       <div class="cardx2-eyebrow">Outcomes</div>
-      <h2>Know what your site can do before you spend a dollar on design</h2>
+      <h2>Know What Your Site Can Do</h2>
       <div class="outcomes-split">
         <div class="outcomes-left">
-          <h3>What we help clients achieve</h3>
-          <p>Good planning decisions happen before the design starts. We give clients a clear picture of what their site can realistically support — and how to maximize it — so resources go toward the right design from the beginning.</p>
-          <ul class="oc-list" style="color:#444">
+          <h3>What We Help Clients Achieve</h3>
+          <ul class="oc-list">
             <li style="color:#444"><svg viewBox="0 0 24 24" fill="none" stroke="#ca2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Faster project approvals</li>
             <li style="color:#444"><svg viewBox="0 0 24 24" fill="none" stroke="#ca2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reduced development risk</li>
             <li style="color:#444"><svg viewBox="0 0 24 24" fill="none" stroke="#ca2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Better site utilization</li>
@@ -167,12 +164,12 @@
           </ul>
         </div>
         <div class="outcomes-right">
-          <h3>What sets us apart</h3>
+          <h3>What Sets Us Apart</h3>
           <ul class="oc-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Site optimization before design begins</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Early identification of development constraints</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Maximized land value and project feasibility</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integration with surveying and engineering teams</li>
+            <li style="color:rgba(255,255,255,.75)"><svg viewBox="0 0 24 24" fill="none" stroke="#ca2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Site optimization before design begins</li>
+            <li style="color:rgba(255,255,255,.75)"><svg viewBox="0 0 24 24" fill="none" stroke="#ca2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Early identification of constraints</li>
+            <li style="color:rgba(255,255,255,.75)"><svg viewBox="0 0 24 24" fill="none" stroke="#ca2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Maximized land value and feasibility</li>
+            <li style="color:rgba(255,255,255,.75)"><svg viewBox="0 0 24 24" fill="none" stroke="#ca2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integrated with survey and engineering</li>
           </ul>
         </div>
       </div>
@@ -188,10 +185,10 @@
       <div class="line"></div>
     </div>
 
-    <!-- SERVICES — icon tile grid -->
+    <!-- SERVICES -->
     <section class="cardx2-sec reveal" id="rv4">
-      <div class="cardx2-eyebrow">Services snapshot</div>
-      <h2>Find your need</h2>
+      <div class="cardx2-eyebrow">Services Snapshot</div>
+      <h2>Find Your Need</h2>
       <div class="svc-grid">
         <div class="svc-tile">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -233,7 +230,7 @@
       <div class="line"></div>
       <div class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>The GCI advantage</span>
+        <span>The GCI Advantage</span>
       </div>
       <div class="line"></div>
     </div>
@@ -242,8 +239,8 @@
     <section class="cardx2-sec reveal" id="rv6">
       <div class="advantage-band">
         <div>
-          <div class="cardx2-eyebrow red">One team. Three disciplines.</div>
-          <h2>Less friction. Faster delivery.</h2>
+          <div class="cardx2-eyebrow red">One Team. Three Disciplines.</div>
+          <h2>Less Friction. Faster Delivery.</h2>
           <div class="flow-steps">
             <span class="step-pill">Planning</span>
             <span class="arrow-sep">&rarr;</span>
@@ -267,23 +264,23 @@
       <div class="line"></div>
       <div class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Project spotlight</span>
+        <span>Project Spotlight</span>
       </div>
       <div class="line"></div>
     </div>
 
-    <!-- SPOTLIGHT — header + horizontal 3-beat layout -->
+    <!-- SPOTLIGHT -->
     <section class="cardx2-sec reveal" id="rv8">
       <div class="spot-card">
         <div class="spot-header">
           <div class="spot-header-left">
-            <div class="cardx2-eyebrow red">Project spotlight</div>
+            <div class="cardx2-eyebrow red">Project Spotlight</div>
             <h2>Prowell Park</h2>
-            <p class="spot-meta">Public Recreation &middot; ~300 acres &middot; Morgan County, GA</p>
+            <p class="spot-meta">Public Recreation &middot; ~300 Acres</p>
           </div>
           <div class="spot-stats">
-            <div class="stat-item"><span class="num">300</span><span class="lbl">Acres re-planned</span></div>
-            <div class="stat-item"><span class="num">3</span><span class="lbl">Phases delivered</span></div>
+            <div class="stat-item"><span class="num">300</span><span class="lbl">Acres Re-Planned</span></div>
+            <div class="stat-item"><span class="num">3</span><span class="lbl">Phases Delivered</span></div>
           </div>
         </div>
         <div class="spot-beats">
@@ -315,8 +312,8 @@
 
     <!-- INDUSTRIES -->
     <section class="cardx2-sec reveal" id="rv10">
-      <div class="cardx2-eyebrow">Industries we serve</div>
-      <h2>Who we work with</h2>
+      <div class="cardx2-eyebrow">Industries We Serve</div>
+      <h2>Who We Work With</h2>
       <div class="ind-row2">
         <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><div>Residential</div></div>
         <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M10 21v-5h4v5"/></svg><div>Commercial</div></div>
@@ -333,7 +330,7 @@
       <div class="line"></div>
       <div class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Get in touch</span>
+        <span>Get In Touch</span>
       </div>
       <div class="line"></div>
     </div>
@@ -342,14 +339,14 @@
     <section class="cardx2-sec reveal" id="rv12">
       <div class="cta-band2">
         <div>
-          <div class="cardx2-eyebrow red">Talk with our team</div>
-          <h2>Let’s discuss your project.</h2>
-          <a class="btn-card-accent" href="contact.html">Schedule a project discussion &rarr;</a>
+          <div class="cardx2-eyebrow red">Talk With Our Team</div>
+          <h2>Let’s Discuss Your Project.</h2>
+          <a class="btn-card-accent" href="contact.html">Schedule a Project Discussion &rarr;</a>
         </div>
         <div class="cta-meta">
           <div><span class="lab">Phone</span><a href="tel:+17063421104">706-342-1104 Ext. 59</a></div>
           <div><span class="lab">Email</span><a href="mailto:todd@georgiacivil.com">todd@georgiacivil.com</a></div>
-          <div><span class="lab">Direct contact</span><span>Todd Peaster, Vice President</span></div>
+          <div><span class="lab">Direct Contact</span><span>Todd Peaster, Vice President</span></div>
         </div>
       </div>
     </section>
