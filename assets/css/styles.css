@@ -660,6 +660,9 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
   letter-spacing: 0.1em; font-size: 0.66rem; font-weight: 700; color: var(--red); white-space: nowrap; }
 .about-news-intro .view-all:hover { text-decoration: underline; text-underline-offset: 3px; }
 .about-news #news-feed { gap: 16px; }
+.about-news #news-feed { grid-template-columns: 1fr; }
+.about-news .nc-img { aspect-ratio: 16 / 7; }
+.about-news .news-card:has(.nc-img) .nc-body p { -webkit-line-clamp: 2; }
 
 /* Cap blurb text so cards stay uniform height instead of running long */
 .news-card:has(.nc-img) .nc-body p { display: -webkit-box; -webkit-line-clamp: 3;
@@ -683,6 +686,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 .nc-body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 18px 20px 22px; }
 .news-card:has(.nc-img) h3 { font-size: 1.05rem; }
 .news-card:has(.nc-img) .nc-body p { color: var(--ink-55); font-size: .84rem; margin: 0; }
+
 
 /* --- Responsive --- */
 @media (max-width: 1024px){
