@@ -59,7 +59,7 @@
     .cardx2-divider .badge svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; }
     .cardx2-divider .badge span { font-size: .72rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: .06em; text-transform: uppercase; }
 
-    /* OUTCOMES — 4-col icon cards (different from both CE and LP) */
+    /* OUTCOMES — 4-col icon cards */
     .outcomes-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .65rem; }
     .oc4 { background: #fff; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 1rem; display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; transition: border-color .2s; }
     .oc4:hover { border-color: #ca2131; }
@@ -67,7 +67,41 @@
     .oc4 .oc-title { font-size: .82rem; font-weight: 700; color: #111; line-height: 1.3; }
     .oc4 .oc-sub { font-size: .75rem; color: #777; line-height: 1.4; }
 
-    /* SERVICES — 3-col pill list (unique to surveying) */
+    /* SERVICES — featured 3 + secondary grid */
+
+    /* Featured row: LiDAR, ALTA, Construction Staking */
+    .svc-featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: .65rem; margin-bottom: 1rem; }
+    .svc-featured-label {
+      font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+      color: #ca2131; font-weight: 600; margin-bottom: .6rem;
+    }
+    .svc-pill-featured {
+      background: #0a1245;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-left: 3px solid rgba(255,255,255,0.85);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      display: flex; align-items: flex-start; flex-direction: column; gap: .35rem;
+      transition: border-color .2s, background .2s;
+      text-decoration: none;
+    }
+    .svc-pill-featured:hover { background: #101a4a; border-color: rgba(255,255,255,0.6); border-left-color: #fff; }
+    .svc-pill-featured .pill-top { display: flex; align-items: center; gap: .6rem; }
+    .svc-pill-featured svg { width: 16px; height: 16px; color: rgba(255,255,255,0.75); flex-shrink: 0; }
+    .svc-pill-featured .pill-name { font-size: .85rem; font-weight: 700; color: #fff; }
+    .svc-pill-featured .pill-sub { font-size: .75rem; color: rgba(255,255,255,.45); line-height: 1.4; padding-left: 22px; }
+
+    /* Separator between featured and secondary */
+    .svc-sep {
+      display: flex; align-items: center; gap: .75rem; margin: 1.25rem 0 1rem;
+    }
+    .svc-sep .svc-sep-line { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+    .svc-sep .svc-sep-label {
+      font-size: 10px; letter-spacing: .09em; text-transform: uppercase;
+      color: rgba(255,255,255,.25); font-weight: 600; white-space: nowrap;
+    }
+
+    /* Secondary pill grid (remaining services) */
     .svc-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
     .svc-pill { background: #fff; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: .85rem 1.1rem; display: flex; align-items: center; gap: .7rem; transition: border-color .2s; }
     .svc-pill:hover { border-color: #ca2131; }
@@ -84,7 +118,7 @@
     .card-check3 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.7); }
     .card-check3 svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; margin-top: 2px; }
 
-    /* SPOTLIGHT — left stat panel + right beats (unique layout) */
+    /* SPOTLIGHT */
     .spot-card { border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 1fr 2fr; border: 1px solid rgba(255,255,255,0.08); }
     .spot-left { background: #0a1245; padding: 2rem 1.75rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,0.08); }
     .spot-left h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin: .4rem 0 .5rem; line-height: 1.3; }
@@ -118,6 +152,7 @@
       .stat-strip { grid-template-columns: 1fr 1fr; }
       .stat-strip-item:last-child { border-top: 1px solid rgba(255,255,255,0.08); grid-column: span 2; }
       .outcomes-4 { grid-template-columns: 1fr 1fr; }
+      .svc-featured { grid-template-columns: 1fr; }
       .svc-3col { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -159,14 +194,87 @@
     <div class="cardx2-divider reveal" id="rv1">
       <div class="line"></div>
       <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span>Services</span>
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="cardx2-sec reveal" id="rv2">
+      <div class="cardx2-eyebrow">Services Snapshot</div>
+      <h2>Find Your Need</h2>
+
+      <!-- Featured: LiDAR, ALTA, Construction Staking — mirrors the capability boxes on the division page -->
+      <div class="svc-featured-label">Core Capabilities</div>
+      <div class="svc-featured">
+        <a class="svc-pill-featured" href="lidar.html">
+          <div class="pill-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <span class="pill-name">LiDAR Services</span>
+          </div>
+          <span class="pill-sub">Dense, high-accuracy point clouds for large or complex sites.</span>
+        </a>
+        <a class="svc-pill-featured" href="alta-surveys.html">
+          <div class="pill-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+            <span class="pill-name">ALTA/NSPS Surveys</span>
+          </div>
+          <span class="pill-sub">Title-grade surveys for confident transactions.</span>
+        </a>
+        <a class="svc-pill-featured" href="construction-staking.html">
+          <div class="pill-top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>
+            <span class="pill-name">Construction Staking</span>
+          </div>
+          <span class="pill-sub">Keeping crews on line and on grade through build-out.</span>
+        </a>
+      </div>
+
+      <!-- Separator -->
+      <div class="svc-sep">
+        <div class="svc-sep-line"></div>
+        <span class="svc-sep-label">Additional Services</span>
+        <div class="svc-sep-line"></div>
+      </div>
+
+      <!-- Remaining services -->
+      <div class="svc-3col">
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Boundary Surveys</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>
+          <span>Topographic Surveys</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span>Drone Mapping</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          <span>Utility Location Support</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Control Surveys</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv3">
+      <div class="line"></div>
+      <div class="badge">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         <span>What We Deliver</span>
       </div>
       <div class="line"></div>
     </div>
 
-    <!-- OUTCOMES — 4-col icon cards -->
-    <section class="cardx2-sec reveal" id="rv2">
+    <!-- OUTCOMES -->
+    <section class="cardx2-sec reveal" id="rv4">
       <div class="cardx2-eyebrow">Outcomes</div>
       <h2>Data You Can Build On</h2>
       <div class="outcomes-4">
@@ -189,56 +297,6 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <span class="oc-title">Fewer Construction Conflicts</span>
           <span class="oc-sub">Catch discrepancies before they hit the field</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv3">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Services</span>
-      </div>
-      <div class="line"></div>
-    </div>
-
-    <!-- SERVICES -->
-    <section class="cardx2-sec reveal" id="rv4">
-      <div class="cardx2-eyebrow">Services Snapshot</div>
-      <h2>Find Your Need</h2>
-      <div class="svc-3col">
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Boundary Surveys</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>
-          <span>Topographic Surveys</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-          <span>ALTA/NSPS Surveys</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>
-          <span>Construction Staking</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          <span>Drone Mapping</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          <span>LiDAR Services</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-          <span>Utility Location Support</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Control Surveys</span>
         </div>
       </div>
     </section>
@@ -358,7 +416,7 @@
       <div class="cta-band2">
         <div>
           <div class="cardx2-eyebrow red">Talk With Our Team</div>
-          <h2>Let’s Discuss Your Project.</h2>
+          <h2>Let's Discuss Your Project.</h2>
           <a class="btn-card-accent" href="contact.html">Schedule a Project Discussion &rarr;</a>
         </div>
         <div class="cta-meta">
