@@ -66,31 +66,37 @@
       margin-bottom: 4vh !important;
     }
 
-    /* HEADLINE */
+    /* HEADLINE — neutralise all styles.css overrides on h1 */
     .hero-copy h1 {
       font-family: 'Times New Roman', Times, 'Liberation Serif', serif !important;
-      font-size: clamp(2rem, 6.5vw, 5.4rem) !important;
+      font-size: clamp(2.6rem, 6.5vw, 5.4rem) !important;
       font-weight: 700 !important;
       color: #fff !important;
       line-height: 1.05 !important;
       letter-spacing: -.01em !important;
       white-space: nowrap !important;
       padding-left: 0 !important;
+      margin-left: 0 !important;
+      transform: none !important;          /* kill styles.css scaleX(0.94) — this was causing clip */
+      transform-origin: center !important;
+      overflow: visible !important;
       -webkit-text-stroke: 1.5px rgba(2,5,52,.55);
       paint-order: stroke fill;
       text-shadow: 0 2px 24px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.25);
-    }
-
-    @media (max-width: 767px) {
-      .hero-copy h1 {
-        white-space: normal !important;
-        font-size: clamp(2.4rem, 9vw, 3.4rem) !important;
-      }
     }
     .hero-copy h1::before { display: none !important; }
     .hero-copy h1 .dot {
       color: rgba(255,255,255,.4) !important;
       -webkit-text-stroke: 1.5px rgba(2,5,52,.3);
+    }
+
+    /* Mobile headline — wrap and scale down */
+    @media (max-width: 767px) {
+      .hero-copy h1 {
+        white-space: normal !important;
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+        line-height: 1.1 !important;
+      }
     }
 
     /* Hide subtext */
@@ -186,7 +192,7 @@
     .news-card:hover { background: #f9f8f6 !important; }
 
     .brand-accent-bar { border-color: rgba(255,255,255,.2) !important; }
-    .section-topo { background: var(--paper); }
+    .section-topo { background: var(--white) !important; }
 
     /* =====================================================
        DIVISION CARDS — shared (desktop hover + mobile tap)
@@ -404,52 +410,56 @@
     /* =====================================================
        MOBILE — single column, tap interaction
        ===================================================== */
-    @media (max-width: 767px) {
-
-      .div-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 860px) {
+      /* Match styles.css breakpoint exactly so we win the cascade */
+      .divisions-feature .div-grid {
+        grid-template-columns: 1fr !important;
       }
-
       .div-card {
-        min-height: 340px;
+        min-height: 360px !important;
       }
+    }
 
-      /* Show tap hint on touch screens */
-      .div-tap-hint {
-        display: block;
+    /* Touch devices — pointer:coarse is reliable cross-browser */
+    @media (pointer: coarse) {
+      /* Kill all hover-driven reveals on touch */
+      .div-card:hover .div-front {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transition: none !important;
       }
-
-      /* Mobile reveal is faster — no need to linger as long */
+      .div-card:hover .div-front-text { opacity: 1 !important; }
+      .div-card:hover .div-tap-hint   { opacity: 1 !important; }
+      .div-card:hover .div-graphic    { opacity: 0 !important; transition: none !important; }
+      .div-card:hover .div-graphic svg .animline { stroke-dashoffset: 600 !important; transition: none !important; }
+      .div-card:hover .div-graphic svg .dot      { opacity: 0 !important; transition: none !important; }
+      .div-card:hover .div-list,
+      .div-card:hover .div-cta { opacity: 0 !important; transition: none !important; }
+      /* is-revealed drives everything on touch */
       .div-card.is-revealed .div-front {
-        transition: opacity 1.6s ease .3s;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transition: opacity 1.6s ease .3s !important;
       }
+      .div-card.is-revealed .div-front-text { opacity: 0 !important; }
+      .div-card.is-revealed .div-tap-hint   { opacity: 0 !important; }
       .div-card.is-revealed .div-graphic {
-        transition: opacity .5s ease .8s;
+        opacity: 1 !important;
+        transition: opacity .5s ease .8s !important;
       }
       .div-card.is-revealed .div-graphic svg .animline {
-        transition: stroke-dashoffset 1.8s ease 1s;
+        stroke-dashoffset: 0 !important;
+        transition: stroke-dashoffset 1.8s ease 1s !important;
       }
       .div-card.is-revealed .div-graphic svg .dot {
-        transition: opacity .4s ease 2s;
+        opacity: 1 !important;
+        transition: opacity .4s ease 2s !important;
       }
       .div-card.is-revealed .div-list,
       .div-card.is-revealed .div-cta {
-        transition: opacity .6s ease 1s;
+        opacity: 1 !important;
+        transition: opacity .6s ease 1s !important;
       }
-
-      /* Disable hover on touch so it doesn't interfere */
-      .div-card:hover .div-front {
-        opacity: 1;
-        pointer-events: auto;
-        transition: none;
-      }
-      .div-card:hover .div-front-text { opacity: 1; }
-      .div-card:hover .div-tap-hint   { opacity: 1; }
-      .div-card:hover .div-graphic    { opacity: 0; transition: none; }
-      .div-card:hover .div-graphic svg .animline { stroke-dashoffset: 600; transition: none; }
-      .div-card:hover .div-graphic svg .dot      { opacity: 0; transition: none; }
-      .div-card:hover .div-list,
-      .div-card:hover .div-cta { opacity: 0; transition: none; }
     }
   </style>
 </head>
@@ -513,7 +523,6 @@
             <div class="div-front-text">
               <h3 class="div-name">Land<br>Planning</h3>
             </div>
-            <span class="div-tap-hint">Tap to explore</span>
           </div>
         </a>
 
@@ -549,7 +558,6 @@
             <div class="div-front-text">
               <h3 class="div-name">Land<br>Surveying</h3>
             </div>
-            <span class="div-tap-hint">Tap to explore</span>
           </div>
         </a>
 
@@ -585,7 +593,6 @@
             <div class="div-front-text">
               <h3 class="div-name">Civil<br>Engineering</h3>
             </div>
-            <span class="div-tap-hint">Tap to explore</span>
           </div>
         </a>
 
@@ -628,29 +635,25 @@
   <script src="assets/js/main.js"></script>
   <script>
     (function () {
-      // Only activate tap logic on touch-capable devices
-      if (!('ontouchstart' in window) && !navigator.maxTouchPoints) return;
+      if (!window.matchMedia('(pointer: coarse)').matches) return;
 
       var cards = Array.prototype.slice.call(document.querySelectorAll('.div-card'));
 
-      cards.forEach(function (card) {
-        card.addEventListener('click', function (e) {
-          var isRevealed = card.classList.contains('is-revealed');
-
-          if (!isRevealed) {
-            // First tap — reveal, don't navigate
-            e.preventDefault();
-
-            // Close any other open card
-            cards.forEach(function (other) {
-              if (other !== card) other.classList.remove('is-revealed');
-            });
-
-            card.classList.add('is-revealed');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+          } else {
+            // Reset when scrolled out so it re-animates on scroll back
+            entry.target.classList.remove('is-revealed');
           }
-          // Second tap on an already-revealed card — let the link through naturally
         });
+      }, {
+        // Card triggers when 40% of it is visible — enough to feel intentional
+        threshold: 0.4
       });
+
+      cards.forEach(function (card) { observer.observe(card); });
     })();
   </script>
 </body>
