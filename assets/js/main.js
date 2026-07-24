@@ -312,7 +312,6 @@ document.addEventListener('DOMContentLoaded', () => {
   heroCarousel();
   formHandler();
   flipCardsOnScroll();
-  renderNews();
 });
 /* =============================================================
    HERO SLIDE DOTS — append this block to the bottom of main.js
