@@ -13,18 +13,225 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#020534">
+  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
+  <style>
+
+    /* ── HERO ── */
+    .lp-hero::before {
+      background: linear-gradient(90deg,
+        rgba(202,33,49,.82) 0%,
+        rgba(202,33,49,.62) 32%,
+        rgba(202,33,49,.22) 62%,
+        rgba(202,33,49,0) 88%) !important;
+    }
+    .lp-hero-copy .eyebrow { color: rgba(255,255,255,.72); }
+    .lp-hero-copy .btn-accent {
+      background: #020534 !important;
+      border-color: #020534 !important;
+      outline: 1.5px solid rgba(255,255,255,.35);
+      outline-offset: 4px;
+    }
+    .lp-hero-copy .btn-accent:hover {
+      background: #0a0f57 !important;
+    }
+    /* Project pill — navy rectangle, bottom-right */
+    .lp-hero-caption {
+      background: rgba(2,5,52,.6) !important;
+      border-radius: 0 !important;
+      right: 0 !important;
+      left: auto !important;
+      padding: 7px 20px !important;
+      font-style: normal !important;
+      color: rgba(255,255,255,.75) !important;
+    }
+
+    /* ── PROCESS — scroll-jacked sticky section ── */
+    .proc-outer {
+      /* height = number of steps × viewport height; scroll consumed here */
+      position: relative;
+    }
+    .proc-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #020534;
+      display: flex;
+      align-items: stretch;
+    }
+
+    /* Left column — step counter + progress */
+    .proc-left {
+      width: 38%;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 72px);
+      border-right: 1px solid rgba(255,255,255,.08);
+      position: relative;
+    }
+    .proc-eyebrow {
+      font-family: 'Roboto', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      margin-bottom: 2rem;
+    }
+    .proc-counter {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(6rem, 14vw, 11rem);
+      font-weight: 700;
+      color: #CA2131;
+      line-height: 1;
+      transition: all .5s cubic-bezier(.4,0,.2,1);
+      user-select: none;
+    }
+    .proc-of {
+      font-family: 'Roboto', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-top: .75rem;
+    }
+
+    /* Progress bar */
+    .proc-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: rgba(255,255,255,.08);
+    }
+    .proc-progress-fill {
+      background: #CA2131;
+      width: 100%;
+      height: 0%;
+      transition: height .5s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Right column — sliding step content */
+    .proc-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 80px);
+      position: relative;
+      overflow: hidden;
+    }
+    .proc-step {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 80px);
+      /* default: offscreen right, invisible */
+      transform: translateX(60px);
+      opacity: 0;
+      transition: transform .55s cubic-bezier(.4,0,.2,1), opacity .45s ease;
+      pointer-events: none;
+    }
+    .proc-step.is-active {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .proc-step.is-past {
+      transform: translateX(-60px);
+      opacity: 0;
+    }
+    .proc-step-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #CA2131;
+      margin-bottom: 1.25rem;
+    }
+    .proc-step h3 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.08;
+      margin: 0 0 1.25rem;
+    }
+    .proc-step p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.9rem, 1.4vw, 1.05rem);
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      max-width: 46ch;
+      margin: 0;
+    }
+
+    /* Scroll hint on first step */
+    .proc-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: opacity .4s ease;
+    }
+    .proc-scroll-hint svg {
+      animation: bob 1.8s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+    .proc-scroll-hint.hidden { opacity: 0; }
+
+    /* Mobile fallback — revert to static list below 768px */
+    @media (max-width: 768px) {
+      .proc-outer { height: auto !important; }
+      .proc-sticky {
+        position: relative;
+        height: auto;
+        flex-direction: column;
+        padding: clamp(48px,8vw,80px) 0;
+      }
+      .proc-left {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        padding-bottom: 2rem;
+      }
+      .proc-counter { font-size: 4rem; }
+      .proc-right { padding: 2rem clamp(24px,5vw,48px); min-height: 60vw; }
+      .proc-step { padding: 0; }
+      .proc-progress { display: none; }
+    }
+  </style>
 </head>
 <body data-page="land-planning">
   <div data-header></div>
 
+  <!-- HERO -->
   <section class="lp-hero">
     <div class="wrap">
       <div class="lp-hero-copy">
         <span class="eyebrow">Land Planning</span>
         <h1>Better Planning,<br>Better Outcomes.</h1>
-        <p>We help developers, owners, and communities turn raw land into real value with smart
+        <p>We help developers, owners, and communities turn raw land into real value — with smart
           strategies, thoughtful design, and clear plans that move projects forward.</p>
         <a class="btn btn-accent btn-arrow" href="contact.html">Start a Conversation</a>
       </div>
@@ -32,45 +239,128 @@
     <span class="lp-hero-caption">Morgan County Recreation Park</span>
   </section>
 
-  <section class="proc">
-    <div class="wrap proc-grid">
-      <div class="proc-intro">
-        <span class="eyebrow">Our Land Planning Process</span>
-        <h2>From raw ground to a buildable strategy.</h2>
-        <p>Our planning process is designed to reduce uncertainty, streamline approvals, and set your
-          project up for long-term success.</p>
+  <!-- PROCESS — scroll-jacked sticky -->
+  <div class="proc-outer" id="proc-outer">
+    <div class="proc-sticky" id="proc-sticky">
+
+      <!-- Left: counter -->
+      <div class="proc-left">
+        <div class="proc-progress"><div class="proc-progress-fill" id="proc-progress-fill"></div></div>
+        <p class="proc-eyebrow">Our Land Planning Process</p>
+        <div class="proc-counter" id="proc-counter">01</div>
+        <p class="proc-of" id="proc-of">of 05</p>
       </div>
-      <ol class="timeline">
-        <li class="tl-step">
-          <div class="tl-node">01</div>
-          <h3>Feasibility &amp; Due Diligence</h3>
-          <p>We evaluate site conditions, zoning, access, and infrastructure to confirm development potential.</p>
-        </li>
-        <li class="tl-step">
-          <div class="tl-node">02</div>
+
+      <!-- Right: step content -->
+      <div class="proc-right">
+
+        <div class="proc-step is-active" data-step="0">
+          <p class="proc-step-label">Step 01</p>
+          <h3>Feasibility &amp;<br>Due Diligence</h3>
+          <p>We evaluate site conditions, zoning, access, and infrastructure to confirm development potential before significant commitments are made.</p>
+        </div>
+
+        <div class="proc-step" data-step="1">
+          <p class="proc-step-label">Step 02</p>
           <h3>Site Optimization</h3>
-          <p>Our team designs layouts that balance use, circulation, stormwater, and long-term value.</p>
-        </li>
-        <li class="tl-step">
-          <div class="tl-node">03</div>
-          <h3>Land-Use &amp; Entitlements</h3>
-          <p>We navigate rezoning, variances, and approvals to keep your projects moving forward.</p>
-        </li>
-        <li class="tl-step">
-          <div class="tl-node">04</div>
+          <p>Our team designs layouts that balance use, circulation, stormwater, and long-term value — extracting the most from every acre.</p>
+        </div>
+
+        <div class="proc-step" data-step="2">
+          <p class="proc-step-label">Step 03</p>
+          <h3>Land-Use &amp;<br>Entitlements</h3>
+          <p>We navigate rezoning, variances, and approvals — coordinating with jurisdictions to keep your project moving forward on schedule.</p>
+        </div>
+
+        <div class="proc-step" data-step="3">
+          <p class="proc-step-label">Step 04</p>
           <h3>Master Planning</h3>
-          <p>Phased strategies that support today's goals and tomorrow's growth.</p>
-        </li>
-        <li class="tl-step">
-          <div class="tl-node">05</div>
-          <h3>Implementation Support</h3>
-          <p>We carry your plan forward into permitting and construction with continued guidance.</p>
-        </li>
-      </ol>
+          <p>Phased strategies that support today's goals and tomorrow's growth, designed to remain flexible as markets and needs evolve.</p>
+        </div>
+
+        <div class="proc-step" data-step="4">
+          <p class="proc-step-label">Step 05</p>
+          <h3>Implementation<br>Support</h3>
+          <p>We carry your plan forward into permitting and construction with continued guidance, keeping the vision intact through every phase.</p>
+        </div>
+
+        <div class="proc-scroll-hint" id="proc-hint">
+          <span>Scroll</span>
+          <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+            <line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+            <polyline points="3,11 8,17 13,11" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
 
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      var STEPS = 5;
+      var outer    = document.getElementById('proc-outer');
+      var sticky   = document.getElementById('proc-sticky');
+      var counter  = document.getElementById('proc-counter');
+      var ofLabel  = document.getElementById('proc-of');
+      var fill     = document.getElementById('proc-progress-fill');
+      var hint     = document.getElementById('proc-hint');
+      var stepEls  = Array.prototype.slice.call(document.querySelectorAll('.proc-step'));
+
+      if (!outer || !sticky) return;
+
+      /* Set outer height to give us scroll room: 1 viewport per step */
+      var VH = window.innerHeight;
+      outer.style.height = (STEPS * VH) + 'px';
+
+      window.addEventListener('resize', function () {
+        VH = window.innerHeight;
+        outer.style.height = (STEPS * VH) + 'px';
+      });
+
+      var current = -1;
+
+      function setStep(n) {
+        n = Math.max(0, Math.min(STEPS - 1, n));
+        if (n === current) return;
+        current = n;
+
+        /* Counter */
+        counter.textContent = (n + 1 < 10 ? '0' : '') + (n + 1);
+
+        /* Progress bar */
+        fill.style.height = ((n + 1) / STEPS * 100) + '%';
+
+        /* Scroll hint */
+        if (n > 0) hint.classList.add('hidden');
+        else hint.classList.remove('hidden');
+
+        /* Step slides */
+        stepEls.forEach(function (el, i) {
+          el.classList.remove('is-active', 'is-past');
+          if (i === n) el.classList.add('is-active');
+          else if (i < n) el.classList.add('is-past');
+        });
+      }
+
+      function onScroll() {
+        /* Only activate when on mobile — skip scroll-jack on small screens */
+        if (window.innerWidth <= 768) return;
+
+        var rect = outer.getBoundingClientRect();
+        var scrolled = -rect.top; /* how far we've scrolled into the outer div */
+
+        if (scrolled < 0 || scrolled > outer.offsetHeight - VH) return;
+
+        var step = Math.floor((scrolled / (outer.offsetHeight - VH)) * STEPS);
+        setStep(step);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      setStep(0);
+    })();
+  </script>
 </body>
 </html>
