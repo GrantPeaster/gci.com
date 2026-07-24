@@ -16,450 +16,147 @@
   <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
   <style>
-    /* == INDEX PAGE OVERRIDES == */
-
-    /* HERO layout */
-    .hero {
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 8vh;
-    }
-
-    /* Very light red tint */
-    .hero-slide::after {
-      background: rgba(202,33,49,.18) !important;
-    }
-
-    /* Vignette */
+    /* ── HERO ── */
+    .hero { align-items: center; justify-content: center; padding-bottom: 8vh; overflow: hidden; }
+    .hero-slide::after { background: rgba(202,33,49,.18) !important; }
     .hero-slides::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to bottom,
-          rgba(10,5,20,.30) 0%,
-          rgba(10,5,20,.06) 38%,
-          rgba(10,5,20,.10) 62%,
-          rgba(10,5,20,.58) 100%
-        );
-      pointer-events: none;
-      z-index: 1;
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background: linear-gradient(to bottom, rgba(10,5,20,.30) 0%, rgba(10,5,20,.06) 38%, rgba(10,5,20,.10) 62%, rgba(10,5,20,.58) 100%);
     }
-
-    /* Center the wrap content */
-    .hero .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding-inline: var(--gutter);
-    }
-
+    .hero .wrap { display: flex; align-items: center; justify-content: center; width: 100%; padding-inline: var(--gutter); }
     .hero-copy {
-      text-align: center !important;
-      max-width: none !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 2rem !important;
-      margin-left: 0 !important;
-      margin-bottom: 4vh !important;
+      text-align: center !important; max-width: none !important; display: flex !important;
+      flex-direction: column !important; align-items: center !important;
+      gap: 2rem !important; margin-left: 0 !important; margin-bottom: 4vh !important;
     }
-
-    /* HEADLINE — neutralise all styles.css overrides on h1 */
     .hero-copy h1 {
       font-family: 'Times New Roman', Times, 'Liberation Serif', serif !important;
       font-size: clamp(2.6rem, 6.5vw, 5.4rem) !important;
-      font-weight: 700 !important;
-      color: #fff !important;
-      line-height: 1.05 !important;
-      letter-spacing: -.01em !important;
-      white-space: nowrap !important;
-      padding-left: 0 !important;
-      margin-left: 0 !important;
-      transform: none !important;          /* kill styles.css scaleX(0.94) — this was causing clip */
-      transform-origin: center !important;
-      overflow: visible !important;
-      -webkit-text-stroke: 1.5px rgba(2,5,52,.55);
-      paint-order: stroke fill;
+      font-weight: 700 !important; color: #fff !important; line-height: 1.05 !important;
+      letter-spacing: -.01em !important; white-space: nowrap !important;
+      padding-left: 0 !important; margin-left: 0 !important;
+      transform: none !important; transform-origin: center !important; overflow: visible !important;
+      -webkit-text-stroke: 1.5px rgba(2,5,52,.55); paint-order: stroke fill;
       text-shadow: 0 2px 24px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.25);
     }
     .hero-copy h1::before { display: none !important; }
-    .hero-copy h1 .dot {
-      color: rgba(255,255,255,.4) !important;
-      -webkit-text-stroke: 1.5px rgba(2,5,52,.3);
-    }
-
-    /* Mobile headline — wrap and scale down */
+    .hero-copy h1 .dot { color: rgba(255,255,255,.4) !important; -webkit-text-stroke: 1.5px rgba(2,5,52,.3); }
     @media (max-width: 767px) {
-      .hero-copy h1 {
-        white-space: normal !important;
-        font-size: clamp(2rem, 10vw, 3rem) !important;
-        line-height: 1.1 !important;
-      }
+      .hero-copy h1 { white-space: normal !important; font-size: clamp(2rem, 10vw, 3rem) !important; line-height: 1.1 !important; }
     }
-
-    /* Hide subtext */
     .hero-copy p { display: none !important; }
-
-    /* CTA */
     .hero-copy .btn-accent {
-      font-family: 'Roboto', sans-serif !important;
-      font-size: .72rem !important;
-      font-weight: 700 !important;
-      letter-spacing: .139em !important;
-      text-transform: uppercase !important;
-      background: #020534 !important;
-      color: #fff !important;
-      border-color: #020534 !important;
-      border-radius: 3px !important;
-      padding: .72rem 1.9rem !important;
-      outline: 1.5px solid rgba(255,255,255,.4) !important;
-      outline-offset: 5px !important;
-      transition: background .2s, outline-color .2s !important;
-      display: inline-block !important;
+      font-family: 'Roboto', sans-serif !important; font-size: .72rem !important;
+      font-weight: 700 !important; letter-spacing: .139em !important; text-transform: uppercase !important;
+      background: #020534 !important; color: #fff !important; border-color: #020534 !important;
+      border-radius: 3px !important; padding: .72rem 1.9rem !important;
+      outline: 1.5px solid rgba(255,255,255,.4) !important; outline-offset: 5px !important;
+      transition: background .2s, outline-color .2s !important; display: inline-block !important;
     }
-    .hero-copy .btn-accent:hover {
-      background: #0a0f57 !important;
-      outline-color: rgba(255,255,255,.75) !important;
-    }
-
-    /* Project label */
+    .hero-copy .btn-accent:hover { background: #0a0f57 !important; outline-color: rgba(255,255,255,.75) !important; }
     .hero-project {
-      font-family: 'Roboto', sans-serif !important;
-      font-size: .58rem !important;
-      letter-spacing: .139em !important;
-      text-transform: uppercase !important;
-      color: rgba(255,255,255,.55) !important;
-      background: rgba(0,0,0,.25) !important;
-      padding: 5px 11px !important;
-      border-radius: 3px !important;
+      position: absolute !important; right: 0 !important; bottom: 3px !important; left: auto !important;
+      font-family: 'Roboto', sans-serif !important; font-size: .58rem !important;
+      letter-spacing: .139em !important; text-transform: uppercase !important;
+      color: rgba(255,255,255,.75) !important; background: rgba(2,5,52,.6) !important;
+      padding: 7px 20px !important; border-radius: 0 !important; z-index: 9 !important;
+      margin: 0 !important; font-style: normal !important;
     }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #CA2131; z-index: 10; }
+    .hero-dots { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 7px; align-items: center; }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.3); border: none; cursor: pointer; padding: 0; transition: all .3s ease; }
+    .hero-dot.active { background: #fff; width: 20px; border-radius: 3px; }
 
-    /* Thin red rule anchoring hero bottom */
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: #CA2131;
-      z-index: 10;
-    }
-
-    /* SLIDE DOTS */
-    .hero-dots {
-      position: absolute;
-      bottom: 22px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      gap: 7px;
-      align-items: center;
-    }
-    .hero-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.3);
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: all .3s ease;
-    }
-    .hero-dot.active {
-      background: #fff;
-      width: 20px;
-      border-radius: 3px;
-    }
-
-    /* NEWS SECTION — red background */
+    /* ── SECTIONS ── */
     .section-blue { background: #CA2131 !important; }
     .section-blue h2 { color: #fff !important; }
-    .section-blue .lead { color: rgba(255,255,255,.82) !important; }
+    .section-topo { background: #fff !important; }
 
-    /* News cards — stay white */
-    .news-card {
-      background: #fff !important;
-      border-color: rgba(255,255,255,.15) !important;
+    /* ── NEWS CARDS ── */
+    #news-feed {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+      overflow: hidden !important;
+      position: relative !important;
     }
-    .news-card .date { color: #787878 !important; }
-    .news-card h3 { color: #020534 !important; }
-    .news-card p { color: #555 !important; }
-    .news-card .more { color: #CA2131 !important; }
-    .news-card:hover { background: #f9f8f6 !important; }
+    @media (max-width: 860px) { #news-feed { grid-template-columns: 1fr !important; } }
+    #news-feed .news-card {
+      display: flex !important; flex-direction: column !important;
+      justify-content: space-between !important; height: 240px !important;
+      padding: 28px 26px !important; background: #fff !important;
+      border: none !important; border-radius: 0 !important; gap: 0 !important;
+      transition: transform 0.55s cubic-bezier(.4,0,.2,1), opacity 0.55s ease !important;
+      will-change: transform, opacity; position: relative !important; overflow: hidden !important;
+    }
+    #news-feed .news-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: #CA2131;
+    }
+    #news-feed .news-card .date {
+      font-family: 'Roboto', sans-serif !important; font-size: .62rem !important;
+      letter-spacing: .12em !important; text-transform: uppercase !important;
+      color: #CA2131 !important; display: block !important; margin-bottom: 10px !important;
+    }
+    #news-feed .news-card h3 {
+      font-family: 'Times New Roman', Times, serif !important; font-size: 1.1rem !important;
+      font-weight: 700 !important; color: #020534 !important; line-height: 1.25 !important;
+      flex: 1 !important; margin: 0 0 10px !important;
+    }
+    #news-feed .news-card p {
+      font-size: .82rem !important; color: #555 !important; line-height: 1.5 !important;
+      margin: 0 0 16px !important; flex: 1 !important;
+      display: -webkit-box !important; -webkit-line-clamp: 3 !important;
+      -webkit-box-orient: vertical !important; overflow: hidden !important;
+    }
+    #news-feed .news-card .more {
+      font-family: 'Roboto', sans-serif !important; font-size: .65rem !important;
+      font-weight: 700 !important; letter-spacing: .12em !important;
+      text-transform: uppercase !important; color: #CA2131 !important;
+      margin-top: auto !important; display: block !important;
+    }
+    #news-feed .news-card:hover { background: #f9f8f6 !important; }
+    #news-feed.sliding-out .news-card { transform: translateX(-48px) !important; opacity: 0 !important; }
+    #news-feed.sliding-in .news-card { transform: translateX(48px) !important; opacity: 0 !important; transition: none !important; }
 
-    .brand-accent-bar { border-color: rgba(255,255,255,.2) !important; }
-    .section-topo { background: var(--white) !important; }
-
-    /* =====================================================
-       DIVISION CARDS — shared (desktop hover + mobile tap)
-       ===================================================== */
-
-    .div-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: #d4d0c8;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .div-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 460px;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-    }
-
-    /* White content layer */
-    .div-back {
-      position: absolute;
-      inset: 0;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2.25rem 2rem;
-      z-index: 1;
-    }
-
-    /* Graphic — hidden at rest */
-    .div-graphic {
-      line-height: 0;
-      margin-bottom: 1.8rem;
-      opacity: 0;
-      transition: opacity 0s;
-    }
-
-    /* Lines — hidden at rest */
-    .div-graphic svg .animline {
-      stroke-dasharray: 600;
-      stroke-dashoffset: 600;
-      transition: stroke-dashoffset 0s;
-    }
-
-    /* Dots — hidden at rest */
-    .div-graphic svg .dot {
-      opacity: 0;
-      transition: opacity 0s;
-    }
-
-    /* Bullets + CTA — hidden at rest */
-    .div-list,
-    .div-cta {
-      opacity: 0;
-      transition: opacity 0s;
-    }
-
-    .div-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-      align-items: center;
-    }
-    .div-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: .6rem;
-      font-size: .8rem;
-      color: #020534;
-      line-height: 1.45;
-      text-align: left;
-    }
-    .div-list li::before {
-      content: '';
-      width: 5px; height: 5px;
-      background: #CA2131;
-      flex-shrink: 0;
-      margin-top: .38em;
-    }
-    .div-cta {
-      font-family: 'Roboto', sans-serif;
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .139em;
-      text-transform: uppercase;
-      color: #020534;
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      width: fit-content;
-      border-bottom: 1px solid rgba(2,5,52,.3);
-      padding-bottom: .15rem;
-    }
-
-    /* Red front layer */
-    .div-front {
-      position: absolute;
-      inset: 0;
-      background: #CA2131;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      transition: opacity 2.4s ease .5s;
-    }
-
-    /* Contour texture */
-    .div-front::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 14px);
-      pointer-events: none;
-    }
-
-    /* Discipline name */
-    .div-front-text {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 0 1.5rem;
-      transition: opacity .45s ease 0s;
-    }
-    .div-name {
-      font-family: 'Times New Roman', Times, 'Liberation Serif', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.0;
-      -webkit-text-stroke: .5px rgba(2,5,52,.2);
-      paint-order: stroke fill;
-    }
-
-    /* Tap hint — only shown on touch devices, hidden on desktop */
-    .div-tap-hint {
-      display: none;
-      position: relative;
-      z-index: 1;
-      font-family: 'Roboto', sans-serif;
-      font-size: .58rem;
-      font-weight: 700;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      transition: opacity .45s ease 0s;
-    }
-
-    /* =====================================================
-       REVEALED STATE — triggered by :hover (desktop)
-       or .is-revealed class (mobile JS)
-       ===================================================== */
-
-    /* Red fades */
-    .div-card:hover .div-front,
-    .div-card.is-revealed .div-front {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* Name fades first */
-    .div-card:hover .div-front-text,
-    .div-card.is-revealed .div-front-text {
-      opacity: 0;
-    }
-
-    /* Tap hint fades with name */
-    .div-card:hover .div-tap-hint,
-    .div-card.is-revealed .div-tap-hint {
-      opacity: 0;
-    }
-
-    /* Graphic fades in */
-    .div-card:hover .div-graphic,
-    .div-card.is-revealed .div-graphic {
-      opacity: 1;
-      transition: opacity .6s ease 1.2s;
-    }
-
-    /* Lines draw */
-    .div-card:hover .div-graphic svg .animline,
-    .div-card.is-revealed .div-graphic svg .animline {
-      stroke-dashoffset: 0;
-      transition: stroke-dashoffset 2.4s ease 1.4s;
-    }
-
-    /* Dots pop in */
-    .div-card:hover .div-graphic svg .dot,
-    .div-card.is-revealed .div-graphic svg .dot {
-      opacity: 1;
-      transition: opacity .4s ease 2.8s;
-    }
-
-    /* Bullets + CTA fade in */
-    .div-card:hover .div-list,
-    .div-card:hover .div-cta,
-    .div-card.is-revealed .div-list,
-    .div-card.is-revealed .div-cta {
-      opacity: 1;
-      transition: opacity .7s ease 1.5s;
-    }
-
-    /* =====================================================
-       MOBILE — single column, tap interaction
-       ===================================================== */
+    /* ── DIVISION CARDS ── */
+    .div-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #d4d0c8; border-radius: 4px; overflow: hidden; }
+    .div-card { position: relative; overflow: hidden; min-height: 460px; cursor: pointer; text-decoration: none; display: block; }
+    .div-back { position: absolute; inset: 0; background: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2.25rem 2rem; z-index: 1; }
+    .div-graphic { line-height: 0; margin-bottom: 1.8rem; opacity: 0; transition: opacity 0s; }
+    .div-graphic svg .animline { stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 0s; }
+    .div-graphic svg .dot { opacity: 0; transition: opacity 0s; }
+    .div-list, .div-cta { opacity: 0; transition: opacity 0s; }
+    .div-list { list-style: none; padding: 0; margin: 0 0 1.4rem; display: flex; flex-direction: column; gap: .5rem; align-items: center; }
+    .div-list li { display: flex; align-items: flex-start; gap: .6rem; font-size: .8rem; font-family: 'Montserrat', sans-serif; color: #020534; line-height: 1.45; text-align: left; }
+    .div-list li::before { content: ''; width: 5px; height: 5px; background: #CA2131; flex-shrink: 0; margin-top: .38em; }
+    .div-cta { font-family: 'Roboto', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .139em; text-transform: uppercase; color: #020534; display: inline-flex; align-items: center; gap: .4rem; width: fit-content; border-bottom: 1px solid rgba(2,5,52,.3); padding-bottom: .15rem; }
+    .div-front { position: absolute; inset: 0; background: #CA2131; z-index: 2; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 2.4s ease .5s; }
+    .div-front::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 14px); pointer-events: none; }
+    .div-front-text { position: relative; z-index: 1; text-align: center; padding: 0 1.5rem; transition: opacity .45s ease 0s; }
+    .div-name { font-family: 'Times New Roman', Times, 'Liberation Serif', serif; font-size: 2.4rem; font-weight: 700; color: #fff; line-height: 1.0; -webkit-text-stroke: .5px rgba(2,5,52,.2); paint-order: stroke fill; }
+    .div-card:hover .div-front, .div-card.is-revealed .div-front { opacity: 0; pointer-events: none; }
+    .div-card:hover .div-front-text, .div-card.is-revealed .div-front-text { opacity: 0; }
+    .div-card:hover .div-graphic, .div-card.is-revealed .div-graphic { opacity: 1; transition: opacity .6s ease 1.2s; }
+    .div-card:hover .div-graphic svg .animline, .div-card.is-revealed .div-graphic svg .animline { stroke-dashoffset: 0; transition: stroke-dashoffset 2.4s ease 1.4s; }
+    .div-card:hover .div-graphic svg .dot, .div-card.is-revealed .div-graphic svg .dot { opacity: 1; transition: opacity .4s ease 2.8s; }
+    .div-card:hover .div-list, .div-card:hover .div-cta, .div-card.is-revealed .div-list, .div-card.is-revealed .div-cta { opacity: 1; transition: opacity .7s ease 1.5s; }
     @media (max-width: 860px) {
-      /* Match styles.css breakpoint exactly so we win the cascade */
-      .divisions-feature .div-grid {
-        grid-template-columns: 1fr !important;
-      }
-      .div-card {
-        min-height: 360px !important;
-      }
+      .divisions-feature .div-grid { grid-template-columns: 1fr !important; }
+      .div-card { min-height: 360px !important; }
     }
-
-    /* Touch devices — pointer:coarse is reliable cross-browser */
     @media (pointer: coarse) {
-      /* Kill all hover-driven reveals on touch */
-      .div-card:hover .div-front {
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        transition: none !important;
-      }
+      .div-card:hover .div-front { opacity: 1 !important; pointer-events: auto !important; transition: none !important; }
       .div-card:hover .div-front-text { opacity: 1 !important; }
-      .div-card:hover .div-tap-hint   { opacity: 1 !important; }
-      .div-card:hover .div-graphic    { opacity: 0 !important; transition: none !important; }
+      .div-card:hover .div-graphic { opacity: 0 !important; transition: none !important; }
       .div-card:hover .div-graphic svg .animline { stroke-dashoffset: 600 !important; transition: none !important; }
-      .div-card:hover .div-graphic svg .dot      { opacity: 0 !important; transition: none !important; }
-      .div-card:hover .div-list,
-      .div-card:hover .div-cta { opacity: 0 !important; transition: none !important; }
-      /* is-revealed drives everything on touch */
-      .div-card.is-revealed .div-front {
-        opacity: 0 !important;
-        pointer-events: none !important;
-        transition: opacity 1.6s ease .3s !important;
-      }
+      .div-card:hover .div-graphic svg .dot { opacity: 0 !important; transition: none !important; }
+      .div-card:hover .div-list, .div-card:hover .div-cta { opacity: 0 !important; transition: none !important; }
+      .div-card.is-revealed .div-front { opacity: 0 !important; pointer-events: none !important; transition: opacity 1.6s ease .3s !important; }
       .div-card.is-revealed .div-front-text { opacity: 0 !important; }
-      .div-card.is-revealed .div-tap-hint   { opacity: 0 !important; }
-      .div-card.is-revealed .div-graphic {
-        opacity: 1 !important;
-        transition: opacity .5s ease .8s !important;
-      }
-      .div-card.is-revealed .div-graphic svg .animline {
-        stroke-dashoffset: 0 !important;
-        transition: stroke-dashoffset 1.8s ease 1s !important;
-      }
-      .div-card.is-revealed .div-graphic svg .dot {
-        opacity: 1 !important;
-        transition: opacity .4s ease 2s !important;
-      }
-      .div-card.is-revealed .div-list,
-      .div-card.is-revealed .div-cta {
-        opacity: 1 !important;
-        transition: opacity .6s ease 1s !important;
-      }
+      .div-card.is-revealed .div-graphic { opacity: 1 !important; transition: opacity .5s ease .8s !important; }
+      .div-card.is-revealed .div-graphic svg .animline { stroke-dashoffset: 0 !important; transition: stroke-dashoffset 1.8s ease 1s !important; }
+      .div-card.is-revealed .div-graphic svg .dot { opacity: 1 !important; transition: opacity .4s ease 2s !important; }
+      .div-card.is-revealed .div-list, .div-card.is-revealed .div-cta { opacity: 1 !important; transition: opacity .6s ease 1s !important; }
     }
   </style>
 </head>
@@ -469,23 +166,16 @@
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
     <div class="hero-slides">
-      <div class="hero-slide active"
-           data-project="Morgan Medical Center · Madison, GA"
-           style="background-color:#7a1020;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
-      <div class="hero-slide"
-           data-project="Farmview Market · Madison, GA"
-           style="background-color:#7a1020;background-image:url(assets/img/hero-farmview.jpg)"></div>
+      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA" style="background-color:#7a1020;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
+      <div class="hero-slide" data-project="Farmview Market · Madison, GA" style="background-color:#7a1020;background-image:url(assets/img/hero-farmview.jpg)"></div>
     </div>
-
     <div class="wrap">
       <div class="hero-copy">
         <h1>Built on Better Planning<span class="dot">.</span></h1>
         <a class="btn btn-accent" href="contact.html">Start a Conversation</a>
       </div>
     </div>
-
     <div class="hero-dots" id="hero-dots" aria-hidden="true"></div>
-
     <p class="hero-project" aria-live="polite">Morgan Medical Center · Madison, GA</p>
   </section>
 
@@ -520,9 +210,7 @@
             <span class="div-cta">Explore Land Planning &rarr;</span>
           </div>
           <div class="div-front">
-            <div class="div-front-text">
-              <h3 class="div-name">Land<br>Planning</h3>
-            </div>
+            <div class="div-front-text"><h3 class="div-name">Land<br>Planning</h3></div>
           </div>
         </a>
 
@@ -555,9 +243,7 @@
             <span class="div-cta">Explore Land Surveying &rarr;</span>
           </div>
           <div class="div-front">
-            <div class="div-front-text">
-              <h3 class="div-name">Land<br>Surveying</h3>
-            </div>
+            <div class="div-front-text"><h3 class="div-name">Land<br>Surveying</h3></div>
           </div>
         </a>
 
@@ -590,9 +276,7 @@
             <span class="div-cta">Explore Civil Engineering &rarr;</span>
           </div>
           <div class="div-front">
-            <div class="div-front-text">
-              <h3 class="div-name">Civil<br>Engineering</h3>
-            </div>
+            <div class="div-front-text"><h3 class="div-name">Civil<br>Engineering</h3></div>
           </div>
         </a>
 
@@ -601,10 +285,8 @@
   </section>
 
   <!-- NEWS -->
-  <section class="section-blue section-topo-dark" style="padding-block: clamp(48px,7vw,96px);">
+  <section class="section-blue section-topo-dark" style="padding-block: clamp(48px,7vw,96px); margin-top: 48px;">
     <div class="wrap">
-
-      <!-- Section header -->
       <div style="margin-bottom: 40px;">
         <span style="display:inline-block;font-family:'Roboto',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.75rem;">Georgia Civil</span>
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.18);">
@@ -635,35 +317,26 @@
     </div>
   </section>
 
-  <!-- News script BEFORE main.js so we override renderNews before it runs -->
+  <div data-footer></div>
+  <script src="assets/js/main.js"></script>
+
+  <!-- News renderer: placed AFTER main.js, runs immediately on parse, no DOMContentLoaded -->
   <script>
-    /* ===== Override renderNews before main.js defines it ===== */
-    /* main.js calls renderNews() inside DOMContentLoaded — by defining our
-       version on window first, main.js's call becomes a no-op because its
-       own renderNews is a local function, not window.renderNews. Instead we
-       hook into DOMContentLoaded ourselves at the earliest possible moment. */
-
-    var GCI_NEWS_OVERRIDE = true; // flag so we can confirm override is active
-
-    document.addEventListener('DOMContentLoaded', function () {
+    (function () {
       var ROTATE_MS = 7000;
       var SLIDE_MS  = 550;
       var SLOTS     = 3;
       var PAGE      = 'https://www.linkedin.com/company/georgia-civil-inc-/';
 
-      var grid = document.getElementById('news-feed');
-      if (!grid) return;
-
       var esc = function (s) {
         return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-          return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c];
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
         });
       };
       var fmt = function (d) {
-        return new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        return new Date(d).toLocaleDateString('en-US', {month:'short', year:'numeric'});
       };
-
-      /* Text-only card — deliberately ignores p.image */
+      /* Text-only — never renders images */
       var cardHTML = function (p) {
         return '<a class="news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
           '<span class="date">' + esc(fmt(p.date)) + '</span>' +
@@ -672,19 +345,6 @@
           '<span class="more">Read on LinkedIn &rarr;</span>' +
         '</a>';
       };
-
-      var loadPosts = function () {
-        return fetch('/.netlify/functions/linkedin-news', { cache: 'no-store' })
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .catch(function () { return null; })
-          .then(function (posts) {
-            if (Array.isArray(posts) && posts.length) return posts;
-            return fetch('assets/data/news.json', { cache: 'no-store' })
-              .then(function (r) { return r.ok ? r.json() : []; })
-              .catch(function () { return []; });
-          });
-      };
-
       var renderSlide = function (posts, start) {
         var html = '';
         for (var i = 0; i < Math.min(SLOTS, posts.length); i++) {
@@ -692,8 +352,7 @@
         }
         return html;
       };
-
-      var slideTo = function (posts, start) {
+      var slideTo = function (grid, posts, start) {
         grid.classList.add('sliding-out');
         setTimeout(function () {
           grid.innerHTML = renderSlide(posts, start);
@@ -703,172 +362,64 @@
           grid.classList.remove('sliding-in');
         }, SLIDE_MS);
       };
+      var loadPosts = function () {
+        return fetch('/.netlify/functions/linkedin-news', {cache: 'no-store'})
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .catch(function () { return null; })
+          .then(function (posts) {
+            if (Array.isArray(posts) && posts.length) return posts;
+            return fetch('assets/data/news.json', {cache: 'no-store'})
+              .then(function (r) { return r.ok ? r.json() : []; })
+              .catch(function () { return []; });
+          });
+      };
 
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var grid = document.getElementById('news-feed');
+      if (!grid) return;
 
       loadPosts().then(function (all) {
-        var MAX_AGE = 18;
         var cutoff = new Date();
-        cutoff.setMonth(cutoff.getMonth() - MAX_AGE);
-
+        cutoff.setMonth(cutoff.getMonth() - 18);
         var posts = all
-          .filter(function (p) {
-            return p && p.date && !isNaN(new Date(p.date)) && new Date(p.date) >= cutoff;
-          })
+          .filter(function (p) { return p && p.date && !isNaN(new Date(p.date)) && new Date(p.date) >= cutoff; })
           .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
 
         if (!posts.length) return;
 
-        // Wipe whatever main.js may have rendered and replace with our clean cards
+        /* Overwrite whatever main.js rendered */
         grid.innerHTML = renderSlide(posts, 0);
 
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (posts.length <= SLOTS || reduce) return;
 
-        var start  = 0;
-        var timer  = null;
-        var paused = false;
-
+        var start = 0, timer = null, paused = false;
         var tick = function () {
-          if (paused) return;
-          start = (start + SLOTS) % posts.length;
-          slideTo(posts, start);
+          if (!paused) { start = (start + SLOTS) % posts.length; slideTo(grid, posts, start); }
         };
-
         var play = function () { if (!timer) timer = setInterval(tick, ROTATE_MS); };
         var stop = function () { clearInterval(timer); timer = null; };
-
         grid.addEventListener('mouseenter', function () { paused = true;  stop(); });
         grid.addEventListener('mouseleave', function () { paused = false; play(); });
         grid.addEventListener('focusin',    function () { paused = true;  stop(); });
         grid.addEventListener('focusout',   function () { paused = false; play(); });
-
         play();
       });
-    });
+    })();
   </script>
 
-  <div data-footer></div>
-  <script src="assets/js/main.js"></script>
-  #news-feed {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 24px !important;
-      overflow: hidden !important;
-      position: relative !important;
-    }
-    @media (max-width: 860px) {
-      #news-feed { grid-template-columns: 1fr !important; }
-    }
-
-    /* Fixed height so all cards are equal regardless of content length */
-    #news-feed .news-card {
-      display: flex !important;
-      flex-direction: column !important;
-      justify-content: space-between !important;
-      height: 240px !important;
-      padding: 28px 26px !important;
-      background: #fff !important;
-      border: none !important;
-      border-radius: 2px !important;
-      gap: 0 !important;
-      /* slide animation */
-      transition: transform 0.55s cubic-bezier(.4,0,.2,1), opacity 0.55s ease !important;
-      will-change: transform, opacity;
-      position: relative !important;
-      overflow: hidden !important;
-    }
-
-    /* Subtle red left accent — replaces the corner square */
-    #news-feed .news-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: #CA2131;
-    }
-
-    #news-feed .news-card .date {
-      font-family: 'Roboto', sans-serif !important;
-      font-size: .62rem !important;
-      letter-spacing: .12em !important;
-      text-transform: uppercase !important;
-      color: #CA2131 !important;
-      display: block !important;
-      margin-bottom: 10px !important;
-    }
-
-    #news-feed .news-card h3 {
-      font-family: 'Times New Roman', Times, serif !important;
-      font-size: 1.1rem !important;
-      font-weight: 700 !important;
-      color: #020534 !important;
-      line-height: 1.25 !important;
-      flex: 1 !important;
-      margin: 0 0 10px !important;
-    }
-
-    #news-feed .news-card p {
-      font-size: .82rem !important;
-      color: #555 !important;
-      line-height: 1.5 !important;
-      margin: 0 0 16px !important;
-      flex: 1 !important;
-      /* Clamp to 3 lines so cards stay uniform */
-      display: -webkit-box !important;
-      -webkit-line-clamp: 3 !important;
-      -webkit-box-orient: vertical !important;
-      overflow: hidden !important;
-    }
-
-    #news-feed .news-card .more {
-      font-family: 'Roboto', sans-serif !important;
-      font-size: .65rem !important;
-      font-weight: 700 !important;
-      letter-spacing: .12em !important;
-      text-transform: uppercase !important;
-      color: #CA2131 !important;
-      margin-top: auto !important;
-      display: block !important;
-    }
-
-    #news-feed .news-card:hover {
-      background: #f9f8f6 !important;
-    }
-
-    /* Slide states — driven by JS classes */
-    #news-feed.sliding-out .news-card {
-      transform: translateX(-48px) !important;
-      opacity: 0 !important;
-    }
-    #news-feed.sliding-in .news-card {
-      transform: translateX(48px) !important;
-      opacity: 0 !important;
-      transition: none !important;
-    }
-  </style>
-
+  <!-- Mobile scroll-reveal for division cards -->
   <script>
     (function () {
       if (!window.matchMedia('(pointer: coarse)').matches) return;
-
       var cards = Array.prototype.slice.call(document.querySelectorAll('.div-card'));
-
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-          } else {
-            // Reset when scrolled out so it re-animates on scroll back
-            entry.target.classList.remove('is-revealed');
-          }
+          entry.target.classList.toggle('is-revealed', entry.isIntersecting);
         });
-      }, {
-        // Card triggers when 40% of it is visible — enough to feel intentional
-        threshold: 0.4
-      });
-
+      }, { threshold: 0.4 });
       cards.forEach(function (card) { observer.observe(card); });
     })();
   </script>
+
 </body>
 </html>
