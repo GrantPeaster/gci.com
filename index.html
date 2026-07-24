@@ -606,6 +606,7 @@
 
       <!-- Section header -->
       <div style="margin-bottom: 40px;">
+        <span style="display:inline-block;font-family:'Roboto',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.75rem;">Georgia Civil</span>
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.18);">
           <h2 style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:#fff;margin:0;letter-spacing:-.01em;transform:none;">Recent News</h2>
           <a href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener" style="font-family:'Roboto',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6);white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;">Follow on LinkedIn &rarr;</a>
@@ -634,11 +635,120 @@
     </div>
   </section>
 
+  <!-- News script BEFORE main.js so we override renderNews before it runs -->
+  <script>
+    /* ===== Override renderNews before main.js defines it ===== */
+    /* main.js calls renderNews() inside DOMContentLoaded — by defining our
+       version on window first, main.js's call becomes a no-op because its
+       own renderNews is a local function, not window.renderNews. Instead we
+       hook into DOMContentLoaded ourselves at the earliest possible moment. */
+
+    var GCI_NEWS_OVERRIDE = true; // flag so we can confirm override is active
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var ROTATE_MS = 7000;
+      var SLIDE_MS  = 550;
+      var SLOTS     = 3;
+      var PAGE      = 'https://www.linkedin.com/company/georgia-civil-inc-/';
+
+      var grid = document.getElementById('news-feed');
+      if (!grid) return;
+
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c];
+        });
+      };
+      var fmt = function (d) {
+        return new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+      };
+
+      /* Text-only card — deliberately ignores p.image */
+      var cardHTML = function (p) {
+        return '<a class="news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
+          '<span class="date">' + esc(fmt(p.date)) + '</span>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          '<p>' + esc(p.blurb || '') + '</p>' +
+          '<span class="more">Read on LinkedIn &rarr;</span>' +
+        '</a>';
+      };
+
+      var loadPosts = function () {
+        return fetch('/.netlify/functions/linkedin-news', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .catch(function () { return null; })
+          .then(function (posts) {
+            if (Array.isArray(posts) && posts.length) return posts;
+            return fetch('assets/data/news.json', { cache: 'no-store' })
+              .then(function (r) { return r.ok ? r.json() : []; })
+              .catch(function () { return []; });
+          });
+      };
+
+      var renderSlide = function (posts, start) {
+        var html = '';
+        for (var i = 0; i < Math.min(SLOTS, posts.length); i++) {
+          html += cardHTML(posts[(start + i) % posts.length]);
+        }
+        return html;
+      };
+
+      var slideTo = function (posts, start) {
+        grid.classList.add('sliding-out');
+        setTimeout(function () {
+          grid.innerHTML = renderSlide(posts, start);
+          grid.classList.remove('sliding-out');
+          grid.classList.add('sliding-in');
+          void grid.offsetWidth;
+          grid.classList.remove('sliding-in');
+        }, SLIDE_MS);
+      };
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      loadPosts().then(function (all) {
+        var MAX_AGE = 18;
+        var cutoff = new Date();
+        cutoff.setMonth(cutoff.getMonth() - MAX_AGE);
+
+        var posts = all
+          .filter(function (p) {
+            return p && p.date && !isNaN(new Date(p.date)) && new Date(p.date) >= cutoff;
+          })
+          .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+
+        if (!posts.length) return;
+
+        // Wipe whatever main.js may have rendered and replace with our clean cards
+        grid.innerHTML = renderSlide(posts, 0);
+
+        if (posts.length <= SLOTS || reduce) return;
+
+        var start  = 0;
+        var timer  = null;
+        var paused = false;
+
+        var tick = function () {
+          if (paused) return;
+          start = (start + SLOTS) % posts.length;
+          slideTo(posts, start);
+        };
+
+        var play = function () { if (!timer) timer = setInterval(tick, ROTATE_MS); };
+        var stop = function () { clearInterval(timer); timer = null; };
+
+        grid.addEventListener('mouseenter', function () { paused = true;  stop(); });
+        grid.addEventListener('mouseleave', function () { paused = false; play(); });
+        grid.addEventListener('focusin',    function () { paused = true;  stop(); });
+        grid.addEventListener('focusout',   function () { paused = false; play(); });
+
+        play();
+      });
+    });
+  </script>
+
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
-
-  <style>
-    /* ===== NEWS CARD OVERRIDES — uniform text cards, equal height ===== */
     #news-feed {
       display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
@@ -737,114 +847,6 @@
     }
   </style>
 
-  <script>
-    /* ===== Clean news rotation — slide without layout jump ===== */
-    (function () {
-      var ROTATE_MS = 7000;
-      var SLIDE_MS  = 550;
-      var SLOTS     = 3;
-      var PAGE      = 'https://www.linkedin.com/company/georgia-civil-inc-/';
-
-      var grid = document.getElementById('news-feed');
-      if (!grid) return;
-
-      var esc = function (s) {
-        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-          return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c];
-        });
-      };
-      var fmt = function (d) {
-        return new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-      };
-      var cardHTML = function (p) {
-        return '<a class="news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
-          '<span class="date">' + esc(fmt(p.date)) + '</span>' +
-          '<h3>' + esc(p.title) + '</h3>' +
-          '<p>' + esc(p.blurb || '') + '</p>' +
-          '<span class="more">Read on LinkedIn &rarr;</span>' +
-        '</a>';
-      };
-
-      var loadPosts = function () {
-        return fetch('/.netlify/functions/linkedin-news', { cache: 'no-store' })
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .catch(function () { return null; })
-          .then(function (posts) {
-            if (Array.isArray(posts) && posts.length) return posts;
-            return fetch('assets/data/news.json', { cache: 'no-store' })
-              .then(function (r) { return r.ok ? r.json() : []; })
-              .catch(function () { return []; });
-          });
-      };
-
-      var renderSlide = function (posts, start) {
-        var html = '';
-        for (var i = 0; i < Math.min(SLOTS, posts.length); i++) {
-          html += cardHTML(posts[(start + i) % posts.length]);
-        }
-        return html;
-      };
-
-      var slideTo = function (posts, start) {
-        // 1. Slide current cards out to the left
-        grid.classList.add('sliding-out');
-
-        setTimeout(function () {
-          // 2. Snap new cards in from the right (no transition)
-          grid.innerHTML = renderSlide(posts, start);
-          grid.classList.remove('sliding-out');
-          grid.classList.add('sliding-in');
-
-          // Force reflow so the translateX(48px) starting state registers
-          void grid.offsetWidth;
-
-          // 3. Animate new cards into place
-          grid.classList.remove('sliding-in');
-        }, SLIDE_MS);
-      };
-
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      loadPosts().then(function (all) {
-        var MAX_AGE = 18;
-        var cutoff = new Date();
-        cutoff.setMonth(cutoff.getMonth() - MAX_AGE);
-
-        var posts = all
-          .filter(function (p) {
-            return p && p.date && !isNaN(new Date(p.date)) && new Date(p.date) >= cutoff;
-          })
-          .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
-
-        if (!posts.length) return; // keep fallback HTML cards
-
-        // Render first set immediately
-        grid.innerHTML = renderSlide(posts, 0);
-
-        if (posts.length <= SLOTS || reduce) return; // no rotation needed
-
-        var start  = 0;
-        var timer  = null;
-        var paused = false;
-
-        var tick = function () {
-          if (paused) return;
-          start = (start + SLOTS) % posts.length;
-          slideTo(posts, start);
-        };
-
-        var play = function () { if (!timer) timer = setInterval(tick, ROTATE_MS); };
-        var stop = function () { clearInterval(timer); timer = null; };
-
-        grid.addEventListener('mouseenter', function () { paused = true;  stop(); });
-        grid.addEventListener('mouseleave', function () { paused = false; play(); });
-        grid.addEventListener('focusin',    function () { paused = true;  stop(); });
-        grid.addEventListener('focusout',   function () { paused = false; play(); });
-
-        play();
-      });
-    })();
-  </script>
   <script>
     (function () {
       if (!window.matchMedia('(pointer: coarse)').matches) return;
