@@ -56,7 +56,7 @@
       top: 0;
       height: 100vh;
       overflow: hidden;
-      background: #020534;
+      background: #fff;
       display: flex;
       align-items: stretch;
     }
@@ -69,7 +69,7 @@
       flex-direction: column;
       justify-content: center;
       padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 72px);
-      border-right: 1px solid rgba(255,255,255,.08);
+      border-right: 1px solid rgba(2,5,52,.08);
       position: relative;
     }
     .proc-eyebrow {
@@ -78,7 +78,7 @@
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.45);
+      color: rgba(2,5,52,.4);
       margin-bottom: 2rem;
     }
     .proc-counter {
@@ -96,24 +96,80 @@
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.3);
+      color: rgba(2,5,52,.25);
       margin-top: .75rem;
     }
 
-    /* Progress bar */
+    /* Progress track — line with moving red marker + number legend */
     .proc-progress {
       position: absolute;
       left: 0;
       top: 0;
       bottom: 0;
-      width: 3px;
-      background: rgba(255,255,255,.08);
+      width: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: clamp(40px,6vw,80px) 0;
+      gap: 0;
     }
-    .proc-progress-fill {
-      background: #CA2131;
-      width: 100%;
+
+    /* The vertical track line */
+    .proc-track {
+      position: absolute;
+      left: 23px;
+      top: clamp(40px,6vw,80px);
+      bottom: clamp(40px,6vw,80px);
+      width: 1px;
+      background: rgba(2,5,52,.1);
+    }
+
+    /* Red moving marker */
+    .proc-track-marker {
+      position: absolute;
+      left: 0;
+      top: 0%;
+      width: 1px;
       height: 0%;
+      background: #CA2131;
       transition: height .5s cubic-bezier(.4,0,.2,1);
+    }
+
+    /* Red dot at the tip of the marker */
+    .proc-track-marker::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: -3px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #CA2131;
+    }
+
+    /* Step number pip alongside the track */
+    .proc-pip {
+      position: absolute;
+      left: 0;
+      width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 6px;
+      transform: translateY(-50%);
+    }
+    .proc-pip span {
+      font-family: 'Roboto', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: rgba(2,5,52,.2);
+      transition: color .4s ease;
+      line-height: 1;
+    }
+    .proc-pip.is-active span,
+    .proc-pip.is-past span {
+      color: #CA2131;
     }
 
     /* Right column — sliding step content */
@@ -160,14 +216,14 @@
       font-family: 'Times New Roman', Times, serif;
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 700;
-      color: #fff;
+      color: #020534;
       line-height: 1.08;
       margin: 0 0 1.25rem;
     }
     .proc-step p {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(.9rem, 1.4vw, 1.05rem);
-      color: rgba(255,255,255,.65);
+      color: rgba(2,5,52,.6);
       line-height: 1.7;
       max-width: 46ch;
       margin: 0;
@@ -184,12 +240,16 @@
       font-weight: 700;
       letter-spacing: .15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.25);
+      color: rgba(2,5,52,.25);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
       transition: opacity .4s ease;
+    }
+    .proc-scroll-hint svg line,
+    .proc-scroll-hint svg polyline {
+      stroke: rgba(2,5,52,.25);
     }
     .proc-scroll-hint svg {
       animation: bob 1.8s ease-in-out infinite;
@@ -212,7 +272,7 @@
       .proc-left {
         width: 100%;
         border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,.08);
+        border-bottom: 1px solid rgba(2,5,52,.08);
         padding-bottom: 2rem;
       }
       .proc-counter { font-size: 4rem; }
@@ -245,7 +305,12 @@
 
       <!-- Left: counter -->
       <div class="proc-left">
-        <div class="proc-progress"><div class="proc-progress-fill" id="proc-progress-fill"></div></div>
+        <div class="proc-progress" id="proc-progress">
+          <div class="proc-track">
+            <div class="proc-track-marker" id="proc-track-marker"></div>
+          </div>
+          <!-- pips injected by JS -->
+        </div>
         <p class="proc-eyebrow">Our Land Planning Process</p>
         <div class="proc-counter" id="proc-counter">01</div>
         <p class="proc-of" id="proc-of">of 05</p>
@@ -287,8 +352,8 @@
         <div class="proc-scroll-hint" id="proc-hint">
           <span>Scroll</span>
           <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
-            <line x1="8" y1="0" x2="8" y2="16" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
-            <polyline points="3,11 8,17 13,11" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="8" y1="0" x2="8" y2="16" stroke="rgba(2,5,52,.25)" stroke-width="1.5"/>
+            <polyline points="3,11 8,17 13,11" stroke="rgba(2,5,52,.25)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
       </div>
@@ -300,24 +365,41 @@
   <script src="assets/js/main.js"></script>
   <script>
     (function () {
-      var STEPS = 5;
+      var STEPS    = 5;
+      var SCROLL_MULTIPLIER = 0.7; /* shorter scroll — was 1.0 */
       var outer    = document.getElementById('proc-outer');
       var sticky   = document.getElementById('proc-sticky');
       var counter  = document.getElementById('proc-counter');
-      var ofLabel  = document.getElementById('proc-of');
-      var fill     = document.getElementById('proc-progress-fill');
+      var marker   = document.getElementById('proc-track-marker');
+      var progress = document.getElementById('proc-progress');
       var hint     = document.getElementById('proc-hint');
       var stepEls  = Array.prototype.slice.call(document.querySelectorAll('.proc-step'));
+      var pips     = [];
 
       if (!outer || !sticky) return;
 
-      /* Set outer height to give us scroll room: 1 viewport per step */
+      /* Build number pips alongside the track */
+      var track = progress ? progress.querySelector('.proc-track') : null;
+      if (track) {
+        for (var i = 0; i < STEPS; i++) {
+          var pip = document.createElement('div');
+          pip.className = 'proc-pip';
+          pip.dataset.step = i;
+          /* position each pip evenly along the track */
+          pip.style.top = (i / (STEPS - 1) * 100) + '%';
+          pip.innerHTML = '<span>' + (i + 1 < 10 ? '0' : '') + (i + 1) + '</span>';
+          track.appendChild(pip);
+          pips.push(pip);
+        }
+      }
+
+      /* Set outer height: STEPS viewports × multiplier */
       var VH = window.innerHeight;
-      outer.style.height = (STEPS * VH) + 'px';
+      outer.style.height = Math.round(STEPS * VH * SCROLL_MULTIPLIER) + 'px';
 
       window.addEventListener('resize', function () {
         VH = window.innerHeight;
-        outer.style.height = (STEPS * VH) + 'px';
+        outer.style.height = Math.round(STEPS * VH * SCROLL_MULTIPLIER) + 'px';
       });
 
       var current = -1;
@@ -330,8 +412,18 @@
         /* Counter */
         counter.textContent = (n + 1 < 10 ? '0' : '') + (n + 1);
 
-        /* Progress bar */
-        fill.style.height = ((n + 1) / STEPS * 100) + '%';
+        /* Move red marker down — travels from 0% to 100% across the track */
+        if (marker) {
+          var pct = (n / (STEPS - 1)) * 100;
+          marker.style.height = pct + '%';
+        }
+
+        /* Pip active states */
+        pips.forEach(function (pip, i) {
+          pip.classList.remove('is-active', 'is-past');
+          if (i === n) pip.classList.add('is-active');
+          else if (i < n) pip.classList.add('is-past');
+        });
 
         /* Scroll hint */
         if (n > 0) hint.classList.add('hidden');
@@ -346,15 +438,15 @@
       }
 
       function onScroll() {
-        /* Only activate when on mobile — skip scroll-jack on small screens */
         if (window.innerWidth <= 768) return;
 
-        var rect = outer.getBoundingClientRect();
-        var scrolled = -rect.top; /* how far we've scrolled into the outer div */
+        var rect    = outer.getBoundingClientRect();
+        var scrolled = -rect.top;
+        var maxScroll = outer.offsetHeight - VH;
 
-        if (scrolled < 0 || scrolled > outer.offsetHeight - VH) return;
+        if (scrolled < 0 || scrolled > maxScroll) return;
 
-        var step = Math.floor((scrolled / (outer.offsetHeight - VH)) * STEPS);
+        var step = Math.round((scrolled / maxScroll) * (STEPS - 1));
         setStep(step);
       }
 
