@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Civil Engineering — Georgia Civil</title>
-  <meta name="description" content="Civil Engineering at Georgia Civil — Practical Solutions Built Around Site Operations. Outcomes, services, and one integrated team across planning, surveying, and engineering.">
+  <meta name="description" content="Civil Engineering at Georgia Civil — Practical Solutions Built Around Site Operations.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,125 +13,36 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#020534">
+  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
   <style>
-    /* == CAPABILITY CARD v5 — navy background == */
-
-    body { background: #020534; }
-
+    body { background: #fff; }
     .cardx2-page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
 
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* HERO */
-    .cardx2-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; border-radius: 12px; overflow: hidden; margin-bottom: 0; }
-    .cardx2-hero .hero-text { background: #0a1245; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; border: 1px solid rgba(255,255,255,0.07); }
-    .cardx2-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ca2131; font-weight: 600; }
-    .cardx2-hero h1 { font-size: 2.25rem; font-weight: 700; color: #fff; line-height: 1.15; }
-    .cardx2-hero .vp { font-size: 1.05rem; color: rgba(255,255,255,.7); line-height: 1.5; }
-    .cardx2-hero .d { font-size: .875rem; color: rgba(255,255,255,.45); line-height: 1.65; }
-    .cardx2-hero .visual { background-size: cover; background-position: center; background-color: #0a1245; border: 1px solid rgba(255,255,255,0.07); border-left: none; }
-
-    /* Section shell */
-    .cardx2-sec { margin-bottom: 0; }
-    .cardx2-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.35); font-weight: 600; margin-bottom: .4rem; }
-    .cardx2-eyebrow.red { color: #ca2131; }
-    .cardx2-sec h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; }
-
-    /* CTA button */
-    .btn-card-accent { display: inline-block; background: #ca2131; color: #fff; text-decoration: none; padding: .6rem 1.25rem; border-radius: 6px; font-size: .875rem; font-weight: 600; }
-    .btn-card-accent:hover { background: #a81a28; }
-
-    /* DIVIDER */
-    .cardx2-divider { display: flex; align-items: center; margin: 2.75rem 0; }
-    .cardx2-divider .line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
-    .cardx2-divider .badge { display: flex; align-items: center; gap: .5rem; padding: .4rem 1rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; background: rgba(255,255,255,0.05); white-space: nowrap; }
-    .cardx2-divider .badge svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; }
-    .cardx2-divider .badge span { font-size: .72rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: .06em; text-transform: uppercase; }
-
-    /* OUTCOMES */
-    .outcomes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
-    .oc { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem 1.1rem; background: #fff; text-align: center; transition: border-color .2s; }
-    .oc:hover { border-color: #ca2131; }
-    .oc svg { width: 28px; height: 28px; color: #ca2131; margin: 0 auto .75rem; display: block; }
-    .oc p { font-size: .82rem; color: #444; line-height: 1.4; font-weight: 500; }
-
-    /* SERVICES ACCORDION */
-    .svc-wrap { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
-    .svc-group { border-bottom: 1px solid #eeecec; }
-    .svc-group:last-child { border-bottom: none; }
-    .svc-group-header { display: flex; align-items: center; justify-content: space-between; padding: .95rem 1.25rem; cursor: pointer; background: #fff; font-size: .88rem; font-weight: 600; color: #111; user-select: none; transition: background .2s; }
-    .svc-group-header:hover { background: #fdf4f4; }
-    .svc-group-header .phase-label { display: flex; align-items: center; gap: .6rem; color: #111; }
-    .svc-group-header .phase-icon { width: 17px; height: 17px; color: #ca2131; }
-    .svc-chevron { width: 15px; height: 15px; color: #999; transition: transform .3s; flex-shrink: 0; }
-    .svc-group.open .svc-chevron { transform: rotate(180deg); }
-    .svc-items { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .svc-group.open .svc-items { max-height: 400px; }
-    .svc-item { display: flex; align-items: center; gap: .65rem; padding: .7rem 1.25rem; border-top: 1px solid #f3f1f1; font-size: .84rem; color: #333; }
-    .svc-item svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; }
-
-    /* GCI ADVANTAGE */
-    .advantage-band { background: #0a1245; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-    .advantage-band h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-    .flow-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
-    .step-pill { background: rgba(255,255,255,0.08); color: rgba(255,255,255,.85); padding: .3rem .9rem; border-radius: 20px; font-size: .78rem; font-weight: 600; }
-    .arrow-sep { color: #ca2131; font-size: .85rem; font-weight: 700; }
-    .card-check3 { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .65rem; }
-    .card-check3 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.7); }
-    .card-check3 svg { width: 14px; height: 14px; color: #ca2131; flex-shrink: 0; margin-top: 2px; }
-
-    /* SPOTLIGHT */
-    .spot-card { border-radius: 12px; overflow: hidden; display: grid; grid-template-columns: 1fr 2fr; border: 1px solid rgba(255,255,255,0.08); }
-    .spot-left { background: #0a1245; padding: 2rem 1.75rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,0.08); }
-    .spot-left h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin: .4rem 0 .5rem; line-height: 1.3; }
-    .spot-meta { font-size: .73rem; color: rgba(255,255,255,.35); line-height: 1.6; }
-    .stat-row { display: flex; flex-direction: column; gap: .5rem; margin-top: 1.5rem; }
-    .stat-item .num { font-size: 1.75rem; font-weight: 700; color: #ca2131; line-height: 1; display: block; }
-    .stat-item .lbl { font-size: .68rem; color: rgba(255,255,255,.35); margin-top: .2rem; text-transform: uppercase; letter-spacing: .06em; display: block; }
-    .spot-right { padding: 2rem; display: flex; flex-direction: column; gap: 1rem; background: #fff; }
-    .story-beat { border-left: 2px solid #ca2131; padding-left: 1rem; }
-    .beat-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: #ca2131; font-weight: 600; margin-bottom: .25rem; display: block; }
-    .story-beat p { font-size: .84rem; color: #444; line-height: 1.55; }
-
-    /* INDUSTRIES */
-    .ind-row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: .65rem; }
-    .ind-item2 { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1.1rem .5rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; font-size: .73rem; color: #333; text-align: center; background: #fff; transition: border-color .2s; }
-    .ind-item2:hover { border-color: #ca2131; }
-    .ind-item2 svg { width: 22px; height: 22px; color: #ca2131; }
-
-    /* CTA */
-    .cta-band2 { background: #0a1245; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-    .cta-band2 h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: .35rem 0 1rem; }
-    .cta-meta { display: flex; flex-direction: column; gap: .9rem; }
-    .cta-meta .lab { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.3); display: block; margin-bottom: .15rem; }
-    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.75); font-size: .875rem; text-decoration: none; }
-    .cta-meta a:hover { color: #fff; }
-
-    /* Responsive */
-    @media (max-width: 700px) {
-      .cardx2-hero, .advantage-band, .spot-card, .cta-band2 { grid-template-columns: 1fr; }
-      .cardx2-hero .visual { min-height: 220px; border-left: 1px solid rgba(255,255,255,0.07); border-top: none; }
-      .outcomes-grid { grid-template-columns: 1fr 1fr; }
-    }
+    /* HERO — split panel, red left, photo right */
+    .ce-hero { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 440px; border-radius: 12px; overflow: hidden; border: 1px solid #e2e0db; }
+    .ce-hero .hero-text { background: #CA2131; padding: 3.5rem 2.75rem; display: flex; flex-direction: column; justify-content: center; gap: 1.1rem; position: relative; overflow: hidden; }
+    .ce-hero .hero-text::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 14px); pointer-events: none; }
+    .ce-hero .eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.7); font-weight: 700; font-family: 'Roboto', sans-serif; }
+    .ce-hero h1 { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 700; color: #fff; line-height: 1.1; position: relative; padding-left: 20px; }
+    .ce-hero h1::before { content: ''; position: absolute; left: 0; top: .1em; bottom: .1em; width: 3px; background: rgba(255,255,255,.5); border-radius: 2px; }
+    .ce-hero .vp { font-size: 1rem; color: rgba(255,255,255,.8); line-height: 1.5; }
+    .ce-hero .d { font-size: .84rem; color: rgba(255,255,255,.55); line-height: 1.65; max-width: 40ch; }
+    .ce-hero .visual { background-size: cover; background-position: center; background-color: #0a1245; }
   </style>
 </head>
 <body data-page="card-civil-engineering">
   <div data-header></div>
-
   <div class="cardx2-page">
 
     <!-- HERO -->
-    <section class="cardx2-hero reveal" id="rv0">
+    <section class="ce-hero reveal" id="rv0">
       <div class="hero-text">
         <span class="eyebrow">Practical, Site-Focused Design</span>
         <h1>Civil Engineering</h1>
         <p class="vp">Practical Solutions Built Around Site Operations.</p>
         <p class="d">Construction-focused designs built to work in the field, not just on paper.</p>
-        <a class="btn-card-accent" href="contact.html">Talk with Our Team &rarr;</a>
+        <a class="btn-card-accent" style="background:#fff;color:#CA2131;margin-top:.25rem" href="contact.html">Talk With Our Team &rarr;</a>
       </div>
       <div class="visual" style="background-image:url(assets/img/div-civil-engineering.jpg)" role="img" aria-label="Civil Engineering project imagery"></div>
     </section>
@@ -139,66 +50,39 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal" id="rv1">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        <span>What We Deliver</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>What We Deliver</span></div>
       <div class="line"></div>
     </div>
 
     <!-- OUTCOMES -->
     <section class="cardx2-sec reveal" id="rv2">
       <div class="cardx2-eyebrow">Outcomes</div>
-      <h2>Built to Perform in the Field</h2>
+      <h2>Built To Perform In The Field</h2>
       <div class="outcomes-grid">
-        <div class="oc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>
-          <p>Designs that build cleanly in the field</p>
-        </div>
-        <div class="oc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <p>Fewer change orders and delays</p>
-        </div>
-        <div class="oc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <p>Coordinated, on-time delivery</p>
-        </div>
-        <div class="oc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <p>Performance balanced with cost</p>
-        </div>
-        <div class="oc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          <p>Strong understanding of site operations</p>
-        </div>
-        <div class="oc">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          <p>Practical, construction-focused design</p>
-        </div>
+        <div class="oc"><div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg></div><div class="oc-title">Designs that build cleanly in the field</div><div class="oc-sub">Plans that translate directly to the field</div></div>
+        <div class="oc"><div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="oc-title">Fewer change orders and delays</div><div class="oc-sub">Less rework, fewer delays on site</div></div>
+        <div class="oc"><div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="oc-title">Coordinated, on-time delivery</div><div class="oc-sub">Aligned across all disciplines</div></div>
+        <div class="oc"><div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="oc-title">Performance balanced with cost</div><div class="oc-sub">Value without compromising quality</div></div>
+        <div class="oc"><div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="oc-title">Strong understanding of site operations</div><div class="oc-sub">Designs informed by real site conditions</div></div>
+        <div class="oc"><div class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div class="oc-title">Practical, construction-focused design</div><div class="oc-sub">Built for the build, not just the plan</div></div>
       </div>
     </section>
 
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal" id="rv3">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Services</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Services</span></div>
       <div class="line"></div>
     </div>
 
-    <!-- SERVICES ACCORDION -->
+    <!-- SERVICES -->
     <section class="cardx2-sec reveal" id="rv4">
       <div class="cardx2-eyebrow">Services Snapshot</div>
       <h2>Find Your Need</h2>
       <div class="svc-wrap">
         <div class="svc-group open" id="grp-site">
           <div class="svc-group-header" onclick="toggleGroup('grp-site')" aria-expanded="true">
-            <span class="phase-label">
-              <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              Site design
-            </span>
+            <span class="phase-label"><svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Site Design</span>
             <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </div>
           <div class="svc-items">
@@ -210,10 +94,7 @@
         </div>
         <div class="svc-group" id="grp-infra">
           <div class="svc-group-header" onclick="toggleGroup('grp-infra')" aria-expanded="false">
-            <span class="phase-label">
-              <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 6h18M3 18h18"/></svg>
-              Infrastructure and environmental
-            </span>
+            <span class="phase-label"><svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 6h18M3 18h18"/></svg>Infrastructure And Environmental</span>
             <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </div>
           <div class="svc-items">
@@ -223,10 +104,7 @@
         </div>
         <div class="svc-group" id="grp-admin">
           <div class="svc-group-header" onclick="toggleGroup('grp-admin')" aria-expanded="false">
-            <span class="phase-label">
-              <svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              Construction and permitting
-            </span>
+            <span class="phase-label"><svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Construction And Permitting</span>
             <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </div>
           <div class="svc-items">
@@ -240,24 +118,19 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal" id="rv5">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>The GCI advantage</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>The GCI Advantage</span></div>
       <div class="line"></div>
     </div>
 
-    <!-- GCI ADVANTAGE -->
+    <!-- ADVANTAGE -->
     <section class="cardx2-sec reveal" id="rv6">
       <div class="advantage-band">
         <div>
-          <div class="cardx2-eyebrow red">One team. Three disciplines.</div>
+          <div class="cardx2-eyebrow">One Team. Three Disciplines.</div>
           <h2>Less Friction. Faster Delivery.</h2>
           <div class="flow-steps">
-            <span class="step-pill">Planning</span>
-            <span class="arrow-sep">&rarr;</span>
-            <span class="step-pill">Surveying</span>
-            <span class="arrow-sep">&rarr;</span>
+            <span class="step-pill">Planning</span><span class="arrow-sep">&rarr;</span>
+            <span class="step-pill">Surveying</span><span class="arrow-sep">&rarr;</span>
             <span class="step-pill">Engineering</span>
           </div>
         </div>
@@ -274,10 +147,7 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal" id="rv7">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Project Spotlight</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Project Spotlight</span></div>
       <div class="line"></div>
     </div>
 
@@ -287,27 +157,18 @@
         <div class="spot-left">
           <div>
             <div class="cardx2-eyebrow red">Camp Buckhead</div>
-            <h2>291 acres. Zero public infrastructure.</h2>
+            <h2>291 Acres. Zero Public Infrastructure.</h2>
             <p class="spot-meta">Residential &middot; Thrive More Advisors &middot; Morgan County, GA</p>
           </div>
           <div class="stat-row">
-            <div class="stat-item"><span class="num">291</span><span class="lbl">Acres developed</span></div>
-            <div class="stat-item"><span class="num">31</span><span class="lbl">Lake lots delivered</span></div>
+            <div class="stat-item"><span class="num">291</span><span class="lbl">Acres Developed</span></div>
+            <div class="stat-item"><span class="num">31</span><span class="lbl">Lake Lots Delivered</span></div>
           </div>
         </div>
         <div class="spot-right">
-          <div class="story-beat">
-            <span class="beat-label">Challenge</span>
-            <p>Severe soils ruled out individual septic, with no public sewer or water across 291 acres.</p>
-          </div>
-          <div class="story-beat">
-            <span class="beat-label">Solution</span>
-            <p>Community septic siting with a specialty firm, an off-site connection to Piedmont Water, and weekly construction administration.</p>
-          </div>
-          <div class="story-beat">
-            <span class="beat-label">Result</span>
-            <p>Successful permitting and a cohesive, high-end 31-lake-lot community.</p>
-          </div>
+          <div class="story-beat"><span class="beat-label">Challenge</span><p>Severe soils ruled out individual septic, with no public sewer or water across 291 acres.</p></div>
+          <div class="story-beat"><span class="beat-label">Solution</span><p>Community septic siting with a specialty firm, an off-site connection to Piedmont Water, and weekly construction administration.</p></div>
+          <div class="story-beat"><span class="beat-label">Result</span><p>Successful permitting and a cohesive, high-end 31-lake-lot community.</p></div>
         </div>
       </div>
     </section>
@@ -315,10 +176,7 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal" id="rv9">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-        <span>Industries</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Industries</span></div>
       <div class="line"></div>
     </div>
 
@@ -340,43 +198,33 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal" id="rv11">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Get in Touch</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Get In Touch</span></div>
       <div class="line"></div>
     </div>
 
     <!-- CTA -->
     <section class="cardx2-sec reveal" id="rv12">
       <div class="cta-band2">
-        <div>
-          <div class="cardx2-eyebrow red">Talk With Our Team</div>
-          <h2>Let's Discuss Your Project.</h2>
-          <a class="btn-card-accent" href="contact.html">Schedule a Project Discussion &rarr;</a>
+        <div style="position:relative;z-index:1">
+          <div class="cardx2-eyebrow">Talk With Our Team</div>
+          <h2>Let’s Discuss Your Project.</h2>
+          <a class="btn-card-accent" style="background:#fff;color:#CA2131;margin-top:.5rem" href="contact.html">Schedule a Project Discussion &rarr;</a>
         </div>
         <div class="cta-meta">
           <div><span class="lab">Phone</span><a href="tel:+17063421104">706-342-1104 Ext. 52</a></div>
           <div><span class="lab">Email</span><a href="mailto:jason@georgiacivil.com">jason@georgiacivil.com</a></div>
-          <div><span class="lab">Direct contact</span><span>Jason Brown, President</span></div>
+          <div><span class="lab">Direct Contact</span><span>Jason Brown, President</span></div>
         </div>
       </div>
     </section>
 
   </div>
-
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
   <script>
-    function toggleGroup(id) {
-      const g = document.getElementById(id);
-      const open = g.classList.toggle('open');
-      g.querySelector('.svc-group-header').setAttribute('aria-expanded', open);
-    }
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.07 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    function toggleGroup(id){const g=document.getElementById(id);const open=g.classList.toggle('open');g.querySelector('.svc-group-header').setAttribute('aria-expanded',open);}
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   </script>
 </body>
 </html>
