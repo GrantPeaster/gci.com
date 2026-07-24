@@ -13,19 +13,104 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#020534">
+  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
+  <style>
+    /* == INDEX PAGE OVERRIDES — red primary, navy accent == */
+
+    /* HERO — red gradient overlay matching division flip cards */
+    .hero-slide::after {
+      background: linear-gradient(
+        135deg,
+        rgba(202,33,49,.95) 0%,
+        rgba(202,33,49,.82) 28%,
+        rgba(202,33,49,.45) 58%,
+        rgba(202,33,49,.08) 100%
+      ) !important;
+    }
+
+    /* Hero copy text stays white */
+    .hero-copy h1,
+    .hero-copy p { color: #fff !important; }
+
+    /* Hero CTA — navy with white text */
+    .hero-copy .btn-accent {
+      background: #020534 !important;
+      color: #fff !important;
+      border-color: #020534 !important;
+    }
+    .hero-copy .btn-accent:hover {
+      background: #0a0f57 !important;
+      border-color: #0a0f57 !important;
+    }
+
+    /* Scroll cue stays white */
+    .scroll-cue { color: rgba(255,255,255,.7) !important; }
+    .scroll-cue:hover { color: #fff !important; }
+
+    /* Project name label */
+    .hero-project {
+      color: #fff !important;
+      background: rgba(202,33,49,.55) !important;
+    }
+
+    /* DIVISIONS — flip card front overlay to red */
+    .flip-front { background: #CA2131 !important; }
+    .flip-face .fc-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(202,33,49,.18) 0%,
+        rgba(202,33,49,.88) 100%
+      ) !important;
+    }
+
+    /* Flip back — keep paper background, red bullet dots already set in styles.css */
+    .flip-back { background: var(--paper) !important; }
+    .flip-back li::before { background: #CA2131 !important; }
+    .flip-cta { color: #CA2131 !important; }
+
+    /* NEWS SECTION — red background, white text */
+    .section-blue {
+      background: #CA2131 !important;
+    }
+    .section-blue h2 { color: #fff !important; }
+    .section-blue .lead { color: rgba(255,255,255,.82) !important; }
+
+    /* News cards stay white, navy text */
+    .news-card {
+      background: #fff !important;
+      border-color: rgba(255,255,255,.2) !important;
+      color: #020534 !important;
+    }
+    .news-card .date { color: #787878 !important; }
+    .news-card h3 { color: #020534 !important; }
+    .news-card p { color: #555 !important; }
+    .news-card .more { color: #CA2131 !important; }
+    .news-card:hover { background: #f9f8f6 !important; }
+
+    /* Brand accent bar between sections */
+    .brand-accent-bar {
+      border-color: #CA2131 !important;
+      opacity: .35;
+    }
+
+    /* Topo section background — divisions stay paper/light */
+    .section-topo { background: var(--paper); }
+    .section-topo-dark { background: #CA2131 !important; }
+  </style>
 </head>
 <body data-page="">
   <div data-header></div>
 
-  <!-- HERO: rotating project images + left-aligned pitch + CTA + project name (parens) + scroll cue -->
-<section class="hero" aria-label="Introduction">
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
     <div class="hero-slides">
-      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA"
-           style="background-color:#0a1150;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
-      <div class="hero-slide" data-project="Farmview Market · Madison, GA"
-           style="background-color:#0d1a55;background-image:url(assets/img/hero-farmview.jpg)"></div>
+      <div class="hero-slide active"
+           data-project="Morgan Medical Center · Madison, GA"
+           style="background-color:#7a1020;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
+      <div class="hero-slide"
+           data-project="Farmview Market · Madison, GA"
+           style="background-color:#7a1020;background-image:url(assets/img/hero-farmview.jpg)"></div>
     </div>
     <div class="wrap">
       <div class="hero-copy">
@@ -42,15 +127,16 @@
       </svg>
     </a>
   </section>
-   
-  <!-- SUBSECTION 1: Divisions — flip cards (front = division image, back = 3 points -> division page) -->
+
+  <!-- DIVISIONS -->
   <section id="divisions" class="divisions-feature section-topo">
     <div class="wrap">
       <div class="grid cols-3">
+
         <a class="flip" href="land-planning.html" aria-label="Land Planning">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="fimg" style="background-color:#0a1150;background-image:url(assets/img/div-land-planning.jpg)"></div>
+              <div class="fimg" style="background-color:#7a1020;background-image:url(assets/img/div-land-planning.jpg)"></div>
               <div class="fc-overlay"></div>
               <h3>Land Planning</h3>
             </div>
@@ -69,7 +155,7 @@
         <a class="flip" href="land-surveying.html" aria-label="Land Surveying">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="fimg" style="background-color:#13183f;background-image:url(assets/img/div-land-surveying.jpg)"></div>
+              <div class="fimg" style="background-color:#7a1020;background-image:url(assets/img/div-land-surveying.jpg)"></div>
               <div class="fc-overlay"></div>
               <h3>Land Surveying</h3>
             </div>
@@ -88,7 +174,7 @@
         <a class="flip" href="civil-engineering.html" aria-label="Civil Engineering">
           <div class="flip-inner">
             <div class="flip-face flip-front">
-              <div class="fimg" style="background-color:#241025;background-image:url(assets/img/div-civil-engineering.jpg)"></div>
+              <div class="fimg" style="background-color:#7a1020;background-image:url(assets/img/div-civil-engineering.jpg)"></div>
               <div class="fc-overlay"></div>
               <h3>Civil Engineering</h3>
             </div>
@@ -103,36 +189,37 @@
             </div>
           </div>
         </a>
+
       </div>
     </div>
   </section>
 
-  <!-- SUBSECTION 2: News (LinkedIn) -->
+  <!-- NEWS -->
   <hr class="brand-accent-bar" aria-hidden="true">
   <section class="section-blue section-topo-dark">
     <div class="wrap">
       <div class="split" style="margin-bottom:48px">
         <h2>News</h2>
-        <p class="lead">Project milestones, team news, and what we're learning on the ground. Follow
+        <p class="lead">Project milestones, team news, and what we’re learning on the ground. Follow
           along on LinkedIn for the latest.</p>
       </div>
       <div class="news" id="news-feed">
         <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
           <span class="date">Latest</span>
           <h3>Bana 85 grading plan clears review</h3>
-          <p style="color:var(--ink-55);font-size:.92rem">Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
+          <p>Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
           <span class="more">Read on LinkedIn &rarr;</span>
         </a>
         <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
           <span class="date">Recent</span>
           <h3>Welcoming new survey crew members</h3>
-          <p style="color:var(--ink-55);font-size:.92rem">Growing our LiDAR and field capability to keep pace with active project work.</p>
+          <p>Growing our LiDAR and field capability to keep pace with active project work.</p>
           <span class="more">Read on LinkedIn &rarr;</span>
         </a>
         <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
           <span class="date">Recent</span>
           <h3>Prowell Park master plan refined</h3>
-          <p style="color:var(--ink-55);font-size:.92rem">Balancing drainage, buffering, and neighborhood compatibility while preserving the owner's vision.</p>
+          <p>Balancing drainage, buffering, and neighborhood compatibility while preserving the owner’s vision.</p>
           <span class="more">Read on LinkedIn &rarr;</span>
         </a>
       </div>
