@@ -633,6 +633,215 @@
 
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
+
+  <style>
+    /* ===== NEWS CARD OVERRIDES — uniform text cards, equal height ===== */
+    #news-feed {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    @media (max-width: 860px) {
+      #news-feed { grid-template-columns: 1fr !important; }
+    }
+
+    /* Fixed height so all cards are equal regardless of content length */
+    #news-feed .news-card {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 240px !important;
+      padding: 28px 26px !important;
+      background: #fff !important;
+      border: none !important;
+      border-radius: 2px !important;
+      gap: 0 !important;
+      /* slide animation */
+      transition: transform 0.55s cubic-bezier(.4,0,.2,1), opacity 0.55s ease !important;
+      will-change: transform, opacity;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    /* Subtle red left accent — replaces the corner square */
+    #news-feed .news-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: #CA2131;
+    }
+
+    #news-feed .news-card .date {
+      font-family: 'Roboto', sans-serif !important;
+      font-size: .62rem !important;
+      letter-spacing: .12em !important;
+      text-transform: uppercase !important;
+      color: #CA2131 !important;
+      display: block !important;
+      margin-bottom: 10px !important;
+    }
+
+    #news-feed .news-card h3 {
+      font-family: 'Times New Roman', Times, serif !important;
+      font-size: 1.1rem !important;
+      font-weight: 700 !important;
+      color: #020534 !important;
+      line-height: 1.25 !important;
+      flex: 1 !important;
+      margin: 0 0 10px !important;
+    }
+
+    #news-feed .news-card p {
+      font-size: .82rem !important;
+      color: #555 !important;
+      line-height: 1.5 !important;
+      margin: 0 0 16px !important;
+      flex: 1 !important;
+      /* Clamp to 3 lines so cards stay uniform */
+      display: -webkit-box !important;
+      -webkit-line-clamp: 3 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+
+    #news-feed .news-card .more {
+      font-family: 'Roboto', sans-serif !important;
+      font-size: .65rem !important;
+      font-weight: 700 !important;
+      letter-spacing: .12em !important;
+      text-transform: uppercase !important;
+      color: #CA2131 !important;
+      margin-top: auto !important;
+      display: block !important;
+    }
+
+    #news-feed .news-card:hover {
+      background: #f9f8f6 !important;
+    }
+
+    /* Slide states — driven by JS classes */
+    #news-feed.sliding-out .news-card {
+      transform: translateX(-48px) !important;
+      opacity: 0 !important;
+    }
+    #news-feed.sliding-in .news-card {
+      transform: translateX(48px) !important;
+      opacity: 0 !important;
+      transition: none !important;
+    }
+  </style>
+
+  <script>
+    /* ===== Clean news rotation — slide without layout jump ===== */
+    (function () {
+      var ROTATE_MS = 7000;
+      var SLIDE_MS  = 550;
+      var SLOTS     = 3;
+      var PAGE      = 'https://www.linkedin.com/company/georgia-civil-inc-/';
+
+      var grid = document.getElementById('news-feed');
+      if (!grid) return;
+
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c];
+        });
+      };
+      var fmt = function (d) {
+        return new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+      };
+      var cardHTML = function (p) {
+        return '<a class="news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
+          '<span class="date">' + esc(fmt(p.date)) + '</span>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          '<p>' + esc(p.blurb || '') + '</p>' +
+          '<span class="more">Read on LinkedIn &rarr;</span>' +
+        '</a>';
+      };
+
+      var loadPosts = function () {
+        return fetch('/.netlify/functions/linkedin-news', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .catch(function () { return null; })
+          .then(function (posts) {
+            if (Array.isArray(posts) && posts.length) return posts;
+            return fetch('assets/data/news.json', { cache: 'no-store' })
+              .then(function (r) { return r.ok ? r.json() : []; })
+              .catch(function () { return []; });
+          });
+      };
+
+      var renderSlide = function (posts, start) {
+        var html = '';
+        for (var i = 0; i < Math.min(SLOTS, posts.length); i++) {
+          html += cardHTML(posts[(start + i) % posts.length]);
+        }
+        return html;
+      };
+
+      var slideTo = function (posts, start) {
+        // 1. Slide current cards out to the left
+        grid.classList.add('sliding-out');
+
+        setTimeout(function () {
+          // 2. Snap new cards in from the right (no transition)
+          grid.innerHTML = renderSlide(posts, start);
+          grid.classList.remove('sliding-out');
+          grid.classList.add('sliding-in');
+
+          // Force reflow so the translateX(48px) starting state registers
+          void grid.offsetWidth;
+
+          // 3. Animate new cards into place
+          grid.classList.remove('sliding-in');
+        }, SLIDE_MS);
+      };
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      loadPosts().then(function (all) {
+        var MAX_AGE = 18;
+        var cutoff = new Date();
+        cutoff.setMonth(cutoff.getMonth() - MAX_AGE);
+
+        var posts = all
+          .filter(function (p) {
+            return p && p.date && !isNaN(new Date(p.date)) && new Date(p.date) >= cutoff;
+          })
+          .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+
+        if (!posts.length) return; // keep fallback HTML cards
+
+        // Render first set immediately
+        grid.innerHTML = renderSlide(posts, 0);
+
+        if (posts.length <= SLOTS || reduce) return; // no rotation needed
+
+        var start  = 0;
+        var timer  = null;
+        var paused = false;
+
+        var tick = function () {
+          if (paused) return;
+          start = (start + SLOTS) % posts.length;
+          slideTo(posts, start);
+        };
+
+        var play = function () { if (!timer) timer = setInterval(tick, ROTATE_MS); };
+        var stop = function () { clearInterval(timer); timer = null; };
+
+        grid.addEventListener('mouseenter', function () { paused = true;  stop(); });
+        grid.addEventListener('mouseleave', function () { paused = false; play(); });
+        grid.addEventListener('focusin',    function () { paused = true;  stop(); });
+        grid.addEventListener('focusout',   function () { paused = false; play(); });
+
+        play();
+      });
+    })();
+  </script>
   <script>
     (function () {
       if (!window.matchMedia('(pointer: coarse)').matches) return;
