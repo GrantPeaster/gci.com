@@ -16,29 +16,37 @@
   <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
   <style>
-    /* == INDEX PAGE OVERRIDES — red primary, navy accent == */
+    /* == INDEX PAGE OVERRIDES == */
 
-    /* HERO — full bleed, red tint overlay */
+    /* HERO layout */
     .hero {
       align-items: center;
       justify-content: center;
+      padding-bottom: 8vh;
     }
 
+    /* Very light red tint */
     .hero-slide::after {
-      background: rgba(202,33,49,.42) !important;
+      background: rgba(202,33,49,.18) !important;
     }
 
-    /* Vignette on top of tint for text readability */
+    /* Vignette — darkens top and bottom edges, photo reads in center */
     .hero-slides::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 30%, rgba(100,10,20,.52) 100%);
+      background:
+        linear-gradient(to bottom,
+          rgba(10,5,20,.30) 0%,
+          rgba(10,5,20,.06) 38%,
+          rgba(10,5,20,.10) 62%,
+          rgba(10,5,20,.58) 100%
+        );
       pointer-events: none;
       z-index: 1;
     }
 
-    /* HERO CONTENT — centered */
+    /* Center the wrap content */
     .hero .wrap {
       display: flex;
       align-items: center;
@@ -48,43 +56,40 @@
     }
 
     .hero-copy {
-      text-align: center;
-      max-width: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
+      text-align: center !important;
+      max-width: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 2rem !important;
       margin-left: 0 !important;
+      margin-bottom: 4vh !important;
     }
 
-    /* HEADLINE — Times New Roman, navy text-stroke for outline effect */
+    /* HEADLINE */
     .hero-copy h1 {
       font-family: 'Times New Roman', Times, 'Liberation Serif', serif !important;
-      font-size: clamp(3rem, 7vw, 5.2rem) !important;
+      font-size: clamp(3.2rem, 6.5vw, 5.4rem) !important;
       font-weight: 700 !important;
       color: #fff !important;
       line-height: 1.0 !important;
-      letter-spacing: -.015em !important;
+      letter-spacing: -.01em !important;
       white-space: nowrap !important;
       padding-left: 0 !important;
-      /* Navy outline on white text */
-      -webkit-text-stroke: 1.5px #020534;
-      text-stroke: 1.5px #020534;
+      -webkit-text-stroke: 1.5px rgba(2,5,52,.55);
       paint-order: stroke fill;
+      text-shadow: 0 2px 24px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.25);
     }
-
-    /* Remove the left bar decoration from the current hero h1 */
     .hero-copy h1::before { display: none !important; }
-
     .hero-copy h1 .dot {
-      color: rgba(255,255,255,.5) !important;
-      -webkit-text-stroke: 1.5px rgba(2,5,52,.4);
+      color: rgba(255,255,255,.4) !important;
+      -webkit-text-stroke: 1.5px rgba(2,5,52,.3);
     }
 
-    /* Hide the paragraph subtext */
+    /* Hide subtext */
     .hero-copy p { display: none !important; }
 
-    /* CTA — Roboto all caps, .139em tracking, navy fill, white outline ring */
+    /* CTA */
     .hero-copy .btn-accent {
       font-family: 'Roboto', sans-serif !important;
       font-size: .72rem !important;
@@ -94,39 +99,51 @@
       background: #020534 !important;
       color: #fff !important;
       border-color: #020534 !important;
-      border-radius: 4px !important;
-      padding: .7rem 1.75rem !important;
-      outline: 2px solid rgba(255,255,255,.35) !important;
+      border-radius: 3px !important;
+      padding: .72rem 1.9rem !important;
+      outline: 1.5px solid rgba(255,255,255,.4) !important;
       outline-offset: 5px !important;
       transition: background .2s, outline-color .2s !important;
       display: inline-block !important;
     }
     .hero-copy .btn-accent:hover {
       background: #0a0f57 !important;
-      outline-color: rgba(255,255,255,.65) !important;
+      outline-color: rgba(255,255,255,.75) !important;
     }
 
-    /* Project label — Roboto, .139em */
+    /* Project label */
     .hero-project {
       font-family: 'Roboto', sans-serif !important;
-      font-size: .6rem !important;
+      font-size: .58rem !important;
       letter-spacing: .139em !important;
       text-transform: uppercase !important;
-      color: rgba(255,255,255,.45) !important;
-      background: rgba(0,0,0,.2) !important;
-      padding: 5px 10px !important;
+      color: rgba(255,255,255,.55) !important;
+      background: rgba(0,0,0,.25) !important;
+      padding: 5px 11px !important;
       border-radius: 3px !important;
     }
 
-    /* SLIDE INDICATOR DOTS */
+    /* Thin red rule anchoring hero bottom */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #CA2131;
+      z-index: 10;
+    }
+
+    /* SLIDE DOTS */
     .hero-dots {
       position: absolute;
-      bottom: 20px;
+      bottom: 22px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
       display: flex;
-      gap: 6px;
+      gap: 7px;
       align-items: center;
     }
     .hero-dot {
@@ -134,16 +151,18 @@
       height: 6px;
       border-radius: 50%;
       background: rgba(255,255,255,.3);
-      transition: all .3s ease;
+      border: none;
       cursor: pointer;
+      padding: 0;
+      transition: all .3s ease;
     }
     .hero-dot.active {
       background: #fff;
-      width: 18px;
+      width: 20px;
       border-radius: 3px;
     }
 
-    /* DIVISIONS — flip card overlay red */
+    /* DIVISIONS — red overlay on flip fronts */
     .flip-front { background: #CA2131 !important; }
     .flip-face .fc-overlay {
       background: linear-gradient(
@@ -161,10 +180,10 @@
     .section-blue h2 { color: #fff !important; }
     .section-blue .lead { color: rgba(255,255,255,.82) !important; }
 
-    /* News cards stay white */
+    /* News cards — stay white */
     .news-card {
       background: #fff !important;
-      border-color: rgba(255,255,255,.2) !important;
+      border-color: rgba(255,255,255,.15) !important;
     }
     .news-card .date { color: #787878 !important; }
     .news-card h3 { color: #020534 !important; }
@@ -172,7 +191,7 @@
     .news-card .more { color: #CA2131 !important; }
     .news-card:hover { background: #f9f8f6 !important; }
 
-    .brand-accent-bar { border-color: rgba(255,255,255,.25) !important; }
+    .brand-accent-bar { border-color: rgba(255,255,255,.2) !important; }
     .section-topo { background: var(--paper); }
   </style>
 </head>
@@ -197,7 +216,6 @@
       </div>
     </div>
 
-    <!-- Slide indicator dots (synced by main.js addition) -->
     <div class="hero-dots" id="hero-dots" aria-hidden="true"></div>
 
     <p class="hero-project" aria-live="polite">Morgan Medical Center · Madison, GA</p>
