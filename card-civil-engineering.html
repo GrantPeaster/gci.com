@@ -27,15 +27,13 @@
       gap: .65rem;
     }
 
-    /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* CONTOUR TEXTURE */
     .tx  { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, transparent 1px 12px); }
     .tx2 { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 10px); }
 
-    /* RED BOX BASE */
+    /* RED BOX */
     .rb {
       background: #CA2131;
       border-radius: 10px;
@@ -116,46 +114,40 @@
 
     /* BUTTONS */
     .btn-white {
-      display: inline-block;
-      background: #fff;
-      color: #CA2131;
-      padding: .55rem 1.2rem;
-      border-radius: 4px;
-      font-size: .74rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      font-family: 'Roboto', sans-serif;
-      text-decoration: none;
-      width: fit-content;
+      display: inline-block !important;
+      background: #fff !important;
+      color: #CA2131 !important;
+      padding: .55rem 1.2rem !important;
+      border-radius: 4px !important;
+      font-size: .74rem !important;
+      font-weight: 700 !important;
+      letter-spacing: .06em !important;
+      text-transform: uppercase !important;
+      font-family: 'Roboto', sans-serif !important;
+      text-decoration: none !important;
+      width: fit-content !important;
     }
     .btn-navy {
-      display: inline-block;
-      background: #020534;
-      color: #fff;
-      padding: .55rem 1.2rem;
-      border-radius: 4px;
-      font-size: .74rem;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      font-family: 'Roboto', sans-serif;
-      text-decoration: none;
-      width: fit-content;
+      display: inline-block !important;
+      background: #020534 !important;
+      color: #fff !important;
+      padding: .55rem 1.2rem !important;
+      border-radius: 4px !important;
+      font-size: .74rem !important;
+      font-weight: 700 !important;
+      letter-spacing: .06em !important;
+      text-transform: uppercase !important;
+      font-family: 'Roboto', sans-serif !important;
+      text-decoration: none !important;
+      width: fit-content !important;
     }
-    .btn-navy:hover { background: #0a0f57; }
+    .btn-navy:hover { background: #0a0f57 !important; }
 
     /* BRASS DIVIDER */
-    .cardx2-divider {
-      display: flex;
-      align-items: center;
-      margin: .1rem 0;
-    }
-    .cardx2-divider .line { flex: 1; height: 1px; background: #B18750; opacity: .35; }
+    .cardx2-divider { display: flex; align-items: center; margin: .1rem 0; }
+    .cardx2-divider .line { flex: 1; height: 1px; background: #B18750; opacity: .4; }
     .cardx2-divider .badge {
-      display: flex;
-      align-items: center;
-      gap: .45rem;
+      display: flex; align-items: center; gap: .45rem;
       padding: .3rem .9rem;
       border: 1px solid #B18750;
       border-radius: 20px;
@@ -164,16 +156,13 @@
     }
     .cardx2-divider .badge svg { width: 12px; height: 12px; color: #B18750; flex-shrink: 0; }
     .cardx2-divider .badge span {
-      font-size: .65rem;
-      font-weight: 700;
-      color: #B18750;
-      letter-spacing: .09em;
-      text-transform: uppercase;
+      font-size: .65rem; font-weight: 700; color: #B18750;
+      letter-spacing: .09em; text-transform: uppercase;
       font-family: 'Roboto', sans-serif;
     }
 
-    /* OUTCOMES — frosted cards inside red box */
-    .oc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-top: .9rem; }
+    /* OUTCOMES */
+    .oc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; margin-top: .9rem; }
     .oc {
       background: rgba(255,255,255,.12);
       border-radius: 8px;
@@ -191,45 +180,78 @@
     .oc-title { font-size: .78rem; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: .15rem; }
     .oc-sub   { font-size: .7rem; color: rgba(255,255,255,.5); line-height: 1.35; }
 
-    /* SERVICES — accordion inside red box */
-    .svc-wrap {
+    /* SERVICES ACCORDION — fully self-contained, overrides styles.css */
+    .ce-svc-wrap {
       margin-top: .9rem;
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.2);
     }
-    .svc-group { border-bottom: 1px solid rgba(255,255,255,.1); }
-    .svc-group:last-child { border-bottom: none; }
-    .svc-group-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .75rem 1rem; cursor: pointer;
-      background: rgba(255,255,255,.08);
-      font-size: .82rem; font-weight: 700; color: #fff;
-      user-select: none; transition: background .2s;
+    .ce-svc-group {
+      border-bottom: 1px solid rgba(255,255,255,.12);
     }
-    .svc-group-header:hover { background: rgba(255,255,255,.14); }
-    .svc-group-header .phase-label { display: flex; align-items: center; gap: .5rem; }
-    .svc-group-header .phase-icon { width: 14px; height: 14px; color: rgba(255,255,255,.6); }
-    .svc-chevron { width: 13px; height: 13px; color: rgba(255,255,255,.4); transition: transform .3s; flex-shrink: 0; }
-    .svc-group.open .svc-chevron { transform: rotate(180deg); }
-    .svc-items { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .svc-group.open .svc-items { max-height: 300px; }
-    .svc-item {
-      display: flex; align-items: center; gap: .55rem;
-      padding: .55rem 1rem;
-      border-top: 1px solid rgba(255,255,255,.07);
-      font-size: .8rem; color: rgba(255,255,255,.75);
-    }
-    .svc-item svg { width: 12px; height: 12px; color: rgba(255,255,255,.4); flex-shrink: 0; }
+    .ce-svc-group:last-child { border-bottom: none; }
 
-    /* ADVANTAGE — split layout */
+    .ce-svc-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: .8rem 1.1rem !important;
+      cursor: pointer !important;
+      background: rgba(255,255,255,.1) !important;
+      font-size: .82rem !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      user-select: none !important;
+      transition: background .2s !important;
+      border: none !important;
+      width: 100% !important;
+      text-align: left !important;
+      list-style: none !important;
+    }
+    .ce-svc-header:hover { background: rgba(255,255,255,.16) !important; }
+
+    .ce-phase-label {
+      display: flex !important;
+      align-items: center !important;
+      gap: .5rem !important;
+      color: #fff !important;
+    }
+    .ce-phase-label svg { width: 14px; height: 14px; color: rgba(255,255,255,.65); flex-shrink: 0; }
+
+    .ce-chevron {
+      width: 13px; height: 13px;
+      color: rgba(255,255,255,.45);
+      transition: transform .3s;
+      flex-shrink: 0;
+    }
+    .ce-svc-group.open .ce-chevron { transform: rotate(180deg); }
+
+    .ce-svc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+    .ce-svc-group.open .ce-svc-body { max-height: 400px; }
+
+    .ce-svc-item {
+      display: flex !important;
+      align-items: center !important;
+      gap: .55rem !important;
+      padding: .6rem 1.1rem !important;
+      border-top: 1px solid rgba(255,255,255,.08) !important;
+      font-size: .8rem !important;
+      color: rgba(255,255,255,.82) !important;
+      background: rgba(0,0,0,.12) !important;
+    }
+    .ce-svc-item svg { width: 12px; height: 12px; color: rgba(255,255,255,.4); flex-shrink: 0; }
+
+    /* ADVANTAGE */
     .adv-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: .5rem; }
     .adv-flow { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; margin-top: .6rem; }
     .adv-fp {
-      background: rgba(255,255,255,.15);
-      color: #fff;
-      padding: .25rem .7rem;
-      border-radius: 3px;
+      background: rgba(255,255,255,.15); color: #fff;
+      padding: .25rem .7rem; border-radius: 3px;
       font-size: .7rem; font-weight: 700;
       letter-spacing: .05em; text-transform: uppercase;
       font-family: 'Roboto', sans-serif;
@@ -239,13 +261,11 @@
       background: rgba(0,0,0,.15);
       border-radius: 6px;
       padding: 1.1rem 1.25rem;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .adv-panel::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, transparent 1px 10px);
       pointer-events: none;
     }
@@ -254,44 +274,84 @@
     .check-list li { display: flex; align-items: flex-start; gap: .5rem; font-size: .8rem; color: rgba(255,255,255,.8); }
     .check-list svg { width: 12px; height: 12px; color: rgba(255,255,255,.55); flex-shrink: 0; margin-top: 3px; }
 
-    /* SPOTLIGHT — inner two-tone panel */
-    .spot-inner {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: .5rem;
-      border: 1px solid rgba(255,255,255,.12);
+    /* SPOTLIGHT — fully explicit, no inheritance issues */
+    .ce-spot {
+      display: grid !important;
+      grid-template-columns: 1fr 2fr !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+      margin-top: .5rem !important;
+      border: 1px solid rgba(255,255,255,.15) !important;
     }
-    .spot-lft {
-      background: rgba(0,0,0,.25);
-      padding: 1.4rem 1.5rem;
-      display: flex; flex-direction: column; justify-content: space-between;
+    .ce-spot-left {
+      background: rgba(0,0,0,.28) !important;
+      padding: 1.4rem 1.5rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
     }
-    .spot-lft h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin: .3rem 0 .3rem; line-height: 1.2; }
-    .spot-lft .spot-meta { font-size: .68rem; color: rgba(255,255,255,.35); }
-    .spot-stats { display: flex; flex-direction: column; gap: .4rem; margin-top: 1rem; }
-    .sstat .num { font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; display: block; }
-    .sstat .lbl { font-size: .62rem; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .07em; font-family: 'Roboto', sans-serif; }
-    .spot-rgt {
-      background: rgba(255,255,255,.1);
-      padding: 1.4rem 1.5rem;
-      display: flex; flex-direction: column; gap: .8rem;
+    .ce-spot-left h3 {
+      font-size: 1.05rem !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      margin: .3rem 0 .3rem !important;
+      line-height: 1.2 !important;
+      font-family: 'Montserrat', sans-serif !important;
     }
-    .story-beat { border-left: 2px solid rgba(255,255,255,.3); padding-left: .8rem; }
-    .beat-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.55); font-weight: 700; font-family: 'Roboto', sans-serif; margin-bottom: .2rem; display: block; }
-    .story-beat p { font-size: .78rem; color: rgba(255,255,255,.75); line-height: 1.5; }
+    .ce-spot-meta { font-size: .68rem !important; color: rgba(255,255,255,.38) !important; margin: 0 !important; }
+    .ce-spot-stats { display: flex; flex-direction: column; gap: .4rem; margin-top: 1.1rem; }
+    .ce-sstat .num {
+      font-size: 1.6rem !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      line-height: 1 !important;
+      display: block !important;
+      font-family: 'Montserrat', sans-serif !important;
+    }
+    .ce-sstat .lbl {
+      font-size: .62rem !important;
+      color: rgba(255,255,255,.38) !important;
+      text-transform: uppercase !important;
+      letter-spacing: .07em !important;
+      font-family: 'Roboto', sans-serif !important;
+    }
+    .ce-spot-right {
+      background: rgba(255,255,255,.1) !important;
+      padding: 1.4rem 1.5rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: .85rem !important;
+    }
+    .ce-beat {
+      border-left: 2px solid rgba(255,255,255,.3) !important;
+      padding-left: .85rem !important;
+    }
+    .ce-beat-label {
+      font-size: .65rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: .1em !important;
+      color: rgba(255,255,255,.52) !important;
+      font-weight: 700 !important;
+      font-family: 'Roboto', sans-serif !important;
+      margin-bottom: .2rem !important;
+      display: block !important;
+    }
+    .ce-beat p {
+      font-size: .78rem !important;
+      color: rgba(255,255,255,.78) !important;
+      line-height: 1.5 !important;
+      margin: 0 !important;
+      max-width: none !important;
+    }
 
-    /* INDUSTRIES — icon tiles inside red box */
-    .ind-row2 { display: grid; grid-template-columns: repeat(7, 1fr); gap: .4rem; margin-top: .9rem; }
+    /* INDUSTRIES */
+    .ind-row2 { display: grid; grid-template-columns: repeat(7,1fr); gap: .4rem; margin-top: .9rem; }
     .ind-item2 {
-      background: rgba(255,255,255,.1);
-      border-radius: 8px;
+      background: rgba(255,255,255,.1); border-radius: 8px;
       padding: .8rem .3rem;
       display: flex; flex-direction: column; align-items: center; gap: .35rem;
       font-size: .67rem; color: rgba(255,255,255,.7); text-align: center;
-      border: 1px solid rgba(255,255,255,.1);
-      transition: background .2s;
+      border: 1px solid rgba(255,255,255,.1); transition: background .2s;
     }
     .ind-item2:hover { background: rgba(255,255,255,.18); }
     .ind-item2 svg { width: 18px; height: 18px; color: rgba(255,255,255,.8); }
@@ -305,12 +365,11 @@
     .cta-meta a, .cta-meta span { color: rgba(255,255,255,.82); font-size: .82rem; text-decoration: none; }
     .cta-meta a:hover { color: #fff; }
 
-    /* Responsive */
     @media (max-width: 700px) {
-      .ce-hero, .adv-split, .spot-inner, .cta-inner { grid-template-columns: 1fr; }
+      .ce-hero, .adv-split, .ce-spot, .cta-inner { grid-template-columns: 1fr; }
       .ce-hero .visual { min-height: 200px; }
       .oc-grid { grid-template-columns: 1fr 1fr; }
-      .ind-row2 { grid-template-columns: repeat(4, 1fr); }
+      .ind-row2 { grid-template-columns: repeat(4,1fr); }
     }
   </style>
 </head>
@@ -334,10 +393,7 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        <span>What We Deliver</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>What We Deliver</span></div>
       <div class="line"></div>
     </div>
 
@@ -358,65 +414,72 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Services</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Services</span></div>
       <div class="line"></div>
     </div>
 
-    <!-- SERVICES -->
+    <!-- SERVICES — uses ce-svc-* classes throughout to avoid styles.css conflicts -->
     <section class="rb reveal" id="rv4">
       <div class="rb-eyebrow">Services Snapshot</div>
       <h2>Find Your Need</h2>
-      <div class="svc-wrap">
-        <div class="svc-group open" id="grp-site">
-          <div class="svc-group-header" onclick="toggleGroup('grp-site')" aria-expanded="true">
-            <span class="phase-label"><svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Site Design</span>
-            <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      <div class="ce-svc-wrap">
+
+        <div class="ce-svc-group open" id="grp-site">
+          <div class="ce-svc-header" onclick="tog('grp-site')" aria-expanded="true">
+            <span class="ce-phase-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Site Design
+            </span>
+            <svg class="ce-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </div>
-          <div class="svc-items">
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Site Development Design</div>
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>Grading Plans</div>
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M6.34 6.34 3.51 3.51M2 12H6M6.34 17.66l-2.83 2.83M12 22v-4M17.66 17.66l2.83 2.83M22 12h-4M17.66 6.34l2.83-2.83"/></svg>Drainage Design</div>
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20"/></svg>Stormwater Management</div>
-          </div>
-        </div>
-        <div class="svc-group" id="grp-infra">
-          <div class="svc-group-header" onclick="toggleGroup('grp-infra')" aria-expanded="false">
-            <span class="phase-label"><svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 6h18M3 18h18"/></svg>Infrastructure and Environmental</span>
-            <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="svc-items">
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Utility Design</div>
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 12 8 9 8 5a4 4 0 0 1 8 0c0 4-4 7-4 7z"/></svg>Erosion Control</div>
+          <div class="ce-svc-body">
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Site Development Design</div>
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>Grading Plans</div>
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M6.34 6.34 3.51 3.51M2 12H6M6.34 17.66l-2.83 2.83M12 22v-4M17.66 17.66l2.83 2.83M22 12h-4M17.66 6.34l2.83-2.83"/></svg>Drainage Design</div>
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20"/></svg>Stormwater Management</div>
           </div>
         </div>
-        <div class="svc-group" id="grp-admin">
-          <div class="svc-group-header" onclick="toggleGroup('grp-admin')" aria-expanded="false">
-            <span class="phase-label"><svg class="phase-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Construction and Permitting</span>
-            <svg class="svc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+
+        <div class="ce-svc-group" id="grp-infra">
+          <div class="ce-svc-header" onclick="tog('grp-infra')" aria-expanded="false">
+            <span class="ce-phase-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18M18 3v18M3 6h18M3 18h18"/></svg>
+              Infrastructure and Environmental
+            </span>
+            <svg class="ce-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </div>
-          <div class="svc-items">
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>Construction Administration</div>
-            <div class="svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Permitting Support</div>
+          <div class="ce-svc-body">
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>Utility Design</div>
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 12 8 9 8 5a4 4 0 0 1 8 0c0 4-4 7-4 7z"/></svg>Erosion Control</div>
           </div>
         </div>
+
+        <div class="ce-svc-group" id="grp-admin">
+          <div class="ce-svc-header" onclick="tog('grp-admin')" aria-expanded="false">
+            <span class="ce-phase-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Construction and Permitting
+            </span>
+            <svg class="ce-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="ce-svc-body">
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>Construction Administration</div>
+            <div class="ce-svc-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Permitting Support</div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>The GCI Advantage</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>The GCI Advantage</span></div>
       <div class="line"></div>
     </div>
 
     <!-- ADVANTAGE -->
-    <section class="rb reveal" id="rv6" style="padding:1.75rem 2rem">
+    <section class="rb reveal" id="rv6">
       <div class="rb-eyebrow">One Team. Three Disciplines.</div>
       <h2>Less Friction. Faster Delivery.</h2>
       <div class="adv-split">
@@ -426,7 +489,7 @@
             <span class="adv-fp">Surveying</span><span class="adv-fa">&rarr;</span>
             <span class="adv-fp">Engineering</span>
           </div>
-          <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:.85rem">When planning, surveying, and engineering share one team, projects move faster with fewer gaps and less rework.</p>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:.85rem;max-width:none">When planning, surveying, and engineering share one team, projects move faster with fewer gaps and less rework.</p>
         </div>
         <div class="adv-panel">
           <div class="adv-panel-inner">
@@ -445,32 +508,38 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Project Spotlight</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Project Spotlight</span></div>
       <div class="line"></div>
     </div>
 
-    <!-- SPOTLIGHT -->
-    <section class="rb tx2 reveal" id="rv8" style="padding:1.75rem 2rem">
+    <!-- SPOTLIGHT — uses ce-spot-* classes to avoid all inheritance issues -->
+    <section class="rb tx2 reveal" id="rv8">
       <div class="rb-eyebrow">Project Spotlight</div>
       <h2>Camp Buckhead</h2>
-      <div class="spot-inner">
-        <div class="spot-lft">
+      <div class="ce-spot">
+        <div class="ce-spot-left">
           <div>
             <h3>291 Acres. Zero Public Infrastructure.</h3>
-            <p class="spot-meta">Residential &middot; Thrive More Advisors &middot; Morgan County, GA</p>
+            <p class="ce-spot-meta">Residential &middot; Thrive More Advisors &middot; Morgan County, GA</p>
           </div>
-          <div class="spot-stats">
-            <div class="sstat"><span class="num">291</span><span class="lbl">Acres Developed</span></div>
-            <div class="sstat"><span class="num">31</span><span class="lbl">Lake Lots Delivered</span></div>
+          <div class="ce-spot-stats">
+            <div class="ce-sstat"><span class="num">291</span><span class="lbl">Acres Developed</span></div>
+            <div class="ce-sstat"><span class="num">31</span><span class="lbl">Lake Lots Delivered</span></div>
           </div>
         </div>
-        <div class="spot-rgt">
-          <div class="story-beat"><span class="beat-label">Challenge</span><p>Severe soils ruled out individual septic, with no public sewer or water across 291 acres.</p></div>
-          <div class="story-beat"><span class="beat-label">Solution</span><p>Community septic siting with a specialty firm, an off-site connection to Piedmont Water, and weekly construction administration.</p></div>
-          <div class="story-beat"><span class="beat-label">Result</span><p>Successful permitting and a cohesive, high-end 31-lake-lot community.</p></div>
+        <div class="ce-spot-right">
+          <div class="ce-beat">
+            <span class="ce-beat-label">Challenge</span>
+            <p>Severe soils ruled out individual septic, with no public sewer or water across 291 acres.</p>
+          </div>
+          <div class="ce-beat">
+            <span class="ce-beat-label">Solution</span>
+            <p>Community septic siting with a specialty firm, an off-site connection to Piedmont Water, and weekly construction administration.</p>
+          </div>
+          <div class="ce-beat">
+            <span class="ce-beat-label">Result</span>
+            <p>Successful permitting and a cohesive, high-end 31-lake-lot community.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -478,15 +547,12 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-        <span>Industries</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Industries</span></div>
       <div class="line"></div>
     </div>
 
     <!-- INDUSTRIES -->
-    <section class="rb reveal" id="rv10" style="padding:1.75rem 2rem">
+    <section class="rb reveal" id="rv10">
       <div class="rb-eyebrow">Industries We Serve</div>
       <h2>Who We Work With</h2>
       <div class="ind-row2">
@@ -503,15 +569,12 @@
     <!-- DIVIDER -->
     <div class="cardx2-divider reveal">
       <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Get In Touch</span>
-      </div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Get In Touch</span></div>
       <div class="line"></div>
     </div>
 
     <!-- CTA -->
-    <section class="rb tx reveal" id="rv12" style="padding:1.75rem 2rem;overflow:hidden">
+    <section class="rb tx reveal" id="rv12" style="overflow:hidden">
       <div class="cta-circle-lg"></div>
       <div class="cta-circle-sm"></div>
       <div class="cta-inner">
@@ -533,15 +596,15 @@
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
   <script>
-    function toggleGroup(id){
-      const g=document.getElementById(id);
-      const open=g.classList.toggle('open');
-      g.querySelector('.svc-group-header').setAttribute('aria-expanded',open);
+    function tog(id) {
+      const g = document.getElementById(id);
+      const open = g.classList.toggle('open');
+      g.querySelector('.ce-svc-header').setAttribute('aria-expanded', open);
     }
-    const obs=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-    },{threshold:0.06});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
