@@ -314,3 +314,52 @@ document.addEventListener('DOMContentLoaded', () => {
   flipCardsOnScroll();
   renderNews();
 });
+/* =============================================================
+   HERO SLIDE DOTS — append this block to the bottom of main.js
+   ============================================================= */
+
+(function () {
+  const slides   = document.querySelectorAll('.hero-slide');
+  const dotsWrap = document.getElementById('hero-dots');
+
+  if (!slides.length || !dotsWrap) return;
+
+  /* Build a dot per slide */
+  const dots = Array.from(slides).map((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'hero-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', () => goToSlide(i));
+    dotsWrap.appendChild(d);
+    return d;
+  });
+
+  /* Sync dots whenever the carousel advances.
+     Watches for the class change your existing main.js makes on .hero-slide */
+  function syncDots() {
+    slides.forEach((slide, i) => {
+      dots[i].classList.toggle('active', slide.classList.contains('active'));
+    });
+  }
+
+  /* MutationObserver watches .hero-slide class changes */
+  const obs = new MutationObserver(syncDots);
+  slides.forEach(slide => {
+    obs.observe(slide, { attributes: true, attributeFilter: ['class'] });
+  });
+
+  /* Optional: clicking a dot can also trigger the existing carousel.
+     If your main.js exposes a goToSlide(index) function, call it here.
+     Otherwise this manual fallback handles it. */
+  function goToSlide(index) {
+    const projectLabel = document.querySelector('.hero-project');
+    slides.forEach((slide, i) => {
+      const active = i === index;
+      slide.classList.toggle('active', active);
+      if (active && projectLabel) {
+        projectLabel.textContent = slide.dataset.project || '';
+      }
+    });
+    syncDots();
+  }
+})();
