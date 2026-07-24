@@ -104,16 +104,15 @@
     }
     .contact-layout {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: clamp(40px, 7vw, 100px);
+      grid-template-columns: 1fr 1.6fr;
+      gap: clamp(40px, 7vw, 96px);
       align-items: start;
     }
     @media (max-width: 860px) {
       .contact-layout { grid-template-columns: 1fr; }
     }
 
-    /* Left — context column */
-    .contact-context {}
+    /* Left column — heading + selector */
     .contact-context .eyebrow { margin-bottom: .6rem; }
     .contact-context h2 {
       font-family: 'Times New Roman', Times, serif;
@@ -122,13 +121,13 @@
       color: var(--blue);
       line-height: 1.1;
       transform: none;
-      margin: 0 0 1.1rem;
+      margin: 0 0 .8rem;
     }
     .contact-context p {
-      font-size: .95rem;
+      font-size: .92rem;
       color: var(--ink-55);
       line-height: 1.65;
-      margin: 0 0 2rem;
+      margin: 0 0 1.8rem;
       max-width: 38ch;
     }
 
@@ -137,14 +136,13 @@
     /* ── Form ── */
     .contact-form-wrap {}
 
-    /* Discipline accordion selector */
+    /* Discipline selector — lives in left column now */
     .disc-selector {
       display: flex;
       flex-direction: column;
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
-      margin-bottom: 28px;
     }
     .disc-option {
       background: #fff;
@@ -162,13 +160,7 @@
     .disc-option-inner {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       padding: 16px 18px;
-      gap: 12px;
-    }
-    .disc-option-left {
-      display: flex;
-      align-items: center;
       gap: 12px;
     }
     /* Radio indicator */
@@ -190,12 +182,9 @@
       opacity: 0;
       transition: opacity .15s;
     }
-    .disc-option.selected .disc-radio {
-      border-color: var(--red);
-    }
-    .disc-option.selected .disc-radio::after {
-      opacity: 1;
-    }
+    .disc-option.selected .disc-radio { border-color: var(--red); }
+    .disc-option.selected .disc-radio::after { opacity: 1; }
+
     .disc-label {
       font-family: 'Roboto', sans-serif;
       font-size: .78rem;
@@ -205,17 +194,6 @@
       color: var(--blue);
     }
     .disc-option.selected .disc-label { color: var(--red); }
-
-    .disc-chevron {
-      width: 14px; height: 14px;
-      color: var(--gray);
-      transition: transform .25s;
-      flex-shrink: 0;
-    }
-    .disc-option.selected .disc-chevron {
-      transform: rotate(180deg);
-      color: var(--red);
-    }
 
 
 
@@ -357,61 +335,39 @@
   <section class="contact-body">
     <div class="wrap contact-layout">
 
-      <!-- Left: context -->
+      <!-- Left: heading + discipline selector -->
       <div class="contact-context">
         <span class="eyebrow">Contact</span>
         <h2>Tell us about your site.</h2>
-        <p>Select a discipline, fill in a few details, and a principal will follow up promptly.</p>
-      </div>
+        <p>Select a discipline and a principal will follow up promptly.</p>
 
-      <!-- Right: form -->
-      <div class="contact-form-wrap">
-
-        <!-- Discipline selector -->
         <div class="disc-selector" id="disc-selector" role="group" aria-label="Select a discipline">
-
-          <!-- Land Planning -->
           <button class="disc-option selected" type="button" data-discipline="Land Planning"
             data-to="todd@georgiacivil.com,chelsea@georgiacivil.com">
             <div class="disc-option-inner">
-              <div class="disc-option-left">
-                <span class="disc-radio"></span>
-                <span class="disc-label">Land Planning</span>
-              </div>
-              <svg class="disc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
+              <span class="disc-radio"></span>
+              <span class="disc-label">Land Planning</span>
             </div>
           </button>
-          <!-- Civil Engineering -->
           <button class="disc-option" type="button" data-discipline="Civil Engineering"
             data-to="jason@georgiacivil.com,chelsea@georgiacivil.com">
             <div class="disc-option-inner">
-              <div class="disc-option-left">
-                <span class="disc-radio"></span>
-                <span class="disc-label">Civil Engineering</span>
-              </div>
-              <svg class="disc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
+              <span class="disc-radio"></span>
+              <span class="disc-label">Civil Engineering</span>
             </div>
           </button>
-
-          <!-- Land Surveying -->
           <button class="disc-option" type="button" data-discipline="Land Surveying"
             data-to="brandon@georgiacivil.com,stephanie@georgiacivil.com">
             <div class="disc-option-inner">
-              <div class="disc-option-left">
-                <span class="disc-radio"></span>
-                <span class="disc-label">Land Surveying</span>
-              </div>
-              <svg class="disc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9"/>
-              </svg>
+              <span class="disc-radio"></span>
+              <span class="disc-label">Land Surveying</span>
             </div>
           </button>
-
         </div>
+      </div>
+
+      <!-- Right: form fields -->
+      <div class="contact-form-wrap">
 
         <!-- Contact form -->
         <form class="contact-fields" id="contact-form"
@@ -448,7 +404,7 @@
 
           <div>
             <label for="message">How can we help?</label>
-            <textarea id="message" name="message" rows="5" required placeholder="Brief description of your project or question"></textarea>
+            <textarea id="message" name="message" rows="6" required placeholder="Brief description of your project or question"></textarea>
           </div>
 
           <div class="contact-submit">
@@ -459,7 +415,7 @@
           <p class="err-msg" id="form-err" style="display:none"></p>
         </form>
 
-        <!-- Success state (hidden until submission) -->
+        <!-- Success state -->
         <div class="form-success" id="form-success" style="display:none">
           <strong>Message sent.</strong>
           Thank you — a member of the Georgia Civil team will be in touch shortly. If your matter is urgent, call us directly at <a href="tel:+17063421104" style="color:var(--red);">706-342-1104</a>.
