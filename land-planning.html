@@ -253,19 +253,109 @@
       50%      { transform: translateY(5px); }
     }
 
-    /* ── Mobile ── */
+    /* ── Mobile hero fix ── */
+    @media (max-width: 768px) {
+      .lp-hero::before {
+        background: rgba(202,33,49,.82) !important;
+      }
+      .lp-hero-copy .btn-accent {
+        width: auto !important;
+        align-self: flex-start;
+      }
+    }
+
+    /* ── Mobile process — carousel ── */
     @media (max-width: 768px) {
       .proc-outer  { height: auto !important; }
-      .proc-sticky { position: relative; height: auto; padding-bottom: clamp(48px,8vw,80px); }
+
+      .proc-sticky {
+        position: relative !important;
+        height: auto !important;
+        padding-bottom: 0 !important;
+      }
+
+      /* Progress bar stays, but labels hide */
+      .proc-step-short { display: none; }
+      .proc-bar { padding-bottom: clamp(16px,3vw,24px); }
+
+      /* Content area — fixed height, clips overflow for carousel */
+      .proc-content {
+        height: 72vw;
+        min-height: 320px;
+        max-height: 480px;
+      }
+
+      /* Steps stay absolute, carousel JS drives them */
       .proc-step {
         grid-template-columns: 1fr;
-        padding: clamp(24px,5vw,40px) clamp(20px,5vw,40px);
+        padding: clamp(20px,5vw,36px) clamp(20px,5vw,36px) 80px;
+        gap: 0;
       }
       .proc-step-graphic { display: none; }
-      .proc-step-short { display: none; }
-      .proc-content { min-height: 70vw; }
-      .proc-hint { display: none; }
+
+      /* Step text sizing for mobile */
+      .proc-step h3 {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+        margin-bottom: .75rem !important;
+      }
+      .proc-step p {
+        font-size: .92rem !important;
+        max-width: none !important;
+      }
+
+      /* Carousel nav row */
+      .proc-mobile-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px clamp(20px,5vw,36px) clamp(24px,5vw,40px);
+        background: #CA2131;
+      }
+      .proc-nav-btn {
+        background: rgba(255,255,255,.15);
+        border: 1px solid rgba(255,255,255,.3);
+        color: #fff;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background .2s;
+        flex-shrink: 0;
+      }
+      .proc-nav-btn:hover  { background: rgba(255,255,255,.25); }
+      .proc-nav-btn:disabled { opacity: .3; cursor: default; }
+      .proc-nav-btn svg { width: 18px; height: 18px; }
+
+      .proc-nav-label {
+        font-family: 'Roboto', sans-serif;
+        font-size: .65rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.6);
+        text-align: center;
+      }
+      .proc-nav-label strong {
+        display: block;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0;
+        text-transform: none;
+        margin-top: 2px;
+      }
+
+      /* Hint hidden on mobile */
+      .proc-hint { display: none !important; }
       .proc-heading { padding-bottom: clamp(12px,2vw,20px); }
+    }
+
+    /* Desktop — hide mobile nav */
+    @media (min-width: 769px) {
+      .proc-mobile-nav { display: none; }
     }
   </style>
 </head>
@@ -499,9 +589,28 @@
           </svg>
         </div>
 
+      </div><!-- /.proc-content -->
+
+      <!-- Mobile carousel nav — hidden on desktop -->
+      <div class="proc-mobile-nav" id="proc-mobile-nav">
+        <button class="proc-nav-btn" id="proc-prev" aria-label="Previous step" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <div class="proc-nav-label">
+          <span id="proc-nav-of">Step 1 of 5</span>
+          <strong id="proc-nav-title">Feasibility &amp; Due Diligence</strong>
+        </div>
+        <button class="proc-nav-btn" id="proc-next" aria-label="Next step">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
       </div>
-    </div>
-  </div>
+
+    </div><!-- /.proc-sticky -->
+  </div><!-- /.proc-outer -->
 
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
@@ -516,58 +625,138 @@
       var markers  = Array.prototype.slice.call(document.querySelectorAll('.proc-step-marker'));
       var stepEls  = Array.prototype.slice.call(document.querySelectorAll('.proc-step'));
 
+      /* Mobile nav elements */
+      var prevBtn   = document.getElementById('proc-prev');
+      var nextBtn   = document.getElementById('proc-next');
+      var navOf     = document.getElementById('proc-nav-of');
+      var navTitle  = document.getElementById('proc-nav-title');
+
+      var stepTitles = [
+        'Feasibility \u0026 Due Diligence',
+        'Site Optimization',
+        'Land-Use \u0026 Entitlements',
+        'Master Planning',
+        'Implementation Support'
+      ];
+
       if (!outer) return;
 
-      /* Set scroll height */
+      var current = -1;
+      var isMobile = function () { return window.innerWidth <= 768; };
+
+      /* ── Shared: set active step ── */
+      function setStep(n, direction) {
+        n = Math.max(0, Math.min(STEPS - 1, n));
+        if (n === current) return;
+
+        var prev = current;
+        current = n;
+
+        /* Progress bar */
+        var pct = (n / (STEPS - 1)) * 100;
+        stepsRow.style.setProperty('--prog', pct + '%');
+
+        /* Markers */
+        markers.forEach(function (m, i) {
+          m.classList.remove('is-active', 'is-past');
+          if (i === n)    m.classList.add('is-active');
+          else if (i < n) m.classList.add('is-past');
+        });
+
+        /* Slide direction — on mobile use direction hint for swipe feel */
+        var forward = (direction === undefined) ? (n > prev) : direction;
+
+        stepEls.forEach(function (el, i) {
+          el.classList.remove('is-active', 'is-past');
+          /* On mobile: outgoing slides in opposite direction */
+          if (isMobile() && i === prev && prev >= 0) {
+            el.style.transition = 'transform .4s cubic-bezier(.4,0,.2,1), opacity .35s ease';
+            el.style.transform  = forward ? 'translateX(-56px)' : 'translateX(56px)';
+            el.style.opacity    = '0';
+          }
+          if (i === n) {
+            if (isMobile()) {
+              /* Snap to incoming position without transition, then animate in */
+              el.style.transition = 'none';
+              el.style.transform  = forward ? 'translateX(56px)' : 'translateX(-56px)';
+              el.style.opacity    = '0';
+              /* Force reflow then animate */
+              void el.offsetWidth;
+              el.style.transition = 'transform .4s cubic-bezier(.4,0,.2,1), opacity .35s ease';
+              el.style.transform  = 'translateX(0)';
+              el.style.opacity    = '1';
+            }
+            el.classList.add('is-active');
+          } else if (i < n) {
+            el.classList.add('is-past');
+          }
+        });
+
+        /* Mobile nav labels */
+        if (navOf)    navOf.textContent    = 'Step ' + (n + 1) + ' of ' + STEPS;
+        if (navTitle) navTitle.textContent = stepTitles[n];
+        if (prevBtn)  prevBtn.disabled     = (n === 0);
+        if (nextBtn)  nextBtn.disabled     = (n === STEPS - 1);
+
+        /* Desktop scroll hint */
+        if (hint) hint.classList.toggle('hidden', n >= STEPS - 1);
+      }
+
+      /* ── Desktop: scroll-jack ── */
       var VH = window.innerHeight;
       outer.style.height = Math.round(STEPS * VH * MULTIPLIER) + 'px';
       window.addEventListener('resize', function () {
         VH = window.innerHeight;
-        outer.style.height = Math.round(STEPS * VH * MULTIPLIER) + 'px';
+        if (!isMobile()) {
+          outer.style.height = Math.round(STEPS * VH * MULTIPLIER) + 'px';
+        } else {
+          outer.style.height = 'auto';
+        }
       });
 
-      var current = -1;
-
-      function setStep(n) {
-        n = Math.max(0, Math.min(STEPS - 1, n));
-        if (n === current) return;
-        current = n;
-
-        /* Progress line width — travels from first marker centre to last */
-        /* Use percentage: 0% at step 0, 100% at step STEPS-1 */
-        var pct = (n / (STEPS - 1)) * 100;
-        stepsRow.style.setProperty('--prog', pct + '%');
-
-        /* Marker states */
-        markers.forEach(function (m, i) {
-          m.classList.remove('is-active', 'is-past');
-          if (i === n)      m.classList.add('is-active');
-          else if (i < n)   m.classList.add('is-past');
-        });
-
-        /* Content slides */
-        stepEls.forEach(function (el, i) {
-          el.classList.remove('is-active', 'is-past');
-          if (i === n)     el.classList.add('is-active');
-          else if (i < n)  el.classList.add('is-past');
-        });
-
-        /* Scroll hint */
-        hint.classList.toggle('hidden', n >= STEPS - 1);
-      }
-
       function onScroll() {
-        if (window.innerWidth <= 768) return;
-        var rect     = outer.getBoundingClientRect();
-        var scrolled = -rect.top;
+        if (isMobile()) return;
+        var rect      = outer.getBoundingClientRect();
+        var scrolled  = -rect.top;
         var maxScroll = outer.offsetHeight - VH;
         if (scrolled < 0 || scrolled > maxScroll) return;
         var step = Math.round((scrolled / maxScroll) * (STEPS - 1));
         setStep(step);
       }
-
       window.addEventListener('scroll', onScroll, { passive: true });
-      setStep(0);
+
+      /* ── Mobile: tap buttons ── */
+      if (prevBtn) prevBtn.addEventListener('click', function () {
+        setStep(current - 1, false);
+      });
+      if (nextBtn) nextBtn.addEventListener('click', function () {
+        setStep(current + 1, true);
+      });
+
+      /* ── Mobile: swipe gesture ── */
+      var content = document.querySelector('.proc-content');
+      if (content) {
+        var touchStartX = 0;
+        var touchStartY = 0;
+        content.addEventListener('touchstart', function (e) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+        content.addEventListener('touchend', function (e) {
+          if (!isMobile()) return;
+          var dx = e.changedTouches[0].clientX - touchStartX;
+          var dy = e.changedTouches[0].clientY - touchStartY;
+          /* Only register horizontal swipes */
+          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            if (dx < 0) setStep(current + 1, true);   /* swipe left = next */
+            else        setStep(current - 1, false);  /* swipe right = prev */
+          }
+        }, { passive: true });
+      }
+
+      /* Init */
+      if (isMobile()) outer.style.height = 'auto';
+      setStep(0, true);
     })();
   </script>
 </body>
