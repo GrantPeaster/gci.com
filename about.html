@@ -46,41 +46,22 @@
     .about-hero .wrap {
       position: relative;
       z-index: 1;
-      max-width: 620px;
     }
 
-    .about-hero-eyebrow {
-      font-family: 'Roboto', sans-serif;
-      font-size: .62rem;
-      font-weight: 700;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: #020534;
-      display: block;
-      margin-bottom: .6rem;
-    }
-    .about-hero-small {
-      font-family: 'Times New Roman', Times, serif;
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
-      font-weight: 700;
-      color: rgba(202,33,49,.45);
-      display: block;
-      line-height: 1;
-      margin-bottom: .12em;
-    }
     .about-hero-h1 {
       font-family: 'Times New Roman', Times, serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-size: clamp(3.5rem, 9vw, 7rem);
       font-weight: 700;
       color: #CA2131;
       line-height: .95;
       margin: 0 0 clamp(20px, 3vw, 36px);
       transform: none;
+      white-space: nowrap;
     }
 
     /* Navy hairline rule */
     .about-hero-rule {
-      width: 48px;
+      width: 64px;
       height: 2px;
       background: #020534;
       margin-bottom: clamp(20px, 3vw, 32px);
@@ -238,7 +219,10 @@
     }
     .about-news-head a:hover { color: #CA2131; border-color: #CA2131; }
 
-    .about-news-cards { display: flex; flex-direction: column; }
+    .about-news-cards { display: flex; flex-direction: column; overflow: hidden; }
+    /* Slide animation states */
+    .about-news-cards.an-out .about-news-card { transform: translateX(-40px); opacity: 0; transition: transform .55s cubic-bezier(.4,0,.2,1), opacity .45s ease; }
+    .about-news-cards.an-in  .about-news-card { transform: translateX(40px);  opacity: 0; transition: none; }
     .about-news-card {
       display: flex;
       flex-direction: column;
@@ -576,9 +560,13 @@
   <script src="assets/js/main.js"></script>
   <script>
     (function () {
-      var PAGE = 'https://www.linkedin.com/company/georgia-civil-inc-/';
-      var grid = document.getElementById('about-news-feed');
+      var ROTATE_MS = 7000;
+      var SLIDE_MS  = 550;
+      var SLOTS     = 3;
+      var PAGE      = 'https://www.linkedin.com/company/georgia-civil-inc-/';
+      var grid      = document.getElementById('about-news-feed');
       if (!grid) return;
+
       var esc = function (s) {
         return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
           return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
@@ -587,34 +575,66 @@
       var fmt = function (d) {
         return new Date(d).toLocaleDateString('en-US', {month:'short', year:'numeric'});
       };
-      fetch('/.netlify/functions/linkedin-news', {cache:'no-store'})
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .catch(function () { return null; })
-        .then(function (posts) {
-          if (!Array.isArray(posts) || !posts.length) {
+      var cardHTML = function (p) {
+        return '<a class="about-news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
+          '<span class="date">' + esc(fmt(p.date)) + '</span>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          '<p>' + esc(p.blurb || '') + '</p>' +
+          '<span class="more">Read on LinkedIn &rarr;</span>' +
+        '</a>';
+      };
+      var renderSlice = function (posts, start) {
+        var html = '';
+        for (var i = 0; i < Math.min(SLOTS, posts.length); i++) {
+          html += cardHTML(posts[(start + i) % posts.length]);
+        }
+        return html;
+      };
+      var slideTo = function (posts, start) {
+        grid.classList.add('an-out');
+        setTimeout(function () {
+          grid.innerHTML = renderSlice(posts, start);
+          grid.classList.remove('an-out');
+          grid.classList.add('an-in');
+          void grid.offsetWidth;
+          grid.classList.remove('an-in');
+        }, SLIDE_MS);
+      };
+      var loadPosts = function () {
+        return fetch('/.netlify/functions/linkedin-news', {cache:'no-store'})
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .catch(function () { return null; })
+          .then(function (posts) {
+            if (Array.isArray(posts) && posts.length) return posts;
             return fetch('assets/data/news.json', {cache:'no-store'})
               .then(function (r) { return r.ok ? r.json() : []; })
               .catch(function () { return []; });
-          }
-          return posts;
-        })
-        .then(function (all) {
-          var cutoff = new Date();
-          cutoff.setMonth(cutoff.getMonth() - 18);
-          var posts = all
-            .filter(function (p) { return p && p.date && new Date(p.date) >= cutoff; })
-            .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
-            .slice(0, 3);
-          if (!posts.length) return;
-          grid.innerHTML = posts.map(function (p) {
-            return '<a class="about-news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
-              '<span class="date">' + esc(fmt(p.date)) + '</span>' +
-              '<h3>' + esc(p.title) + '</h3>' +
-              '<p>' + esc(p.blurb || '') + '</p>' +
-              '<span class="more">Read on LinkedIn &rarr;</span>' +
-            '</a>';
-          }).join('');
-        });
+          });
+      };
+
+      loadPosts().then(function (all) {
+        var cutoff = new Date();
+        cutoff.setMonth(cutoff.getMonth() - 18);
+        var posts = all
+          .filter(function (p) { return p && p.date && !isNaN(new Date(p.date)) && new Date(p.date) >= cutoff; })
+          .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+        if (!posts.length) return;
+
+        grid.innerHTML = renderSlice(posts, 0);
+        if (posts.length <= SLOTS) return;
+
+        var start = 0, timer = null, paused = false;
+        var tick = function () {
+          if (!paused) { start = (start + SLOTS) % posts.length; slideTo(posts, start); }
+        };
+        var play = function () { if (!timer) timer = setInterval(tick, ROTATE_MS); };
+        var stop = function () { clearInterval(timer); timer = null; };
+        grid.addEventListener('mouseenter', function () { paused = true;  stop(); });
+        grid.addEventListener('mouseleave', function () { paused = false; play(); });
+        grid.addEventListener('focusin',    function () { paused = true;  stop(); });
+        grid.addEventListener('focusout',   function () { paused = false; play(); });
+        play();
+      });
     })();
   </script>
 </body>
