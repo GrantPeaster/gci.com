@@ -18,44 +18,35 @@
   <style>
 
     /* ══════════════════════════════════════════
-       HERO
+       HERO — white, red text, navy accents
        ══════════════════════════════════════════ */
     .about-hero {
-      background: #CA2131;
+      background: #fff;
       position: relative;
       overflow: hidden;
       padding-block: clamp(72px, 11vw, 136px);
+      border-bottom: 3px solid #CA2131;
     }
 
-    /* Topographic contour lines — large SVG background */
+    /* Topo contour — red at low opacity, right side */
     .about-hero-topo {
       position: absolute;
       right: -5%;
       top: 50%;
       transform: translateY(-50%);
-      width: 55%;
-      max-width: 680px;
-      opacity: .12;
+      width: 48%;
+      max-width: 580px;
+      opacity: .07;
       pointer-events: none;
     }
     @media (max-width: 768px) {
-      .about-hero-topo { width: 100%; right: -10%; opacity: .07; }
-    }
-
-    /* Diagonal texture over the top */
-    .about-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 1px, transparent 1px 18px);
-      pointer-events: none;
-      z-index: 0;
+      .about-hero-topo { width: 90%; right: -10%; opacity: .05; }
     }
 
     .about-hero .wrap {
       position: relative;
       z-index: 1;
-      max-width: 680px;
+      max-width: 620px;
     }
 
     .about-hero-eyebrow {
@@ -64,7 +55,7 @@
       font-weight: 700;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.5);
+      color: #020534;
       display: block;
       margin-bottom: .6rem;
     }
@@ -72,44 +63,34 @@
       font-family: 'Times New Roman', Times, serif;
       font-size: clamp(1.1rem, 2vw, 1.5rem);
       font-weight: 700;
-      color: rgba(255,255,255,.55);
+      color: rgba(202,33,49,.45);
       display: block;
       line-height: 1;
-      margin-bottom: .15em;
+      margin-bottom: .12em;
     }
     .about-hero-h1 {
       font-family: 'Times New Roman', Times, serif;
       font-size: clamp(3rem, 7vw, 5.5rem);
       font-weight: 700;
-      color: #fff;
+      color: #CA2131;
       line-height: .95;
       margin: 0 0 clamp(20px, 3vw, 36px);
       transform: none;
-      -webkit-text-stroke: 1px rgba(2,5,52,.15);
-      paint-order: stroke fill;
     }
 
-    /* Hairline rule */
+    /* Navy hairline rule */
     .about-hero-rule {
       width: 48px;
       height: 2px;
-      background: rgba(255,255,255,.35);
+      background: #020534;
       margin-bottom: clamp(20px, 3vw, 32px);
     }
 
     .about-hero-lead {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(.95rem, 1.5vw, 1.1rem);
-      color: rgba(255,255,255,.82);
+      color: rgba(2,5,52,.7);
       line-height: 1.72;
-      margin: 0 0 1rem;
-      max-width: 54ch;
-    }
-    .about-hero-body {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(.85rem, 1.2vw, .95rem);
-      color: rgba(255,255,255,.58);
-      line-height: 1.8;
       margin: 0;
       max-width: 54ch;
     }
@@ -389,35 +370,30 @@
   <!-- ══ HERO ══ -->
   <section class="about-hero">
 
-    <!-- Topographic contour SVG background -->
+    <!-- Topographic contour SVG background — red at low opacity -->
     <svg class="about-hero-topo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- concentric contour rings, white strokes, varying opacity -->
-      <ellipse cx="280" cy="250" rx="240" ry="200" stroke="rgba(255,255,255,.9)" stroke-width="1.2"/>
-      <ellipse cx="280" cy="250" rx="205" ry="168" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
-      <ellipse cx="280" cy="250" rx="172" ry="138" stroke="rgba(255,255,255,.8)" stroke-width="1.2"/>
-      <ellipse cx="280" cy="250" rx="140" ry="110" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
-      <ellipse cx="280" cy="250" rx="110" ry="84" stroke="rgba(255,255,255,.9)" stroke-width="1.2"/>
-      <ellipse cx="280" cy="250" rx="80" ry="60" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
-      <ellipse cx="280" cy="250" rx="52" ry="38" stroke="rgba(255,255,255,.9)" stroke-width="1.2"/>
-      <ellipse cx="280" cy="250" rx="28" ry="20" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
-      <!-- elevation tick marks -->
-      <line x1="280" y1="50" x2="286" y2="50" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-      <line x1="280" y1="82" x2="286" y2="82" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-      <line x1="280" y1="112" x2="286" y2="112" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-      <line x1="280" y1="140" x2="286" y2="140" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-      <line x1="280" y1="166" x2="286" y2="166" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-      <line x1="280" y1="190" x2="286" y2="190" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-      <line x1="280" y1="212" x2="286" y2="212" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
-      <line x1="280" y1="230" x2="286" y2="230" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <ellipse cx="280" cy="250" rx="240" ry="200" stroke="#CA2131" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="205" ry="168" stroke="#CA2131" stroke-width="1"/>
+      <ellipse cx="280" cy="250" rx="172" ry="138" stroke="#CA2131" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="140" ry="110" stroke="#CA2131" stroke-width="1"/>
+      <ellipse cx="280" cy="250" rx="110" ry="84" stroke="#CA2131" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="80" ry="60" stroke="#CA2131" stroke-width="1"/>
+      <ellipse cx="280" cy="250" rx="52" ry="38" stroke="#CA2131" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="28" ry="20" stroke="#CA2131" stroke-width="1"/>
+      <line x1="280" y1="50" x2="286" y2="50" stroke="#020534" stroke-width=".8"/>
+      <line x1="280" y1="82" x2="286" y2="82" stroke="#020534" stroke-width=".8"/>
+      <line x1="280" y1="112" x2="286" y2="112" stroke="#020534" stroke-width=".8"/>
+      <line x1="280" y1="140" x2="286" y2="140" stroke="#020534" stroke-width=".8"/>
+      <line x1="280" y1="166" x2="286" y2="166" stroke="#020534" stroke-width=".8"/>
+      <line x1="280" y1="190" x2="286" y2="190" stroke="#020534" stroke-width=".8"/>
+      <line x1="280" y1="212" x2="286" y2="212" stroke="#020534" stroke-width=".8"/>
+      <line x1="280" y1="230" x2="286" y2="230" stroke="#020534" stroke-width=".8"/>
     </svg>
 
     <div class="wrap">
-      <span class="about-hero-eyebrow">Georgia Civil, Inc.</span>
-      <span class="about-hero-small">About</span>
-      <h1 class="about-hero-h1">Georgia Civil.</h1>
+      <h1 class="about-hero-h1">About GCI.</h1>
       <div class="about-hero-rule"></div>
       <p class="about-hero-lead">At GCI, we believe successful projects are built on better planning. Most firms get involved after the critical decisions are made — our approach begins earlier, when it still matters most.</p>
-      <p class="about-hero-body">By integrating land planning, surveying, and civil engineering from the very beginning, we help owners, developers, municipalities, and institutions understand what a site can realistically support — identifying constraints before they become costly delays, and making the decisions that carry the greatest impact while there's still time to act on them.</p>
     </div>
   </section>
 
