@@ -50,17 +50,32 @@
       position: sticky;
       top: 0;
       height: 100vh;
-      background: #fff;
+      background: #CA2131;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
 
-    /* ── Section heading above bar ── */
+    /* Subtle diagonal texture on red */
+    .proc-sticky::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 1px, transparent 1px 16px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* All children above texture */
+    .proc-heading,
+    .proc-bar,
+    .proc-content { position: relative; z-index: 1; }
+
+    /* ── Section heading ── */
     .proc-heading {
       flex-shrink: 0;
-      padding: clamp(24px, 3.5vw, 40px) clamp(28px, 5vw, 72px);
-      background: #CA2131;
+      padding: clamp(28px, 4vw, 48px) clamp(28px, 5vw, 72px) clamp(16px, 2vw, 24px);
+      border-bottom: 1px solid rgba(255,255,255,.15);
     }
     .proc-heading h2 {
       font-family: 'Times New Roman', Times, serif;
@@ -72,47 +87,42 @@
       transform: none;
     }
 
-    /* ── Top progress bar ── */
+    /* ── Progress bar ── */
     .proc-bar {
       flex-shrink: 0;
-      padding: clamp(20px, 3vw, 32px) clamp(28px, 5vw, 72px) 0;
-      background: #fff;
-      position: relative;
+      padding: clamp(20px, 3vw, 36px) clamp(28px, 5vw, 72px) 0;
     }
 
-    /* Steps row */
     .proc-steps-row {
       display: flex;
       align-items: flex-start;
       position: relative;
     }
 
-    /* Connecting line behind numbers */
+    /* Inactive track line */
     .proc-steps-row::before {
       content: '';
       position: absolute;
-      top: 14px; /* vertically centred on the number */
-      left: 0;
-      right: 0;
+      top: 16px;
+      left: 0; right: 0;
       height: 1px;
-      background: rgba(2,5,52,.1);
+      background: rgba(255,255,255,.2);
       z-index: 0;
     }
 
-    /* Red fill line — width driven by JS custom property */
+    /* White progress fill */
     .proc-steps-row::after {
       content: '';
       position: absolute;
-      top: 14px;
+      top: 16px;
       left: 0;
       height: 1px;
-      background: #CA2131;
+      background: #fff;
       width: var(--prog, 0%);
       transition: width .5s cubic-bezier(.4,0,.2,1);
       z-index: 0;
     }
 
-    /* Individual step marker */
     .proc-step-marker {
       flex: 1;
       display: flex;
@@ -126,20 +136,20 @@
 
     .proc-step-num {
       font-family: 'Times New Roman', Times, serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       line-height: 1;
-      color: rgba(2,5,52,.2);
-      transition: color .35s ease, font-size .35s cubic-bezier(.4,0,.2,1);
-      background: #fff; /* sits on top of the connecting line */
-      padding: 0 4px;
+      color: rgba(255,255,255,.3);
+      background: #CA2131;
+      padding: 0 6px;
+      transition: color .35s ease, font-size .4s cubic-bezier(.4,0,.2,1);
     }
     .proc-step-marker.is-active .proc-step-num {
-      color: #CA2131;
-      font-size: 1.6rem;
+      color: #fff;
+      font-size: 2rem;
     }
     .proc-step-marker.is-past .proc-step-num {
-      color: rgba(2,5,52,.35);
+      color: rgba(255,255,255,.55);
     }
 
     .proc-step-short {
@@ -148,15 +158,18 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: rgba(2,5,52,.2);
+      color: rgba(255,255,255,.3);
       text-align: center;
-      transition: color .35s ease;
+      transition: color .35s ease, font-weight .25s ease;
       white-space: nowrap;
     }
-    .proc-step-marker.is-active .proc-step-short { color: #CA2131; }
-    .proc-step-marker.is-past .proc-step-short   { color: rgba(2,5,52,.4); }
+    .proc-step-marker.is-active .proc-step-short {
+      color: #fff;
+      font-weight: 700;
+    }
+    .proc-step-marker.is-past .proc-step-short { color: rgba(255,255,255,.55); }
 
-    /* ── Step content area ── */
+    /* ── Step content ── */
     .proc-content {
       flex: 1;
       position: relative;
@@ -186,7 +199,7 @@
       opacity: 0;
     }
 
-    /* Graphic column */
+    /* Graphic column — white strokes */
     .proc-step-graphic {
       display: flex;
       align-items: center;
@@ -196,16 +209,16 @@
       width: 100%;
       max-width: 260px;
       height: auto;
+      filter: brightness(0) invert(1); /* full white */
+      opacity: .85;
     }
 
     /* Text column */
-    .proc-step-text {}
-
     .proc-step h3 {
       font-family: 'Times New Roman', Times, serif;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
       font-weight: 700;
-      color: #020534;
+      color: #fff;
       line-height: 1.06;
       margin: 0 0 1rem;
       transform: none;
@@ -213,18 +226,10 @@
     .proc-step p {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(.88rem, 1.2vw, 1rem);
-      color: rgba(2,5,52,.55);
+      color: rgba(255,255,255,.72);
       line-height: 1.75;
       max-width: 46ch;
       margin: 0;
-    }
-
-    @media (max-width: 768px) {
-      .proc-step {
-        grid-template-columns: 1fr;
-        padding: clamp(24px,5vw,40px) clamp(20px,5vw,40px);
-      }
-      .proc-step-graphic { display: none; }
     }
 
     /* Scroll hint */
@@ -237,7 +242,7 @@
       font-weight: 700;
       letter-spacing: .15em;
       text-transform: uppercase;
-      color: rgba(2,5,52,.2);
+      color: rgba(255,255,255,.35);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -250,19 +255,19 @@
       50%      { transform: translateY(5px); }
     }
 
-    /* ── Mobile fallback ── */
+    /* ── Mobile ── */
     @media (max-width: 768px) {
       .proc-outer  { height: auto !important; }
-      .proc-sticky {
-        position: relative;
-        height: auto;
-        padding-bottom: clamp(48px,8vw,80px);
+      .proc-sticky { position: relative; height: auto; padding-bottom: clamp(48px,8vw,80px); }
+      .proc-step {
+        grid-template-columns: 1fr;
+        padding: clamp(24px,5vw,40px) clamp(20px,5vw,40px);
       }
-      .proc-bar { padding-bottom: clamp(24px,4vw,40px); }
+      .proc-step-graphic { display: none; }
       .proc-step-short { display: none; }
       .proc-content { min-height: 70vw; }
       .proc-hint { display: none; }
-      .proc-heading { padding-bottom: 0; }
+      .proc-heading { padding-bottom: clamp(12px,2vw,20px); }
     }
   </style>
 </head>
@@ -492,8 +497,8 @@
         <div class="proc-hint" id="proc-hint">
           <span>Scroll to continue</span>
           <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
-            <line x1="7" y1="0" x2="7" y2="14" stroke="rgba(2,5,52,.2)" stroke-width="1.5"/>
-            <polyline points="2,9 7,15 12,9" stroke="rgba(2,5,52,.2)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="7" y1="0" x2="7" y2="14" stroke="rgba(255,255,255,.35)" stroke-width="1.5"/>
+            <polyline points="2,9 7,15 12,9" stroke="rgba(255,255,255,.35)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
 
