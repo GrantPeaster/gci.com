@@ -221,7 +221,7 @@
 
     .about-news-cards { display: flex; flex-direction: column; overflow: hidden; }
     /* Slide animation states */
-    .about-news-cards.an-out .about-news-card { transform: translateX(-40px); opacity: 0; transition: transform .55s cubic-bezier(.4,0,.2,1), opacity .45s ease; }
+    .about-news-cards.an-out .about-news-card { transform: translateX(-40px); opacity: 0; transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .3s ease; }
     .about-news-cards.an-in  .about-news-card { transform: translateX(40px);  opacity: 0; transition: none; }
     .about-news-card {
       display: flex;
@@ -376,7 +376,6 @@
 
     <div class="wrap">
       <h1 class="about-hero-h1">About GCI.</h1>
-      <div class="about-hero-rule"></div>
       <p class="about-hero-lead">At GCI, we believe successful projects are built on better planning. Most firms get involved after the critical decisions are made — our approach begins earlier, when it still matters most.</p>
     </div>
   </section>
@@ -560,8 +559,8 @@
   <script src="assets/js/main.js"></script>
   <script>
     (function () {
-      var ROTATE_MS = 7000;
-      var SLIDE_MS  = 550;
+      var ROTATE_MS = 5000;
+      var SLIDE_MS  = 350;
       var SLOTS     = 3;
       var PAGE      = 'https://www.linkedin.com/company/georgia-civil-inc-/';
       var grid      = document.getElementById('about-news-feed');
