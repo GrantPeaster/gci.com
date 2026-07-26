@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About GCI — Georgia Civil</title>
-  <meta name="description" content="About Georgia Civil — an integrated land planning, surveying, and civil engineering firm. Meet our leadership, follow our work, and join the team.">
+  <meta name="description" content="About Georgia Civil — an integrated land planning, surveying, and civil engineering firm built on better planning.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,87 +13,563 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#020534">
+  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
+  <style>
+
+    /* ══════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════ */
+    .about-hero {
+      background: #CA2131;
+      position: relative;
+      overflow: hidden;
+      padding-block: clamp(72px, 11vw, 136px);
+    }
+
+    /* Topographic contour lines — large SVG background */
+    .about-hero-topo {
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55%;
+      max-width: 680px;
+      opacity: .12;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .about-hero-topo { width: 100%; right: -10%; opacity: .07; }
+    }
+
+    /* Diagonal texture over the top */
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 1px, transparent 1px 18px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-hero .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .about-hero-eyebrow {
+      font-family: 'Roboto', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      display: block;
+      margin-bottom: .6rem;
+    }
+    .about-hero-small {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 700;
+      color: rgba(255,255,255,.55);
+      display: block;
+      line-height: 1;
+      margin-bottom: .15em;
+    }
+    .about-hero-h1 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: .95;
+      margin: 0 0 clamp(20px, 3vw, 36px);
+      transform: none;
+      -webkit-text-stroke: 1px rgba(2,5,52,.15);
+      paint-order: stroke fill;
+    }
+
+    /* Hairline rule */
+    .about-hero-rule {
+      width: 48px;
+      height: 2px;
+      background: rgba(255,255,255,.35);
+      margin-bottom: clamp(20px, 3vw, 32px);
+    }
+
+    .about-hero-lead {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.95rem, 1.5vw, 1.1rem);
+      color: rgba(255,255,255,.82);
+      line-height: 1.72;
+      margin: 0 0 1rem;
+      max-width: 54ch;
+    }
+    .about-hero-body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.85rem, 1.2vw, .95rem);
+      color: rgba(255,255,255,.58);
+      line-height: 1.8;
+      margin: 0;
+      max-width: 54ch;
+    }
+
+    /* ══════════════════════════════════════════
+       PILLARS — red, 3-col desktop / stacked mobile
+       ══════════════════════════════════════════ */
+    .about-pillars {
+      background: #CA2131;
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-block: clamp(48px, 7vw, 88px);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-pillars::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 1px, transparent 1px 18px);
+      pointer-events: none;
+    }
+    .about-pillars .wrap { position: relative; z-index: 1; }
+
+    .pillars-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      display: block;
+      margin-bottom: clamp(24px, 3vw, 40px);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    @media (max-width: 768px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+
+    .pillar {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: clamp(16px, 2.5vw, 28px);
+      padding: clamp(24px, 3.5vw, 40px) clamp(20px, 3vw, 36px);
+      border-left: 1px solid rgba(255,255,255,.12);
+    }
+    .pillar:first-child { border-left: none; }
+    @media (max-width: 768px) {
+      .pillar {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,.12);
+        padding-block: clamp(28px, 5vw, 40px);
+      }
+      .pillar:first-child { border-top: none; }
+    }
+
+    /* Text side */
+    .pillar-text { flex: 1; min-width: 0; }
+    .pillar-heading {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin: 0 0 .75rem;
+      transform: none;
+    }
+    .pillar-body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.8rem, 1.1vw, .88rem);
+      color: rgba(255,255,255,.62);
+      line-height: 1.72;
+      margin: 0;
+    }
+
+    /* Graphic side */
+    .pillar-graphic {
+      flex-shrink: 0;
+      width: clamp(56px, 8vw, 80px);
+      line-height: 0;
+    }
+    .pillar-graphic svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ══════════════════════════════════════════
+       NEWS + CAREERS
+       ══════════════════════════════════════════ */
+    .about-bottom {
+      background: #F6F5F2;
+      padding-block: clamp(56px, 8vw, 104px);
+    }
+    .about-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 88px);
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .about-bottom-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── News ── */
+    .about-news-head {
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(2,5,52,.1);
+    }
+    .about-eyebrow {
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #CA2131;
+      display: block;
+      margin-bottom: .45rem;
+    }
+    .about-news-head h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      font-weight: 700;
+      color: #020534;
+      margin: 0 0 .4rem;
+      transform: none;
+      line-height: 1.05;
+    }
+    .about-news-head a {
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(2,5,52,.4);
+      border-bottom: 1px solid rgba(2,5,52,.18);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+    .about-news-head a:hover { color: #CA2131; border-color: #CA2131; }
+
+    .about-news-cards { display: flex; flex-direction: column; }
+    .about-news-card {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 16px 0 16px 16px;
+      border-left: 3px solid rgba(2,5,52,.08);
+      border-bottom: 1px solid rgba(2,5,52,.07);
+      text-decoration: none;
+      transition: border-left-color .2s;
+    }
+    .about-news-card:last-child { border-bottom: none; }
+    .about-news-card:hover { border-left-color: #CA2131; }
+    .about-news-card .date {
+      font-family: 'Roboto', sans-serif;
+      font-size: .56rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #CA2131;
+    }
+    .about-news-card h3 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: .98rem;
+      font-weight: 700;
+      color: #020534;
+      margin: 0;
+      line-height: 1.3;
+      transform: none;
+    }
+    .about-news-card p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .76rem;
+      color: rgba(2,5,52,.5);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .about-news-card .more {
+      font-family: 'Roboto', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #CA2131;
+    }
+
+    /* ── Careers ── */
+    .about-careers-head {
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(2,5,52,.1);
+    }
+    .about-careers-head h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      font-weight: 700;
+      color: #020534;
+      margin: 0 0 .75rem;
+      transform: none;
+      line-height: 1.05;
+    }
+    .about-careers-head p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .88rem;
+      color: rgba(2,5,52,.55);
+      line-height: 1.72;
+      margin: 0;
+    }
+    .about-form { display: grid; gap: 14px; }
+    .about-form label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #020534;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .about-form input,
+    .about-form select,
+    .about-form textarea {
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .9rem;
+      color: #020534;
+      padding: 10px 13px;
+      border: 1.5px solid rgba(2,5,52,.15);
+      background: #fff;
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .about-form input:focus,
+    .about-form select:focus,
+    .about-form textarea:focus {
+      border-color: #CA2131;
+      box-shadow: 0 0 0 3px rgba(202,33,49,.08);
+    }
+    .about-form textarea { resize: vertical; }
+    .about-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 540px) { .about-form-row { grid-template-columns: 1fr; } }
+    .about-form-submit { margin-top: 4px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .about-form-btn {
+      font-family: 'Roboto', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .139em;
+      text-transform: uppercase;
+      background: #CA2131;
+      color: #fff;
+      border: none;
+      padding: .78rem 1.75rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .about-form-btn:hover { background: #a81a28; }
+    .about-form-note {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .7rem;
+      color: rgba(2,5,52,.38);
+      margin: 0;
+    }
+  </style>
 </head>
 <body data-page="about">
   <div data-header></div>
 
-  <!-- HERO: who we are + framed project visual -->
+  <!-- ══ HERO ══ -->
   <section class="about-hero">
+
+    <!-- Topographic contour SVG background -->
+    <svg class="about-hero-topo" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- concentric contour rings, white strokes, varying opacity -->
+      <ellipse cx="280" cy="250" rx="240" ry="200" stroke="rgba(255,255,255,.9)" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="205" ry="168" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
+      <ellipse cx="280" cy="250" rx="172" ry="138" stroke="rgba(255,255,255,.8)" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="140" ry="110" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
+      <ellipse cx="280" cy="250" rx="110" ry="84" stroke="rgba(255,255,255,.9)" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="80" ry="60" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
+      <ellipse cx="280" cy="250" rx="52" ry="38" stroke="rgba(255,255,255,.9)" stroke-width="1.2"/>
+      <ellipse cx="280" cy="250" rx="28" ry="20" stroke="rgba(255,255,255,.85)" stroke-width="1"/>
+      <!-- elevation tick marks -->
+      <line x1="280" y1="50" x2="286" y2="50" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <line x1="280" y1="82" x2="286" y2="82" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <line x1="280" y1="112" x2="286" y2="112" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <line x1="280" y1="140" x2="286" y2="140" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <line x1="280" y1="166" x2="286" y2="166" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <line x1="280" y1="190" x2="286" y2="190" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <line x1="280" y1="212" x2="286" y2="212" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+      <line x1="280" y1="230" x2="286" y2="230" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+    </svg>
+
     <div class="wrap">
-      <div class="about-hero-copy">
-        <span class="eyebrow">Who we are</span>
-        <h1>About GCI<h1>
-        <p class="lead">At GCI, we believe successful projects are built on better planning. Most firms get
-          involved after the critical decisions are made — our approach begins earlier.</p>
-        <p class="body">By integrating land planning, surveying, civil engineering, and landscape
-          architecture from the very beginning, we help owners, developers, municipalities, and
-          institutions understand what a site can realistically support — identifying constraints before
-          they become costly delays, and making the decisions that matter most while they still carry
-          the greatest impact.</p>
-      </div>
-      <div class="about-visual" aria-hidden="true">
-        <div class="av-media" style="background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
-        <span class="av-dots"></span>
+      <span class="about-hero-eyebrow">Georgia Civil, Inc.</span>
+      <span class="about-hero-small">About</span>
+      <h1 class="about-hero-h1">Georgia Civil.</h1>
+      <div class="about-hero-rule"></div>
+      <p class="about-hero-lead">At GCI, we believe successful projects are built on better planning. Most firms get involved after the critical decisions are made — our approach begins earlier, when it still matters most.</p>
+      <p class="about-hero-body">By integrating land planning, surveying, and civil engineering from the very beginning, we help owners, developers, municipalities, and institutions understand what a site can realistically support — identifying constraints before they become costly delays, and making the decisions that carry the greatest impact while there's still time to act on them.</p>
+    </div>
+  </section>
+
+  <!-- ══ PILLARS ══ -->
+  <section class="about-pillars">
+    <div class="wrap">
+      <span class="pillars-label">What sets us apart</span>
+      <div class="pillars-grid">
+
+        <!-- Plan First -->
+        <div class="pillar">
+          <div class="pillar-text">
+            <h3 class="pillar-heading">Plan First.</h3>
+            <p class="pillar-body">The earlier we're involved, the more value we protect. We join projects before commitments are made — when decisions still carry their greatest impact.</p>
+          </div>
+          <div class="pillar-graphic">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Calendar frame -->
+              <rect x="8" y="16" width="64" height="54" rx="2" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.75)" stroke-width="1.3"/>
+              <line x1="8" y1="28" x2="72" y2="28" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+              <!-- Binding posts -->
+              <line x1="24" y1="10" x2="24" y2="22" stroke="rgba(255,255,255,.65)" stroke-width="1.8" stroke-linecap="round"/>
+              <line x1="56" y1="10" x2="56" y2="22" stroke="rgba(255,255,255,.65)" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Timeline row -->
+              <line x1="16" y1="46" x2="64" y2="46" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
+              <!-- Early dot — red, active -->
+              <circle cx="24" cy="46" r="5" fill="rgba(202,33,49,.9)" stroke="rgba(255,255,255,.3)" stroke-width=".8"/>
+              <!-- Later dots — faded -->
+              <circle cx="40" cy="46" r="4" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.3)" stroke-width=".8"/>
+              <circle cx="56" cy="46" r="4" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.25)" stroke-width=".8"/>
+              <!-- Arrow pointing up from early dot -->
+              <line x1="24" y1="58" x2="24" y2="65" stroke="rgba(202,33,49,.55)" stroke-width="1" stroke-dasharray="2 2"/>
+              <polyline points="20,61 24,56 28,61" stroke="rgba(202,33,49,.8)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- See the Full Picture -->
+        <div class="pillar">
+          <div class="pillar-text">
+            <h3 class="pillar-heading">See the Full Picture.</h3>
+            <p class="pillar-body">Planning, surveying, and engineering under one roof means constraints surface early, disciplines don't contradict each other, and nothing falls through the handoff.</p>
+          </div>
+          <div class="pillar-graphic">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Top node — planning, accented navy -->
+              <circle cx="40" cy="16" r="9" fill="rgba(2,5,52,.35)" stroke="rgba(255,255,255,.8)" stroke-width="1.3"/>
+              <!-- Bottom-left node — survey -->
+              <circle cx="18" cy="58" r="9" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.6)" stroke-width="1.3"/>
+              <!-- Bottom-right node — engineering -->
+              <circle cx="62" cy="58" r="9" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.6)" stroke-width="1.3"/>
+              <!-- Connecting lines -->
+              <line x1="40" y1="25" x2="24" y2="50" stroke="rgba(255,255,255,.28)" stroke-width="1"/>
+              <line x1="40" y1="25" x2="56" y2="50" stroke="rgba(255,255,255,.28)" stroke-width="1"/>
+              <line x1="27" y1="58" x2="53" y2="58" stroke="rgba(255,255,255,.28)" stroke-width="1"/>
+              <!-- Top: grid icon -->
+              <rect x="37" y="13" width="3" height="3" fill="rgba(255,255,255,.8)"/>
+              <rect x="41" y="13" width="3" height="3" fill="rgba(255,255,255,.45)"/>
+              <rect x="37" y="17" width="3" height="3" fill="rgba(255,255,255,.45)"/>
+              <rect x="41" y="17" width="3" height="3" fill="rgba(255,255,255,.8)"/>
+              <!-- Bottom-left: survey cross -->
+              <line x1="18" y1="55" x2="18" y2="61" stroke="rgba(255,255,255,.75)" stroke-width="1.2"/>
+              <line x1="15" y1="58" x2="21" y2="58" stroke="rgba(255,255,255,.75)" stroke-width="1.2"/>
+              <!-- Bottom-right: profile line -->
+              <polyline points="57,61 60,56 62,59 65,54" stroke="rgba(255,255,255,.75)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Experience That Shows -->
+        <div class="pillar">
+          <div class="pillar-text">
+            <h3 class="pillar-heading">Experience That Shows.</h3>
+            <p class="pillar-body">Our work spans Georgia counties, project types, and site conditions. That breadth means fewer surprises on your project and faster answers when they matter most.</p>
+          </div>
+          <div class="pillar-graphic">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Georgia outline simplified -->
+              <path d="M22 10 L58 10 L58 32 L48 32 L48 68 L22 68 Z"
+                fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.55)" stroke-width="1.2" stroke-linejoin="round"/>
+              <!-- County grid lines -->
+              <line x1="22" y1="38" x2="48" y2="38" stroke="rgba(255,255,255,.15)" stroke-width=".7" stroke-dasharray="3 2"/>
+              <line x1="22" y1="52" x2="48" y2="52" stroke="rgba(255,255,255,.15)" stroke-width=".7" stroke-dasharray="3 2"/>
+              <line x1="35" y1="10" x2="35" y2="68" stroke="rgba(255,255,255,.15)" stroke-width=".7" stroke-dasharray="3 2"/>
+              <!-- Project pins -->
+              <circle cx="30" cy="28" r="3.5" fill="rgba(202,33,49,.9)"/>
+              <line x1="30" y1="31.5" x2="30" y2="36" stroke="rgba(202,33,49,.7)" stroke-width="1.1"/>
+              <circle cx="44" cy="44" r="3" fill="rgba(202,33,49,.65)"/>
+              <line x1="44" y1="47" x2="44" y2="51" stroke="rgba(202,33,49,.5)" stroke-width="1"/>
+              <circle cx="28" cy="56" r="2.2" fill="rgba(255,255,255,.35)" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+              <circle cx="38" cy="20" r="2.2" fill="rgba(255,255,255,.35)" stroke="rgba(255,255,255,.5)" stroke-width=".8"/>
+              <circle cx="42" cy="60" r="2" fill="rgba(255,255,255,.25)" stroke="rgba(255,255,255,.4)" stroke-width=".8"/>
+            </svg>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- NEWS + CAREERS -->
+  <!-- ══ NEWS + CAREERS ══ -->
   <section class="about-bottom">
-    <div class="wrap">
-      <!-- News (LinkedIn-backed rotating feed) -->
-      <div class="about-news">
-        <div class="about-news-intro">
-          <span class="eyebrow">From the field</span>
-          <h2>News</h2>
-          <p>View our team and stay updated with the latest developments.</p>
-          <a class="view-all" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">View all news &rarr;</a>
+    <div class="wrap about-bottom-grid">
+
+      <!-- News -->
+      <div>
+        <div class="about-news-head">
+          <span class="about-eyebrow">From the field</span>
+          <h2>Recent News</h2>
+          <a href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">Follow on LinkedIn &rarr;</a>
         </div>
-        <div class="news" id="news-feed">
-          <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+        <div class="about-news-cards" id="about-news-feed">
+          <a class="about-news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
             <span class="date">Latest</span>
             <h3>Bana 85 grading plan clears review</h3>
-            <p style="color:var(--ink-55);font-size:.92rem">Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
+            <p>Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
             <span class="more">Read on LinkedIn &rarr;</span>
           </a>
-          <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+          <a class="about-news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
             <span class="date">Recent</span>
             <h3>Welcoming new survey crew members</h3>
-            <p style="color:var(--ink-55);font-size:.92rem">Growing our LiDAR and field capability to keep pace with active project work.</p>
+            <p>Growing our LiDAR and field capability to keep pace with active project work.</p>
             <span class="more">Read on LinkedIn &rarr;</span>
           </a>
-          <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+          <a class="about-news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
             <span class="date">Recent</span>
             <h3>Prowell Park master plan refined</h3>
-            <p style="color:var(--ink-55);font-size:.92rem">Balancing drainage, buffering, and neighborhood compatibility while preserving the owner's vision.</p>
+            <p>Balancing drainage, buffering, and neighborhood compatibility while preserving the owner's vision.</p>
             <span class="more">Read on LinkedIn &rarr;</span>
           </a>
         </div>
       </div>
 
-      <!-- Careers / Join our team -->
-      <div class="about-careers">
-        <span class="eyebrow">Careers</span>
-        <h2>Join our team<span class="dot">.</span></h2>
-        <p class="lead">At GCI you won't be siloed into a single discipline — planners, surveyors, and
-          engineers work side by side from day one, so your work has measurable impact across real
-          developments. Send us a message and a member of our team will follow up.</p>
-        <!-- Web3Forms — free, no backend; works on GitHub Pages once the access key is set. -->
-        <form class="form" data-contact action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-          <!-- Get a free access key at https://web3forms.com and paste it below. -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <!-- Careers -->
+      <div>
+        <div class="about-careers-head">
+          <span class="about-eyebrow">Careers</span>
+          <h2>Join our team.</h2>
+          <p>At GCI you won't be siloed into a single discipline — planners, surveyors, and engineers work side by side from day one. Send a message and someone from our team will follow up.</p>
+        </div>
+        <form class="about-form" data-contact action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="access_key" value="4c1dc681-6cb8-4efa-bfb8-f94b2a7f37e3">
           <input type="hidden" name="subject" value="New careers inquiry — Georgia Civil">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="form-row">
+          <div class="about-form-row">
             <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required autocomplete="name">
+              <label for="c-name">Name</label>
+              <input id="c-name" name="name" type="text" required autocomplete="name">
             </div>
             <div>
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required autocomplete="email">
+              <label for="c-email">Email</label>
+              <input id="c-email" name="email" type="email" required autocomplete="email">
             </div>
           </div>
           <div>
@@ -107,17 +583,63 @@
             </select>
           </div>
           <div>
-            <label for="message">Your message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell us a little about yourself and what you're looking for."></textarea>
+            <label for="c-message">Your message</label>
+            <textarea id="c-message" name="message" rows="5" placeholder="Tell us a little about yourself and what you're looking for."></textarea>
           </div>
-          <button class="btn btn-accent" type="submit">Send message &rarr;</button>
-          <p class="form-note">We review every message. Qualified candidates will hear back from a member of the team.</p>
+          <div class="about-form-submit">
+            <button class="about-form-btn" type="submit">Send Message &rarr;</button>
+            <p class="about-form-note">Every message is reviewed. Qualified candidates hear back directly.</p>
+          </div>
         </form>
       </div>
+
     </div>
   </section>
 
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      var PAGE = 'https://www.linkedin.com/company/georgia-civil-inc-/';
+      var grid = document.getElementById('about-news-feed');
+      if (!grid) return;
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+        });
+      };
+      var fmt = function (d) {
+        return new Date(d).toLocaleDateString('en-US', {month:'short', year:'numeric'});
+      };
+      fetch('/.netlify/functions/linkedin-news', {cache:'no-store'})
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; })
+        .then(function (posts) {
+          if (!Array.isArray(posts) || !posts.length) {
+            return fetch('assets/data/news.json', {cache:'no-store'})
+              .then(function (r) { return r.ok ? r.json() : []; })
+              .catch(function () { return []; });
+          }
+          return posts;
+        })
+        .then(function (all) {
+          var cutoff = new Date();
+          cutoff.setMonth(cutoff.getMonth() - 18);
+          var posts = all
+            .filter(function (p) { return p && p.date && new Date(p.date) >= cutoff; })
+            .sort(function (a, b) { return new Date(b.date) - new Date(a.date); })
+            .slice(0, 3);
+          if (!posts.length) return;
+          grid.innerHTML = posts.map(function (p) {
+            return '<a class="about-news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
+              '<span class="date">' + esc(fmt(p.date)) + '</span>' +
+              '<h3>' + esc(p.title) + '</h3>' +
+              '<p>' + esc(p.blurb || '') + '</p>' +
+              '<span class="more">Read on LinkedIn &rarr;</span>' +
+            '</a>';
+          }).join('');
+        });
+    })();
+  </script>
 </body>
 </html>
