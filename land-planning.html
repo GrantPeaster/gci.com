@@ -256,11 +256,18 @@
     /* ── Mobile hero fix ── */
     @media (max-width: 768px) {
       .lp-hero::before {
-        background: rgba(202,33,49,.82) !important;
+        background: rgba(202,33,49,.55) !important;
+      }
+      .lp-hero-copy p {
+        display: none !important;
       }
       .lp-hero-copy .btn-accent {
         width: auto !important;
         align-self: flex-start;
+      }
+      .lp-hero-caption {
+        font-size: .5rem !important;
+        padding: 5px 12px !important;
       }
     }
 
