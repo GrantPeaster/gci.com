@@ -30,20 +30,7 @@
       overflow: hidden;
     }
 
-    /* Left-to-right dark overlay */
-    .ce-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(2,5,52,.88) 0%,
-        rgba(2,5,52,.72) 30%,
-        rgba(2,5,52,.32) 60%,
-        rgba(2,5,52,0) 100%
-      );
-      z-index: 1;
-    }
+    .ce-hero::before { display: none; }
 
     /* Bottom red rule */
     .ce-hero::after {
