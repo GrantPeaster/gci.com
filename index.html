@@ -158,9 +158,43 @@
       .div-card.is-revealed .div-graphic svg .dot { opacity: 1 !important; transition: opacity .4s ease 2s !important; }
       .div-card.is-revealed .div-list, .div-card.is-revealed .div-cta { opacity: 1 !important; transition: opacity .6s ease 1s !important; }
     }
+    /* ── SPLASH SCREEN ── */
+    #gci-splash {
+      position: fixed;
+      inset: 0;
+      background: #CA2131;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+    }
+    #gci-splash.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .splash-logo {
+      animation: splash-appear .5s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes splash-appear {
+      from { opacity: 0; transform: scale(.88); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    /* Keep page from scrolling while splash is up */
+    body.splash-active { overflow: hidden; }
   </style>
 </head>
-<body data-page="">
+<body data-page="" class="splash-active">
+
+  <!-- SPLASH -->
+  <div id="gci-splash" aria-hidden="true">
+    <svg class="splash-logo" width="120" height="120" viewBox="0 0 100 100" role="img" aria-label="Georgia Civil">
+      <text x="49" y="53" text-anchor="middle" dominant-baseline="central"
+        font-family="'Times New Roman',Times,serif" font-weight="700" font-size="80"
+        letter-spacing="-7" fill="#fff">gc</text>
+    </svg>
+  </div>
   <div data-header></div>
 
   <!-- HERO -->
@@ -168,6 +202,7 @@
     <div class="hero-slides">
       <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA" style="background-color:#7a1020;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
       <div class="hero-slide" data-project="Farmview Market · Madison, GA" style="background-color:#7a1020;background-image:url(assets/img/hero-farmview.jpg)"></div>
+      <div class="hero-slide" data-project="" style="background-color:#7a1020;background-image:url(assets/img/Copilot_20260608_140700.png)"></div>
     </div>
     <div class="wrap">
       <div class="hero-copy">
@@ -418,6 +453,40 @@
         });
       }, { threshold: 0.4 });
       cards.forEach(function (card) { observer.observe(card); });
+    })();
+  </script>
+
+  <script>
+    /* ── Splash screen ── */
+    (function () {
+      var splash = document.getElementById('gci-splash');
+      if (!splash) return;
+
+      /* Minimum display time so the logo has a moment to breathe */
+      var MIN_MS   = 7000;
+      var start    = Date.now();
+      var dismissed = false;
+
+      function dismiss() {
+        if (dismissed) return;
+        dismissed = true;
+        var elapsed = Date.now() - start;
+        var delay   = Math.max(0, MIN_MS - elapsed);
+        setTimeout(function () {
+          splash.classList.add('is-hidden');
+          document.body.classList.remove('splash-active');
+          setTimeout(function () { splash.remove(); }, 1300);
+        }, delay);
+      }
+
+      if (document.readyState === 'complete') {
+        dismiss();
+      } else {
+        window.addEventListener('load', dismiss);
+      }
+
+      /* Safety net — dismiss after 10s regardless */
+      setTimeout(dismiss, 10000);
     })();
   </script>
 
