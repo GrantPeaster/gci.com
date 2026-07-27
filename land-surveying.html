@@ -22,28 +22,15 @@
        ══════════════════════════════════════════ */
     .ls-hero {
       position: relative;
-      color: #fff;
-      background: #7a1020 center / cover no-repeat;
+      background: #fff;
       min-height: clamp(480px, 70vh, 680px);
       display: flex;
       align-items: center;
       overflow: hidden;
     }
 
-    /* Minimal dark overlay — just enough for text legibility on left */
-    .ls-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(2,5,52,.82) 0%,
-        rgba(2,5,52,.55) 30%,
-        rgba(2,5,52,.12) 60%,
-        rgba(2,5,52,0) 100%
-      );
-      z-index: 1;
-    }
+    /* No photo overlay needed */
+    .ls-hero::before { display: none; }
 
     /* Bottom red rule */
     .ls-hero::after {
@@ -62,12 +49,12 @@
     }
 
     .ls-hero-copy { max-width: 520px; }
-    .ls-hero-copy .eyebrow { color: rgba(255,255,255,.6); margin-bottom: .75rem; }
+    .ls-hero-copy .eyebrow { color: rgba(2,5,52,.5); margin-bottom: .75rem; }
     .ls-hero-copy h1 {
       font-family: 'Times New Roman', Times, serif;
       font-size: clamp(2.4rem, 5.5vw, 4rem);
       font-weight: 700;
-      color: #fff;
+      color: #020534;
       line-height: 1.02;
       margin: 0 0 1rem;
       transform: none;
@@ -75,7 +62,7 @@
     .ls-hero-copy p {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(.9rem, 1.4vw, 1.05rem);
-      color: rgba(255,255,255,.75);
+      color: rgba(2,5,52,.65);
       line-height: 1.7;
       margin: 0 0 1.75rem;
       max-width: 46ch;
@@ -83,12 +70,12 @@
     .ls-hero-copy .btn-accent {
       background: #020534 !important;
       border-color: #020534 !important;
-      outline: 1.5px solid rgba(255,255,255,.35);
+      outline: 1.5px solid rgba(2,5,52,.2);
       outline-offset: 4px;
     }
     .ls-hero-copy .btn-accent:hover { background: #0a0f57 !important; }
 
-    /* ── Contour SVG overlay ── */
+    /* ── Contour SVG — red rings on white ── */
     .ls-contour {
       position: absolute;
       inset: 0;
@@ -104,7 +91,6 @@
       stroke-dasharray: 2000;
       stroke-dashoffset: 2000;
     }
-    /* Each ring draws in sequentially via animation-delay */
     .ls-contour .cring:nth-child(1)  { animation: draw-ring 1.8s ease .2s forwards; }
     .ls-contour .cring:nth-child(2)  { animation: draw-ring 1.8s ease .5s forwards; }
     .ls-contour .cring:nth-child(3)  { animation: draw-ring 1.8s ease .8s forwards; }
@@ -113,20 +99,14 @@
     .ls-contour .cring:nth-child(6)  { animation: draw-ring 1.8s ease 1.7s forwards; }
     .ls-contour .cring:nth-child(7)  { animation: draw-ring 1.8s ease 2.0s forwards; }
     .ls-contour .cring:nth-child(8)  { animation: draw-ring 1.8s ease 2.3s forwards; }
-    /* Tick marks fade in last */
     .ls-contour .ctick {
       stroke: #CA2131;
       stroke-width: 1.2;
       opacity: 0;
       animation: fade-tick .6s ease 3s forwards;
     }
-    @keyframes draw-ring {
-      to { stroke-dashoffset: 0; }
-    }
-    @keyframes fade-tick {
-      to { opacity: 1; }
-    }
-    /* Respect reduced motion */
+    @keyframes draw-ring { to { stroke-dashoffset: 0; } }
+    @keyframes fade-tick { to { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {
       .ls-contour .cring  { animation: none; stroke-dashoffset: 0; }
       .ls-contour .ctick  { animation: none; opacity: 1; }
@@ -134,9 +114,7 @@
 
     /* Mobile hero */
     @media (max-width: 768px) {
-      .ls-hero::before { background: rgba(2,5,52,.75); }
-      .ls-hero-copy p  { display: none; }
-      .ls-contour      { opacity: .5; }
+      .ls-hero-copy p { display: none; }
     }
 
     /* ══════════════════════════════════════════
@@ -297,7 +275,7 @@
   <div data-header></div>
 
   <!-- ══ HERO ══ -->
-  <section class="ls-hero" style="background-image:url(assets/img/hero-land-surveying.jpg)">
+  <section class="ls-hero">
 
     <!-- Contour lines — draw in sequentially on load -->
     <svg class="ls-contour" viewBox="0 0 1400 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
