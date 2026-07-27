@@ -5,7 +5,7 @@
     { "src": "assets/img/favicon-192x192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "assets/img/favicon-512x512.png", "type": "image/png", "sizes": "512x512" }
   ],
-  "theme_color": "#020534",
-  "background_color": "#020534",
+  "theme_color": "#CA2131",
+  "background_color": "#CA2131",
   "display": "standalone"
 }
