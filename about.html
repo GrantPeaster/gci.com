@@ -27,7 +27,6 @@
       padding-block: clamp(72px, 11vw, 136px);
     }
 
-    /* Bottom red rule — same as all discipline pages */
     .about-hero::after {
       content: '';
       position: absolute;
@@ -36,25 +35,35 @@
       background: #CA2131;
     }
 
-    /* gc letterform — draws in on load, right side */
-    .about-hero-topo {
-      position: absolute;
-      right: 2%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 36%;
-      max-width: 420px;
-      opacity: .22;
-      pointer-events: none;
-    }
-    @media (max-width: 768px) {
-      .about-hero-topo { width: 70%; right: -5%; opacity: .07; }
-    }
-
     .about-hero .wrap {
       position: relative;
+      z-index: 2;
+      max-width: 52%;
+    }
+
+    @media (max-width: 768px) {
+      .about-hero .wrap { max-width: 100%; position: relative; z-index: 2; }
+    }
+
+    /* gc letterform — right half, vertically centered */
+    .about-hero-topo {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44%;
+      max-width: 480px;
+      opacity: .18;
+      pointer-events: none;
       z-index: 1;
-      max-width: 540px;
+    }
+    @media (max-width: 768px) {
+      .about-hero-topo {
+        width: 90%;
+        right: -5%;
+        opacity: .07;
+        z-index: 0;
+      }
     }
 
     .about-hero-h1 {
@@ -74,7 +83,7 @@
       color: #020534;
       line-height: 1.72;
       margin: 0;
-      max-width: 54ch;
+      max-width: 48ch;
     }
 
     /* ══════════════════════════════════════════
