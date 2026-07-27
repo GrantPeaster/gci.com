@@ -157,8 +157,8 @@
     /* Reordered: list LEFT, boxes sticky RIGHT */
     .ls-cols {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: clamp(32px, 5vw, 72px);
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
       align-items: start;
     }
     @media (max-width: 860px) {
@@ -180,15 +180,15 @@
     .svc-list { list-style: none; margin: 0; padding: 0; }
     .svc-list li {
       position: relative;
-      padding: 18px 0 18px 24px;
+      padding: 24px 0 24px 28px;
       border-top: 1px solid rgba(2,5,52,.08);
     }
     .svc-list li:first-child { border-top: none; }
     .svc-list li::before {
       content: '';
       position: absolute;
-      left: 0; top: 24px;
-      width: 7px; height: 7px;
+      left: 0; top: 30px;
+      width: 8px; height: 8px;
       background: #CA2131;
     }
     .svc-list strong {
@@ -196,15 +196,15 @@
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       color: #020534;
-      font-size: .98rem;
-      margin-bottom: 3px;
+      font-size: 1.05rem;
+      margin-bottom: 5px;
     }
     .svc-list span {
       display: block;
       font-family: 'Montserrat', sans-serif;
       color: rgba(2,5,52,.5);
-      font-size: .86rem;
-      line-height: 1.5;
+      font-size: .9rem;
+      line-height: 1.6;
     }
 
     /* ── Capability boxes — RED, sticky right ── */
@@ -221,11 +221,10 @@
       position: relative;
       background: #CA2131;
       color: #fff;
-      padding: clamp(24px, 3.5vw, 36px) clamp(22px, 3vw, 32px);
+      padding: clamp(32px, 4.5vw, 52px) clamp(28px, 3.5vw, 40px);
       overflow: hidden;
       text-decoration: none;
       transition: background .2s;
-      /* Diagonal texture */
       background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 1px, transparent 1px 16px);
       background-color: #CA2131;
     }
@@ -329,20 +328,8 @@
               <span>Property lines and existing site conditions documented with precision.</span>
             </li>
             <li>
-              <strong>ALTA / NSPS Land Title Surveys</strong>
-              <span>Title-grade surveys that satisfy lender and insurer requirements.</span>
-            </li>
-            <li>
-              <strong>LiDAR &amp; Drone (UAS) Mapping</strong>
-              <span>Fast, dense point-cloud data from air and ground for complex sites.</span>
-            </li>
-            <li>
               <strong>GPS / GNSS Control Surveys</strong>
               <span>Accurate geodetic control that anchors every dataset on the project.</span>
-            </li>
-            <li>
-              <strong>Construction Staking &amp; Layout</strong>
-              <span>The design put back on the ground — keeping crews on line and on grade.</span>
             </li>
             <li>
               <strong>As-Built &amp; Record Surveys</strong>
@@ -386,3 +373,4 @@
   <script src="assets/js/main.js"></script>
 </body>
 </html>
+
