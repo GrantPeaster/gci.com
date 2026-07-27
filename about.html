@@ -44,10 +44,18 @@
       max-width: 52% !important;
       margin-left: 0 !important;
       margin-right: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: clamp(16px, 2.5vw, 28px) !important;
     }
 
     @media (max-width: 768px) {
-      .about-hero .wrap { max-width: 100% !important; position: relative; z-index: 2; }
+      .about-hero .wrap {
+        max-width: 100% !important;
+        position: relative;
+        z-index: 2;
+      }
     }
 
     /* gc letterform — right half, vertically centered */
