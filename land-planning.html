@@ -17,29 +17,25 @@
   <link rel="manifest" href="site.webmanifest">
   <style>
 
-    /* ── HERO tweaks ── */
-    .lp-hero::before {
-      background: linear-gradient(90deg,
-        rgba(202,33,49,0) 0%,
-        rgba(202,33,49,0) 32%,
-        rgba(202,33,49,0) 62%,
-        rgba(202,33,49,0) 88%) !important;
+    /* ── HERO — white background, navy text, no photo ── */
+    .lp-hero {
+      background: #fff !important;
+      background-image: none !important;
+      min-height: clamp(480px, 70vh, 680px) !important;
     }
+    .lp-hero::before { display: none !important; }
+    .lp-hero-copy .eyebrow { color: rgba(2,5,52,.5) !important; }
+    .lp-hero-copy h1 { color: #020534 !important; }
+    .lp-hero-copy p { color: rgba(2,5,52,.65) !important; }
     .lp-hero-copy .btn-accent {
       background: #020534 !important;
       border-color: #020534 !important;
-      outline: 1.5px solid rgba(255,255,255,.35);
+      outline: 1.5px solid rgba(2,5,52,.2) !important;
       outline-offset: 4px;
     }
     .lp-hero-copy .btn-accent:hover { background: #0a0f57 !important; }
-    .lp-hero-caption {
-      background: rgba(2,5,52,.6) !important;
-      border-radius: 0 !important;
-      right: 0 !important; left: auto !important;
-      padding: 7px 20px !important;
-      font-style: normal !important;
-      color: rgba(255,255,255,.75) !important;
-    }
+    /* Hide caption — no photo to reference */
+    .lp-hero-caption { display: none !important; }
 
     /* ══════════════════════════════════════════
        PROCESS — sticky scroll section
@@ -255,20 +251,9 @@
 
     /* ── Mobile hero fix ── */
     @media (max-width: 768px) {
-      .lp-hero::before {
-        background: rgba(202,33,49,.55) !important;
-      }
-      .lp-hero-copy p {
-        display: none !important;
-      }
-      .lp-hero-copy .btn-accent {
-        width: auto !important;
-        align-self: flex-start;
-      }
-      .lp-hero-caption {
-        font-size: .5rem !important;
-        padding: 5px 12px !important;
-      }
+      .lp-hero::before { display: none !important; }
+      .lp-hero-copy p  { display: none !important; }
+      .lp-hero-copy .btn-accent { width: auto !important; align-self: flex-start; }
     }
 
     /* ── Mobile process — carousel ── */
@@ -371,6 +356,37 @@
 
   <!-- HERO -->
   <section class="lp-hero">
+
+    <!-- Site plan SVG — red on white, right side -->
+    <svg style="position:absolute;right:0;top:0;height:100%;width:55%;max-width:700px;z-index:1;pointer-events:none;opacity:.18;" viewBox="0 0 560 480" fill="none" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <!-- Outer boundary -->
+      <rect x="40" y="40" width="480" height="400" rx="2" stroke="#CA2131" stroke-width="2"/>
+      <!-- Internal lot subdivision lines -->
+      <line x1="40" y1="200" x2="520" y2="200" stroke="#CA2131" stroke-width="1.2"/>
+      <line x1="200" y1="40" x2="200" y2="440" stroke="#CA2131" stroke-width="1.2"/>
+      <line x1="340" y1="200" x2="340" y2="440" stroke="#CA2131" stroke-width="1"/>
+      <line x1="200" y1="300" x2="520" y2="300" stroke="#CA2131" stroke-width="1"/>
+      <!-- Building footprints -->
+      <rect x="60" y="60" width="100" height="80" rx="1" fill="rgba(202,33,49,.12)" stroke="#CA2131" stroke-width="1.2"/>
+      <rect x="220" y="60" width="80" height="60" rx="1" fill="rgba(202,33,49,.08)" stroke="#CA2131" stroke-width="1"/>
+      <rect x="360" y="60" width="120" height="90" rx="1" fill="rgba(202,33,49,.12)" stroke="#CA2131" stroke-width="1.2"/>
+      <rect x="60" y="220" width="110" height="70" rx="1" fill="rgba(202,33,49,.08)" stroke="#CA2131" stroke-width="1"/>
+      <rect x="220" y="220" width="80" height="50" rx="1" fill="rgba(202,33,49,.06)" stroke="#CA2131" stroke-width=".9"/>
+      <rect x="220" y="320" width="80" height="80" rx="1" fill="rgba(202,33,49,.08)" stroke="#CA2131" stroke-width="1"/>
+      <rect x="360" y="220" width="120" height="60" rx="1" fill="rgba(202,33,49,.08)" stroke="#CA2131" stroke-width="1"/>
+      <rect x="360" y="320" width="120" height="80" rx="1" fill="rgba(202,33,49,.12)" stroke="#CA2131" stroke-width="1.2"/>
+      <rect x="60" y="330" width="110" height="70" rx="1" fill="rgba(202,33,49,.06)" stroke="#CA2131" stroke-width=".9"/>
+      <!-- Dimension ticks -->
+      <line x1="40" y1="460" x2="520" y2="460" stroke="#CA2131" stroke-width=".8"/>
+      <line x1="40"  y1="456" x2="40"  y2="464" stroke="#CA2131" stroke-width=".8"/>
+      <line x1="200" y1="456" x2="200" y2="464" stroke="#CA2131" stroke-width=".8"/>
+      <line x1="340" y1="456" x2="340" y2="464" stroke="#CA2131" stroke-width=".8"/>
+      <line x1="520" y1="456" x2="520" y2="464" stroke="#CA2131" stroke-width=".8"/>
+      <!-- North arrow -->
+      <line x1="500" y1="30" x2="500" y2="15" stroke="#CA2131" stroke-width="1.2"/>
+      <polyline points="496,20 500,13 504,20" stroke="#CA2131" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
     <div class="wrap">
       <div class="lp-hero-copy">
         <span class="eyebrow">Land Planning</span>
@@ -380,7 +396,6 @@
         <a class="btn btn-accent btn-arrow" href="contact.html">Start a Conversation</a>
       </div>
     </div>
-    <span class="lp-hero-caption">Morgan County Recreation Park</span>
   </section>
 
   <!-- PROCESS -->
