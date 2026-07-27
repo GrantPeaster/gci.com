@@ -9,73 +9,539 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#020534">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png?v=2">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=2">
+  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
+  <style>
+
+    /* ══════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════ */
+    .ce-hero {
+      position: relative;
+      color: #fff;
+      background: #7a1020 center / cover no-repeat;
+      min-height: clamp(480px, 70vh, 680px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Left-to-right dark overlay */
+    .ce-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(2,5,52,.88) 0%,
+        rgba(2,5,52,.72) 30%,
+        rgba(2,5,52,.32) 60%,
+        rgba(2,5,52,0) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Bottom red rule */
+    .ce-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: #CA2131;
+      z-index: 4;
+    }
+
+    .ce-hero .wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .ce-hero-copy { max-width: 520px; }
+    .ce-hero-copy .eyebrow { color: rgba(255,255,255,.6); margin-bottom: .75rem; }
+    .ce-hero-copy h1 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.02;
+      margin: 0 0 1rem;
+      transform: none;
+    }
+    .ce-hero-copy p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.9rem, 1.4vw, 1.05rem);
+      color: rgba(255,255,255,.75);
+      line-height: 1.7;
+      margin: 0 0 1.75rem;
+      max-width: 46ch;
+    }
+    .ce-hero-copy .btn-accent {
+      background: #020534 !important;
+      border-color: #020534 !important;
+      outline: 1.5px solid rgba(255,255,255,.35);
+      outline-offset: 4px;
+    }
+    .ce-hero-copy .btn-accent:hover { background: #0a0f57 !important; }
+
+    /* ── Animated grading profile ── */
+    .ce-profile {
+      position: absolute;
+      bottom: 3px; /* sit just above the red rule */
+      left: 0; right: 0;
+      height: 160px;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Datum line — fades in after profile draws */
+    .ce-datum {
+      stroke: rgba(255,255,255,.18);
+      stroke-width: .8;
+      stroke-dasharray: 6 4;
+      opacity: 0;
+      animation: ce-fade .6s ease 2.8s forwards;
+    }
+
+    /* Main profile polyline */
+    .ce-profile-line {
+      fill: none;
+      stroke: rgba(255,255,255,.75);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 2200;
+      stroke-dashoffset: 2200;
+      animation: ce-draw 2.2s cubic-bezier(.4,0,.2,1) .3s forwards;
+    }
+
+    /* Fill area below profile */
+    .ce-profile-fill {
+      fill: rgba(255,255,255,.04);
+      opacity: 0;
+      animation: ce-fade .8s ease 2.4s forwards;
+    }
+
+    /* Red accent dots at inflection points */
+    .ce-dot {
+      fill: #CA2131;
+      opacity: 0;
+      animation: ce-pop .4s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .ce-dot:nth-child(1) { animation-delay: 2.6s; }
+    .ce-dot:nth-child(2) { animation-delay: 2.9s; }
+
+    /* Navy accent dots at grade points */
+    .ce-dot-nav {
+      fill: #020534;
+      stroke: rgba(255,255,255,.5);
+      stroke-width: 1;
+      opacity: 0;
+      animation: ce-pop .4s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .ce-dot-nav:nth-child(1) { animation-delay: 3.1s; }
+    .ce-dot-nav:nth-child(2) { animation-delay: 3.2s; }
+    .ce-dot-nav:nth-child(3) { animation-delay: 3.3s; }
+
+    @keyframes ce-draw  { to { stroke-dashoffset: 0; } }
+    @keyframes ce-fade  { to { opacity: 1; } }
+    @keyframes ce-pop   {
+      0%   { opacity: 0; transform: scale(0); }
+      70%  { transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ce-profile-line { animation: none; stroke-dashoffset: 0; }
+      .ce-datum, .ce-profile-fill, .ce-dot, .ce-dot-nav { animation: none; opacity: 1; }
+    }
+    @media (max-width: 768px) {
+      .ce-hero::before { background: rgba(2,5,52,.78); }
+      .ce-hero-copy p  { display: none; }
+      .ce-profile      { height: 80px; opacity: .7; }
+    }
+
+    /* ══════════════════════════════════════════
+       INTRO BAND
+       ══════════════════════════════════════════ */
+    .ce-intro {
+      background: #CA2131;
+      padding-block: clamp(32px, 4vw, 48px);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .ce-intro::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
+      pointer-events: none;
+    }
+    .ce-intro p {
+      position: relative;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.92rem, 1.4vw, 1.08rem);
+      color: rgba(255,255,255,.82);
+      line-height: 1.72;
+      margin: 0;
+      max-width: 72ch;
+    }
+    .ce-intro p strong { color: #fff; font-weight: 600; }
+
+    /* ══════════════════════════════════════════
+       MAIN CONTENT — two columns
+       ══════════════════════════════════════════ */
+    .ce-body {
+      background: #fff;
+      padding-block: clamp(56px, 8vw, 104px);
+    }
+
+    .ce-cols {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(40px, 6vw, 88px);
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .ce-cols { grid-template-columns: 1fr; }
+      .ce-spotlight { position: static !important; }
+    }
+
+    /* ── Left: services ── */
+    .ce-services-eyebrow {
+      font-family: 'Roboto', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #CA2131;
+      display: block;
+      margin-bottom: clamp(16px, 2.5vw, 28px);
+    }
+
+    .ce-svc-list { list-style: none; margin: 0; padding: 0; }
+    .ce-svc-list li {
+      position: relative;
+      padding: 18px 0 18px 24px;
+      border-top: 1px solid rgba(2,5,52,.08);
+    }
+    .ce-svc-list li:first-child { border-top: none; }
+    .ce-svc-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 25px;
+      width: 7px; height: 7px;
+      background: #CA2131;
+    }
+    .ce-svc-list strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #020534;
+      font-size: .98rem;
+      margin-bottom: 3px;
+    }
+    .ce-svc-list span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      color: rgba(2,5,52,.5);
+      font-size: .86rem;
+      line-height: 1.5;
+    }
+
+    /* SiteOps featured item */
+    .ce-svc-list li.siteops {
+      background: rgba(202,33,49,.04);
+      border-left: 3px solid #CA2131;
+      padding-left: 20px;
+      margin-left: -3px;
+    }
+    .ce-svc-list li.siteops::before { display: none; }
+    .ce-svc-list .siteops-badge {
+      display: inline-block;
+      font-family: 'Roboto', sans-serif;
+      font-size: .52rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #CA2131;
+      padding: 2px 7px;
+      margin-bottom: 6px;
+    }
+
+    /* ── Right: Camp Buckhead spotlight — sticky, red ── */
+    .ce-spotlight {
+      position: sticky;
+      top: calc(76px + 24px);
+      background: #CA2131;
+      position: sticky;
+      top: calc(76px + 24px);
+      overflow: hidden;
+    }
+
+    /* Diagonal texture */
+    .ce-spotlight::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ce-spotlight-inner {
+      position: relative;
+      z-index: 1;
+      padding: clamp(28px, 4vw, 44px) clamp(24px, 3.5vw, 40px);
+    }
+
+    .ce-spot-eyebrow {
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      display: block;
+      margin-bottom: .6rem;
+    }
+
+    .ce-spot-title {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.05;
+      margin: 0 0 .4rem;
+      transform: none;
+    }
+
+    .ce-spot-location {
+      font-family: 'Roboto', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      display: block;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Stat row */
+    .ce-spot-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,.1);
+      margin-bottom: 1.4rem;
+    }
+    .ce-spot-stat {
+      background: rgba(255,255,255,.06);
+      padding: 14px 16px;
+    }
+    .ce-spot-stat .num {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      display: block;
+    }
+    .ce-spot-stat .lbl {
+      font-family: 'Roboto', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* Story beats */
+    .ce-spot-beats { display: flex; flex-direction: column; gap: 14px; margin-bottom: 1.6rem; }
+    .ce-spot-beat {
+      border-left: 2px solid rgba(255,255,255,.2);
+      padding-left: 14px;
+    }
+    .ce-spot-beat-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      display: block;
+      margin-bottom: 3px;
+    }
+    .ce-spot-beat p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .84rem;
+      color: rgba(255,255,255,.75);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Navy CTA link */
+    .ce-spot-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Roboto', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #020534;
+      background: #fff;
+      padding: .7rem 1.4rem;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .ce-spot-cta:hover { background: #f0f0f0; }
+    .ce-spot-cta svg {
+      width: 14px; height: 14px;
+      stroke: #020534;
+      transition: transform .2s;
+    }
+    .ce-spot-cta:hover svg { transform: translateX(4px); }
+
+  </style>
 </head>
 <body data-page="civil-engineering">
   <div data-header></div>
 
-<section class="div-hero" style="background-image:url(assets/img/hero-civil-engineering.jpg)">
+  <!-- ══ HERO ══ -->
+  <section class="ce-hero" style="background-image:url(assets/img/hero-civil-engineering.jpg)">
     <div class="wrap">
-      <div class="div-hero-copy">
+      <div class="ce-hero-copy">
         <span class="eyebrow">Civil Engineering</span>
         <h1>Optimize the Site.<br>Maximize the Outcome.</h1>
         <p>From grading and drainage to utilities and permitting, we deliver constructible civil
-          designs that optimize every developable acre.</p>
+          designs that treat the site as one connected system.</p>
         <a class="btn btn-accent btn-arrow" href="contact.html">Start a Conversation</a>
       </div>
     </div>
-    <span class="div-hero-caption">RL Cousins Community Center</span>
+
+    <!-- Animated grading profile -->
+    <svg class="ce-profile" viewBox="0 0 1400 160" preserveAspectRatio="none" aria-hidden="true">
+      <!-- Datum line -->
+      <line class="ce-datum" x1="0" y1="120" x2="1400" y2="120"/>
+      <!-- Fill area -->
+      <path class="ce-profile-fill" d="M0,160 L0,130 C120,130 180,125 260,118 C340,111 380,95 460,82 C540,69 580,72 640,78 C700,84 730,100 790,108 C850,116 890,112 960,98 C1030,84 1070,68 1140,58 C1210,48 1280,52 1350,55 L1400,55 L1400,160 Z"/>
+      <!-- Profile line — grading cross-section -->
+      <polyline class="ce-profile-line"
+        points="0,130 80,128 160,124 260,118 340,108 400,94 460,82 520,74 580,72 640,78 700,86 750,98 790,108 840,114 890,112 940,104 990,94 1040,80 1100,64 1160,57 1220,53 1290,52 1400,55"/>
+      <!-- Red dots — high point and finished grade -->
+      <circle class="ce-dot" cx="580" cy="72"  r="5"/>
+      <circle class="ce-dot" cx="1160" cy="57" r="5"/>
+      <!-- Navy dots — grade breaks -->
+      <circle class="ce-dot-nav" cx="260"  cy="118" r="3.5"/>
+      <circle class="ce-dot-nav" cx="790"  cy="108" r="3.5"/>
+      <circle class="ce-dot-nav" cx="1040" cy="80"  r="3.5"/>
+    </svg>
   </section>
 
-  <section>
-    <div class="wrap split">
-      <div class="maxw-readable">
-        <p class="lead">Our engineers treat grading, drainage, utilities, and roadway elevations as one
-          interconnected system — not separate line items.</p>
-        <p>That's how, at Bana 85, we coordinated site infrastructure across 700-plus acres to maximize
-          developable acreage and improve the overall value of the property. The earlier engineering enters
-          the conversation, the more value it protects.</p>
-      </div>
-      <img src="assets/img/icon-skyline.svg" alt="" style="width:100%;max-width:360px" aria-hidden="true">
-    </div>
-  </section>
-
-  <section class="section-paper">
-    <div class="wrap split">
-      <div>
-        <span class="eyebrow">SiteOps</span>
-        <h2>Optimization that pays for itself in earthwork.</h2>
-        <p>We use SiteOps site-optimization technology to test thousands of grading and layout scenarios,
-          balancing cut and fill and pressure-testing constructability before a shovel moves. The result is
-          measurable savings and a site that's been engineered, not just drawn.</p>
-      </div>
-      <div>
-        <span class="eyebrow brass">Camp Buckhead</span>
-        <h2>Engineering through real constraints.</h2>
-        <p>Tough sites are where integrated engineering earns its keep. At Camp Buckhead, we navigated
-          significant site constraints to deliver a workable, permittable solution — the kind of problem-solving
-          that comes from having planning, survey, and engineering in the same room.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-blue">
+  <!-- ══ INTRO BAND ══ -->
+  <section class="ce-intro">
     <div class="wrap">
-      <span class="eyebrow brass">What we engineer</span>
-      <h2 style="margin-bottom:24px">Core civil services</h2>
-      <div class="grid cols-3">
-        <div><h3>Grading &amp; earthwork</h3><p style="color:rgba(255,255,255,.7)">Balanced, optimized grading plans that reduce haul and protect the budget.</p></div>
-        <div><h3>Stormwater &amp; drainage</h3><p style="color:rgba(255,255,255,.7)">Detention, conveyance, and water-quality design that meets code and the site.</p></div>
-        <div><h3>Utility design</h3><p style="color:rgba(255,255,255,.7)">Water, sewer, and infrastructure routed as part of the whole system.</p></div>
-        <div><h3>Roadway &amp; access</h3><p style="color:rgba(255,255,255,.7)">Elevations and circulation coordinated with grading and adjacent infrastructure.</p></div>
-        <div><h3>Erosion &amp; sediment control</h3><p style="color:rgba(255,255,255,.7)">Compliant, practical plans for clean, defensible site work.</p></div>
-        <div><h3>Permitting support</h3><p style="color:rgba(255,255,255,.7)">Plans built to clear review — coordinated with our planning and survey teams.</p></div>
+      <p>Our engineers treat grading, drainage, utilities, and roadway elevations as <strong>one interconnected system</strong> — not separate line items. The earlier engineering enters the conversation, the more value it protects.</p>
+    </div>
+  </section>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <section class="ce-body">
+    <div class="wrap ce-cols">
+
+      <!-- Left: services list -->
+      <div>
+        <span class="ce-services-eyebrow">Core civil services</span>
+        <ul class="ce-svc-list">
+
+          <li class="siteops">
+            <span class="siteops-badge">SiteOps Technology</span>
+            <strong>Grading &amp; Earthwork Optimization</strong>
+            <span>We use SiteOps to test thousands of grading scenarios — balancing cut and fill, pressure-testing constructability, and delivering measurable savings before a shovel moves.</span>
+          </li>
+
+          <li>
+            <strong>Stormwater &amp; Drainage Design</strong>
+            <span>Detention, conveyance, and water-quality systems designed to meet code and work with the site — not against it.</span>
+          </li>
+
+          <li>
+            <strong>Utility Design</strong>
+            <span>Water, sewer, and dry utilities routed as part of the whole system, coordinated with grading and access from the start.</span>
+          </li>
+
+          <li>
+            <strong>Roadway &amp; Access Engineering</strong>
+            <span>Elevations and circulation coordinated with grading and adjacent infrastructure to avoid costly conflicts downstream.</span>
+          </li>
+
+          <li>
+            <strong>Erosion &amp; Sediment Control</strong>
+            <span>Compliant, practical plans that keep the site clean and defensible through every phase of construction.</span>
+          </li>
+
+          <li>
+            <strong>Permitting Support</strong>
+            <span>Plans built to clear review — coordinated with our planning and survey teams so nothing gets lost between disciplines.</span>
+          </li>
+
+        </ul>
       </div>
+
+      <!-- Right: Camp Buckhead spotlight -->
+      <div class="ce-spotlight">
+        <div class="ce-spotlight-inner">
+          <span class="ce-spot-eyebrow">Project Spotlight</span>
+          <h2 class="ce-spot-title">Camp Buckhead</h2>
+          <span class="ce-spot-location">Georgia</span>
+
+          <div class="ce-spot-stats">
+            <div class="ce-spot-stat">
+              <span class="num">291</span>
+              <span class="lbl">Acres</span>
+            </div>
+            <div class="ce-spot-stat">
+              <span class="num">Conservation</span>
+              <span class="lbl">Subdivision Type</span>
+            </div>
+          </div>
+
+          <div class="ce-spot-beats">
+            <div class="ce-spot-beat">
+              <span class="ce-spot-beat-label">The Challenge</span>
+              <p>Severely constrained site — poor soils, no public sewer or water, significant drainage complexity across 291 acres.</p>
+            </div>
+            <div class="ce-spot-beat">
+              <span class="ce-spot-beat-label">The Approach</span>
+              <p>GCI integrated planning, survey, and engineering from day one — locating suitable soils, designing a workable drainage strategy, and navigating permitting as a unified team.</p>
+            </div>
+            <div class="ce-spot-beat">
+              <span class="ce-spot-beat-label">The Outcome</span>
+              <p>A permittable, constructible conservation subdivision that preserved the owner's vision while working within the site's real constraints.</p>
+            </div>
+          </div>
+
+          <a class="ce-spot-cta" href="contact.html">
+            Discuss your project
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
 
