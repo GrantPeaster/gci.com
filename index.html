@@ -189,7 +189,7 @@
 
   <!-- SPLASH -->
   <div id="gci-splash" aria-hidden="true">
-    <svg class="splash-logo" width="120" height="120" viewBox="0 0 100 100" role="img" aria-label="Georgia Civil">
+    <svg class="splash-logo" width="220" height="220" viewBox="0 0 100 100" role="img" aria-label="Georgia Civil">
       <text x="49" y="53" text-anchor="middle" dominant-baseline="central"
         font-family="'Times New Roman',Times,serif" font-weight="700" font-size="80"
         letter-spacing="-7" fill="#fff">gc</text>
@@ -463,7 +463,7 @@
       if (!splash) return;
 
       /* Minimum display time so the logo has a moment to breathe */
-      var MIN_MS   = 7000;
+      var MIN_MS   = 4000;
       var start    = Date.now();
       var dismissed = false;
 
@@ -485,8 +485,8 @@
         window.addEventListener('load', dismiss);
       }
 
-      /* Safety net — dismiss after 10s regardless */
-      setTimeout(dismiss, 10000);
+      /* Safety net — dismiss after 7s regardless */
+      setTimeout(dismiss, 7000);
     })();
   </script>
 
