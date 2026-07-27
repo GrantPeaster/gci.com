@@ -27,6 +27,9 @@
       padding-block: clamp(72px, 11vw, 136px);
     }
 
+    /* Suppress any global texture from styles.css */
+    .about-hero::before { display: none !important; }
+
     .about-hero::after {
       content: '';
       position: absolute;
@@ -68,13 +71,12 @@
 
     .about-hero-h1 {
       font-family: 'Times New Roman', Times, serif;
-      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
       font-weight: 700;
       color: #020534;
-      line-height: .95;
+      line-height: 1;
       margin: 0 0 clamp(20px, 3vw, 36px);
       transform: none;
-      white-space: nowrap;
     }
 
     .about-hero-lead {
