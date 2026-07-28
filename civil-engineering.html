@@ -75,20 +75,15 @@
     /* ── Grading plan SVG — right side, bleeds behind text ── */
     .ce-grading {
       position: absolute;
-      top: 0; right: -80px;
-      width: 85%;
+      top: 0; left: 0;
+      width: 100%;
       height: 100%;
       z-index: 1;
       pointer-events: none;
       opacity: .28;
     }
     @media (max-width: 768px) {
-      .ce-grading {
-        top: 0; right: 0;
-        width: 100%;
-        height: 100%;
-        opacity: .25;
-      }
+      .ce-grading { opacity: .25; }
     }
     /* Draw-in animations */
     .ce-g-d { stroke-dasharray: 3000; stroke-dashoffset: 3000; }
@@ -366,7 +361,7 @@
   <section class="ce-hero">
 
     <!-- Grading plan SVG -->
-    <svg class="ce-grading" viewBox="0 0 900 520" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg class="ce-grading" viewBox="200 80 560 360" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <clipPath id="ce-site">
           <path d="M 80,45 L 820,35 L 860,475 L 75,482 Z"/>
