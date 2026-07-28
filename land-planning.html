@@ -364,24 +364,24 @@
         height: 100%;
         z-index: 1;
         pointer-events: none;
-        opacity: .16;
+        opacity: 1;
         overflow: visible;
       }
       @media (max-width: 768px) { .lp-sp { opacity: .07; left: -20px; } }
       .lp-b  { fill:none; stroke:#CA2131; stroke-linecap:round; stroke-linejoin:round; }
       .lp-da { stroke:#CA2131; stroke-width:1; stroke-dasharray:7 5; stroke-linecap:round; fill:none; }
-      .lp-rd { fill:rgba(202,33,49,.06); stroke:#CA2131; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
+      .lp-rd { fill:rgba(202,33,49,.12); stroke:#CA2131; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
       /* draw-in animation */
       .lp-d  { stroke-dasharray:3000; stroke-dashoffset:3000; }
-      .lp-d1 { animation:lp-in 2.2s cubic-bezier(.4,0,.2,1) .0s forwards; }
-      .lp-d2 { animation:lp-in 2.0s cubic-bezier(.4,0,.2,1) .3s forwards; }
-      .lp-d3 { animation:lp-in 1.6s cubic-bezier(.4,0,.2,1) .7s forwards; }
-      .lp-d4 { animation:lp-in 1.4s cubic-bezier(.4,0,.2,1) 1.0s forwards; }
-      .lp-d5 { animation:lp-in 1.2s cubic-bezier(.4,0,.2,1) 1.3s forwards; }
-      .lp-d6 { animation:lp-in 1.2s cubic-bezier(.4,0,.2,1) 1.6s forwards; }
-      .lp-d7 { animation:lp-in 1.0s cubic-bezier(.4,0,.2,1) 1.9s forwards; }
-      .lp-d8 { animation:lp-in 1.0s cubic-bezier(.4,0,.2,1) 2.2s forwards; }
-      .lp-d9 { animation:lp-in 1.0s cubic-bezier(.4,0,.2,1) 2.4s forwards; }
+      .lp-d1 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) 0s forwards; }
+      .lp-d2 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) .31s forwards; }
+      .lp-d3 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) .63s forwards; }
+      .lp-d4 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) .94s forwards; }
+      .lp-d5 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) 1.25s forwards; }
+      .lp-d6 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) 1.56s forwards; }
+      .lp-d7 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) 1.88s forwards; }
+      .lp-d8 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) 2.19s forwards; }
+      .lp-d9 { animation:lp-in 1.5s cubic-bezier(.4,0,.2,1) 2.5s forwards; }
       @keyframes lp-in { to { stroke-dashoffset: 0; } }
       @media (prefers-reduced-motion: reduce) {
         .lp-d { animation:none; stroke-dashoffset:0; }
@@ -855,3 +855,4 @@
   </script>
 </body>
 </html>
+
