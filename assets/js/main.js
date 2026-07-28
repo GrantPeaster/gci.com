@@ -1,10 +1,8 @@
 /* ============================================================
    GEORGIA CIVIL — Shared site script
    Injects header + footer, runs hero carousel & mobile nav.
-   Edit the NAV array or MONO svg in ONE place here.
    ============================================================ */
 
-// Inline monogram. Box = currentColor; letters use --mono-letter (default white).
 const MONO = `<svg class="mono" viewBox="0 0 100 100" role="img" aria-label="Georgia Civil">
   <rect x="0" y="0" width="100" height="100" rx="1.5" fill="currentColor"/>
   <text x="49" y="53" text-anchor="middle" dominant-baseline="central"
@@ -17,7 +15,6 @@ const LINKEDIN = `<svg class="linkedin" viewBox="0 0 24 24" fill="currentColor" 
   <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C20.2 8.65 21 10.9 21 14v7h-4v-6.2c0-1.48-.03-3.4-2.07-3.4-2.07 0-2.39 1.62-2.39 3.29V21H9z"/>
 </svg>`;
 
-// Order matches the Brand ID navigation spec.
 const NAV = [
   { id: 'about',            label: 'About GCI',        href: 'about.html' },
   { id: 'land-planning',    label: 'Land Planning',    href: 'land-planning.html' },
@@ -45,11 +42,17 @@ function buildHeader(current) {
   </header>`;
 }
 
-// Division QR/infographic cards — linked ONLY from their own division footer.
 const CARD_LINKS = {
   'land-planning':     { href: 'card-land-planning.html',     label: 'Capability Card' },
   'land-surveying':    { href: 'card-land-surveying.html',    label: 'Capability Card' },
   'civil-engineering': { href: 'card-civil-engineering.html', label: 'Capability Card' },
+};
+
+// Related services per page — excludes current page
+const RELATED = {
+  'land-planning':     [{ label: 'Land Surveying', href: 'land-surveying.html' }, { label: 'Civil Engineering', href: 'civil-engineering.html' }],
+  'land-surveying':    [{ label: 'Land Planning',  href: 'land-planning.html'  }, { label: 'Civil Engineering', href: 'civil-engineering.html' }],
+  'civil-engineering': [{ label: 'Land Planning',  href: 'land-planning.html'  }, { label: 'Land Surveying',   href: 'land-surveying.html'   }],
 };
 
 function buildFooter(current) {
@@ -57,6 +60,15 @@ function buildFooter(current) {
   const cardLink = card
     ? `<a href="${card.href}" style="font-family:var(--utility);text-transform:uppercase;letter-spacing:.139em;font-size:.72rem;color:#fff">${card.label} &rarr;</a>`
     : '';
+
+  // Related services row — only on discipline pages
+  const related = RELATED[current];
+  const relatedRow = related ? `
+      <div class="f-related">
+        <span class="f-related-label">Related Services</span>
+        ${related.map(r => `<a href="${r.href}">${r.label}</a>`).join('')}
+      </div>` : '';
+
   return `
   <footer class="footer">
     <div class="wrap">
@@ -67,8 +79,9 @@ function buildFooter(current) {
         <a href="contact.html" style="font-family:var(--utility);text-transform:uppercase;letter-spacing:.139em;font-size:.72rem;color:#fff">Contact Us</a>
         <a href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener" aria-label="GCI on LinkedIn">${LINKEDIN}</a>
       </div>
+      ${relatedRow}
       <div class="legal">
-        <span>© ${new Date().getFullYear()} Georgia Civil. Civil Engineering · Landscape Architecture · Land Surveying.</span>
+        <span>&copy; ${new Date().getFullYear()} Georgia Civil, Inc. &middot; Civil Engineering &middot; Land Planning &middot; Land Surveying &middot; Madison, GA</span>
         <span>Built on Better Planning.</span>
       </div>
     </div>
@@ -100,7 +113,7 @@ function heroCarousel() {
   let i = 0;
   const show = (n) => {
     slides.forEach((s, k) => s.classList.toggle('active', k === n));
-  if (nameEl) nameEl.textContent = slides[n].dataset.project || '';
+    if (nameEl) nameEl.textContent = slides[n].dataset.project || '';
   };
   show(0);
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -142,7 +155,6 @@ function formHandler() {
         const hasFile = !!form.querySelector('input[type=file]');
         let res;
         if (hasFile) {
-          // multipart so the résumé attaches; let the browser set the boundary
           res = await fetch(form.action, {
             method: 'POST',
             headers: { 'Accept': 'application/json' },
@@ -173,61 +185,41 @@ function formHandler() {
 function flipCardsOnScroll() {
   const cards = Array.from(document.querySelectorAll('.flip'));
   if (!cards.length) return;
-
   const isMobile = () => window.matchMedia('(max-width: 860px)').matches;
   const noHover = () => window.matchMedia('(hover: none)').matches;
   const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   let observer = null;
-
   const teardown = () => {
     if (observer) { observer.disconnect(); observer = null; }
     cards.forEach(c => c.querySelector('.flip-inner')?.classList.remove('is-flipped'));
   };
-
   const setup = () => {
-    if (observer) return; // already running
+    if (observer) return;
     observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const inner = entry.target.querySelector('.flip-inner');
         if (!inner) return;
         inner.classList.toggle('is-flipped', entry.isIntersecting);
       });
-    }, {
-      // Card flips once it's well into the viewport (avoids flipping
-      // the instant it edges onscreen) and flips back once it's mostly
-      // scrolled past, so only the card currently "in focus" shows its back.
-      rootMargin: '-30% 0px -30% 0px',
-      threshold: 0,
-    });
+    }, { rootMargin: '-30% 0px -30% 0px', threshold: 0 });
     cards.forEach(c => observer.observe(c));
   };
-
   const evaluate = () => {
     if (isMobile() && noHover() && !reduceMotion()) setup();
     else teardown();
   };
-
   evaluate();
   window.addEventListener('resize', evaluate);
   window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change', evaluate);
 }
 
-/* ---------- News feed (LinkedIn-backed, rotating, date-filtered) ----------
-   Data source order:
-     1. Live Netlify function  /.netlify/functions/linkedin-news  (once deployed)
-     2. Static seed            assets/data/news.json               (always present)
-     3. Whatever HTML is already in #news-feed                     (JS-off fallback)
-   Only posts within the last MAX_AGE_MONTHS are shown; newest first.       */
 function renderNews() {
   const grid = document.getElementById('news-feed');
   if (!grid) return;
-
-  const MAX_AGE_MONTHS = 18;   // rolling window — change to 12 for a tighter cutoff
-  const SLOTS = 3;             // cards visible at once (matches the 3-col grid)
-  const ROTATE_MS = 7000;      // advance the window every N ms when there are extras
+  const MAX_AGE_MONTHS = 18;
+  const SLOTS = 3;
+  const ROTATE_MS = 7000;
   const PAGE = 'https://www.linkedin.com/company/georgia-civil-inc-/';
-
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const fmt = (d) => new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
@@ -248,60 +240,53 @@ function renderNews() {
           <p style="color:var(--ink-55);font-size:.92rem">${esc(p.blurb || '')}</p>
           <span class="more">Read on LinkedIn &rarr;</span>
         </a>`;
-
   const load = async () => {
     let posts = null;
     try {
       const r = await fetch('/.netlify/functions/linkedin-news', { cache: 'no-store' });
       if (r.ok) posts = await r.json();
-    } catch (_) { /* not on Netlify yet — fall through to the seed */ }
+    } catch (_) {}
     if (!Array.isArray(posts) || !posts.length) {
       try {
         const r = await fetch('assets/data/news.json', { cache: 'no-store' });
         if (r.ok) posts = await r.json();
-      } catch (_) { /* keep the hardcoded fallback cards */ }
+      } catch (_) {}
     }
     return Array.isArray(posts) ? posts : [];
   };
-
   load().then((all) => {
     const cutoff = new Date();
     cutoff.setMonth(cutoff.getMonth() - MAX_AGE_MONTHS);
     const posts = all
       .filter((p) => p && p.date && !isNaN(new Date(p.date).valueOf()) && new Date(p.date) >= cutoff)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    if (!posts.length) return; // nothing qualifies — leave existing cards in place
-
+    if (!posts.length) return;
     const view = (start) => {
       const out = [];
       for (let i = 0; i < Math.min(SLOTS, posts.length); i++) out.push(posts[(start + i) % posts.length]);
       return out.map(card).join('');
     };
-
     grid.innerHTML = view(0);
-
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (posts.length <= SLOTS || reduce) return; // no rotation needed / motion suppressed
-
+    if (posts.length <= SLOTS || reduce) return;
     let start = 0, timer = null;
-    const SLIDE_MS = 180; // must match the .18s transition in styles.css
+    const SLIDE_MS = 180;
     const tick = () => {
-      start = (start + SLOTS) % posts.length; // page in a fresh set of 3
-      grid.classList.add('is-out');            // slide current cards left + fade
+      start = (start + SLOTS) % posts.length;
+      grid.classList.add('is-out');
       setTimeout(() => {
         grid.classList.remove('is-out');
         grid.innerHTML = view(start);
-        grid.classList.add('is-in');           // drop new cards in from the right (no transition)
-        void grid.offsetWidth;                 // force reflow so the offset applies first
-        grid.classList.remove('is-in');        // animate them into place
+        grid.classList.add('is-in');
+        void grid.offsetWidth;
+        grid.classList.remove('is-in');
       }, SLIDE_MS);
     };
     const play = () => { if (!timer) timer = setInterval(tick, ROTATE_MS); };
     const stop = () => { clearInterval(timer); timer = null; };
-    grid.addEventListener('mouseenter', stop);   // pause while reading
+    grid.addEventListener('mouseenter', stop);
     grid.addEventListener('mouseleave', play);
-    grid.addEventListener('focusin', stop);      // pause during keyboard focus
+    grid.addEventListener('focusin', stop);
     grid.addEventListener('focusout', play);
     play();
   });
@@ -313,17 +298,12 @@ document.addEventListener('DOMContentLoaded', () => {
   formHandler();
   flipCardsOnScroll();
 });
-/* =============================================================
-   HERO SLIDE DOTS — append this block to the bottom of main.js
-   ============================================================= */
 
+/* ── Hero slide dots ── */
 (function () {
   const slides   = document.querySelectorAll('.hero-slide');
   const dotsWrap = document.getElementById('hero-dots');
-
   if (!slides.length || !dotsWrap) return;
-
-  /* Build a dot per slide */
   const dots = Array.from(slides).map((_, i) => {
     const d = document.createElement('button');
     d.className = 'hero-dot' + (i === 0 ? ' active' : '');
@@ -332,32 +312,19 @@ document.addEventListener('DOMContentLoaded', () => {
     dotsWrap.appendChild(d);
     return d;
   });
-
-  /* Sync dots whenever the carousel advances.
-     Watches for the class change your existing main.js makes on .hero-slide */
   function syncDots() {
     slides.forEach((slide, i) => {
       dots[i].classList.toggle('active', slide.classList.contains('active'));
     });
   }
-
-  /* MutationObserver watches .hero-slide class changes */
   const obs = new MutationObserver(syncDots);
-  slides.forEach(slide => {
-    obs.observe(slide, { attributes: true, attributeFilter: ['class'] });
-  });
-
-  /* Optional: clicking a dot can also trigger the existing carousel.
-     If your main.js exposes a goToSlide(index) function, call it here.
-     Otherwise this manual fallback handles it. */
+  slides.forEach(slide => obs.observe(slide, { attributes: true, attributeFilter: ['class'] }));
   function goToSlide(index) {
     const projectLabel = document.querySelector('.hero-project');
     slides.forEach((slide, i) => {
       const active = i === index;
       slide.classList.toggle('active', active);
-      if (active && projectLabel) {
-        projectLabel.textContent = slide.dataset.project || '';
-      }
+      if (active && projectLabel) projectLabel.textContent = slide.dataset.project || '';
     });
     syncDots();
   }
