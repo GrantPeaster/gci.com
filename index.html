@@ -16,192 +16,6 @@
   <meta name="theme-color" content="#CA2131">
   <link rel="preload" as="image" href="assets/img/hero-morgan-medical.jpg" fetchpriority="high">
   <link rel="manifest" href="site.webmanifest">
-  <style>
-    /* ── HERO ── */
-    .hero { align-items: center; justify-content: center; padding-bottom: 8vh; overflow: hidden; background: #7a1020; }
-    .hero-slide { background-color: #7a1020 !important; }
-    .hero-slide::before { transition: opacity .4s ease; }
-    .hero-slide::after { background: rgba(202,33,49,.18) !important; }
-    .hero-slides::after {
-      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
-      background: linear-gradient(to bottom, rgba(10,5,20,.30) 0%, rgba(10,5,20,.06) 38%, rgba(10,5,20,.10) 62%, rgba(10,5,20,.58) 100%);
-    }
-    .hero .wrap { display: flex; align-items: center; justify-content: center; width: 100%; padding-inline: var(--gutter); }
-    .hero-copy {
-      text-align: center !important; max-width: none !important; display: flex !important;
-      flex-direction: column !important; align-items: center !important;
-      gap: 2rem !important; margin-left: 0 !important; margin-bottom: 4vh !important;
-    }
-    .hero-copy h1 {
-      font-family: 'Times New Roman', Times, 'Liberation Serif', serif !important;
-      font-size: clamp(2.6rem, 6.5vw, 5.4rem) !important;
-      font-weight: 700 !important; color: #fff !important; line-height: 1.05 !important;
-      letter-spacing: -.01em !important; white-space: nowrap !important;
-      padding-left: 0 !important; margin-left: 0 !important;
-      transform: none !important; transform-origin: center !important; overflow: visible !important;
-      -webkit-text-stroke: 1.5px rgba(2,5,52,.55); paint-order: stroke fill;
-      text-shadow: 0 2px 24px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.25);
-    }
-    .hero-copy h1::before { display: none !important; }
-    .hero-copy h1 .dot { color: rgba(255,255,255,.4) !important; -webkit-text-stroke: 1.5px rgba(2,5,52,.3); }
-    @media (max-width: 767px) {
-      .hero-copy h1 { white-space: normal !important; font-size: clamp(2rem, 10vw, 3rem) !important; line-height: 1.1 !important; }
-    }
-    .hero-copy p { display: none !important; }
-    .hero-copy .btn-accent {
-      font-family: 'Roboto', sans-serif !important; font-size: .72rem !important;
-      font-weight: 700 !important; letter-spacing: .139em !important; text-transform: uppercase !important;
-      background: #020534 !important; color: #fff !important; border-color: #020534 !important;
-      border-radius: 3px !important; padding: .72rem 1.9rem !important;
-      outline: 1.5px solid rgba(255,255,255,.4) !important; outline-offset: 5px !important;
-      transition: background .2s, outline-color .2s !important; display: inline-block !important;
-    }
-    .hero-copy .btn-accent:hover { background: #0a0f57 !important; outline-color: rgba(255,255,255,.75) !important; }
-    .hero-project {
-      position: absolute !important; right: 0 !important; bottom: 3px !important; left: auto !important;
-      font-family: 'Roboto', sans-serif !important; font-size: .58rem !important;
-      letter-spacing: .139em !important; text-transform: uppercase !important;
-      color: rgba(255,255,255,.75) !important; background: rgba(2,5,52,.6) !important;
-      padding: 7px 20px !important; border-radius: 0 !important; z-index: 9 !important;
-      margin: 0 !important; font-style: normal !important;
-    }
-    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #CA2131; z-index: 10; }
-    .hero-dots { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 7px; align-items: center; }
-    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.3); border: none; cursor: pointer; padding: 0; transition: all .3s ease; }
-    .hero-dot.active { background: #fff; width: 20px; border-radius: 3px; }
-
-    /* ── SECTIONS ── */
-    .section-blue { background: #CA2131 !important; }
-    .section-blue h2 { color: #fff !important; }
-    .section-topo { background: #fff !important; }
-
-    /* ── NEWS CARDS ── */
-    #news-feed {
-      display: grid !important;
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 24px !important;
-      overflow: hidden !important;
-      position: relative !important;
-    }
-    @media (max-width: 860px) { #news-feed { grid-template-columns: 1fr !important; } }
-    #news-feed .news-card {
-      display: flex !important; flex-direction: column !important;
-      justify-content: space-between !important; height: 240px !important;
-      padding: 28px 26px !important; background: #fff !important;
-      border: none !important; border-radius: 0 !important; gap: 0 !important;
-      transition: transform 0.55s cubic-bezier(.4,0,.2,1), opacity 0.55s ease !important;
-      will-change: transform, opacity; position: relative !important; overflow: hidden !important;
-    }
-    #news-feed .news-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: #CA2131;
-    }
-    #news-feed .news-card .date {
-      font-family: 'Roboto', sans-serif !important; font-size: .62rem !important;
-      letter-spacing: .12em !important; text-transform: uppercase !important;
-      color: #CA2131 !important; display: block !important; margin-bottom: 10px !important;
-    }
-    #news-feed .news-card h3 {
-      font-family: 'Times New Roman', Times, serif !important; font-size: 1.1rem !important;
-      font-weight: 700 !important; color: #020534 !important; line-height: 1.25 !important;
-      flex: 1 !important; margin: 0 0 10px !important;
-    }
-    #news-feed .news-card p {
-      font-size: .82rem !important; color: #555 !important; line-height: 1.5 !important;
-      margin: 0 0 16px !important; flex: 1 !important;
-      display: -webkit-box !important; -webkit-line-clamp: 3 !important;
-      -webkit-box-orient: vertical !important; overflow: hidden !important;
-    }
-    #news-feed .news-card .more {
-      font-family: 'Roboto', sans-serif !important; font-size: .65rem !important;
-      font-weight: 700 !important; letter-spacing: .12em !important;
-      text-transform: uppercase !important; color: #CA2131 !important;
-      margin-top: auto !important; display: block !important;
-    }
-    #news-feed .news-card:hover { background: #f9f8f6 !important; }
-    #news-feed.sliding-out .news-card { transform: translateX(-48px) !important; opacity: 0 !important; }
-    #news-feed.sliding-in .news-card { transform: translateX(48px) !important; opacity: 0 !important; transition: none !important; }
-
-    /* ── DIVISION CARDS ── */
-    .div-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #d4d0c8; border-radius: 4px; overflow: hidden; }
-    .div-card { position: relative; overflow: hidden; min-height: 460px; cursor: pointer; text-decoration: none; display: block; }
-    .div-back { position: absolute; inset: 0; background: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2.25rem 2rem; z-index: 1; }
-    .div-graphic { line-height: 0; margin-bottom: 1.8rem; opacity: 0; transition: opacity 0s; }
-    .div-graphic svg .animline { stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 0s; }
-    .div-graphic svg .dot { opacity: 0; transition: opacity 0s; }
-    .div-list, .div-cta { opacity: 0; transition: opacity 0s; }
-    .div-list { list-style: none; padding: 0; margin: 0 0 1.4rem; display: flex; flex-direction: column; gap: .5rem; align-items: center; }
-    .div-list li { display: flex; align-items: flex-start; gap: .6rem; font-size: .8rem; font-family: 'Montserrat', sans-serif; color: #020534; line-height: 1.45; text-align: left; }
-    .div-list li::before { content: ''; width: 5px; height: 5px; background: #CA2131; flex-shrink: 0; margin-top: .38em; }
-    .div-cta { font-family: 'Roboto', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .139em; text-transform: uppercase; color: #020534; display: inline-flex; align-items: center; gap: .4rem; width: fit-content; border-bottom: 1px solid rgba(2,5,52,.3); padding-bottom: .15rem; }
-    .div-front { position: absolute; inset: 0; background: #CA2131; z-index: 2; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; transition: opacity 2.4s ease .5s; }
-    .div-front::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 14px); pointer-events: none; }
-    .div-front-text { position: relative; z-index: 1; text-align: left; padding: 1.75rem 1.5rem; transition: opacity .45s ease 0s; }
-    .div-name { font-family: 'Times New Roman', Times, 'Liberation Serif', serif; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.0; -webkit-text-stroke: .5px rgba(2,5,52,.2); paint-order: stroke fill; }
-    .div-card:hover .div-front, .div-card.is-revealed .div-front { opacity: 0; pointer-events: none; }
-    .div-card:hover .div-front-text, .div-card.is-revealed .div-front-text { opacity: 0; }
-    .div-card:hover .div-graphic, .div-card.is-revealed .div-graphic { opacity: 1; transition: opacity .6s ease 1.2s; }
-    .div-card:hover .div-graphic svg .animline, .div-card.is-revealed .div-graphic svg .animline { stroke-dashoffset: 0; transition: stroke-dashoffset 2.4s ease 1.4s; }
-    .div-card:hover .div-graphic svg .dot, .div-card.is-revealed .div-graphic svg .dot { opacity: 1; transition: opacity .4s ease 2.8s; }
-    .div-card:hover .div-list, .div-card:hover .div-cta, .div-card.is-revealed .div-list, .div-card.is-revealed .div-cta { opacity: 1; transition: opacity .7s ease 1.5s; }
-    @media (max-width: 860px) {
-      .divisions-feature .div-grid { grid-template-columns: 1fr !important; }
-      .div-card { min-height: 360px !important; }
-    }
-    @media (pointer: coarse) {
-      .div-card:hover .div-front { opacity: 1 !important; pointer-events: auto !important; transition: none !important; }
-      .div-card:hover .div-front-text { opacity: 1 !important; }
-      .div-card:hover .div-graphic { opacity: 0 !important; transition: none !important; }
-      .div-card:hover .div-graphic svg .animline { stroke-dashoffset: 600 !important; transition: none !important; }
-      .div-card:hover .div-graphic svg .dot { opacity: 0 !important; transition: none !important; }
-      .div-card:hover .div-list, .div-card:hover .div-cta { opacity: 0 !important; transition: none !important; }
-      .div-card.is-revealed .div-front { opacity: 0 !important; pointer-events: none !important; transition: opacity 1.6s ease .3s !important; }
-      .div-card.is-revealed .div-front-text { opacity: 0 !important; }
-      .div-card.is-revealed .div-graphic { opacity: 1 !important; transition: opacity .5s ease .8s !important; }
-      .div-card.is-revealed .div-graphic svg .animline { stroke-dashoffset: 0 !important; transition: stroke-dashoffset 1.8s ease 1s !important; }
-      .div-card.is-revealed .div-graphic svg .dot { opacity: 1 !important; transition: opacity .4s ease 2s !important; }
-      .div-card.is-revealed .div-list, .div-card.is-revealed .div-cta { opacity: 1 !important; transition: opacity .6s ease 1s !important; }
-    }
-    /* ── SPLASH SCREEN ── */
-    #gci-splash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #CA2131;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 1.2s ease, visibility 1.2s ease;
-      overflow: hidden;
-    }
-    #gci-splash.is-hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-    /* Diagonal texture */
-    #gci-splash::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
-      pointer-events: none;
-    }
-    .splash-logo {
-      position: relative;
-      z-index: 1;
-      animation: splash-appear .6s cubic-bezier(.4,0,.2,1) both;
-    }
-    @keyframes splash-appear {
-      from { opacity: 0; transform: scale(.92); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    body { background: #fff; }
-    html.splash-active body { overflow: hidden; }
-    #gci-splash { display: flex; }
-    html.no-splash #gci-splash { display: none !important; }
-  </style>
   <script>
     /* Run before body renders — check session and mark ready */
     (function() {
@@ -253,6 +67,17 @@
     }
   }
   </script>
+  <style>
+    .splash-logo {
+      position: relative;
+      z-index: 1;
+      animation: splash-appear .6s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes splash-appear {
+      from { opacity: 0; transform: scale(.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
 <body data-page="">
 
