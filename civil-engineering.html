@@ -84,7 +84,7 @@
       opacity: .28;
     }
     @media (max-width: 768px) {
-      .ce-grading { width: 100%; right: -15%; opacity: .1; }
+      .ce-grading { width: calc(100% + 20px); right: -10px; height: 100%; opacity: .25; }
     }
     /* Draw-in animations */
     .ce-g-d { stroke-dasharray: 3000; stroke-dashoffset: 3000; }
@@ -362,7 +362,7 @@
   <section class="ce-hero">
 
     <!-- Grading plan SVG -->
-    <svg class="ce-grading" viewBox="0 0 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+    <svg class="ce-grading" viewBox="0 0 900 520" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <clipPath id="ce-site">
           <path d="M 80,45 L 820,35 L 860,475 L 75,482 Z"/>
