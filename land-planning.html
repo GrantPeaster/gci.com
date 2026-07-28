@@ -22,6 +22,7 @@
       background: #fff !important;
       background-image: none !important;
       min-height: clamp(480px, 70vh, 680px) !important;
+      overflow: hidden !important;
     }
     .lp-hero::before { display: none !important; }
     .lp-hero-copy .eyebrow { color: rgba(2,5,52,.5) !important; }
@@ -364,10 +365,10 @@
         height: 100%;
         z-index: 1;
         pointer-events: none;
-        opacity: .18;
+        opacity: .28;
         overflow: visible;
       }
-      @media (max-width: 768px) { .lp-sp { opacity: .07; left: -20px; } }
+      @media (max-width: 768px) { .lp-sp { opacity: .1; left: -20px; } }
       .lp-b  { fill:none; stroke:#CA2131; stroke-linecap:round; stroke-linejoin:round; }
       .lp-da { stroke:#CA2131; stroke-width:1; stroke-dasharray:7 5; stroke-linecap:round; fill:none; }
       .lp-rd { fill:rgba(202,33,49,.12); stroke:#CA2131; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
