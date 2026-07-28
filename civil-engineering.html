@@ -75,15 +75,20 @@
     /* ── Grading plan SVG — right side, bleeds behind text ── */
     .ce-grading {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%;
+      top: 0; right: -80px;
+      width: 75%;
       height: 100%;
       z-index: 1;
       pointer-events: none;
       opacity: .28;
     }
     @media (max-width: 768px) {
-      .ce-grading { opacity: .25; }
+      .ce-grading {
+        top: 0; left: 0; right: auto;
+        width: 100%;
+        height: 100%;
+        opacity: .25;
+      }
     }
     /* Draw-in animations */
     .ce-g-d { stroke-dasharray: 3000; stroke-dashoffset: 3000; }
@@ -361,7 +366,7 @@
   <section class="ce-hero">
 
     <!-- Grading plan SVG -->
-    <svg class="ce-grading" viewBox="200 80 560 360" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg class="ce-grading" viewBox="0 0 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
       <defs>
         <clipPath id="ce-site">
           <path d="M 80,45 L 820,35 L 860,475 L 75,482 Z"/>
@@ -516,6 +521,23 @@
   </section>
 
   <div data-footer></div>
+  <script>
+    (function() {
+      var svg = document.querySelector('.ce-grading');
+      if (!svg) return;
+      function update() {
+        if (window.innerWidth <= 768) {
+          svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+          svg.setAttribute('viewBox', '200 80 560 360');
+        } else {
+          svg.setAttribute('preserveAspectRatio', 'xMaxYMid meet');
+          svg.setAttribute('viewBox', '0 0 900 520');
+        }
+      }
+      update();
+      window.addEventListener('resize', update);
+    })();
+  </script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
