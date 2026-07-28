@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Georgia Civil</title>
+  <meta name="description" content="Talk to a Georgia Civil principal. One point of contact for planning, surveying, and engineering across your project.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#CA2131">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body data-page="contact">
+  <div data-header></div>
+
+  <section class="contact-hero">
+    <div class="wrap">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Start a Conversation.</h1>
+      <p class="sub">The earlier we're involved, the more value we protect. Tell us about your project and the right person will follow up.</p>
+    </div>
+  </section>
+
+  <div class="contact-strip">
+    <div class="wrap">
+      <div class="cs-item">
+        <span>Office</span><span class="cs-dot"></span>
+        <a href="tel:+17063421104">706-342-1104</a>
+      </div>
+      <div class="cs-item">
+        <span>Location</span><span class="cs-dot"></span>
+        <span style="color:#fff;">Madison, Georgia</span>
+      </div>
+      <div class="cs-item">
+        <span>LinkedIn</span><span class="cs-dot"></span>
+        <a href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">Georgia Civil</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="contact-body">
+    <div class="wrap contact-layout">
+
+      <div class="contact-context">
+        <span class="eyebrow">Contact</span>
+        <h2>Tell us about your site.</h2>
+        <p>Select a discipline and a principal will follow up promptly.</p>
+        <div class="disc-selector" id="disc-selector" role="group" aria-label="Select a discipline">
+          <button class="disc-option selected" type="button" data-discipline="Land Planning" data-to="todd@georgiacivil.com,chelsea@georgiacivil.com">
+            <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Planning</span></div>
+          </button>
+          <button class="disc-option" type="button" data-discipline="Civil Engineering" data-to="jason@georgiacivil.com,chelsea@georgiacivil.com">
+            <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Civil Engineering</span></div>
+          </button>
+          <button class="disc-option" type="button" data-discipline="Land Surveying" data-to="brandon@georgiacivil.com,stephanie@georgiacivil.com">
+            <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Surveying</span></div>
+          </button>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form class="contact-fields" id="contact-form" data-contact action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="4c1dc681-6cb8-4efa-bfb8-f94b2a7f37e3">
+          <input type="hidden" name="subject" id="form-subject" value="New inquiry — Land Planning — Georgia Civil">
+          <input type="hidden" name="to" id="form-to" value="todd@georgiacivil.com,chelsea@georgiacivil.com">
+          <input type="hidden" name="discipline" id="form-discipline" value="Land Planning">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" placeholder="">
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="">
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="">
+            </div>
+            <div>
+              <label for="location">Project location</label>
+              <input id="location" name="location" type="text" placeholder="">
+            </div>
+          </div>
+          <div>
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="6" required placeholder=""></textarea>
+          </div>
+          <div class="contact-submit">
+            <button class="btn-send" type="submit">Send Message &rarr;</button>
+            <p class="form-note">Prefer to call? <a href="tel:+17063421104" style="color:var(--blue);border-bottom:1px solid var(--line);">706-342-1104</a></p>
+          </div>
+          <p class="err-msg" id="form-err" style="display:none"></p>
+        </form>
+
+        <div class="form-success" id="form-success" style="display:none">
+          <strong>Message sent.</strong>
+          Thank you — a member of the Georgia Civil team will be in touch shortly. If your matter is urgent, call us directly at <a href="tel:+17063421104" style="color:var(--red);">706-342-1104</a>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div data-footer></div>
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      var options   = Array.from(document.querySelectorAll('.disc-option'));
+      var toField   = document.getElementById('form-to');
+      var subjField = document.getElementById('form-subject');
+      var discField = document.getElementById('form-discipline');
+
+      function selectOption(btn) {
+        options.forEach(function (o) { o.classList.remove('selected'); });
+        btn.classList.add('selected');
+        toField.value   = btn.dataset.to;
+        subjField.value = 'New inquiry \u2014 ' + btn.dataset.discipline + ' \u2014 Georgia Civil';
+        discField.value = btn.dataset.discipline;
+      }
+      options.forEach(function (btn) {
+        btn.addEventListener('click', function () { selectOption(btn); });
+      });
+
+      var form      = document.getElementById('contact-form');
+      var success   = document.getElementById('form-success');
+      var errEl     = document.getElementById('form-err');
+      var submitBtn = form ? form.querySelector('.btn-send') : null;
+
+      if (form) {
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          errEl.style.display = 'none';
+          if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026'; }
+          try {
+            var data = Object.fromEntries(new FormData(form).entries());
+            var res  = await fetch(form.action, {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+              body: JSON.stringify(data),
+            });
+            var out = await res.json().catch(function () { return {}; });
+            if (res.ok && out.success) {
+              form.style.display = 'none';
+              success.style.display = 'block';
+            } else { throw new Error(out.message || 'failed'); }
+          } catch (err) {
+            if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Message \u2192'; }
+            errEl.textContent = 'Something went wrong. Please try again or call 706-342-1104.';
+            errEl.style.display = 'block';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
