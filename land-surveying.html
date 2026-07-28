@@ -269,6 +269,33 @@
     }
     .box-link:hover::after { transform: translateX(5px); }
 
+    /* Related services in footer */
+    .f-related {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px,3vw,32px);
+      flex-wrap: wrap;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+    .f-related-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+    .f-related a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .82rem;
+      color: rgba(255,255,255,.65);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .f-related a:hover { color: #fff; }
   </style>
   <meta property="og:type" content="website">
   <meta property="og:title" content="Land Surveying — Georgia Civil">
@@ -404,17 +431,7 @@
   </section>
 
 
-  <!-- Internal linking for SEO -->
-  <section style="background:#f6f5f2;padding:clamp(32px,5vw,56px) 0;border-top:1px solid rgba(2,5,52,.08);">
-    <div class="wrap">
-      <p style="font-family:'Roboto',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(2,5,52,.4);margin-bottom:1.25rem;">Related Services</p>
-      <div style="display:flex;gap:clamp(16px,3vw,32px);flex-wrap:wrap;">
-        <a href="land-planning.html" style="font-family:'Montserrat',sans-serif;font-size:.9rem;color:#020534;text-decoration:none;border-bottom:1px solid rgba(2,5,52,.2);padding-bottom:2px;">Land Planning &rarr;</a>
-        <a href="civil-engineering.html" style="font-family:'Montserrat',sans-serif;font-size:.9rem;color:#020534;text-decoration:none;border-bottom:1px solid rgba(2,5,52,.2);padding-bottom:2px;">Civil Engineering &rarr;</a>
-        <a href="contact.html" style="font-family:'Montserrat',sans-serif;font-size:.9rem;color:#CA2131;text-decoration:none;border-bottom:1px solid rgba(202,33,49,.3);padding-bottom:2px;">Start a Conversation &rarr;</a>
-      </div>
-    </div>
-  </section>
+
 
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
