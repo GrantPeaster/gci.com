@@ -14,11 +14,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=2">
   <meta name="theme-color" content="#CA2131">
-  <link rel="preload" as="image" href="assets/img/hero-morgan-medical.jpg">
+  <link rel="preload" as="image" href="assets/img/hero-morgan-medical.jpg" fetchpriority="high">
   <link rel="manifest" href="site.webmanifest">
   <style>
     /* ── HERO ── */
     .hero { align-items: center; justify-content: center; padding-bottom: 8vh; overflow: hidden; background: #7a1020; }
+    .hero-slide { background-color: #7a1020 !important; }
+    .hero-slide::before { transition: opacity .4s ease; }
     .hero-slide::after { background: rgba(202,33,49,.18) !important; }
     .hero-slides::after {
       content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
@@ -195,17 +197,18 @@
       from { opacity: 0; transform: scale(.92); }
       to   { opacity: 1; transform: scale(1); }
     }
-    /* Prevent hero background bleed on hard refresh */
-    body { background: #CA2131; }
-    body.splash-active { overflow: hidden; }
-    /* On return visits hide splash before paint to prevent red flash */
-    .no-splash #gci-splash { display: none !important; }
+    body { background: #fff; }
+    html.splash-active body { overflow: hidden; }
+    #gci-splash { display: flex; }
+    html.no-splash #gci-splash { display: none !important; }
   </style>
   <script>
     /* Run before body renders — check session and mark ready */
     (function() {
       if (sessionStorage.getItem('gci-splash-seen')) {
         document.documentElement.classList.add('no-splash');
+      } else {
+        document.documentElement.classList.add('splash-active');
       }
     })();
   </script>
@@ -490,7 +493,7 @@
       }
 
       /* First visit — show splash and lock scroll */
-      document.body.classList.add('splash-active');
+      document.documentElement.classList.add('splash-active');
       splash.style.display = '';
 
       var MIN_MS    = 2000;
@@ -505,6 +508,7 @@
         var delay   = Math.max(0, MIN_MS - elapsed);
         setTimeout(function () {
           splash.classList.add('is-hidden');
+          document.documentElement.classList.remove('splash-active');
           document.body.classList.remove('splash-active');
           setTimeout(function () { splash.remove(); }, 1300);
         }, delay);
