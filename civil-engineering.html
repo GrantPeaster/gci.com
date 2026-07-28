@@ -74,80 +74,37 @@
     }
     .ce-hero-copy .btn-accent:hover { background: #0a0f57 !important; }
 
-    /* ── Animated grading profile — red on white ── */
-    .ce-profile {
+    /* ── Grading plan SVG — right side, bleeds behind text ── */
+    .ce-grading {
       position: absolute;
-      bottom: 3px;
-      left: 0; right: 0;
-      height: 160px;
+      right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 85%;
+      height: 130%;
       z-index: 1;
       pointer-events: none;
+      opacity: .28;
     }
-
-    /* Datum line */
-    .ce-datum {
-      stroke: rgba(2,5,52,.15);
-      stroke-width: .8;
-      stroke-dasharray: 6 4;
-      opacity: 0;
-      animation: ce-fade .6s ease 2.8s forwards;
+    @media (max-width: 768px) {
+      .ce-grading { width: 100%; right: -15%; opacity: .1; }
     }
-
-    /* Main profile polyline — red */
-    .ce-profile-line {
-      fill: none;
-      stroke: #CA2131;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-dasharray: 2200;
-      stroke-dashoffset: 2200;
-      animation: ce-draw 2.2s cubic-bezier(.4,0,.2,1) .3s forwards;
-    }
-
-    /* Fill area below profile */
-    .ce-profile-fill {
-      fill: rgba(202,33,49,.05);
-      opacity: 0;
-      animation: ce-fade .8s ease 2.4s forwards;
-    }
-
-    /* Navy accent dots at inflection points */
-    .ce-dot {
-      fill: #CA2131;
-      opacity: 0;
-      animation: ce-pop .4s cubic-bezier(.4,0,.2,1) forwards;
-    }
-    .ce-dot:nth-child(1) { animation-delay: 2.6s; }
-    .ce-dot:nth-child(2) { animation-delay: 2.9s; }
-
-    /* Navy grade break dots */
-    .ce-dot-nav {
-      fill: #020534;
-      stroke: rgba(2,5,52,.3);
-      stroke-width: 1;
-      opacity: 0;
-      animation: ce-pop .4s cubic-bezier(.4,0,.2,1) forwards;
-    }
-    .ce-dot-nav:nth-child(1) { animation-delay: 3.1s; }
-    .ce-dot-nav:nth-child(2) { animation-delay: 3.2s; }
-    .ce-dot-nav:nth-child(3) { animation-delay: 3.3s; }
-
-    @keyframes ce-draw  { to { stroke-dashoffset: 0; } }
-    @keyframes ce-fade  { to { opacity: 1; } }
-    @keyframes ce-pop   {
-      0%   { opacity: 0; transform: scale(0); }
-      70%  { transform: scale(1.3); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
+    /* Draw-in animations */
+    .ce-g-d { stroke-dasharray: 3000; stroke-dashoffset: 3000; }
+    .ce-g-a1 { animation: ce-g-draw 2.0s cubic-bezier(.4,0,.2,1) 0s   forwards; }
+    .ce-g-a2 { animation: ce-g-draw 1.6s cubic-bezier(.4,0,.2,1) .3s  forwards; }
+    .ce-g-a3 { animation: ce-g-draw 1.4s cubic-bezier(.4,0,.2,1) .55s forwards; }
+    .ce-g-a4 { animation: ce-g-draw 1.2s cubic-bezier(.4,0,.2,1) .75s forwards; }
+    .ce-g-a5 { animation: ce-g-draw 1.0s cubic-bezier(.4,0,.2,1) .92s forwards; }
+    .ce-g-a6 { animation: ce-g-draw 1.0s cubic-bezier(.4,0,.2,1) 1.08s forwards; }
+    .ce-g-a7 { animation: ce-g-draw 1.0s cubic-bezier(.4,0,.2,1) 1.22s forwards; }
+    .ce-g-a8 { animation: ce-g-draw 1.0s cubic-bezier(.4,0,.2,1) 1.35s forwards; }
+    .ce-g-ab { animation: ce-g-draw 1.4s cubic-bezier(.4,0,.2,1) 1.6s  forwards; }
+    @keyframes ce-g-draw { to { stroke-dashoffset: 0; } }
     @media (prefers-reduced-motion: reduce) {
-      .ce-profile-line { animation: none; stroke-dashoffset: 0; }
-      .ce-datum, .ce-profile-fill, .ce-dot, .ce-dot-nav { animation: none; opacity: 1; }
+      .ce-g-d { animation: none; stroke-dashoffset: 0; }
     }
     @media (max-width: 768px) {
       .ce-hero-copy p { display: none; }
-      .ce-profile     { height: 80px; }
     }
 
     /* ══════════════════════════════════════════
@@ -405,6 +362,60 @@
 
   <!-- ══ HERO ══ -->
   <section class="ce-hero">
+
+    <!-- Grading plan SVG -->
+    <svg class="ce-grading" viewBox="0 0 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+      <defs>
+        <clipPath id="ce-site">
+          <path d="M 80,45 L 820,35 L 860,475 L 75,482 Z"/>
+        </clipPath>
+        <mask id="ce-no-bldg">
+          <rect width="900" height="520" fill="white"/>
+          <rect x="332" y="212" width="236" height="216" fill="black"/>
+        </mask>
+      </defs>
+
+      <!-- Outer boundary -->
+      <path fill="none" stroke="#CA2131" stroke-width="1.5" stroke-dasharray="8 5" stroke-linecap="round" stroke-linejoin="round"
+        class="ce-g-d ce-g-a1"
+        d="M 80,45 L 820,35 L 860,475 L 75,482 Z"/>
+
+      <!-- Contour lines — clipped to site, masked to exclude building -->
+      <g clip-path="url(#ce-site)">
+        <g mask="url(#ce-no-bldg)">
+          <path fill="none" stroke="#CA2131" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round" class="ce-g-d ce-g-a2"
+            d="M 100,90 C 250,65 520,58 760,82 C 820,94 848,158 840,244 C 830,346 800,430 758,464 C 676,484 390,488 190,478 C 114,468 90,404 86,316 C 80,210 80,138 100,90 Z"/>
+          <path fill="none" stroke="#CA2131" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round" class="ce-g-d ce-g-a3"
+            d="M 135,118 C 272,92 500,84 734,110 C 792,124 820,186 812,268 C 802,366 772,440 730,464 C 650,480 392,482 218,470 C 144,460 120,396 116,310 C 110,214 112,160 135,118 Z"/>
+          <path fill="none" stroke="#CA2131" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" class="ce-g-d ce-g-a4"
+            d="M 172,150 C 296,122 478,112 706,140 C 762,154 790,214 782,294 C 772,388 742,450 700,464 C 622,474 392,474 248,460 C 176,450 152,388 148,304 C 142,218 144,180 172,150 Z"/>
+          <path fill="none" stroke="#CA2131" stroke-width=".8" stroke-linecap="round" stroke-linejoin="round" class="ce-g-d ce-g-a5"
+            d="M 212,186 C 320,158 460,146 676,172 C 730,186 758,244 750,320 C 740,408 710,456 668,464 C 592,468 392,464 278,448 C 210,436 188,374 184,292 C 178,220 178,208 212,186 Z"/>
+          <path fill="none" stroke="#CA2131" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" class="ce-g-d ce-g-a6"
+            d="M 254,224 C 344,198 430,186 644,210 C 696,222 722,278 714,350 C 704,430 674,460 634,462 C 560,462 392,452 308,434 C 246,420 228,360 224,282 C 220,224 230,240 254,224 Z"/>
+          <path fill="none" stroke="#CA2131" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" class="ce-g-d ce-g-a7"
+            d="M 298,262 C 370,240 414,230 608,250 C 656,260 680,310 672,374 C 662,438 634,456 596,456 C 526,454 392,440 338,420 C 284,404 268,350 264,278 C 260,242 272,272 298,262 Z"/>
+          <path fill="none" stroke="#CA2131" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="ce-g-d ce-g-a8"
+            d="M 310,292 C 326,272 364,258 560,272 C 606,280 626,322 618,374 C 608,426 582,448 548,450 C 488,448 392,430 344,408 C 298,390 284,344 282,286 C 280,264 296,304 310,292 Z"/>
+          <!-- Pavement edge dashed -->
+          <path fill="none" stroke="#CA2131" stroke-width="1.4" stroke-dasharray="3 4" stroke-linecap="round" class="ce-g-d ce-g-a8"
+            d="M 294,195 C 356,178 448,170 564,182 C 620,190 656,216 660,266 C 664,334 642,404 604,432 C 554,452 440,454 358,442 C 298,432 270,390 266,330 C 258,262 260,210 294,195 Z"/>
+        </g>
+      </g>
+
+      <!-- Building footprint — drawn on top -->
+      <rect fill="none" stroke="#CA2131" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+        class="ce-g-d ce-g-ab" x="332" y="212" width="236" height="216" rx="1"/>
+      <!-- Entry steps -->
+      <g fill="none" stroke="#CA2131" stroke-width="1.2" stroke-linecap="round" class="ce-g-d ce-g-ab">
+        <line x1="568" y1="272" x2="598" y2="272"/>
+        <line x1="568" y1="286" x2="602" y2="286"/>
+        <line x1="568" y1="300" x2="604" y2="300"/>
+        <line x1="568" y1="314" x2="602" y2="314"/>
+        <line x1="568" y1="328" x2="598" y2="328"/>
+      </g>
+    </svg>
+
     <div class="wrap">
       <div class="ce-hero-copy">
         <span class="eyebrow">Civil Engineering</span>
@@ -414,24 +425,6 @@
         <a class="btn btn-accent btn-arrow" href="contact.html">Start a Conversation</a>
       </div>
     </div>
-
-    <!-- Animated grading profile -->
-    <svg class="ce-profile" viewBox="0 0 1400 160" preserveAspectRatio="none" aria-hidden="true">
-      <!-- Datum line -->
-      <line class="ce-datum" x1="0" y1="120" x2="1400" y2="120"/>
-      <!-- Fill area -->
-      <path class="ce-profile-fill" d="M0,160 L0,130 C120,130 180,125 260,118 C340,111 380,95 460,82 C540,69 580,72 640,78 C700,84 730,100 790,108 C850,116 890,112 960,98 C1030,84 1070,68 1140,58 C1210,48 1280,52 1350,55 L1400,55 L1400,160 Z"/>
-      <!-- Profile line — grading cross-section -->
-      <polyline class="ce-profile-line"
-        points="0,130 80,128 160,124 260,118 340,108 400,94 460,82 520,74 580,72 640,78 700,86 750,98 790,108 840,114 890,112 940,104 990,94 1040,80 1100,64 1160,57 1220,53 1290,52 1400,55"/>
-      <!-- Red dots — high point and finished grade -->
-      <circle class="ce-dot" cx="580" cy="72"  r="5"/>
-      <circle class="ce-dot" cx="1160" cy="57" r="5"/>
-      <!-- Navy dots — grade breaks -->
-      <circle class="ce-dot-nav" cx="260"  cy="118" r="3.5"/>
-      <circle class="ce-dot-nav" cx="790"  cy="108" r="3.5"/>
-      <circle class="ce-dot-nav" cx="1040" cy="80"  r="3.5"/>
-    </svg>
   </section>
 
   <!-- ══ INTRO BAND ══ -->
