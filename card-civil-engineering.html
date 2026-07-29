@@ -365,9 +365,39 @@
     .cta-meta a:hover { color: #fff; }
 
     @media (max-width: 700px) {
-      .adv-split, .ce-spot, .cta-inner { grid-template-columns: 1fr; }
+      .adv-split, .cta-inner { grid-template-columns: 1fr; }
       .oc-grid { grid-template-columns: 1fr 1fr; }
       .ind-row2 { grid-template-columns: repeat(4,1fr); }
+
+      /* SPOTLIGHT — stack vertically, stat row goes horizontal */
+      .ce-spot {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .ce-spot-left {
+        padding: 1.25rem 1.25rem .75rem !important;
+      }
+      .ce-spot-left h3 {
+        font-size: .95rem !important;
+      }
+      .ce-spot-stats {
+        flex-direction: row !important;
+        gap: 1.5rem !important;
+        margin-top: .75rem !important;
+      }
+      .ce-sstat .num {
+        font-size: 1.3rem !important;
+      }
+      .ce-spot-right {
+        padding: 1.1rem 1.25rem 1.25rem !important;
+        gap: .75rem !important;
+      }
+      .ce-beat {
+        padding-left: .75rem !important;
+      }
+      .ce-beat p {
+        font-size: .76rem !important;
+      }
     }
   </style>
 </head>
