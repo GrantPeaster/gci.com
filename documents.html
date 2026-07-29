@@ -16,43 +16,39 @@
   <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
   <style>
-    /* ── Page layout ── */
-    .docs-page {
-      background: #fff;
-      padding-block: 0 clamp(56px, 9vw, 112px);
-    }
-    .docs-header {
+
+    /* ── Hero band ── */
+    .docs-hero {
       background: #CA2131;
+      padding-block: clamp(52px, 8vw, 96px);
       position: relative;
       overflow: hidden;
-      padding: clamp(48px, 8vw, 96px) 0;
-      margin-bottom: clamp(36px, 5vw, 56px);
     }
-    .docs-header::before {
+    .docs-hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
       pointer-events: none;
     }
-    .docs-header::after {
+    .docs-hero::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
       height: 3px;
-      background: rgba(255,255,255,.2);
+      background: #CA2131;
+      z-index: 4;
     }
-    .docs-header .wrap { position: relative; z-index: 1; }
-    .docs-header h1 {
+    .docs-hero .wrap { position: relative; z-index: 1; }
+    .docs-hero h1 {
       font-family: 'Times New Roman', Times, serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 700;
       color: #fff;
       margin: 0 0 .75rem;
       transform: none;
       line-height: 1.05;
     }
-    .docs-header p {
+    .docs-hero p {
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(.88rem, 1.3vw, 1rem);
       color: rgba(255,255,255,.72);
@@ -60,118 +56,118 @@
       margin: 0;
       max-width: 52ch;
     }
-    .docs-content { padding-inline: var(--gutter, 40px); max-width: calc(var(--max-w, 1200px) + 80px); margin-inline: auto; }
+
+    /* ── Body ── */
+    .docs-body { background: #fff; padding-block: clamp(48px, 7vw, 88px); }
+
+    /* Two-column layout */
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(48px, 7vw, 96px);
+      align-items: start;
+    }
+    @media (max-width: 860px) { .docs-layout { grid-template-columns: 1fr; } }
 
     /* ── Document list ── */
-    .doc-list {
-      display: flex;
-      flex-direction: column;
-      max-width: 760px;
+    .doc-col-head {
+      font-family: 'Roboto', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #CA2131;
+      display: block;
+      margin-bottom: clamp(20px, 3vw, 32px);
     }
+    .doc-list { display: flex; flex-direction: column; }
+    .doc-section-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(2,5,52,.35);
+      display: block;
+      margin: clamp(24px, 3.5vw, 36px) 0 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(2,5,52,.06);
+    }
+    .doc-section-label:first-child { margin-top: 0; }
     .doc-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 22px 0;
-      border-bottom: 1px solid rgba(2,5,52,.08);
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(2,5,52,.07);
     }
-    .doc-row:first-child { border-top: 1px solid rgba(2,5,52,.08); }
-    .doc-info { flex: 1; min-width: 0; }
     .doc-info h3 {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(.9rem, 1.3vw, 1rem);
+      font-size: .92rem;
       font-weight: 600;
       color: #020534;
       margin: 0 0 3px;
       transform: none;
     }
-    .doc-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .doc-meta { display: flex; align-items: center; gap: 6px; }
     .doc-type {
       font-family: 'Roboto', sans-serif;
-      font-size: .58rem;
+      font-size: .55rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: rgba(2,5,52,.35);
+      color: rgba(2,5,52,.3);
     }
     .doc-status {
       font-family: 'Roboto', sans-serif;
-      font-size: .58rem;
+      font-size: .55rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
+      color: rgba(2,5,52,.3);
     }
-    .doc-status.pending { color: rgba(2,5,52,.35); }
-    .doc-status.available { color: #CA2131; }
-
-    /* Download button */
     .doc-dl {
       flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1.5px solid rgba(2,5,52,.15);
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid rgba(2,5,52,.14);
       color: #020534;
       text-decoration: none;
       transition: border-color .2s, background .2s, color .2s;
     }
-    .doc-dl:hover {
-      border-color: #CA2131;
-      background: #CA2131;
-      color: #fff;
-    }
-    .doc-dl svg { width: 18px; height: 18px; }
+    .doc-dl:hover { border-color: #CA2131; background: #CA2131; color: #fff; }
+    .doc-dl.pending { pointer-events: none; opacity: .28; cursor: default; }
+    .doc-dl svg { width: 16px; height: 16px; }
 
-    /* Pending — disabled state */
-    .doc-dl.pending {
-      pointer-events: none;
-      opacity: .3;
-      cursor: default;
+    /* ── Request form ── */
+    .doc-request-head {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(2,5,52,.1);
     }
-
-    /* Section dividers */
-    .doc-section-label {
+    .doc-request-eyebrow {
       font-family: 'Roboto', sans-serif;
       font-size: .6rem;
       font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      color: rgba(2,5,52,.35);
+      color: #CA2131;
       display: block;
-      margin: clamp(32px, 4vw, 48px) 0 0;
-      padding-bottom: 10px;
-    }
-    .doc-section-label:first-child { margin-top: 0; }
-    /* ── Request form ── */
-    .doc-request {
-      margin-top: clamp(56px, 8vw, 96px);
-      padding-top: clamp(40px, 6vw, 64px);
-      border-top: 1px solid rgba(2,5,52,.08);
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: clamp(40px, 6vw, 80px);
-      align-items: start;
-      max-width: 900px;
+      margin-bottom: .4rem;
     }
     .doc-request-head h2 {
       font-family: 'Times New Roman', Times, serif;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
       font-weight: 700;
       color: #020534;
-      margin: 0 0 .75rem;
+      margin: 0 0 .6rem;
       transform: none;
       line-height: 1.05;
     }
     .doc-request-head p {
       font-family: 'Montserrat', sans-serif;
-      font-size: .9rem;
+      font-size: .88rem;
       color: rgba(2,5,52,.55);
       line-height: 1.7;
       margin: 0;
@@ -179,30 +175,21 @@
     .doc-form { display: grid; gap: 14px; }
     .doc-form label {
       font-family: 'Roboto', sans-serif;
-      font-size: .6rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: #020534;
-      display: block;
-      margin-bottom: 5px;
+      font-size: .6rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: #020534; display: block; margin-bottom: 5px;
     }
-    .doc-form input,
-    .doc-form textarea {
+    .doc-form input, .doc-form textarea {
       width: 100%;
       font-family: 'Montserrat', sans-serif;
-      font-size: .9rem;
-      color: #020534;
+      font-size: .9rem; color: #020534;
       padding: 10px 13px;
       border: 1.5px solid rgba(2,5,52,.15);
-      background: #fff;
-      outline: none;
-      border-radius: 0;
-      -webkit-appearance: none;
+      background: #fff; outline: none;
+      border-radius: 0; -webkit-appearance: none;
       transition: border-color .15s, box-shadow .15s;
     }
-    .doc-form input:focus,
-    .doc-form textarea:focus {
+    .doc-form input:focus, .doc-form textarea:focus {
       border-color: #CA2131;
       box-shadow: 0 0 0 3px rgba(202,33,49,.08);
     }
@@ -211,163 +198,132 @@
     .doc-form-submit { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 4px; }
     .doc-form-btn {
       font-family: 'Roboto', sans-serif;
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .139em;
-      text-transform: uppercase;
-      background: #CA2131;
-      color: #fff;
-      border: none;
-      padding: .78rem 1.75rem;
-      cursor: pointer;
-      transition: background .2s;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .139em; text-transform: uppercase;
+      background: #CA2131; color: #fff; border: none;
+      padding: .78rem 1.75rem; cursor: pointer; transition: background .2s;
     }
     .doc-form-btn:hover { background: #a81a28; }
     .doc-form-note { font-family: 'Montserrat', sans-serif; font-size: .7rem; color: rgba(2,5,52,.38); margin: 0; }
-    @media (max-width: 768px) {
-      .doc-request { grid-template-columns: 1fr; }
-      .doc-form-row { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 540px) { .doc-form-row { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body data-page="documents">
   <div data-header></div>
 
-  <section class="docs-page">
-    <div class="docs-header">
-      <div class="wrap">
-        <h1>Registrations &amp; Documents</h1>
-        <p>Our current professional certifications, licenses, insurance certificates, and compliance documents. Click the download icon to save a copy.</p>
-      </div>
-    </div>
-
+  <!-- ── HERO ── -->
+  <section class="docs-hero">
     <div class="wrap">
-
-      <div class="doc-list">
-
-        <!-- Registrations & Licenses -->
-        <span class="doc-section-label">Registrations &amp; Licenses</span>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Business License</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/business-license.pdf" download aria-label="Download Business License">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Secretary of State — Certificate of Existence</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/certificate-of-existence.pdf" download aria-label="Download Certificate of Existence">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Certificate of Authorization — Professional Engineering</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/coa-engineering.pdf" download aria-label="Download Engineering COA">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Certificate of Authorization — Land Surveying</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/coa-surveying.pdf" download aria-label="Download Land Surveying COA">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <!-- Insurance -->
-        <span class="doc-section-label">Insurance</span>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Certificate of Liability Insurance (COI)</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/certificate-of-insurance.pdf" download aria-label="Download COI">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Professional Liability (Errors &amp; Omissions) Insurance</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/professional-liability.pdf" download aria-label="Download E&O Insurance">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <!-- Compliance -->
-        <span class="doc-section-label">Compliance</span>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Georgia Security &amp; Immigration Compliance (E-Verify) Affidavit</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/e-verify-affidavit.pdf" download aria-label="Download E-Verify Affidavit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <!-- Marketing -->
-        <span class="doc-section-label">Marketing</span>
-
-        <div class="doc-row">
-          <div class="doc-info">
-            <h3>Capability Statement</h3>
-            <div class="doc-meta">
-              <span class="doc-type">PDF</span>
-              <span class="doc-status pending">&middot; Pending upload</span>
-            </div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/capability-statement.pdf" download aria-label="Download Capability Statement">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-      </div>
-
+      <h1>Registrations &amp; Documents</h1>
+      <p>Our current professional certifications, licenses, insurance certificates, and compliance documents. Click the download icon to save a copy.</p>
     </div>
   </section>
-      <div class="doc-request">
+
+  <!-- ── BODY ── -->
+  <section class="docs-body">
+    <div class="wrap docs-layout">
+
+      <!-- Left: document list -->
+      <div>
+        <span class="doc-col-head">Available documents</span>
+        <div class="doc-list">
+
+          <span class="doc-section-label">Registrations &amp; Licenses</span>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>Business License</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/business-license.pdf" download aria-label="Download Business License">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>Secretary of State — Certificate of Existence</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/certificate-of-existence.pdf" download aria-label="Download Certificate of Existence">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>COA — Professional Engineering</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/coa-engineering.pdf" download aria-label="Download Engineering COA">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>COA — Land Surveying</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/coa-surveying.pdf" download aria-label="Download Land Surveying COA">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <span class="doc-section-label">Insurance</span>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>Certificate of Liability Insurance (COI)</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/certificate-of-insurance.pdf" download aria-label="Download COI">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>Professional Liability (E&amp;O) Insurance</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/professional-liability.pdf" download aria-label="Download E&O Insurance">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <span class="doc-section-label">Compliance</span>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>Georgia E-Verify Affidavit</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/e-verify-affidavit.pdf" download aria-label="Download E-Verify Affidavit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+          <span class="doc-section-label">Marketing</span>
+
+          <div class="doc-row">
+            <div class="doc-info">
+              <h3>Capability Statement</h3>
+              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
+            </div>
+            <a class="doc-dl pending" href="assets/docs/capability-statement.pdf" download aria-label="Download Capability Statement">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: request form -->
+      <div>
         <div class="doc-request-head">
-          <span class="docs-eyebrow">Can't find what you need?</span>
+          <span class="doc-request-eyebrow">Can't find what you need?</span>
           <h2>Request a Document</h2>
           <p>Send us a request and we'll get the right document to you directly.</p>
         </div>
@@ -379,24 +335,24 @@
           <div class="doc-form-row">
             <div>
               <label for="dr-name">Name</label>
-              <input id="dr-name" name="name" type="text" required autocomplete="name" placeholder="">
+              <input id="dr-name" name="name" type="text" required autocomplete="name">
             </div>
             <div>
               <label for="dr-email">Email</label>
-              <input id="dr-email" name="email" type="email" required autocomplete="email" placeholder="">
+              <input id="dr-email" name="email" type="email" required autocomplete="email">
             </div>
           </div>
           <div>
             <label for="dr-company">Company / Organization</label>
-            <input id="dr-company" name="company" type="text" autocomplete="organization" placeholder="">
+            <input id="dr-company" name="company" type="text" autocomplete="organization">
           </div>
           <div>
             <label for="dr-doc">Document(s) requested</label>
-            <textarea id="dr-doc" name="message" rows="3" placeholder="e.g. Certificate of Liability Insurance, COA — Professional Engineering"></textarea>
+            <textarea id="dr-doc" name="message" rows="4" placeholder="e.g. Certificate of Liability Insurance, COA — Professional Engineering"></textarea>
           </div>
           <div class="doc-form-submit">
             <button class="doc-form-btn" type="submit">Send Request &rarr;</button>
-            <p class="doc-form-note">Requests are reviewed by our operations team. Most are fulfilled within one business day.</p>
+            <p class="doc-form-note">Requests are reviewed by our operations team and fulfilled within one business day.</p>
           </div>
         </form>
       </div>
