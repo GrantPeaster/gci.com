@@ -118,6 +118,59 @@
     .cta-meta a, .cta-meta span { color: rgba(255,255,255,.8); font-size: .875rem; text-decoration: none; }
     .cta-meta a:hover { color: #fff; }
 
+    /* FEATURED CAPABILITIES */
+    .feat-caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border-radius: 10px; overflow: hidden; background: rgba(2,5,52,.18); }
+    .feat-cap {
+      display: block;
+      position: relative;
+      background: #CA2131;
+      color: #fff;
+      padding: 1.75rem 1.75rem 2.25rem;
+      overflow: hidden;
+      text-decoration: none;
+      transition: background .2s;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
+      background-color: #CA2131;
+    }
+    .feat-cap:hover { background-color: #a81a28; }
+    .feat-cap .cap-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      display: block;
+      margin-bottom: .55rem;
+    }
+    .feat-cap h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 .45rem;
+      line-height: 1.25;
+    }
+    .feat-cap p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .78rem;
+      color: rgba(255,255,255,.68);
+      line-height: 1.55;
+      margin: 0;
+      padding-right: 1.5rem;
+    }
+    .feat-cap::after {
+      content: '→';
+      position: absolute;
+      right: 1.25rem;
+      bottom: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: #020534;
+      transition: transform .2s;
+    }
+    .feat-cap:hover::after { transform: translateX(4px); }
+
     /* Responsive */
     @media (max-width: 700px) {
       .sv-hero, .spot-card, .advantage-band, .cta-band2 { grid-template-columns: 1fr; }
@@ -125,6 +178,7 @@
       .stat-strip-item:last-child { border-top: 1px solid rgba(255,255,255,0.08); grid-column: span 2; }
       .outcomes-4 { grid-template-columns: 1fr 1fr; }
       .svc-3col { grid-template-columns: 1fr 1fr; }
+      .feat-caps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -160,52 +214,23 @@
       </div>
     </section>
 
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv1">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        <span>What We Deliver</span>
-      </div>
-      <div class="line"></div>
-    </div>
-
-    <!-- OUTCOMES — 4-col icon cards -->
-    <section class="cardx2-sec reveal" id="rv2">
-      <div class="cardx2-eyebrow">Outcomes</div>
-      <h2>Data You Can Build On</h2>
-      <div class="outcomes-4">
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          <span class="oc-title">Accurate From Day One</span>
-          <span class="oc-sub">Field data you can trust from the first deliverable</span>
-        </div>
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <span class="oc-title">Reliable Project Control</span>
-          <span class="oc-sub">Consistent positioning across all phases of work</span>
-        </div>
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          <span class="oc-title">Faster Turnaround</span>
-          <span class="oc-sub">Modern technology keeps your schedule moving</span>
-        </div>
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <span class="oc-title">Fewer Construction Conflicts</span>
-          <span class="oc-sub">Catch discrepancies before they hit the field</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv3">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        <span>Services</span>
-      </div>
-      <div class="line"></div>
+    <!-- FEATURED CAPABILITIES -->
+    <div class="feat-caps reveal" id="rv-feat">
+      <a class="feat-cap" href="lidar.html">
+        <span class="cap-label">Featured Capability</span>
+        <h3>LiDAR &amp; Drone Mapping</h3>
+        <p>Dense, high-accuracy point clouds for large or complex sites — faster than traditional methods.</p>
+      </a>
+      <a class="feat-cap" href="construction-staking.html">
+        <span class="cap-label">Featured Capability</span>
+        <h3>Construction Staking</h3>
+        <p>Keeping your crews on line and on grade through every phase of build-out.</p>
+      </a>
+      <a class="feat-cap" href="alta-surveys.html">
+        <span class="cap-label">Featured Capability</span>
+        <h3>ALTA / NSPS Surveys</h3>
+        <p>Land title surveys that meet the highest standards for commercial transactions.</p>
+      </a>
     </div>
 
     <!-- SERVICES -->
@@ -244,6 +269,44 @@
         <div class="svc-pill">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>Control Surveys</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv1">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <span>What We Deliver</span>
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <!-- OUTCOMES — 4-col icon cards -->
+    <section class="cardx2-sec reveal" id="rv2">
+      <div class="cardx2-eyebrow">Outcomes</div>
+      <h2>Data You Can Build On</h2>
+      <div class="outcomes-4">
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span class="oc-title">Accurate From Day One</span>
+          <span class="oc-sub">Field data you can trust from the first deliverable</span>
+        </div>
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span class="oc-title">Reliable Project Control</span>
+          <span class="oc-sub">Consistent positioning across all phases of work</span>
+        </div>
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span class="oc-title">Faster Turnaround</span>
+          <span class="oc-sub">Modern technology keeps your schedule moving</span>
+        </div>
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="oc-title">Fewer Construction Conflicts</span>
+          <span class="oc-sub">Catch discrepancies before they hit the field</span>
         </div>
       </div>
     </section>
