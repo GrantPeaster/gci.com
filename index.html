@@ -84,6 +84,9 @@
       position: relative !important;
     }
     @media (max-width: 860px) { #news-feed { grid-template-columns: 1fr !important; } }
+    @media (max-width: 700px) {
+      .stats-grid { grid-template-columns: 1fr 1fr !important; }
+    }
     #news-feed .news-card {
       display: flex !important; flex-direction: column !important;
       justify-content: space-between !important; height: 240px !important;
@@ -278,8 +281,36 @@
     <p class="hero-project" aria-live="polite">Morgan Medical Center · Madison, GA</p>
   </section>
 
+  <!-- STATS BAND -->
+  <section style="background:#CA2131;position:relative;overflow:hidden;padding-bottom:clamp(24px,3.5vw,40px);">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 16px);pointer-events:none;"></div>
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.15);" class="stats-grid">
+
+      <div style="background:#CA2131;padding:clamp(20px,3vw,36px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">20+</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Years in Practice</span>
+      </div>
+
+      <div style="background:#CA2131;padding:clamp(20px,3vw,36px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">100+</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Projects Delivered</span>
+      </div>
+
+      <div style="background:#CA2131;padding:clamp(20px,3vw,36px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">3</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Unique Disciplines</span>
+      </div>
+
+      <div style="background:#CA2131;padding:clamp(20px,3vw,36px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">1</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Integrated Team</span>
+      </div>
+
+    </div>
+  </section>
+
   <!-- DIVISIONS -->
-  <section id="divisions" class="divisions-feature section-topo">
+  <section id="divisions" class="divisions-feature section-topo" style="padding-top:clamp(24px,3.5vw,40px);">
     <div class="wrap">
       <div class="div-grid">
 
