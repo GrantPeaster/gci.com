@@ -61,20 +61,20 @@
 
     /* HERO */
     .ce-hero {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      min-height: 400px;
+      display: block;
+      min-height: 340px;
       border-radius: 10px;
       overflow: hidden;
     }
     .ce-hero .hero-text {
       background: #CA2131;
-      padding: 2.75rem 2.5rem;
+      padding: 3rem 2.75rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: .85rem;
       position: relative;
+      min-height: 340px;
     }
     .ce-hero .hero-text::before {
       content: '';
@@ -110,7 +110,6 @@
     }
     .ce-hero .vp { font-size: .96rem; color: rgba(255,255,255,.78); line-height: 1.5; }
     .ce-hero .d  { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.65; }
-    .ce-hero .visual { background-size: cover; background-position: center; background-color: #0a1245; }
 
     /* BUTTONS */
     .btn-white {
@@ -366,8 +365,7 @@
     .cta-meta a:hover { color: #fff; }
 
     @media (max-width: 700px) {
-      .ce-hero, .adv-split, .ce-spot, .cta-inner { grid-template-columns: 1fr; }
-      .ce-hero .visual { min-height: 200px; }
+      .adv-split, .ce-spot, .cta-inner { grid-template-columns: 1fr; }
       .oc-grid { grid-template-columns: 1fr 1fr; }
       .ind-row2 { grid-template-columns: repeat(4,1fr); }
     }
