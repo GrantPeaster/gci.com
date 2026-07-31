@@ -99,9 +99,12 @@ function mountChrome() {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (toggle && nav) {
+    // Set initial state — nav is closed on load
+    nav.inert = true;
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
+      nav.inert = !open;
     });
   }
 }
