@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgia Civil — Built on Better Planning</title>
+  <meta name="description" content="Georgia Civil integrates land planning, land surveying, and civil engineering under one roof — Madison, GA. Smarter site decisions from day one.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#CA2131">
+  <link rel="preload" as="image" href="assets/img/hero-morgan-medical.jpg" fetchpriority="high">
+  <link rel="manifest" href="site.webmanifest">
+  <style>
+    /* ── HERO ── */
+    .hero { align-items: center; justify-content: center; padding-bottom: 8vh; overflow: hidden; background: #CA2131; }
+    .hero-slide { background-color: #CA2131 !important; }
+    .hero-slide::before { transition: opacity .4s ease; }
+    .hero-slide::after { background: none !important; }
+    .hero-slides::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background: linear-gradient(to bottom, rgba(10,5,20,.28) 0%, rgba(10,5,20,.06) 40%, rgba(10,5,20,.0) 70%, rgba(10,5,20,.0) 100%);
+    }
+    .hero .wrap { display: flex; align-items: center; justify-content: center; width: 100%; padding-inline: var(--gutter); }
+    .hero-copy {
+      text-align: center !important; max-width: none !important; display: flex !important;
+      flex-direction: column !important; align-items: center !important;
+      gap: 2rem !important; margin-left: 0 !important; margin-bottom: 4vh !important;
+    }
+    .hero-copy h1 {
+      font-family: 'Times New Roman', Times, 'Liberation Serif', serif !important;
+      font-size: clamp(2.6rem, 6.5vw, 5.4rem) !important;
+      font-weight: 700 !important; color: #fff !important; line-height: 1.05 !important;
+      letter-spacing: -.01em !important; white-space: nowrap !important;
+      padding-left: 0 !important; margin-left: 0 !important;
+      transform: none !important; transform-origin: center !important; overflow: visible !important;
+      -webkit-text-stroke: 1.5px rgba(2,5,52,.55); paint-order: stroke fill;
+      text-shadow: 0 2px 24px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.25);
+    }
+    .hero-copy h1::before { display: none !important; }
+    .hero-copy h1 .dot { color: rgba(255,255,255,.4) !important; -webkit-text-stroke: 1.5px rgba(2,5,52,.3); }
+    @media (max-width: 767px) {
+      .hero-copy h1 { white-space: normal !important; font-size: clamp(2rem, 10vw, 3rem) !important; line-height: 1.1 !important; }
+    }
+    .hero-copy p { display: none !important; }
+    .hero-copy .btn-accent {
+      font-family: 'Roboto', sans-serif !important; font-size: .72rem !important;
+      font-weight: 700 !important; letter-spacing: .139em !important; text-transform: uppercase !important;
+      background: #020534 !important; color: #fff !important; border-color: #020534 !important;
+      border-radius: 3px !important; padding: .72rem 1.9rem !important;
+      outline: 1.5px solid rgba(255,255,255,.4) !important; outline-offset: 5px !important;
+      transition: background .2s, outline-color .2s !important; display: inline-block !important;
+    }
+    .hero-copy .btn-accent:hover { background: #0a0f57 !important; outline-color: rgba(255,255,255,.75) !important; }
+    .hero-project {
+      position: absolute !important; right: 0 !important; bottom: 3px !important; left: auto !important;
+      font-family: 'Roboto', sans-serif !important; font-size: .58rem !important;
+      letter-spacing: .139em !important; text-transform: uppercase !important;
+      color: rgba(255,255,255,.75) !important; background: rgba(2,5,52,.6) !important;
+      padding: 7px 20px !important; border-radius: 0 !important; z-index: 9 !important;
+      margin: 0 !important; font-style: normal !important;
+    }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #CA2131; z-index: 10; }
+    .hero-dots { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 7px; align-items: center; }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.3); border: none; cursor: pointer; padding: 0; transition: all .3s ease; }
+    .hero-dot.active { background: #fff; width: 20px; border-radius: 3px; }
+
+    /* ── SECTIONS ── */
+    .section-blue { background: #CA2131 !important; }
+    .section-blue h2 { color: #fff !important; }
+    .section-topo { background: #fff !important; }
+
+    /* ── NEWS CARDS ── */
+    #news-feed {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    @media (max-width: 860px) { #news-feed { grid-template-columns: 1fr !important; } }
+    @media (max-width: 700px) {
+      .stats-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+    #news-feed .news-card {
+      display: flex !important; flex-direction: column !important;
+      justify-content: space-between !important; height: 240px !important;
+      padding: 28px 26px !important; background: #fff !important;
+      border: none !important; border-radius: 0 !important; gap: 0 !important;
+      transition: transform 0.55s cubic-bezier(.4,0,.2,1), opacity 0.55s ease !important;
+      will-change: transform, opacity; position: relative !important; overflow: hidden !important;
+    }
+    #news-feed .news-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: #CA2131;
+    }
+    #news-feed .news-card .date {
+      font-family: 'Roboto', sans-serif !important; font-size: .62rem !important;
+      letter-spacing: .12em !important; text-transform: uppercase !important;
+      color: #CA2131 !important; display: block !important; margin-bottom: 10px !important;
+    }
+    #news-feed .news-card h3 {
+      font-family: 'Times New Roman', Times, serif !important; font-size: 1.1rem !important;
+      font-weight: 700 !important; color: #020534 !important; line-height: 1.25 !important;
+      flex: 1 !important; margin: 0 0 10px !important;
+    }
+    #news-feed .news-card p {
+      font-size: .82rem !important; color: #555 !important; line-height: 1.5 !important;
+      margin: 0 0 16px !important; flex: 1 !important;
+      display: -webkit-box !important; -webkit-line-clamp: 3 !important;
+      -webkit-box-orient: vertical !important; overflow: hidden !important;
+    }
+    #news-feed .news-card .more {
+      font-family: 'Roboto', sans-serif !important; font-size: .65rem !important;
+      font-weight: 700 !important; letter-spacing: .12em !important;
+      text-transform: uppercase !important; color: #CA2131 !important;
+      margin-top: auto !important; display: block !important;
+    }
+    #news-feed .news-card:hover { background: #f9f8f6 !important; }
+    #news-feed.sliding-out .news-card { transform: translateX(-48px) !important; opacity: 0 !important; }
+    #news-feed.sliding-in .news-card { transform: translateX(48px) !important; opacity: 0 !important; transition: none !important; }
+
+    /* ── DIVISION CARDS ── */
+    .div-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #d4d0c8; border-radius: 4px; overflow: hidden; }
+    .div-card { position: relative; overflow: hidden; min-height: 460px; cursor: pointer; text-decoration: none; display: block; }
+    .div-back { position: absolute; inset: 0; background: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2.25rem 2rem; z-index: 1; }
+    .div-graphic { line-height: 0; margin-bottom: 1.8rem; opacity: 0; transition: opacity 0s; }
+    .div-graphic svg .animline { stroke-dasharray: 600; stroke-dashoffset: 600; transition: stroke-dashoffset 0s; }
+    .div-graphic svg .dot { opacity: 0; transition: opacity 0s; }
+    .div-list, .div-cta { opacity: 0; transition: opacity 0s; }
+    .div-list { list-style: none; padding: 0; margin: 0 0 1.4rem; display: flex; flex-direction: column; gap: .5rem; align-items: center; }
+    .div-list li { display: flex; align-items: flex-start; gap: .6rem; font-size: .8rem; font-family: 'Montserrat', sans-serif; color: #020534; line-height: 1.45; text-align: left; }
+    .div-list li::before { content: ''; width: 5px; height: 5px; background: #CA2131; flex-shrink: 0; margin-top: .38em; }
+    .div-cta { font-family: 'Roboto', sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .139em; text-transform: uppercase; color: #020534; display: inline-flex; align-items: center; gap: .4rem; width: fit-content; border-bottom: 1px solid rgba(2,5,52,.3); padding-bottom: .15rem; }
+    .div-front { position: absolute; inset: 0; background: #CA2131; z-index: 2; display: flex; align-items: flex-start; justify-content: flex-start; flex-direction: column; transition: opacity 2.4s ease .5s; }
+    .div-front::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 1px,transparent 1px 14px); pointer-events: none; }
+    .div-front-text { position: relative; z-index: 1; text-align: left; padding: 1.75rem 1.5rem; transition: opacity .45s ease 0s; }
+    .div-name { font-family: 'Times New Roman', Times, 'Liberation Serif', serif; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; color: #fff; line-height: 1.0; -webkit-text-stroke: .5px rgba(2,5,52,.2); paint-order: stroke fill; }
+    .div-card:hover .div-front, .div-card.is-revealed .div-front { opacity: 0; pointer-events: none; }
+    .div-card:hover .div-front-text, .div-card.is-revealed .div-front-text { opacity: 0; }
+    .div-card:hover .div-graphic, .div-card.is-revealed .div-graphic { opacity: 1; transition: opacity .6s ease 1.2s; }
+    .div-card:hover .div-graphic svg .animline, .div-card.is-revealed .div-graphic svg .animline { stroke-dashoffset: 0; transition: stroke-dashoffset 2.4s ease 1.4s; }
+    .div-card:hover .div-graphic svg .dot, .div-card.is-revealed .div-graphic svg .dot { opacity: 1; transition: opacity .4s ease 2.8s; }
+    .div-card:hover .div-list, .div-card:hover .div-cta, .div-card.is-revealed .div-list, .div-card.is-revealed .div-cta { opacity: 1; transition: opacity .7s ease 1.5s; }
+    @media (max-width: 860px) {
+      .divisions-feature .div-grid { grid-template-columns: 1fr !important; }
+      .div-card { min-height: 360px !important; }
+    }
+    @media (pointer: coarse) {
+      .div-card:hover .div-front { opacity: 1 !important; pointer-events: auto !important; transition: none !important; }
+      .div-card:hover .div-front-text { opacity: 1 !important; }
+      .div-card:hover .div-graphic { opacity: 0 !important; transition: none !important; }
+      .div-card:hover .div-graphic svg .animline { stroke-dashoffset: 600 !important; transition: none !important; }
+      .div-card:hover .div-graphic svg .dot { opacity: 0 !important; transition: none !important; }
+      .div-card:hover .div-list, .div-card:hover .div-cta { opacity: 0 !important; transition: none !important; }
+      .div-card.is-revealed .div-front { opacity: 0 !important; pointer-events: none !important; transition: opacity 1.6s ease .3s !important; }
+      .div-card.is-revealed .div-front-text { opacity: 0 !important; }
+      .div-card.is-revealed .div-graphic { opacity: 1 !important; transition: opacity .5s ease .8s !important; }
+      .div-card.is-revealed .div-graphic svg .animline { stroke-dashoffset: 0 !important; transition: stroke-dashoffset 1.8s ease 1s !important; }
+      .div-card.is-revealed .div-graphic svg .dot { opacity: 1 !important; transition: opacity .4s ease 2s !important; }
+      .div-card.is-revealed .div-list, .div-card.is-revealed .div-cta { opacity: 1 !important; transition: opacity .6s ease 1s !important; }
+    }
+    /* ── SPLASH SCREEN ── */
+    #gci-splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #CA2131;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+      overflow: hidden;
+    }
+    #gci-splash.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    /* Diagonal texture */
+    #gci-splash::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
+      pointer-events: none;
+    }
+    .splash-logo {
+      position: relative;
+      z-index: 1;
+      animation: splash-appear .6s cubic-bezier(.4,0,.2,1) both;
+    }
+    @keyframes splash-appear {
+      from { opacity: 0; transform: scale(.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    body { background: #fff; }
+    html.splash-active body { overflow: hidden; }
+    #gci-splash { display: flex; }
+    html.no-splash #gci-splash { display: none !important; }
+  </style>
+  <script>
+    /* Run before body renders — check session and mark ready */
+    (function() {
+      if (sessionStorage.getItem('gci-splash-seen')) {
+        document.documentElement.classList.add('no-splash');
+      } else {
+        document.documentElement.classList.add('splash-active');
+      }
+    })();
+  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Georgia Civil — Built on Better Planning">
+  <meta property="og:description" content="Integrated civil engineering, land planning, and land surveying firm based in Madison, GA.">
+  <meta property="og:url" content="https://grantpeaster.github.io/gci.com/">
+  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/android-chrome-512x512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://grantpeaster.github.io/gci.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Georgia Civil, Inc.",
+    "alternateName": "GCI",
+    "url": "https://grantpeaster.github.io/gci.com/",
+    "logo": "https://grantpeaster.github.io/gci.com/assets/img/logo.png",
+    "description": "Georgia Civil, Inc. is an integrated civil engineering, land planning, and land surveying firm based in Madison, Georgia. Built on better planning.",
+    "slogan": "Built on Better Planning",
+    "foundingLocation": "Madison, GA",
+    "areaServed": {
+      "@type": "State",
+      "name": "Georgia"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Madison",
+      "addressRegion": "GA",
+      "addressCountry": "US"
+    },
+    "telephone": "706-342-1104",
+    "sameAs": ["https://www.linkedin.com/company/georgia-civil-inc-/"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Civil Engineering and Land Planning Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Land Planning"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Land Surveying"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Civil Engineering"}}
+      ]
+    }
+  }
+  </script>
+</head>
+<body data-page="">
+
+  <!-- SPLASH — only shown once per session -->
+  <div id="gci-splash" aria-hidden="true">
+    <img class="splash-logo" src="assets/img/Copilot_20260608_140700.png" alt="Georgia Civil" width="220" height="220" style="object-fit:contain;">
+  </div>
+  <div data-header></div>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-slides">
+      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
+      <div class="hero-slide" data-project="Farmview Market · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-farmview.jpg)"></div>
+    </div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>Built on Better Planning<span class="dot">.</span></h1>
+        <a class="btn btn-accent" href="contact.html">Start a Conversation</a>
+      </div>
+    </div>
+    <div class="hero-dots" id="hero-dots" aria-hidden="true"></div>
+    <p class="hero-project" aria-live="polite">Morgan Medical Center · Madison, GA</p>
+  </section>
+
+  <!-- STATS BAND -->
+  <section style="background:#CA2131;position:relative;overflow:hidden;padding-block:0;">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 16px);pointer-events:none;"></div>
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:0;" class="stats-grid">
+
+      <div style="padding:clamp(12px,1.8vw,20px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">20+</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Years in Practice</span>
+      </div>
+
+      <div style="padding:clamp(12px,1.8vw,20px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">100+</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Projects Delivered</span>
+      </div>
+
+      <div style="padding:clamp(12px,1.8vw,20px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">3</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Unique Disciplines</span>
+      </div>
+
+      <div style="padding:clamp(12px,1.8vw,20px) clamp(16px,2.5vw,28px);display:flex;flex-direction:column;gap:.4rem;">
+        <span style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:700;color:#fff;line-height:1;">1</span>
+        <span style="font-family:'Roboto',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55);">Integrated Team</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DIVISIONS -->
+  <section id="divisions" class="divisions-feature section-topo" style="padding-top:clamp(56px,7vw,88px);">
+    <div class="wrap">
+      <div class="div-grid">
+
+        <!-- LAND PLANNING -->
+        <a class="div-card" href="land-planning.html" aria-label="Land Planning">
+          <div class="div-back">
+            <div class="div-graphic">
+              <svg width="120" height="120" viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect class="animline" x="8" y="8" width="64" height="64" rx="1" stroke="rgba(2,5,52,.45)" stroke-width="1.1"/>
+                <line class="animline" x1="8" y1="36" x2="72" y2="36" stroke="rgba(2,5,52,.45)" stroke-width="1"/>
+                <line class="animline" x1="36" y1="36" x2="36" y2="72" stroke="rgba(2,5,52,.45)" stroke-width="1"/>
+                <rect class="animline" x="14" y="14" width="16" height="16" rx="1" stroke="#020534" stroke-width="1.1"/>
+                <rect class="animline" x="42" y="14" width="22" height="16" rx="1" stroke="#020534" stroke-width="1.1"/>
+                <rect class="animline" x="14" y="42" width="10" height="22" rx="1" stroke="#020534" stroke-width="1.1"/>
+                <rect class="animline" x="28" y="42" width="10" height="22" rx="1" stroke="rgba(2,5,52,.35)" stroke-width="1.1"/>
+                <rect class="animline" x="42" y="42" width="22" height="22" rx="1" stroke="#020534" stroke-width="1.1"/>
+                <circle class="animline" cx="66" cy="14" r="5" stroke="rgba(2,5,52,.45)" stroke-width="1"/>
+                <line class="animline" x1="66" y1="10" x2="66" y2="18" stroke="rgba(2,5,52,.45)"/>
+                <line class="animline" x1="62" y1="14" x2="70" y2="14" stroke="rgba(2,5,52,.45)"/>
+              </svg>
+            </div>
+            <ul class="div-list">
+              <li>Feasibility &amp; site optimization</li>
+              <li>Constraints found early</li>
+              <li>Maximized developable acreage</li>
+            </ul>
+            <span class="div-cta">Explore Land Planning &rarr;</span>
+          </div>
+          <div class="div-front">
+            <!-- PNG site plan drawing — transparent, white lines on red via mix-blend-mode -->
+            <img
+              src="assets/img/site-plan-drawing.png"
+              alt=""
+              aria-hidden="true"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 35%;opacity:.45;pointer-events:none;mix-blend-mode:screen;"
+            >
+            <div class="div-front-text"><h3 class="div-name">Land<br>Planning</h3></div>
+          </div>
+        </a>
+
+        <!-- LAND SURVEYING -->
+        <a class="div-card" href="land-surveying.html" aria-label="Land Surveying">
+          <div class="div-back">
+            <div class="div-graphic">
+              <svg width="120" height="120" viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line class="animline" x1="40" y1="62" x2="40" y2="14" stroke="rgba(2,5,52,.45)" stroke-width="1"/>
+                <line class="animline" x1="24" y1="62" x2="56" y2="62" stroke="rgba(2,5,52,.45)" stroke-width="1"/>
+                <circle class="animline" cx="40" cy="30" r="10" stroke="rgba(2,5,52,.45)" stroke-width="1.1"/>
+                <circle class="animline" cx="40" cy="30" r="4" stroke="#020534" stroke-width="1.1"/>
+                <line class="animline" x1="40" y1="20" x2="40" y2="26" stroke="#020534"/>
+                <line class="animline" x1="40" y1="34" x2="40" y2="40" stroke="#020534"/>
+                <line class="animline" x1="30" y1="30" x2="36" y2="30" stroke="#020534"/>
+                <line class="animline" x1="44" y1="30" x2="50" y2="30" stroke="#020534"/>
+                <line class="animline" x1="10" y1="52" x2="70" y2="52" stroke="rgba(2,5,52,.25)" stroke-width=".8" stroke-dasharray="3,3"/>
+                <line class="animline" x1="10" y1="52" x2="40" y2="30" stroke="rgba(2,5,52,.6)" stroke-width="1"/>
+                <line class="animline" x1="70" y1="52" x2="40" y2="30" stroke="rgba(2,5,52,.6)" stroke-width="1"/>
+                <circle class="dot" cx="10" cy="52" r="2.5" fill="#020534"/>
+                <circle class="dot" cx="70" cy="52" r="2.5" fill="#020534"/>
+                <rect class="animline" x="35" y="57" width="10" height="8" rx="1" stroke="rgba(2,5,52,.45)" stroke-width="1"/>
+              </svg>
+            </div>
+            <ul class="div-list">
+              <li>LiDAR &amp; drone capture</li>
+              <li>Construction staking</li>
+              <li>ALTA / NSPS surveys</li>
+            </ul>
+            <span class="div-cta">Explore Land Surveying &rarr;</span>
+          </div>
+          <div class="div-front">
+            <!-- PNG topographic lines — transparent, white lines on red via mix-blend-mode -->
+            <img
+              src="assets/img/topographic-lines.png"
+              alt=""
+              aria-hidden="true"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;opacity:.45;pointer-events:none;mix-blend-mode:screen;"
+            >
+            <div class="div-front-text"><h3 class="div-name">Land<br>Surveying</h3></div>
+          </div>
+        </a>
+
+        <!-- CIVIL ENGINEERING -->
+        <a class="div-card" href="civil-engineering.html" aria-label="Civil Engineering">
+          <div class="div-back">
+            <div class="div-graphic">
+              <svg width="120" height="120" viewBox="0 0 80 80" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line class="animline" x1="6" y1="68" x2="74" y2="68" stroke="rgba(2,5,52,.45)" stroke-width="1"/>
+                <line class="animline" x1="6" y1="15" x2="6" y2="68" stroke="rgba(2,5,52,.45)" stroke-width=".9"/>
+                <line class="animline" x1="6" y1="55" x2="10" y2="55" stroke="rgba(2,5,52,.45)" stroke-width=".9"/>
+                <line class="animline" x1="6" y1="42" x2="10" y2="42" stroke="rgba(2,5,52,.45)" stroke-width=".9"/>
+                <line class="animline" x1="6" y1="29" x2="10" y2="29" stroke="rgba(2,5,52,.45)" stroke-width=".9"/>
+                <line class="animline" x1="6" y1="18" x2="10" y2="18" stroke="rgba(2,5,52,.45)" stroke-width=".9"/>
+                <polyline class="animline" points="10,65 22,65 34,42 46,52 58,30 72,30" stroke="#020534" stroke-width="1.3"/>
+                <line class="animline" x1="22" y1="65" x2="22" y2="68" stroke="rgba(2,5,52,.45)" stroke-width=".9"/>
+                <line class="animline" x1="46" y1="52" x2="46" y2="68" stroke="rgba(2,5,52,.45)" stroke-width=".9"/>
+                <line class="animline" x1="34" y1="42" x2="34" y2="68" stroke="rgba(2,5,52,.4)" stroke-width=".8" stroke-dasharray="2,3"/>
+                <line class="animline" x1="58" y1="30" x2="58" y2="68" stroke="rgba(2,5,52,.4)" stroke-width=".8" stroke-dasharray="2,3"/>
+                <circle class="dot" cx="34" cy="42" r="2.8" fill="#020534"/>
+                <circle class="dot" cx="58" cy="30" r="2.8" fill="#020534"/>
+                <line class="animline" x1="10" y1="52" x2="74" y2="52" stroke="rgba(2,5,52,.2)" stroke-width=".7" stroke-dasharray="4,4"/>
+              </svg>
+            </div>
+            <ul class="div-list">
+              <li>Grading, drainage &amp; utilities</li>
+              <li>SiteOps optimization</li>
+              <li>Tough-site engineering</li>
+            </ul>
+            <span class="div-cta">Explore Civil Engineering &rarr;</span>
+          </div>
+          <div class="div-front">
+            <!-- PNG grading plan — dark lines inverted to white, background transparent -->
+            <img
+              src="assets/img/grading-plans.png"
+              alt=""
+              aria-hidden="true"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;opacity:.45;pointer-events:none;mix-blend-mode:screen;"
+            >
+            <div class="div-front-text"><h3 class="div-name">Civil<br>Engineering</h3></div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section-blue section-topo-dark" style="padding-block: clamp(48px,7vw,96px); margin-top: 48px;">
+    <div class="wrap">
+      <div style="margin-bottom: 40px;">
+        <span style="display:inline-block;font-family:'Roboto',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.75rem;">Georgia Civil</span>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.18);">
+          <h2 style="font-family:'Times New Roman',Times,serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:#fff;margin:0;letter-spacing:-.01em;transform:none;">Recent News</h2>
+          <a href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener" style="font-family:'Roboto',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6);white-space:nowrap;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;">Follow on LinkedIn &rarr;</a>
+        </div>
+      </div>
+      <div class="news" id="news-feed">
+        <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+          <span class="date">Latest</span>
+          <h3>Bana 85 grading plan clears review</h3>
+          <p>Coordinated earthwork balances cut and fill across 700+ acres of industrial development.</p>
+          <span class="more">Read on LinkedIn &rarr;</span>
+        </a>
+        <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+          <span class="date">Recent</span>
+          <h3>Welcoming new survey crew members</h3>
+          <p>Growing our LiDAR and field capability to keep pace with active project work.</p>
+          <span class="more">Read on LinkedIn &rarr;</span>
+        </a>
+        <a class="news-card" href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener">
+          <span class="date">Recent</span>
+          <h3>Prowell Park master plan refined</h3>
+          <p>Balancing drainage, buffering, and neighborhood compatibility while preserving the owner's vision.</p>
+          <span class="more">Read on LinkedIn &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div data-footer></div>
+  <script src="assets/js/main.js"></script>
+
+  <!-- News renderer: placed AFTER main.js, runs immediately on parse, no DOMContentLoaded -->
+  <script>
+    (function () {
+      var ROTATE_MS = 7000;
+      var SLIDE_MS  = 550;
+      var SLOTS     = 3;
+      var PAGE      = 'https://www.linkedin.com/company/georgia-civil-inc-/';
+
+      var esc = function (s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+        });
+      };
+      var fmt = function (d) {
+        return new Date(d).toLocaleDateString('en-US', {month:'short', year:'numeric'});
+      };
+      /* Text-only — never renders images */
+      var cardHTML = function (p) {
+        return '<a class="news-card" href="' + esc(p.url || PAGE) + '" target="_blank" rel="noopener">' +
+          '<span class="date">' + esc(fmt(p.date)) + '</span>' +
+          '<h3>' + esc(p.title) + '</h3>' +
+          '<p>' + esc(p.blurb || '') + '</p>' +
+          '<span class="more">Read on LinkedIn &rarr;</span>' +
+        '</a>';
+      };
+      var renderSlide = function (posts, start) {
+        var html = '';
+        for (var i = 0; i < Math.min(SLOTS, posts.length); i++) {
+          html += cardHTML(posts[(start + i) % posts.length]);
+        }
+        return html;
+      };
+      var slideTo = function (grid, posts, start) {
+        grid.classList.add('sliding-out');
+        setTimeout(function () {
+          grid.innerHTML = renderSlide(posts, start);
+          grid.classList.remove('sliding-out');
+          grid.classList.add('sliding-in');
+          void grid.offsetWidth;
+          grid.classList.remove('sliding-in');
+        }, SLIDE_MS);
+      };
+      var loadPosts = function () {
+        return fetch('/.netlify/functions/linkedin-news', {cache: 'no-store'})
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .catch(function () { return null; })
+          .then(function (posts) {
+            if (Array.isArray(posts) && posts.length) return posts;
+            return fetch('assets/data/news.json', {cache: 'no-store'})
+              .then(function (r) { return r.ok ? r.json() : []; })
+              .catch(function () { return []; });
+          });
+      };
+
+      var grid = document.getElementById('news-feed');
+      if (!grid) return;
+
+      loadPosts().then(function (all) {
+        var cutoff = new Date();
+        cutoff.setMonth(cutoff.getMonth() - 18);
+        var posts = all
+          .filter(function (p) { return p && p.date && !isNaN(new Date(p.date)) && new Date(p.date) >= cutoff; })
+          .sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+
+        if (!posts.length) return;
+
+        /* Overwrite whatever main.js rendered */
+        grid.innerHTML = renderSlide(posts, 0);
+
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (posts.length <= SLOTS || reduce) return;
+
+        var start = 0, timer = null, paused = false;
+        var tick = function () {
+          if (!paused) { start = (start + SLOTS) % posts.length; slideTo(grid, posts, start); }
+        };
+        var play = function () { if (!timer) timer = setInterval(tick, ROTATE_MS); };
+        var stop = function () { clearInterval(timer); timer = null; };
+        grid.addEventListener('mouseenter', function () { paused = true;  stop(); });
+        grid.addEventListener('mouseleave', function () { paused = false; play(); });
+        grid.addEventListener('focusin',    function () { paused = true;  stop(); });
+        grid.addEventListener('focusout',   function () { paused = false; play(); });
+        play();
+      });
+    })();
+  </script>
+
+  <!-- Mobile scroll-reveal for division cards -->
+  <script>
+    (function () {
+      if (!window.matchMedia('(pointer: coarse)').matches) return;
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.div-card'));
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          entry.target.classList.toggle('is-revealed', entry.isIntersecting);
+        });
+      }, { threshold: 0.4 });
+      cards.forEach(function (card) { observer.observe(card); });
+    })();
+  </script>
+
+  <script>
+    /* ── Splash screen — once per session ── */
+    (function () {
+      var splash = document.getElementById('gci-splash');
+      if (!splash) return;
+
+      /* Already seen this session — remove instantly with no flash */
+      if (sessionStorage.getItem('gci-splash-seen')) {
+        splash.style.display = 'none';
+        splash.remove();
+        return;
+      }
+
+      /* First visit — show splash and lock scroll */
+      document.documentElement.classList.add('splash-active');
+      splash.style.display = '';
+
+      var MIN_MS    = 2000;
+      var start     = Date.now();
+      var dismissed = false;
+
+      function dismiss() {
+        if (dismissed) return;
+        dismissed = true;
+        sessionStorage.setItem('gci-splash-seen', '1');
+        var elapsed = Date.now() - start;
+        var delay   = Math.max(0, MIN_MS - elapsed);
+        setTimeout(function () {
+          splash.classList.add('is-hidden');
+          document.documentElement.classList.remove('splash-active');
+          document.body.classList.remove('splash-active');
+          setTimeout(function () { splash.remove(); }, 1300);
+        }, delay);
+      }
+
+      if (document.readyState === 'complete') {
+        dismiss();
+      } else {
+        window.addEventListener('load', dismiss);
+      }
+
+      /* Safety net */
+      setTimeout(dismiss, 5000);
+    })();
+  </script>
+
+</body>
+</html>
