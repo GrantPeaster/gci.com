@@ -8,7 +8,7 @@
   --red:    #CA2131;   /* PRIMARY — header, CTAs, key accents */
   --blue:   #020534;   /* ACCENT — navy, used for depth and contrast */
   --brass:  #B18750;   /* Secondary accent */
-  --gray:   #787878;   /* Supporting neutral */
+  --gray:   #707070;   /* Supporting neutral — AA contrast compliant */
   --white:  #FFFFFF;
   --black:  #000000;
 
@@ -16,7 +16,7 @@
   --paper:  #F6F5F2;
   --line:   #E2E0DB;
   --ink-70: rgba(2,5,52,0.70);
-  --ink-55: rgba(2,5,52,0.55);
+  --ink-55: rgba(2,5,52,0.60);
 
   /* Type roles */
   --display: 'Times New Roman', Times, 'Liberation Serif', serif;
@@ -79,7 +79,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 /* Red primary sections */
 .section-red  { background: var(--red); color: var(--white); }
 .section-red h1, .section-red h2, .section-red h3 { color: var(--white); }
-.section-red .lead { color: rgba(255,255,255,0.82); }
+.section-red .lead { color: rgba(255,255,255,0.88); }
 
 /* Legacy alias kept for backward compat */
 .section-blue { background: var(--blue); color: var(--white); }
@@ -334,7 +334,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 
 /* ---------- Crumb ---------- */
 .crumb { display:inline-flex; align-items:center; gap:8px; font-size:0.7rem;
-  color: rgba(255,255,255,0.82); margin-bottom: 18px; }
+  color: rgba(255,255,255,0.88); margin-bottom: 18px; }
 .crumb:hover { color: rgba(255,255,255,0.6); }
 
 /* ---------- Leadership card ---------- */
@@ -431,7 +431,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 .cardx-hero .eyebrow { color: rgba(255,255,255,0.75); }
 .cardx-hero h1 { color: #fff; font-size: clamp(2.4rem,6vw,3.6rem); margin: .12em 0 .22em; }
 .cardx-hero .vp { font-size: clamp(1.15rem,2.6vw,1.5rem); font-weight: 600; color: #fff; margin-bottom: 14px; }
-.cardx-hero .d { color: rgba(255,255,255,.82); max-width: 46ch; }
+.cardx-hero .d { color: rgba(255,255,255,.88); max-width: 46ch; }
 .cardx-hero .btn { margin-top: 26px; }
 .cardx-hero .visual { aspect-ratio: 4/3; background: #0a1150 center/cover no-repeat;
   border: 1px solid rgba(255,255,255,.15); position: relative; }
