@@ -1,0 +1,11 @@
+{
+  "name": "Georgia Civil",
+  "short_name": "GCI",
+  "icons": [
+    { "src": "assets/img/android-chrome-192x192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "assets/img/android-chrome-512x512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#CA2131",
+  "background_color": "#CA2131",
+  "display": "standalone"
+}
