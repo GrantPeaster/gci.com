@@ -99,26 +99,9 @@ function mountChrome() {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (toggle && nav) {
-    const isMobile = () => window.matchMedia('(max-width: 920px)').matches;
-
-    // Set initial inert state based on viewport
-    nav.inert = isMobile();
-
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
-      nav.inert = !open;
-    });
-
-    // Reset inert when viewport resizes to desktop
-    window.addEventListener('resize', () => {
-      if (!isMobile()) {
-        nav.inert = false;
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      } else if (!nav.classList.contains('open')) {
-        nav.inert = true;
-      }
     });
   }
 }
@@ -228,85 +211,6 @@ function flipCardsOnScroll() {
   evaluate();
   window.addEventListener('resize', evaluate);
   window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener?.('change', evaluate);
-}
-
-function renderNews() {
-  const grid = document.getElementById('news-feed');
-  if (!grid) return;
-  const MAX_AGE_MONTHS = 18;
-  const SLOTS = 3;
-  const ROTATE_MS = 7000;
-  const PAGE = 'https://www.linkedin.com/company/georgia-civil-inc-/';
-  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) =>
-    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const fmt = (d) => new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-  const card = (p) => p.image ? `
-        <a class="news-card" href="${esc(p.url || PAGE)}" target="_blank" rel="noopener">
-          <span class="nc-tab" aria-hidden="true"></span>
-          <div class="nc-img" style="background-image:url('${esc(p.image)}')"></div>
-          <div class="nc-body">
-            <span class="date">${esc(fmt(p.date))}</span>
-            <h3>${esc(p.title)}</h3>
-            <p>${esc(p.blurb || '')}</p>
-            <span class="more">Read on LinkedIn &rarr;</span>
-          </div>
-        </a>` : `
-        <a class="news-card" href="${esc(p.url || PAGE)}" target="_blank" rel="noopener">
-          <span class="date">${esc(fmt(p.date))}</span>
-          <h3>${esc(p.title)}</h3>
-          <p style="color:var(--ink-55);font-size:.92rem">${esc(p.blurb || '')}</p>
-          <span class="more">Read on LinkedIn &rarr;</span>
-        </a>`;
-  const load = async () => {
-    let posts = null;
-    try {
-      const r = await fetch('/.netlify/functions/linkedin-news', { cache: 'no-store' });
-      if (r.ok) posts = await r.json();
-    } catch (_) {}
-    if (!Array.isArray(posts) || !posts.length) {
-      try {
-        const r = await fetch('assets/data/news.json', { cache: 'no-store' });
-        if (r.ok) posts = await r.json();
-      } catch (_) {}
-    }
-    return Array.isArray(posts) ? posts : [];
-  };
-  load().then((all) => {
-    const cutoff = new Date();
-    cutoff.setMonth(cutoff.getMonth() - MAX_AGE_MONTHS);
-    const posts = all
-      .filter((p) => p && p.date && !isNaN(new Date(p.date).valueOf()) && new Date(p.date) >= cutoff)
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
-    if (!posts.length) return;
-    const view = (start) => {
-      const out = [];
-      for (let i = 0; i < Math.min(SLOTS, posts.length); i++) out.push(posts[(start + i) % posts.length]);
-      return out.map(card).join('');
-    };
-    grid.innerHTML = view(0);
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (posts.length <= SLOTS || reduce) return;
-    let start = 0, timer = null;
-    const SLIDE_MS = 180;
-    const tick = () => {
-      start = (start + SLOTS) % posts.length;
-      grid.classList.add('is-out');
-      setTimeout(() => {
-        grid.classList.remove('is-out');
-        grid.innerHTML = view(start);
-        grid.classList.add('is-in');
-        void grid.offsetWidth;
-        grid.classList.remove('is-in');
-      }, SLIDE_MS);
-    };
-    const play = () => { if (!timer) timer = setInterval(tick, ROTATE_MS); };
-    const stop = () => { clearInterval(timer); timer = null; };
-    grid.addEventListener('mouseenter', stop);
-    grid.addEventListener('mouseleave', play);
-    grid.addEventListener('focusin', stop);
-    grid.addEventListener('focusout', play);
-    play();
-  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
