@@ -18,13 +18,13 @@
   <link rel="manifest" href="site.webmanifest">
   <style>
     /* ── HERO ── */
-    .hero { align-items: center; justify-content: center; padding-bottom: 8vh; overflow: hidden; background: #7a1020; }
-    .hero-slide { background-color: #7a1020 !important; }
+    .hero { align-items: center; justify-content: center; padding-bottom: 8vh; overflow: hidden; background: #CA2131; }
+    .hero-slide { background-color: #CA2131 !important; }
     .hero-slide::before { transition: opacity .4s ease; }
-    .hero-slide::after { background: rgba(202,33,49,.18) !important; }
+    .hero-slide::after { background: none !important; }
     .hero-slides::after {
       content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
-      background: linear-gradient(to bottom, rgba(10,5,20,.30) 0%, rgba(10,5,20,.06) 38%, rgba(10,5,20,.08) 62%, rgba(10,5,20,.12) 100%);
+      background: linear-gradient(to bottom, rgba(10,5,20,.28) 0%, rgba(10,5,20,.06) 40%, rgba(10,5,20,.0) 70%, rgba(10,5,20,.0) 100%);
     }
     .hero .wrap { display: flex; align-items: center; justify-content: center; width: 100%; padding-inline: var(--gutter); }
     .hero-copy {
@@ -268,8 +268,8 @@
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
     <div class="hero-slides">
-      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA" style="background-color:#7a1020;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
-      <div class="hero-slide" data-project="Farmview Market · Madison, GA" style="background-color:#7a1020;background-image:url(assets/img/hero-farmview.jpg)"></div>
+      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
+      <div class="hero-slide" data-project="Farmview Market · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-farmview.jpg)"></div>
     </div>
     <div class="wrap">
       <div class="hero-copy">
@@ -282,7 +282,7 @@
   </section>
 
   <!-- STATS BAND -->
-  <section style="background:#CA2131;position:relative;overflow:hidden;padding-block:0;padding-bottom:clamp(28px,4vw,48px);">
+  <section style="background:#CA2131;position:relative;overflow:hidden;padding-block:0;padding-bottom:clamp(48px,7vw,80px);">
     <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 16px);pointer-events:none;"></div>
     <div style="position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(0,0,0,.18);" class="stats-grid">
 
