@@ -99,9 +99,26 @@ function mountChrome() {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (toggle && nav) {
+    const isNavMobile = () => window.matchMedia('(max-width: 920px)').matches;
+
+    // Set initial inert state — hidden on mobile, accessible on desktop
+    nav.inert = isNavMobile();
+
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
+      nav.inert = !open;
+    });
+
+    // Reset on resize — e.g. rotating phone to landscape
+    window.addEventListener('resize', () => {
+      if (!isNavMobile()) {
+        nav.inert = false;
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else if (!nav.classList.contains('open')) {
+        nav.inert = true;
+      }
     });
   }
 }
