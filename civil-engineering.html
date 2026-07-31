@@ -9,11 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png?v=2">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png?v=2">
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico?v=2">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=2">
   <meta name="theme-color" content="#CA2131">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <style>
 
@@ -131,7 +131,7 @@
       z-index: 1;
       font-family: 'Montserrat', sans-serif;
       font-size: clamp(.92rem, 1.4vw, 1.08rem);
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.88);
       line-height: 1.72;
       margin: 0;
       max-width: 72ch;
@@ -418,6 +418,8 @@
     ]
   }
   </script>
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body data-page="civil-engineering">
   <div data-header></div>
@@ -601,6 +603,5 @@
       window.addEventListener('resize', update);
     })();
   </script>
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
