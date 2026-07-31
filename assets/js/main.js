@@ -99,12 +99,26 @@ function mountChrome() {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.getElementById('primary-nav');
   if (toggle && nav) {
-    // Set initial state — nav is closed on load
-    nav.inert = true;
+    const isMobile = () => window.matchMedia('(max-width: 920px)').matches;
+
+    // Set initial inert state based on viewport
+    nav.inert = isMobile();
+
     toggle.addEventListener('click', () => {
       const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
       nav.inert = !open;
+    });
+
+    // Reset inert when viewport resizes to desktop
+    window.addEventListener('resize', () => {
+      if (!isMobile()) {
+        nav.inert = false;
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else if (!nav.classList.contains('open')) {
+        nav.inert = true;
+      }
     });
   }
 }
