@@ -14,7 +14,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <link rel="preload" as="image" href="assets/img/hero-morgan-medical.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <link rel="preload" as="image" href="assets/img/hero-morgan-medical.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/site-plan-drawing.webp">
+  <link rel="preload" as="image" href="assets/img/topographic-lines.webp">
+  <link rel="preload" as="image" href="assets/img/grading-plans.webp">
   <link rel="manifest" href="site.webmanifest">
   <style>
     /* ── HERO ── */
@@ -261,15 +265,15 @@
 
   <!-- SPLASH — only shown once per session -->
   <div id="gci-splash" aria-hidden="true">
-    <img class="splash-logo" src="assets/img/Copilot_20260608_140700.png" alt="Georgia Civil" width="220" height="220" style="object-fit:contain;">
+    <img class="splash-logo" src="assets/img/splash-logo.webp" alt="Georgia Civil" width="220" height="220" style="object-fit:contain;">
   </div>
   <div data-header></div>
 
   <!-- HERO -->
   <section class="hero" aria-label="Introduction">
     <div class="hero-slides">
-      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-morgan-medical.jpg)"></div>
-      <div class="hero-slide" data-project="Farmview Market · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-farmview.jpg)"></div>
+      <div class="hero-slide active" data-project="Morgan Medical Center · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-morgan-medical.webp)"></div>
+      <div class="hero-slide" data-project="Farmview Market · Madison, GA" style="background-color:#CA2131;background-image:url(assets/img/hero-farmview.webp)"></div>
     </div>
     <div class="wrap">
       <div class="hero-copy">
@@ -342,7 +346,7 @@
           <div class="div-front">
             <!-- PNG site plan drawing — transparent, white lines on red via mix-blend-mode -->
             <img
-              src="assets/img/site-plan-drawing.png"
+              src="assets/img/site-plan-drawing.webp"
               alt=""
               aria-hidden="true"
               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 35%;opacity:.45;pointer-events:none;mix-blend-mode:screen;"
@@ -382,7 +386,7 @@
           <div class="div-front">
             <!-- PNG topographic lines — transparent, white lines on red via mix-blend-mode -->
             <img
-              src="assets/img/topographic-lines.png"
+              src="assets/img/topographic-lines.webp"
               alt=""
               aria-hidden="true"
               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;opacity:.45;pointer-events:none;mix-blend-mode:screen;"
@@ -422,7 +426,7 @@
           <div class="div-front">
             <!-- PNG grading plan — dark lines inverted to white, background transparent -->
             <img
-              src="assets/img/grading-plans.png"
+              src="assets/img/grading-plans.webp"
               alt=""
               aria-hidden="true"
               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;opacity:.45;pointer-events:none;mix-blend-mode:screen;"
@@ -589,7 +593,7 @@
       document.documentElement.classList.add('splash-active');
       splash.style.display = '';
 
-      var MIN_MS    = 2000;
+      var MIN_MS    = 600;
       var start     = Date.now();
       var dismissed = false;
 
