@@ -9,11 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="theme-color" content="#CA2131">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
   <style>
 
@@ -307,7 +307,7 @@
     .about-careers-head p {
       font-family: 'Montserrat', sans-serif;
       font-size: .88rem;
-      color: rgba(2,5,52,.55);
+      color: var(--ink-55);
       line-height: 1.72;
       margin: 0;
     }
@@ -391,6 +391,8 @@
     }
   }
   </script>
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body data-page="about">
   <div data-header></div>
@@ -597,7 +599,6 @@
   </section>
 
   <div data-footer></div>
-  <script src="assets/js/main.js"></script>
   <script>
     (function () {
       var ROTATE_MS = 5000;
