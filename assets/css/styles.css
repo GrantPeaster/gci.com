@@ -86,6 +86,13 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 .section-blue h1, .section-blue h2, .section-blue h3 { color: var(--white); }
 .section-blue .lead { color: rgba(255,255,255,0.72); }
 
+/* Pre-JS placeholder — prevents layout shift while mountChrome() runs */
+[data-header] {
+  display: block;
+  height: var(--header-h);
+  background: var(--red);
+}
+
 /* ---------- Header — RED primary ---------- */
 .header {
   position: sticky; top: 0; z-index: 50;
