@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Keep capability cards and netlify functions out of the index
+Disallow: /gci.com/card-civil-engineering.html
+Disallow: /gci.com/card-land-planning.html
+Disallow: /gci.com/card-land-surveying.html
+Disallow: /gci.com/netlify/
+
+Sitemap: https://grantpeaster.github.io/gci.com/sitemap.xml
