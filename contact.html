@@ -67,6 +67,29 @@
     .form-success strong { display: block; margin-bottom: .4rem; font-size: 1.05rem; }
     .err-msg { color: var(--red); font-size: .78rem; margin-top: 6px; }
   </style>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact Us — Georgia Civil">
+  <meta property="og:description" content="Talk to a Georgia Civil principal. One point of contact for planning, surveying, and engineering across your project.">
+  <meta property="og:url" content="https://grantpeaster.github.io/gci.com/contact.html">
+  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/android-chrome-512x512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://grantpeaster.github.io/gci.com/contact.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Georgia Civil",
+    "url": "https://grantpeaster.github.io/gci.com/contact.html",
+    "description": "Talk to a Georgia Civil principal — one point of contact for planning, surveying, and engineering.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://grantpeaster.github.io/gci.com/"},
+        {"@type":"ListItem","position":2,"name":"Contact","item":"https://grantpeaster.github.io/gci.com/contact.html"}
+      ]
+    }
+  }
+  </script>
 </head>
 <body data-page="contact">
   <div data-header></div>
@@ -104,21 +127,25 @@
         <h2>Tell us about your site.</h2>
         <p>Select a discipline and a principal will follow up promptly.</p>
         <div class="disc-selector" id="disc-selector" role="group" aria-label="Select a discipline">
-          <button class="disc-option selected" type="button" data-discipline="Land Planning">
+          <button class="disc-option selected" type="button" data-discipline="Land Planning" data-to="todd@georgiacivil.com,chelsea@georgiacivil.com">
             <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Planning</span></div>
           </button>
-          <button class="disc-option" type="button" data-discipline="Civil Engineering">
+          <button class="disc-option" type="button" data-discipline="Civil Engineering" data-to="jason@georgiacivil.com,chelsea@georgiacivil.com">
             <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Civil Engineering</span></div>
           </button>
-          <button class="disc-option" type="button" data-discipline="Land Surveying">
+          <button class="disc-option" type="button" data-discipline="Land Surveying" data-to="brandon@georgiacivil.com,stephanie@georgiacivil.com">
             <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Surveying</span></div>
           </button>
         </div>
       </div>
 
       <div class="contact-form-wrap">
-        <form class="contact-fields" id="contact-form">
-          <input type="hidden" id="form-discipline" name="discipline" value="Land Planning">
+        <form class="contact-fields" id="contact-form" data-contact action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="4c1dc681-6cb8-4efa-bfb8-f94b2a7f37e3">
+          <input type="hidden" name="subject" id="form-subject" value="New inquiry — Land Planning — Georgia Civil">
+          <input type="hidden" name="to" id="form-to" value="todd@georgiacivil.com,chelsea@georgiacivil.com">
+          <input type="hidden" name="discipline" id="form-discipline" value="Land Planning">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <div class="form-row">
             <div>
@@ -163,20 +190,22 @@
   <script src="assets/js/main.js"></script>
   <script>
     (function () {
-      /* Discipline selector — updates hidden field only (no emails in source) */
       var options   = Array.from(document.querySelectorAll('.disc-option'));
+      var toField   = document.getElementById('form-to');
+      var subjField = document.getElementById('form-subject');
       var discField = document.getElementById('form-discipline');
 
       function selectOption(btn) {
         options.forEach(function (o) { o.classList.remove('selected'); });
         btn.classList.add('selected');
+        toField.value   = btn.dataset.to;
+        subjField.value = 'New inquiry \u2014 ' + btn.dataset.discipline + ' \u2014 Georgia Civil';
         discField.value = btn.dataset.discipline;
       }
       options.forEach(function (btn) {
         btn.addEventListener('click', function () { selectOption(btn); });
       });
 
-      /* Form submission → Netlify function */
       var form      = document.getElementById('contact-form');
       var success   = document.getElementById('form-success');
       var errEl     = document.getElementById('form-err');
@@ -188,30 +217,20 @@
           errEl.style.display = 'none';
           if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026'; }
           try {
-            var fd   = new FormData(form);
-            var data = {
-              name:       fd.get('name'),
-              email:      fd.get('email'),
-              phone:      fd.get('phone'),
-              location:   fd.get('location'),
-              message:    fd.get('message'),
-              discipline: fd.get('discipline'),
-            };
-            var res = await fetch('/contact', {
-              method:  'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body:    JSON.stringify(data),
+            var data = Object.fromEntries(new FormData(form).entries());
+            var res  = await fetch(form.action, {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+              body: JSON.stringify(data),
             });
             var out = await res.json().catch(function () { return {}; });
             if (res.ok && out.success) {
               form.style.display = 'none';
               success.style.display = 'block';
-            } else {
-              throw new Error(out.message || 'failed');
-            }
+            } else { throw new Error(out.message || 'failed'); }
           } catch (err) {
             if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Message \u2192'; }
-            errEl.textContent = err.message || 'Something went wrong. Please try again or call 706-342-1104.';
+            errEl.textContent = 'Something went wrong. Please try again or call 706-342-1104.';
             errEl.style.display = 'block';
           }
         });
