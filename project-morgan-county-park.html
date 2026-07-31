@@ -4,59 +4,184 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Morgan County Recreation Park — Georgia Civil</title>
-  <meta name="description" content="Morgan County Park: a ~70-acre public recreation complex planned and laid out by GCI from the ground up, with phased infrastructure and full construction layout support.">
+  <meta name="description" content="Morgan County Recreation Park: a ~70-acre public recreation complex GCI planned and laid out from the ground up.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#020534">
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=2">
+  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
+  <style>
+    /* PROJECT PAGE */
+    .proj-img-hero {
+      width: 100%; aspect-ratio: 16/7; background: var(--blue) center/cover no-repeat;
+      position: relative; overflow: hidden;
+    }
+    .proj-img-hero-inner {
+      position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .88;
+    }
+    .proj-img-caption {
+      position: absolute; right: 20px; bottom: 14px;
+      font-family: var(--utility); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.65); background: rgba(2,5,52,.5); padding: 5px 12px;
+    }
+
+    /* CSR BAND — white bg, navy text, red labels */
+    .csr-band {
+      background: #fff;
+      border-bottom: 1px solid rgba(2,5,52,.08);
+    }
+    .csr-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: rgba(2,5,52,.08);
+    }
+    .csr-cell {
+      background: #fff;
+      padding: clamp(28px,4vw,48px) clamp(24px,3.5vw,40px);
+      display: flex; flex-direction: column; gap: .6rem;
+    }
+    .csr-cell .csr-label {
+      font-family: var(--utility); font-size: .6rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: #CA2131;
+      display: block; margin-bottom: .2rem;
+    }
+    .csr-cell p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .84rem; color: #020534; line-height: 1.65; margin: 0;
+    }
+
+    /* META STRIP */
+    .meta-strip {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: var(--line);
+    }
+    .meta-cell {
+      padding: clamp(20px,3vw,32px); background: var(--paper);
+      display: flex; flex-direction: column; gap: .4rem;
+    }
+
+    /* NEXT PROJECT */
+    .next-proj {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      flex-wrap: wrap;
+      background: #020534; padding: clamp(28px,4vw,44px) clamp(24px,4vw,48px);
+      position: relative; overflow: hidden; text-decoration: none;
+      transition: background .2s;
+    }
+    .next-proj:hover { background: #0a0f57; }
+    .next-proj::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 1px,transparent 1px 16px);
+      pointer-events: none;
+    }
+    .next-proj > * { position: relative; z-index: 1; }
+    .next-proj .next-label {
+      font-family: var(--utility); font-size: .6rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.4);
+      display: block; margin-bottom: .4rem;
+    }
+    .next-proj h3 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: clamp(1.3rem,2.5vw,2rem); color: #fff; margin: 0; font-weight: 700;
+    }
+    .next-proj .next-arrow {
+      font-size: clamp(1.5rem,3vw,2.2rem); color: #CA2131; font-weight: 700; flex-shrink: 0;
+    }
+
+    @media (max-width: 760px) {
+      .csr-grid { grid-template-columns: 1fr; }
+      .meta-strip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .meta-strip { grid-template-columns: 1fr; }
+      .proj-img-hero { aspect-ratio: 4/3; }
+    }
+  </style>
 </head>
 <body data-page="project-spotlight">
   <div data-header></div>
 
-  <section class="page-hero">
+  <!-- HERO -->
+  <section class="page-hero" style="padding-block:clamp(36px,6vw,72px) clamp(28px,4vw,52px);">
+    <div class="contour-emblem"></div>
     <div class="wrap">
-      <a class="crumb" href="project-spotlight.html">&larr; Back to Project Spotlight</a>
+      <a class="crumb" href="project-spotlight.html">&larr; Project Spotlight</a>
       <h1>Morgan County Recreation Park</h1>
-      <div class="tags" style="margin-top:18px"><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Land Planning</span><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Civil Engineering</span><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Phased Infrastructure</span><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Survey</span></div>
+      <div class="tags" style="margin-top:16px"><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Public Recreation</span><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">~70 Acres</span><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">GCI-Led Layout</span><span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Phased</span></div>
     </div>
   </section>
 
-  <section>
-    <div class="wrap split">
-      <div class="maxw-readable">
-        <span class="eyebrow">Overview</span>
-        <h2>Infrastructure planned for today and tomorrow.</h2>
-        <p class="lead">Morgan County Recreation Park is a ~70-acre public recreation complex — planned and laid out by GCI from the ground up.</p>
-        <p>GCI led the full site planning, recreation layout, grading, drainage, utilities, and survey integration, then designed a flexible, expandable system so each phase builds on the last instead of replacing it. Construction layout and field support from the same team produced a highly functional facility and a smoother build.</p>
+  <!-- IMAGE -->
+  <div class="proj-img-hero">
+    <div class="proj-img-hero-inner" style="background-image:url(assets/img/hero-land-planning.jpg);"></div>
+    <span class="proj-img-caption">Morgan County Recreation Park · Morgan County, GA</span>
+  </div>
+
+  <!-- CHALLENGE / SOLUTION / RESULT -->
+  <div class="csr-band">
+    <div class="csr-grid">
+      <div class="csr-cell">
+        <span class="csr-label">Challenge</span>
+        <p>A blank site with no inherited layout — every field position, access point, utility stub, and future expansion zone had to be resolved from scratch while keeping the phasing logic constructible within a public budget.</p>
       </div>
-      <div class="photoslot" style="background-image:url(assets/img/hero-land-planning.jpg)">
+      <div class="csr-cell">
+        <span class="csr-label">Solution</span>
+        <p>GCI led the layout from site constraints outward, embedding phasing logic into the original design so each phase functions independently and connects cleanly to the next without reconstruction.</p>
+      </div>
+      <div class="csr-cell">
+        <span class="csr-label">Result</span>
+        <p>A fully operational recreation complex with a phasing structure that allows Morgan County to expand on its own timeline without revisiting foundational infrastructure decisions.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section-paper">
+  <!-- OVERVIEW -->
+  <section style="background:#CA2131;color:#fff;">
     <div class="wrap">
-      <div class="grid cols-3">
-        <div><span class="card-label" style="color:var(--gray)">Sector / Scale</span><h3 class="mt-s">Public Recreation · ~70 acres</h3></div>
-        <div><span class="card-label" style="color:var(--gray)">Services</span><h3 class="mt-s">Planning · Civil · Survey</h3></div>
-        <div><span class="card-label" style="color:var(--gray)">Approach</span><h3 class="mt-s">GCI-led · phased</h3></div>
-      </div>
+      <span class="eyebrow" style="color:rgba(255,255,255,.5);">Overview</span>
+      <h2>70 acres planned and laid out from scratch.</h2>
+      <p class="lead" style="color:rgba(255,255,255,.75);">A public recreation complex GCI designed from the ground up for Morgan County — fields, facilities, and infrastructure built to expand without revisiting early decisions.</p>
+      <p style="color:rgba(255,255,255,.7);">Unlike Prowell Park, there was no inherited plan — GCI originated the layout, working from site constraints outward to position fields, parking, utilities, and future expansion zones. The phasing strategy was embedded into the original design: each phase stands alone, connects cleanly to the next, and avoids the utility conflicts that typically force reconstruction when public facilities grow.</p>
     </div>
   </section>
 
+  <!-- META -->
+  <div class="meta-strip">
+    <div class="meta-cell">
+      <span class="card-label" style="color:var(--gray)">Client</span>
+      <h3 class="mt-s" style="font-size:1.05rem">Morgan County</h3>
+    </div>
+    <div class="meta-cell">
+      <span class="card-label" style="color:var(--gray)">Sector / Scale</span>
+      <h3 class="mt-s" style="font-size:1.05rem">Public Recreation · ~70 acres</h3>
+    </div>
+    <div class="meta-cell">
+      <span class="card-label" style="color:var(--gray)">Services</span>
+      <h3 class="mt-s" style="font-size:1.05rem">Land Planning · Civil Engineering · Construction Staking</h3>
+    </div>
+  </div>
+
+  <!-- CTA -->
   <section class="center">
     <div class="wrap">
-      <h2 style="transform:none">Planning for growth in phases?</h2>
-      <p class="lead" style="max-width:48ch;margin:16px auto 28px">Let's build infrastructure today that still pays off when tomorrow's phases arrive.</p>
+      <h2>Have a site like this?</h2>
+      <p class="lead" style="max-width:48ch;margin:16px auto 28px;">Let's find its value before costly commitments are made.</p>
       <a class="btn btn-accent" href="contact.html">Start a conversation &rarr;</a>
     </div>
   </section>
+
+  <!-- NEXT PROJECT -->
+  <a class="next-proj" href="project-bana-85.html">
+    <div>
+      <span class="next-label">Next Project</span>
+      <h3>Bana 85</h3>
+    </div>
+    <span class="next-arrow">&rarr;</span>
+  </a>
 
   <div data-footer></div>
   <script src="assets/js/main.js"></script>
