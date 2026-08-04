@@ -162,7 +162,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
   background: url(../img/contour-site.svg) center/contain no-repeat; }
 .page-hero .wrap { position: relative; z-index: 1; }
 .page-hero h1 { max-width: 18ch; color: #fff; }
-.page-hero .eyebrow { color: rgba(255,255,255,0.7); }
+.page-hero .eyebrow { color: rgba(255,255,255,0.88); }
 .page-hero .hero-name { font-size: clamp(1.6rem, 3.6vw, 2.9rem); letter-spacing: 0.04em;
   line-height: 1.08; margin-bottom: 0; }
 .page-title { color: #fff; max-width: 22ch; margin-bottom: clamp(18px, 2.4vw, 30px); }
@@ -428,7 +428,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 .cardx-hero { background: var(--red); color: #fff; }
 .cardx-hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px,5vw,64px);
   align-items: center; padding-block: clamp(40px,7vw,84px); }
-.cardx-hero .eyebrow { color: rgba(255,255,255,0.75); }
+.cardx-hero .eyebrow { color: #E8E0E0; }
 .cardx-hero h1 { color: #fff; font-size: clamp(2.4rem,6vw,3.6rem); margin: .12em 0 .22em; }
 .cardx-hero .vp { font-size: clamp(1.15rem,2.6vw,1.5rem); font-weight: 600; color: #fff; margin-bottom: 14px; }
 .cardx-hero .d { color: rgba(255,255,255,.88); max-width: 46ch; }
@@ -790,8 +790,8 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 .advantage-band { background: var(--red); border-radius: 10px; padding: 2.75rem;
   display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
 .advantage-band h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-.advantage-band .cardx2-eyebrow { color: rgba(255,255,255,0.7); }
-.advantage-band .cardx2-eyebrow.red { color: rgba(255,255,255,0.7); }
+.advantage-band .cardx2-eyebrow { color: #E8E0E0; }
+.advantage-band .cardx2-eyebrow.red { color: #E8E0E0; }
 .flow-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
 .step-pill { background: rgba(255,255,255,0.15); color: rgba(255,255,255,.9);
   padding: .3rem .9rem; border-radius: 20px; font-size: .78rem; font-weight: 600; }
@@ -847,7 +847,7 @@ a:focus-visible, button:focus-visible, .btn:focus-visible, input:focus-visible {
 .cta-band2::before { content: ''; position: absolute; right: 20px; top: 20px;
   width: 100px; height: 100px; border-radius: 50%; border: 1px solid rgba(255,255,255,.08); pointer-events: none; }
 .cta-band2 h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: .35rem 0 1rem; }
-.cta-band2 .cardx2-eyebrow { color: rgba(255,255,255,0.7); }
+.cta-band2 .cardx2-eyebrow { color: #E8E0E0; }
 .cta-meta { display: flex; flex-direction: column; gap: .9rem; position: relative; z-index: 1; }
 .cta-meta .lab { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase;
   color: rgba(255,255,255,.5); display: block; margin-bottom: .15rem; font-family: var(--utility); }
