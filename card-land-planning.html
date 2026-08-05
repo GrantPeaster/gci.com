@@ -23,7 +23,7 @@
     .tx  { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, transparent 1px 12px); }
     .tx2 { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 10px); }
     .rb { background: #CA2131; border-radius: 10px; overflow: hidden; padding: 1.75rem 2rem; position: relative; color: #fff; }
-    .rb-eyebrow { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 700; font-family: 'Roboto', sans-serif; margin-bottom: .35rem; }
+    .rb-eyebrow { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #ffffff; font-weight: 700; font-family: 'Roboto', sans-serif; margin-bottom: .35rem; }
     .rb h2 { font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: .2rem; }
     .btn-white { display: inline-block; background: #fff; color: #CA2131; padding: .55rem 1.2rem; border-radius: 4px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-family: 'Roboto', sans-serif; text-decoration: none; width: fit-content; }
     .btn-navy { display: inline-block; background: #020534; color: #fff; padding: .55rem 1.2rem; border-radius: 4px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-family: 'Roboto', sans-serif; text-decoration: none; width: fit-content; }
@@ -34,7 +34,7 @@
     
     
     .lp-hero2 .hero-text { position: relative; z-index: 1; padding: 3rem 2.75rem; max-width: 560px; display: flex; flex-direction: column; gap: .85rem; }
-    .lp-hero2 .eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 700; font-family: 'Roboto', sans-serif; }
+    .lp-hero2 .eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #ffffff; font-weight: 700; font-family: 'Roboto', sans-serif; }
     .lp-hero2 h1 { font-size: clamp(2.1rem, 5vw, 2.8rem); font-weight: 700; color: #fff; line-height: 1.1; }
     .lp-hero2 .vp { font-size: .96rem; color: rgba(255,255,255,.78); line-height: 1.5; }
     .lp-hero2 .d { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.65; max-width: 44ch; }
@@ -117,6 +117,8 @@
       .ind-row2 { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body data-page="card-land-planning">
   <div data-header></div>
@@ -272,10 +274,10 @@
 
   </div>
   <div data-footer></div>
-  <script src="assets/js/main.js"></script>
   <script>
     const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.06});
     document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   </script>
 </body>
 </html>
+
