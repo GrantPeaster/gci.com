@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Land Planning — Georgia Civil</title>
-  <meta name="description" content="Land Planning at Georgia Civil — Optimize the Site. Maximize the Outcome.">
+  <title>Land Surveying — Georgia Civil</title>
+  <meta name="description" content="Land Surveying at Georgia Civil — Accurate Data That Drives Every Decision. Outcomes, services, and one integrated team across planning, surveying, and engineering.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,230 +16,391 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <style>
+    /* == CAPABILITY CARD v5 — Land Surveying == */
+
     body { background: #fff; }
-    .cardx2-page { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; display: flex; flex-direction: column; gap: .65rem; }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+
+    .cardx2-page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
     .reveal.visible { opacity: 1; transform: none; }
-    .tx  { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, transparent 1px 12px); }
-    .tx2 { background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 10px); }
-    .rb { background: #CA2131; border-radius: 10px; overflow: hidden; padding: 1.75rem 2rem; position: relative; color: #fff; }
-    .rb-eyebrow { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #ffffff; font-weight: 700; font-family: 'Roboto', sans-serif; margin-bottom: .35rem; }
-    .rb h2 { font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: .2rem; }
-    .btn-white { display: inline-block; background: #fff; color: #CA2131; padding: .55rem 1.2rem; border-radius: 4px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-family: 'Roboto', sans-serif; text-decoration: none; width: fit-content; }
-    .btn-navy { display: inline-block; background: #020534; color: #fff; padding: .55rem 1.2rem; border-radius: 4px; font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-family: 'Roboto', sans-serif; text-decoration: none; width: fit-content; }
-    .btn-navy:hover { background: #0a0f57; }
 
-    /* HERO — full-bleed red overlay */
-    .lp-hero2 { position: relative; min-height: 440px; border-radius: 10px; overflow: hidden; display: flex; align-items: flex-end; background: #CA2131; }
-    
-    
-    .lp-hero2 .hero-text { position: relative; z-index: 1; padding: 3rem 2.75rem; max-width: 560px; display: flex; flex-direction: column; gap: .85rem; }
-    .lp-hero2 .eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #ffffff; font-weight: 700; font-family: 'Roboto', sans-serif; }
-    .lp-hero2 h1 { font-size: clamp(2.1rem, 5vw, 2.8rem); font-weight: 700; color: #fff; line-height: 1.1; }
-    .lp-hero2 .vp { font-size: .96rem; color: rgba(255,255,255,.78); line-height: 1.5; }
-    .lp-hero2 .d { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.65; max-width: 44ch; }
+    /* HERO */
+    .sv-hero { display: grid; grid-template-columns: 1fr; min-height: 280px; border-radius: 12px; overflow: hidden; }
+    .sv-hero .hero-text { background: #CA2131; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+    .sv-hero .hero-text::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px); pointer-events: none; z-index: 0; }
+    .sv-hero .hero-text > * { position: relative; z-index: 1; }
+    .sv-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ffffff; font-weight: 600; }
+    .sv-hero h1 { font-size: 2.25rem; font-weight: 700; color: #fff; line-height: 1.15; }
+    .sv-hero .vp { font-size: 1.05rem; color: rgba(255,255,255,.7); line-height: 1.5; }
+    .sv-hero .d { font-size: .875rem; color: rgba(255,255,255,.45); line-height: 1.65; }
 
-    /* BRASS DIVIDER */
-    .cardx2-divider { display: flex; align-items: center; margin: .1rem 0; }
+    /* Stat strip below hero */
+    .stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: .75rem; }
+    .stat-strip-item { background: #CA2131; padding: 1.25rem 1.75rem; display: flex; flex-direction: column; gap: .25rem; border-right: 1px solid rgba(255,255,255,0.15); position: relative; overflow: hidden; }
+    .stat-strip-item::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px); pointer-events: none; z-index: 0; }
+    .stat-strip-item > * { position: relative; z-index: 1; }
+    .stat-strip-item:last-child { border-right: none; }
+    .stat-strip-item .num { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; }
+    .stat-strip-item .lbl { font-size: .72rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .07em; }
+
+    /* CTA button */
+    .btn-card-accent { display: inline-block; background: #020534; color: #fff; text-decoration: none; padding: .6rem 1.25rem; border-radius: 6px; font-size: .875rem; font-weight: 600; width: fit-content; }
+    .btn-card-accent:hover { background: #0a0f57; }
+
+    /* Section shell */
+    .cardx2-sec { background: #CA2131; border-radius: 10px; padding: 1.75rem 2rem; margin-bottom: 0; color: #fff; }
+    .cardx2-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #ffffff; font-weight: 600; margin-bottom: .4rem; }
+    .cardx2-eyebrow.red { color: #ffffff; }
+    .cardx2-sec h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; }
+
+    /* NAVY DIVIDER */
+    .cardx2-divider { display: flex; align-items: center; margin: .65rem 0; }
     .cardx2-divider .line { flex: 1; height: 1px; background: #020534; opacity: .35; }
     .cardx2-divider .badge { display: flex; align-items: center; gap: .45rem; padding: .3rem .9rem; border: 1px solid #020534; border-radius: 20px; background: #fff; white-space: nowrap; }
     .cardx2-divider .badge svg { width: 12px; height: 12px; color: #020534; flex-shrink: 0; }
     .cardx2-divider .badge span { font-size: .65rem; font-weight: 700; color: #020534; letter-spacing: .09em; text-transform: uppercase; font-family: 'Roboto', sans-serif; }
 
-    /* OUTCOMES — two-column split inside red box */
-    .oc-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: .9rem; background: rgba(255,255,255,.15); border-radius: 8px; overflow: hidden; }
-    .oc-col { padding: 1.25rem 1.5rem; }
-    .oc-col-left { background: rgba(255,255,255,.1); }
-    .oc-col-right { background: rgba(0,0,0,.12); position: relative; overflow: hidden; }
-    .oc-col-right::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 1px, transparent 1px 12px); pointer-events: none; }
-    .oc-col-right-inner { position: relative; z-index: 1; }
-    .oc-col h3 { font-size: .88rem; font-weight: 700; color: #fff; margin-bottom: .75rem; }
-    .oc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
-    .oc-list li { display: flex; align-items: flex-start; gap: .5rem; font-size: .8rem; color: rgba(255,255,255,.78); line-height: 1.45; }
-    .oc-list svg { width: 12px; height: 12px; color: rgba(255,255,255,.55); flex-shrink: 0; margin-top: 3px; }
+    /* OUTCOMES — 4-col icon cards */
+    .outcomes-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .65rem; }
+    .oc4 { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 1.5rem 1rem; display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; transition: background .2s; }
+    .oc4:hover { background: rgba(255,255,255,.2); }
+    .oc4 svg { width: 24px; height: 24px; color: #fff; }
+    .oc4 .oc-title { font-size: .82rem; font-weight: 700; color: #fff; line-height: 1.3; }
+    .oc4 .oc-sub { font-size: .75rem; color: rgba(255,255,255,.6); line-height: 1.4; }
 
-    /* SERVICES — tile grid inside red box */
-    .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; margin-top: .9rem; }
-    .svc-tile { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: .9rem 1rem; display: flex; align-items: center; gap: .7rem; transition: background .2s; }
-    .svc-tile:hover { background: rgba(255,255,255,.18); }
-    .svc-tile svg { width: 16px; height: 16px; color: rgba(255,255,255,.7); flex-shrink: 0; }
-    .svc-tile span { font-size: .8rem; font-weight: 600; color: #fff; }
+    /* SERVICES — 3-col pill list */
+    .svc-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+    .svc-pill { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.15); border-radius: 8px; padding: .85rem 1.1rem; display: flex; align-items: center; gap: .7rem; transition: background .2s; }
+    .svc-pill:hover { background: rgba(255,255,255,.2); }
+    .svc-pill svg { width: 16px; height: 16px; color: rgba(255,255,255,.8); flex-shrink: 0; }
+    .svc-pill span { font-size: .82rem; font-weight: 600; color: #fff; }
 
     /* ADVANTAGE */
-    .adv-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: .5rem; }
-    .adv-flow { display: flex; align-items: center; gap: .4rem; flex-wrap: wrap; margin-top: .6rem; }
-    .adv-fp { background: rgba(255,255,255,.15); color: #fff; padding: .25rem .7rem; border-radius: 3px; font-size: .7rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-family: 'Roboto', sans-serif; }
-    .adv-fa { color: rgba(255,255,255,.4); font-size: .8rem; }
-    .adv-panel { background: rgba(0,0,0,.15); border-radius: 6px; padding: 1.1rem 1.25rem; position: relative; overflow: hidden; }
-    .adv-panel::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.06) 0 1px, transparent 1px 10px); pointer-events: none; }
-    .adv-panel-inner { position: relative; z-index: 1; }
-    .check-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .45rem; }
-    .check-list li { display: flex; align-items: flex-start; gap: .5rem; font-size: .8rem; color: rgba(255,255,255,.8); }
-    .check-list svg { width: 12px; height: 12px; color: rgba(255,255,255,.55); flex-shrink: 0; margin-top: 3px; }
+    .advantage-band { background: rgba(0,0,0,.15); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; position: relative; overflow: hidden; }
+    .advantage-band::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 1px, transparent 1px 12px); pointer-events: none; }
+    .advantage-band > * { position: relative; z-index: 1; }
+    .advantage-band h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+    .flow-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
+    .step-pill { background: rgba(255,255,255,.15); color: rgba(255,255,255,.85); padding: .3rem .9rem; border-radius: 20px; font-size: .78rem; font-weight: 600; }
+    .arrow-sep { color: rgba(255,255,255,.5); font-size: .85rem; font-weight: 700; }
+    .card-check3 { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .65rem; }
+    .card-check3 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.8); }
+    .card-check3 svg { width: 14px; height: 14px; color: rgba(255,255,255,.65); flex-shrink: 0; margin-top: 2px; }
 
-    /* SPOTLIGHT — LP horizontal 3-beat layout */
-    .spot-header { background: rgba(0,0,0,.2); border-radius: 8px 8px 0 0; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-top: .5rem; }
-    .spot-header h3 { font-size: 1.05rem; font-weight: 700; color: #fff; margin: .25rem 0 .25rem; line-height: 1.2; }
-    .spot-meta { font-size: .68rem; color: rgba(255,255,255,.35); }
-    .spot-stats { display: flex; gap: 1.5rem; flex-shrink: 0; }
-    .sstat .num { font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; display: block; }
-    .sstat .lbl { font-size: .62rem; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: .07em; font-family: 'Roboto', sans-serif; }
-    .spot-beats { display: grid; grid-template-columns: repeat(3, 1fr); background: rgba(255,255,255,.1); border-radius: 0 0 8px 8px; }
-    .spot-beat { padding: 1.1rem 1.25rem; border-right: 1px solid rgba(255,255,255,.1); position: relative; }
-    .spot-beat:last-child { border-right: none; }
-    .spot-beat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: rgba(255,255,255,.2); }
-    .beat-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.55); font-weight: 700; font-family: 'Roboto', sans-serif; margin-bottom: .2rem; display: block; }
-    .spot-beat p { font-size: .78rem; color: rgba(255,255,255,.75); line-height: 1.5; }
+    /* SPOTLIGHT */
+    .spot-card { border-radius: 10px; overflow: hidden; display: grid; grid-template-columns: 1fr 2fr; border: 1px solid rgba(255,255,255,.15); }
+    .spot-left { background: rgba(0,0,0,.25); padding: 2rem 1.75rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,.12); }
+    .spot-left h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin: .4rem 0 .5rem; line-height: 1.3; }
+    .spot-meta { font-size: .73rem; color: rgba(255,255,255,.4); line-height: 1.6; }
+    .stat-row { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.5rem; }
+    .stat-item .num { font-size: 1.75rem; font-weight: 700; color: #fff; line-height: 1; display: block; }
+    .stat-item .lbl { font-size: .68rem; color: rgba(255,255,255,.4); margin-top: .2rem; text-transform: uppercase; letter-spacing: .06em; display: block; }
+    .spot-right { background: rgba(255,255,255,.1); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .story-beat { border-left: 2px solid rgba(255,255,255,.4); padding-left: 1rem; }
+    .beat-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.55); font-weight: 600; margin-bottom: .25rem; display: block; }
+    .story-beat p { font-size: .84rem; color: rgba(255,255,255,.8); line-height: 1.55; }
 
     /* INDUSTRIES */
-    .ind-row2 { display: grid; grid-template-columns: repeat(7, 1fr); gap: .4rem; margin-top: .9rem; }
-    .ind-item2 { background: rgba(255,255,255,.1); border-radius: 8px; padding: .8rem .3rem; display: flex; flex-direction: column; align-items: center; gap: .35rem; font-size: .67rem; color: rgba(255,255,255,.7); text-align: center; border: 1px solid rgba(255,255,255,.1); transition: background .2s; }
+    .ind-row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: .65rem; }
+    .ind-item2 { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1.1rem .5rem; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; font-size: .73rem; color: rgba(255,255,255,.7); text-align: center; background: rgba(255,255,255,.1); transition: background .2s; }
     .ind-item2:hover { background: rgba(255,255,255,.18); }
-    .ind-item2 svg { width: 18px; height: 18px; color: rgba(255,255,255,.8); }
+    .ind-item2 svg { width: 22px; height: 22px; color: rgba(255,255,255,.85); }
 
     /* CTA */
-    .cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: center; position: relative; z-index: 1; }
-    .cta-circle-lg { position: absolute; right: -30px; top: -30px; width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(255,255,255,.1); pointer-events: none; }
-    .cta-circle-sm { position: absolute; right: 20px; top: 20px; width: 80px; height: 80px; border-radius: 50%; border: 1px solid rgba(255,255,255,.08); pointer-events: none; }
-    .cta-meta { display: flex; flex-direction: column; gap: .65rem; }
-    .cta-meta .lab { font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); display: block; margin-bottom: .1rem; font-family: 'Roboto', sans-serif; }
-    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.82); font-size: .82rem; text-decoration: none; }
+    .cta-band2 { background: rgba(0,0,0,.15); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; position: relative; overflow: hidden; }
+    .cta-band2::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px); pointer-events: none; z-index: 0; }
+    .cta-band2 > * { position: relative; z-index: 1; }
+    .cta-band2 h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: .35rem 0 1rem; }
+    .cta-meta { display: flex; flex-direction: column; gap: .9rem; }
+    .cta-meta .lab { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); display: block; margin-bottom: .15rem; }
+    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.8); font-size: .875rem; text-decoration: none; }
     .cta-meta a:hover { color: #fff; }
 
+    /* FEATURED CAPABILITIES */
+    .feat-caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border-radius: 10px; overflow: hidden; background: rgba(2,5,52,.18); }
+    .feat-cap {
+      display: block;
+      position: relative;
+      background: #CA2131;
+      color: #fff;
+      padding: 1.75rem 1.75rem 2.25rem;
+      overflow: hidden;
+      text-decoration: none;
+      transition: background .2s;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
+      background-color: #CA2131;
+    }
+    .feat-cap:hover { background-color: #a81a28; }
+    .feat-cap .cap-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+      display: block;
+      margin-bottom: .55rem;
+    }
+    .feat-cap h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 .45rem;
+      line-height: 1.25;
+    }
+    .feat-cap p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .78rem;
+      color: rgba(255,255,255,.68);
+      line-height: 1.55;
+      margin: 0;
+      padding-right: 1.5rem;
+    }
+    .feat-cap::after {
+      content: '→';
+      position: absolute;
+      right: 1.25rem;
+      bottom: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: #020534;
+      transition: transform .2s;
+    }
+    .feat-cap:hover::after { transform: translateX(4px); }
+
+    /* Responsive */
     @media (max-width: 700px) {
-      .lp-hero2 { min-height: 360px; }
-      .oc-split, .adv-split, .cta-inner { grid-template-columns: 1fr; }
-      .svc-grid { grid-template-columns: 1fr; }
-      .spot-beats { grid-template-columns: 1fr; }
-      .spot-header { flex-direction: column; gap: 1rem; }
-      .spot-beat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
-      .spot-beat:last-child { border-bottom: none; }
-      .ind-row2 { grid-template-columns: repeat(4, 1fr); }
+      .sv-hero, .spot-card, .advantage-band, .cta-band2 { grid-template-columns: 1fr; }
+      .stat-strip { grid-template-columns: 1fr 1fr; }
+      .stat-strip-item:last-child { border-top: 1px solid rgba(255,255,255,0.08); grid-column: span 2; }
+      .outcomes-4 { grid-template-columns: 1fr 1fr; }
+      .svc-3col { grid-template-columns: 1fr 1fr; }
+      .feat-caps { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="preload" as="image" href="assets/img/logo.png">
   <script src="assets/js/main.js" defer></script>
 </head>
-<body data-page="card-land-planning">
+<body data-page="card-land-surveying">
   <div data-header></div>
+
   <div class="cardx2-page">
 
     <!-- HERO -->
-    <section class="lp-hero2 reveal" id="rv0">
-      <div class="hero-text">
-        <span class="eyebrow">Site Optimization</span>
-        <h1>Land Planning</h1>
-        <p class="vp">Optimize the Site. Maximize the Outcome.</p>
-        <p class="d">We identify opportunities, constraints, and development potential before costly design decisions are made.</p>
-        <a class="btn-navy" href="contact.html">Talk With Our Team &rarr;</a>
-      </div>
-    </section>
-
-    <div class="cardx2-divider reveal"><div class="line"></div><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>What We Deliver</span></div><div class="line"></div></div>
-
-    <!-- OUTCOMES -->
-    <section class="rb reveal" id="rv2" style="padding:1.75rem 2rem">
-      <div class="rb-eyebrow">Outcomes</div>
-      <h2>Know What Your Site Can Do</h2>
-      <div class="oc-split">
-        <div class="oc-col oc-col-left">
-          <h3>What We Help Clients Achieve</h3>
-          <ul class="oc-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Faster project approvals</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reduced development risk</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Better site utilization</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fewer redesigns and delays</li>
-          </ul>
+    <section class="reveal" id="rv0">
+      <div class="sv-hero">
+        <div class="hero-text">
+          <span class="eyebrow">Accurate Project Data</span>
+          <h1>Land Surveying</h1>
+          <p class="vp">Accurate Data That Drives Every Decision.</p>
+          <p class="d">Reliable field data and project control that every downstream planning and engineering decision depends on.</p>
+          <a class="btn-card-accent" href="contact.html">Talk With Our Team &rarr;</a>
         </div>
-        <div class="oc-col oc-col-right">
-          <div class="oc-col-right-inner">
-            <h3>What Sets Us Apart</h3>
-            <ul class="oc-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Site optimization before design begins</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Early identification of constraints</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Maximized land value and feasibility</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Integrated with survey and engineering</li>
-            </ul>
-          </div>
+      </div>
+      <div class="stat-strip">
+        <div class="stat-strip-item">
+          <span class="num">700+</span>
+          <span class="lbl">Acres Captured on a Single Project</span>
+        </div>
+        <div class="stat-strip-item">
+          <span class="num">3</span>
+          <span class="lbl">Survey Technologies in Our Fleet</span>
+        </div>
+        <div class="stat-strip-item">
+          <span class="num">1</span>
+          <span class="lbl">Source of Truth Across All Disciplines</span>
         </div>
       </div>
     </section>
 
-    <div class="cardx2-divider reveal"><div class="line"></div><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Services</span></div><div class="line"></div></div>
+    <!-- FEATURED CAPABILITIES -->
+    <div class="feat-caps reveal" id="rv-feat">
+      <a class="feat-cap" href="lidar.html">
+        <span class="cap-label">Featured Capability</span>
+        <h3>LiDAR &amp; Drone Mapping</h3>
+        <p>Dense, high-accuracy point clouds for large or complex sites — faster than traditional methods.</p>
+      </a>
+      <a class="feat-cap" href="construction-staking.html">
+        <span class="cap-label">Featured Capability</span>
+        <h3>Construction Staking</h3>
+        <p>Keeping your crews on line and on grade through every phase of build-out.</p>
+      </a>
+      <a class="feat-cap" href="alta-surveys.html">
+        <span class="cap-label">Featured Capability</span>
+        <h3>ALTA / NSPS Surveys</h3>
+        <p>Land title surveys that meet the highest standards for commercial transactions.</p>
+      </a>
+    </div>
 
     <!-- SERVICES -->
-    <section class="rb tx reveal" id="rv4" style="padding:1.75rem 2rem">
-      <div class="rb-eyebrow">Services Snapshot</div>
+    <section class="cardx2-sec reveal" id="rv4">
+      <div class="cardx2-eyebrow">Services Snapshot</div>
       <h2>Find Your Need</h2>
-      <div class="svc-grid">
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Site Feasibility Studies</span></div>
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Due Diligence</span></div>
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 9h18z"/><path d="M5 9v9M10 9v9M14 9v9M19 9v9M3 21h18"/></svg><span>Rezoning Support</span></div>
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span>Entitlement Assistance</span></div>
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span>Concept Planning</span></div>
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Yield Analysis</span></div>
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Development Strategy</span></div>
-        <div class="svc-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Master Planning</span></div>
+      <div class="svc-3col">
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <span>Boundary Surveys</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>
+          <span>Topographic Surveys</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+          <span>ALTA/NSPS Surveys</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>
+          <span>Construction Staking</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span>Drone Mapping</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span>LiDAR Services</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          <span>Utility Location Support</span>
+        </div>
+        <div class="svc-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Control Surveys</span>
+        </div>
       </div>
     </section>
 
-    <div class="cardx2-divider reveal"><div class="line"></div><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>The GCI Advantage</span></div><div class="line"></div></div>
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv1">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        <span>What We Deliver</span>
+      </div>
+      <div class="line"></div>
+    </div>
 
-    <!-- ADVANTAGE -->
-    <section class="rb reveal" id="rv6" style="padding:1.75rem 2rem">
-      <div class="rb-eyebrow">One Team. Three Disciplines.</div>
-      <h2>Less Friction. Faster Delivery.</h2>
-      <div class="adv-split">
+    <!-- OUTCOMES — 4-col icon cards -->
+    <section class="cardx2-sec reveal" id="rv2">
+      <div class="cardx2-eyebrow">Outcomes</div>
+      <h2>Data You Can Build On</h2>
+      <div class="outcomes-4">
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <span class="oc-title">Accurate From Day One</span>
+          <span class="oc-sub">Field data you can trust from the first deliverable</span>
+        </div>
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span class="oc-title">Reliable Project Control</span>
+          <span class="oc-sub">Consistent positioning across all phases of work</span>
+        </div>
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span class="oc-title">Faster Turnaround</span>
+          <span class="oc-sub">Modern technology keeps your schedule moving</span>
+        </div>
+        <div class="oc4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span class="oc-title">Fewer Construction Conflicts</span>
+          <span class="oc-sub">Catch discrepancies before they hit the field</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv5">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>The GCI Advantage</span>
+      </div>
+      <div class="line"></div>
+    </div>
+
+    <!-- GCI ADVANTAGE -->
+    <section class="cardx2-sec reveal" id="rv6">
+      <div class="advantage-band">
         <div>
-          <div class="adv-flow">
-            <span class="adv-fp">Planning</span><span class="adv-fa">&rarr;</span>
-            <span class="adv-fp">Surveying</span><span class="adv-fa">&rarr;</span>
-            <span class="adv-fp">Engineering</span>
-          </div>
-          <p style="font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.55;margin-top:.85rem">When planning, surveying, and engineering share one team, projects move faster with fewer gaps and less rework.</p>
-        </div>
-        <div class="adv-panel">
-          <div class="adv-panel-inner">
-            <ul class="check-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Less coordination between consultants</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Faster project delivery</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fewer communication gaps</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Better project visibility</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reduced risk of redesigns</li>
-            </ul>
+          <div class="cardx2-eyebrow red">One Team. Three Disciplines.</div>
+          <h2>Less Friction. Faster Delivery.</h2>
+          <div class="flow-steps">
+            <span class="step-pill">Planning</span>
+            <span class="arrow-sep">&rarr;</span>
+            <span class="step-pill">Surveying</span>
+            <span class="arrow-sep">&rarr;</span>
+            <span class="step-pill">Engineering</span>
           </div>
         </div>
+        <ul class="card-check3">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Less coordination between consultants</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Faster project delivery</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fewer communication gaps</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Better project visibility</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reduced risk of redesigns</li>
+        </ul>
       </div>
     </section>
 
-    <div class="cardx2-divider reveal"><div class="line"></div><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Project Spotlight</span></div><div class="line"></div></div>
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv7">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Project Spotlight</span>
+      </div>
+      <div class="line"></div>
+    </div>
 
     <!-- SPOTLIGHT -->
-    <section class="rb tx2 reveal" id="rv8" style="padding:1.75rem 2rem">
-      <div class="rb-eyebrow">Project Spotlight</div>
-      <h2>Prowell Park</h2>
-      <div class="spot-header">
-        <div>
-          <h3>300 Acres. A Plan That Didn’t Fit.</h3>
-          <p class="spot-meta">Public Recreation &middot; ~300 Acres</p>
+    <section class="cardx2-sec reveal" id="rv8">
+      <div class="spot-card">
+        <div class="spot-left">
+          <div>
+            <div class="cardx2-eyebrow red">Project Spotlight</div>
+            <h2>Bana 85</h2>
+            <p class="spot-meta">Industrial &middot; Rooker &middot; 700+ Acres</p>
+          </div>
+          <div class="stat-row">
+            <div class="stat-item"><span class="num">700+</span><span class="lbl">Acres Captured</span></div>
+            <div class="stat-item"><span class="num">1</span><span class="lbl">Unified Dataset</span></div>
+          </div>
         </div>
-        <div class="spot-stats">
-          <div class="sstat"><span class="num">300</span><span class="lbl">Acres Re-Planned</span></div>
-          <div class="sstat"><span class="num">3</span><span class="lbl">Phases Delivered</span></div>
+        <div class="spot-right">
+          <div class="story-beat">
+            <span class="beat-label">Challenge</span>
+            <p>Capturing accurate ground truth across 700+ acres of complex terrain for a large-scale industrial development.</p>
+          </div>
+          <div class="story-beat">
+            <span class="beat-label">Solution</span>
+            <p>LiDAR, drone (UAS) capture, and GNSS control feeding planning and engineering directly — no data lost between firms.</p>
+          </div>
+          <div class="story-beat">
+            <span class="beat-label">Result</span>
+            <p>A single accurate dataset that reduced rework and kept the whole team on one source of truth throughout the project.</p>
+          </div>
         </div>
-      </div>
-      <div class="spot-beats">
-        <div class="spot-beat"><span class="beat-label">Challenge</span><p>An inherited master plan didn’t fit the real conditions of a highly visible ~300-acre site between two subdivisions.</p></div>
-        <div class="spot-beat"><span class="beat-label">Solution</span><p>Re-planned grading, drainage, and layout for buildability and neighborhood compatibility, phased for growth.</p></div>
-        <div class="spot-beat"><span class="beat-label">Result</span><p>A stronger, more buildable plan with better public compatibility — and one of GCI’s largest project fees.</p></div>
       </div>
     </section>
 
-    <div class="cardx2-divider reveal"><div class="line"></div><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg><span>Industries</span></div><div class="line"></div></div>
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv9">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        <span>Industries</span>
+      </div>
+      <div class="line"></div>
+    </div>
 
     <!-- INDUSTRIES -->
-    <section class="rb reveal" id="rv10" style="padding:1.75rem 2rem">
-      <div class="rb-eyebrow">Industries We Serve</div>
+    <section class="cardx2-sec reveal" id="rv10">
+      <div class="cardx2-eyebrow">Industries We Serve</div>
       <h2>Who We Work With</h2>
       <div class="ind-row2">
         <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><div>Residential</div></div>
@@ -252,31 +413,40 @@
       </div>
     </section>
 
-    <div class="cardx2-divider reveal"><div class="line"></div><div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Get In Touch</span></div><div class="line"></div></div>
+    <!-- DIVIDER -->
+    <div class="cardx2-divider reveal" id="rv11">
+      <div class="line"></div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Get In Touch</span>
+      </div>
+      <div class="line"></div>
+    </div>
 
     <!-- CTA -->
-    <section class="rb tx reveal" id="rv12" style="padding:1.75rem 2rem;overflow:hidden">
-      <div class="cta-circle-lg"></div>
-      <div class="cta-circle-sm"></div>
-      <div class="cta-inner">
+    <section class="cardx2-sec reveal" id="rv12">
+      <div class="cta-band2">
         <div>
-          <div class="rb-eyebrow">Talk With Our Team</div>
+          <div class="cardx2-eyebrow red">Talk With Our Team</div>
           <h2>Let’s Discuss Your Project.</h2>
-          <a class="btn-navy" style="margin-top:.75rem" href="contact.html">Schedule a Project Discussion &rarr;</a>
+          <a class="btn-card-accent" href="contact.html">Schedule a Project Discussion &rarr;</a>
         </div>
         <div class="cta-meta">
-          <div><span class="lab">Phone</span><a href="tel:+17063421104">706-342-1104 Ext. 59</a></div>
-          <div><span class="lab">Email</span><a href="mailto:todd@georgiacivil.com">todd@georgiacivil.com</a></div>
-          <div><span class="lab">Direct Contact</span><span>Todd Peaster, Vice President</span></div>
+          <div><span class="lab">Phone</span><a href="tel:+17063421104">706-342-1104 Ext. 51</a></div>
+          <div><span class="lab">Email</span><a href="mailto:brandon@georgiacivil.com">brandon@georgiacivil.com</a></div>
+          <div><span class="lab">Direct Contact</span><span>Brandon Hightower, Survey Manager</span></div>
         </div>
       </div>
     </section>
 
   </div>
+
   <div data-footer></div>
   <script>
-    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.06});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
