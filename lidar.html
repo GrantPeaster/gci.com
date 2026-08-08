@@ -15,47 +15,88 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LiDAR — Georgia Civil">
+  <meta property="og:url" content="https://grantpeaster.github.io/gci.com/lidar.html">
+  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://grantpeaster.github.io/gci.com/lidar.html">
 </head>
 <body data-page="land-surveying">
   <div data-header></div>
 
+  <!-- HERO -->
   <section class="page-hero">
     <div class="wrap">
       <a class="crumb" href="land-surveying.html">&larr; Back to Land Surveying</a>
-
-      <h1>High-density site data, captured from the air and ground.</h1>
+      <h1>High-Density Site Data, Captured From the Air and Ground.</h1>
     </div>
   </section>
 
-  <section>
-    <div class="wrap split">
-      <div class="maxw-readable">
-        <p class='lead'>LiDAR (Light Detection and Ranging) captures millions of measured points to build a precise 3D model of a site's surface.</p><p>For large or hard-to-reach properties, it dramatically reduces field time while increasing detail — giving our planners and engineers a rich, accurate basemap from the very start. Because survey, planning, and engineering sit together at GCI, that data never gets lost in a handoff between firms.</p>
+  <!-- DETAIL + WHY-GCI -->
+  <style>
+    .sub-detail { padding: clamp(48px,6vw,80px) 0; background: #fff; }
+    .sub-detail .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,64px); align-items: start; }
+    .sub-eyebrow { font-family: 'Roboto', sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #CA2131; display: block; margin-bottom: clamp(16px,2.5vw,28px); }
+    .sub-list { list-style: none; margin: 0; padding: 0; }
+    .sub-list li { position: relative; padding: 20px 0 20px 28px; border-top: 1px solid rgba(2,5,52,.08); }
+    .sub-list li:first-child { border-top: none; }
+    .sub-list li::before { content: ''; position: absolute; left: 0; top: 26px; width: 8px; height: 8px; background: #CA2131; }
+    .sub-list strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; color: #020534; font-size: 1rem; margin-bottom: 4px; }
+    .sub-list span { display: block; font-family: 'Montserrat', sans-serif; color: rgba(2,5,52,.60); font-size: .88rem; line-height: 1.6; }
+    .sub-why { position: relative; overflow: hidden; background: #CA2131; padding: clamp(28px,3.5vw,44px); border-radius: 4px; }
+    .sub-why::before { content: ''; position: absolute; inset: 0; background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 1px,transparent 1px 16px); pointer-events: none; }
+    .sub-why-inner { position: relative; z-index: 1; }
+    .sub-why h3 { font-family: 'Times New Roman', Times, serif; font-size: clamp(1.3rem,2vw,1.7rem); font-weight: 700; color: #fff; margin: 0 0 1rem; }
+    .sub-why p { font-family: 'Montserrat', sans-serif; font-size: .92rem; color: rgba(255,255,255,.88); line-height: 1.72; margin: 0 0 .75rem; }
+    .sub-why p:last-child { margin: 0; }
+    @media (max-width: 860px) { .sub-detail .wrap { grid-template-columns: 1fr; } }
+  </style>
+
+  <section class="sub-detail">
+    <div class="wrap">
+      <div>
+        <span class="sub-eyebrow">What LiDAR Delivers</span>
+        <ul class="sub-list">
+            <li><strong>Dense Point Clouds</strong><span>Millions of measured elevation points capturing the true surface of large or complex sites.</span></li>
+            <li><strong>Aerial & Ground-Based Capture</strong><span>Drone-mounted and terrestrial LiDAR combined for complete coverage and accuracy.</span></li>
+            <li><strong>Bare-Earth & Classified Data</strong><span>Point clouds processed and classified — vegetation filtered, structures isolated, contours extracted.</span></li>
+            <li><strong>Direct Integration with Engineering</strong><span>LiDAR data delivered in formats that feed directly into civil design and grading models.</span></li>
+            <li><strong>Reduced Field Time on Large Sites</strong><span>Capture hundreds of acres in a fraction of the time required by traditional ground survey methods.</span></li>
+        </ul>
       </div>
-      <div class="ph" style="min-height:320px">Photo: LiDAR point cloud / drone capture</div>
+      <div class="sub-why">
+        <div class="sub-why-inner">
+          <h3>Why GCI for LiDAR</h3>
+          <p>Because survey, planning, and engineering operate under one roof at GCI, LiDAR data captured in the field is in the hands of the design team immediately — no handoff delay, no data translation errors.</p>
+          <p>We use LiDAR on industrial sites, large subdivisions, recreation facilities, and any project where traditional methods are impractical or insufficient.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- PROJECT SPOTLIGHT -->
   <section class="section-paper">
     <div class="wrap">
-      <span class="eyebrow">Highlighted project</span>
-      <h2 style="margin-bottom:24px">LiDAR in the field</h2>
+      <span class="eyebrow">Highlighted Project</span>
+      <h2 style="margin-bottom:24px">LiDAR in the Field</h2>
       <a class="proj" href="project-bana-85.html">
         <div class="proj-imgwrap">
           <div class="proj-img" style="background-image:linear-gradient(135deg,#0a1150,#020534)"></div>
-          <span class="ph-label">Photo: Bana 85 — aerial LiDAR survey</span>
         </div>
         <div class="proj-body">
-          <h3>Bana 85</h3>
+          <h3>Bana 85 Industrial</h3>
           <div class="tags"><span class="tag">Industrial</span><span class="tag">700+ Acres</span><span class="tag">LiDAR</span></div>
-          <p>Across 700-plus acres, dense aerial capture gave the team an accurate surface model to drive grading and earthwork optimization at scale.</p>
-          <span class="more" style="color:var(--red);font-family:var(--utility);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem">View project &rarr;</span>
+          <p>Across 700-plus acres, dense aerial capture gave the team an accurate surface model to drive grading and earthwork optimization.</p>
+          <span class="more" style="color:var(--red);font-family:var(--utility);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem">View Project &rarr;</span>
         </div>
       </a>
     </div>
   </section>
 
   <div data-footer></div>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
