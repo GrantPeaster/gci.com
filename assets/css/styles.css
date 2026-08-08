@@ -19,7 +19,7 @@
   --ink-55: rgba(2,5,52,0.60);
 
   /* Type roles */
-  --display: 'Times New Roman', Times, 'Liberation Serif', serif;
+  --display: 'Libre Baskerville', Georgia, serif;
   --body:    'Montserrat', system-ui, -apple-system, Segoe UI, sans-serif;
   --utility: 'Roboto', system-ui, sans-serif;
 
@@ -48,8 +48,8 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Display type ---------- */
 h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.02;
   letter-spacing: -0.01em; margin: 0; }
-h1 { font-size: clamp(2.6rem, 6vw, 5rem); transform: scaleX(0.94); transform-origin: left; }
-h2 { font-size: clamp(2rem, 4.2vw, 3.4rem); transform: scaleX(0.95); transform-origin: left; }
+h1 { font-size: clamp(2.6rem, 6vw, 5rem); }
+h2 { font-size: clamp(2rem, 4.2vw, 3.4rem); }
 h3 { font-size: clamp(1.4rem, 2.4vw, 2rem); }
 p  { margin: 0 0 1.1em; max-width: 64ch; }
 .lead { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--ink-70); }
@@ -297,7 +297,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 
 /* Stat */
 .stat { font-family: var(--display); font-size: clamp(2.6rem,5vw,4rem); color: var(--red);
-  line-height: 1; transform: scaleX(0.95); transform-origin: left; }
+  line-height: 1; }
 .stat + .card-label { color: var(--gray); display:block; margin-top: 10px; }
 
 /* Callout */
