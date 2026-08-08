@@ -162,7 +162,7 @@ section { padding-block: clamp(56px, 9vw, 120px); }
   background: url(../img/contour-site.svg) center/contain no-repeat; }
 .page-hero .wrap { position: relative; z-index: 1; }
 .page-hero h1 { max-width: 18ch; color: #fff; }
-.page-hero .eyebrow { color: rgba(255,255,255,0.7); }
+.page-hero .eyebrow { color: #ffffff; display: block; margin-bottom: .6rem; }
 .page-hero .hero-name { font-size: clamp(1.6rem, 3.6vw, 2.9rem); letter-spacing: 0.04em;
   line-height: 1.08; margin-bottom: 0; }
 .page-title { color: #fff; max-width: 22ch; margin-bottom: clamp(18px, 2.4vw, 30px); }
