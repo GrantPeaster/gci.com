@@ -15,6 +15,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ALTA Surveys — Georgia Civil">
+  <meta property="og:url" content="https://grantpeaster.github.io/gci.com/alta-surveys.html">
+  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://grantpeaster.github.io/gci.com/alta-surveys.html">
 </head>
 <body data-page="land-surveying">
   <div data-header></div>
@@ -23,6 +31,7 @@
     <div class="wrap">
       <a class="crumb" href="land-surveying.html">&larr; Back to Land Surveying</a>
 
+      <span class="eyebrow" style="margin-top:.5rem;">ALTA Surveys</span>
       <h1>The survey lenders and buyers rely on.</h1>
     </div>
   </section>
@@ -32,30 +41,66 @@
       <div class="maxw-readable">
         <p class='lead'>An ALTA/NSPS land title survey is the detailed, standardized survey used in commercial real estate transactions.</p><p>It documents boundaries, easements, improvements, and encroachments to the standards lenders and title companies require — giving buyers and financiers the confidence to close. Our integrated approach means the survey is ready to feed straight into planning if the site moves to development.</p>
       </div>
-      <div class="ph" style="min-height:320px">Photo: ALTA survey exhibit / site plan</div>
+      <div class="ph" style="min-height:320px"><!-- Photo: drop <img> here --></div>
     </div>
   </section>
 
   <section class="section-paper">
     <div class="wrap">
       <span class="eyebrow">Highlighted project</span>
-      <h2 style="margin-bottom:24px">ALTA in practice</h2>
+      <h2 style="margin-bottom:24px">ALTA in Practice</h2>
       <a class="proj" href="project-spotlight.html">
         <div class="proj-imgwrap">
           <div class="proj-img" style="background-image:linear-gradient(135deg,#0a1150,#020534)"></div>
-          <span class="ph-label">Photo: Ashley Capital Adairsville — ALTA survey</span>
+          
         </div>
         <div class="proj-body">
           <h3>Ashley Capital — Adairsville</h3>
           <div class="tags"><span class="tag">Industrial</span><span class="tag">ALTA/NSPS</span><span class="tag">Due Diligence</span></div>
           <p>A thorough ALTA/NSPS survey supported confident due diligence for a major industrial site in Adairsville.</p>
-          <span class="more" style="color:var(--red);font-family:var(--utility);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem">See our work View project &rarr;rarr;</span>
+          <span class="more" style="color:var(--red);font-family:var(--utility);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem">View project &rarr;</span>
         </div>
       </a>
     </div>
   </section>
 
+
+  
+  <style>
+    .sub-detail { padding: clamp(48px,6vw,80px) 0; background: #fff; }
+    .sub-detail .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,64px); align-items: start; }
+    .sub-eyebrow { font-family: 'Roboto', sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #CA2131; display: block; margin-bottom: clamp(16px,2.5vw,28px); }
+    .sub-list { list-style: none; margin: 0; padding: 0; }
+    .sub-list li { position: relative; padding: 20px 0 20px 28px; border-top: 1px solid rgba(2,5,52,.08); }
+    .sub-list li:first-child { border-top: none; }
+    .sub-list li::before { content: ''; position: absolute; left: 0; top: 26px; width: 8px; height: 8px; background: #CA2131; }
+    .sub-list strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 700; color: #020534; font-size: 1rem; margin-bottom: 4px; }
+    .sub-list span { display: block; font-family: 'Montserrat', sans-serif; color: rgba(2,5,52,.55); font-size: .88rem; line-height: 1.6; }
+    .sub-why { background: #020534; padding: clamp(28px,3.5vw,44px); border-radius: 4px; }
+    .sub-why h3 { font-family: 'Times New Roman', Times, serif; font-size: clamp(1.3rem,2vw,1.7rem); font-weight: 700; color: #fff; margin: 0 0 1rem; }
+    .sub-why p { font-family: 'Montserrat', sans-serif; font-size: .92rem; color: rgba(255,255,255,.82); line-height: 1.72; margin: 0 0 .75rem; }
+    .sub-why p:last-child { margin: 0; }
+    @media (max-width: 860px) { .sub-detail .wrap { grid-template-columns: 1fr; } }
+  </style>
+  <section class="sub-detail">
+    <div class="wrap">
+      <div>
+        <span class="sub-eyebrow">What ALTA Covers</span>
+        <ul class="sub-list">
+            <li><strong>Boundary & Title Lines</strong><span>Precise legal boundary delineation tied to record documents and monuments.</span></li>
+            <li><strong>Easements & Rights-of-Way</strong><span>All recorded and visible easements located and shown on the exhibit.</span></li>
+            <li><strong>Improvements & Encroachments</strong><span>Buildings, parking, utilities, and any improvements documented relative to the boundary.</span></li>
+            <li><strong>Zoning Setbacks & Flood Zone</strong><span>Applicable zoning classifications and FEMA flood zone data noted per Table A requirements.</span></li>
+            <li><strong>Access & Utilities</strong><span>Points of ingress, egress, and utility service locations identified on-site.</span></li>
+        </ul>
+      </div>
+      <div class="sub-why">
+        <h3>Why GCI for ALTA Surveys</h3>
+          <p>Our surveyors work alongside our land planners and civil engineers — so when a site moves from due diligence into design, the ALTA data transfers without a gap between firms.</p>
+          <p>We serve commercial clients, developers, and lenders across north and central Georgia from our Madison office. ALTA/NSPS Table A options available on request.</p>
+      </div>
+    </div>
+  </section>
   <div data-footer></div>
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
