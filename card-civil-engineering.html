@@ -240,7 +240,7 @@
       padding: .6rem 1.1rem !important;
       border-top: 1px solid rgba(255,255,255,.08) !important;
       font-size: .8rem !important;
-      color: rgba(255,255,255,.82) !important;
+      color: rgba(255,255,255,.88) !important;
       background: rgba(0,0,0,.12) !important;
     }
     .ce-svc-item svg { width: 12px; height: 12px; color: rgba(255,255,255,.4); flex-shrink: 0; }
@@ -361,7 +361,7 @@
     .cta-circle-sm { position: absolute; right: 20px; top: 20px; width: 80px; height: 80px; border-radius: 50%; border: 1px solid rgba(255,255,255,.08); pointer-events: none; }
     .cta-meta { display: flex; flex-direction: column; gap: .65rem; }
     .cta-meta .lab { font-size: .63rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); display: block; margin-bottom: .1rem; font-family: 'Roboto', sans-serif; }
-    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.82); font-size: .82rem; text-decoration: none; }
+    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.88); font-size: .82rem; text-decoration: none; }
     .cta-meta a:hover { color: #fff; }
 
     @media (max-width: 700px) {
@@ -400,6 +400,8 @@
       }
     }
   </style>
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body data-page="card-civil-engineering">
   <div data-header></div>
@@ -621,7 +623,6 @@
   </div>
 
   <div data-footer></div>
-  <script src="assets/js/main.js"></script>
   <script>
     function tog(id) {
       const g = document.getElementById(id);
