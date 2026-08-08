@@ -9,11 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="theme-color" content="#CA2131">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-  <meta name="theme-color" content="#CA2131">
   <link rel="manifest" href="site.webmanifest">
   <style>
     .contact-hero { background: var(--red); padding-block: clamp(56px, 9vw, 112px); position: relative; overflow: hidden; }
@@ -67,29 +67,14 @@
     .form-success strong { display: block; margin-bottom: .4rem; font-size: 1.05rem; }
     .err-msg { color: var(--red); font-size: .78rem; margin-top: 6px; }
   </style>
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact Us — Georgia Civil">
-  <meta property="og:description" content="Talk to a Georgia Civil principal. One point of contact for planning, surveying, and engineering across your project.">
   <meta property="og:url" content="https://grantpeaster.github.io/gci.com/contact.html">
-  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/android-chrome-512x512.png">
+  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://grantpeaster.github.io/gci.com/contact.html">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Contact Georgia Civil",
-    "url": "https://grantpeaster.github.io/gci.com/contact.html",
-    "description": "Talk to a Georgia Civil principal — one point of contact for planning, surveying, and engineering.",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"name":"Home","item":"https://grantpeaster.github.io/gci.com/"},
-        {"@type":"ListItem","position":2,"name":"Contact","item":"https://grantpeaster.github.io/gci.com/contact.html"}
-      ]
-    }
-  }
-  </script>
 </head>
 <body data-page="contact">
   <div data-header></div>
@@ -110,7 +95,7 @@
       </div>
       <div class="cs-item">
         <span>Location</span><span class="cs-dot"></span>
-        <span style="color:#fff;">Madison, Georgia</span>
+        <a href="https://maps.google.com/?q=311+N+Main+Street+Madison+GA+30650" target="_blank" rel="noopener" style="color:#fff;">311 N. Main Street, Madison, GA 30650</a>
       </div>
       <div class="cs-item">
         <span>LinkedIn</span><span class="cs-dot"></span>
@@ -127,25 +112,21 @@
         <h2>Tell us about your site.</h2>
         <p>Select a discipline and a principal will follow up promptly.</p>
         <div class="disc-selector" id="disc-selector" role="group" aria-label="Select a discipline">
-          <button class="disc-option selected" type="button" data-discipline="Land Planning" data-to="todd@georgiacivil.com,chelsea@georgiacivil.com">
+          <button class="disc-option selected" type="button" data-discipline="Land Planning">
             <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Planning</span></div>
           </button>
-          <button class="disc-option" type="button" data-discipline="Civil Engineering" data-to="jason@georgiacivil.com,chelsea@georgiacivil.com">
+          <button class="disc-option" type="button" data-discipline="Civil Engineering">
             <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Civil Engineering</span></div>
           </button>
-          <button class="disc-option" type="button" data-discipline="Land Surveying" data-to="brandon@georgiacivil.com,stephanie@georgiacivil.com">
+          <button class="disc-option" type="button" data-discipline="Land Surveying">
             <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Surveying</span></div>
           </button>
         </div>
       </div>
 
       <div class="contact-form-wrap">
-        <form class="contact-fields" id="contact-form" data-contact action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="4c1dc681-6cb8-4efa-bfb8-f94b2a7f37e3">
-          <input type="hidden" name="subject" id="form-subject" value="New inquiry — Land Planning — Georgia Civil">
-          <input type="hidden" name="to" id="form-to" value="todd@georgiacivil.com,chelsea@georgiacivil.com">
-          <input type="hidden" name="discipline" id="form-discipline" value="Land Planning">
-          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <form class="contact-fields" id="contact-form">
+          <input type="hidden" id="form-discipline" name="discipline" value="Land Planning">
 
           <div class="form-row">
             <div>
@@ -187,7 +168,6 @@
   </section>
 
   <div data-footer></div>
-  <script src="assets/js/main.js"></script>
   <script>
     (function () {
       var options   = Array.from(document.querySelectorAll('.disc-option'));
@@ -218,7 +198,7 @@
           if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026'; }
           try {
             var data = Object.fromEntries(new FormData(form).entries());
-            var res  = await fetch(form.action, {
+            var res  = await fetch('/contact', {
               method: 'POST',
               headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
               body: JSON.stringify(data),
