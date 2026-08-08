@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Land Surveying — Georgia Civil</title>
-  <meta name="description" content="Land Surveying at Georgia Civil — Accurate Data That Drives Every Decision. Outcomes, services, and one integrated team across planning, surveying, and engineering.">
+  <meta name="description" content="LiDAR, construction staking, and ALTA/NSPS surveys. GCI surveying delivers fast, accurate site data that feeds directly into planning and engineering.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <meta name="theme-color" content="#CA2131">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -16,435 +16,424 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <style>
-    /* == CAPABILITY CARD v5 — Land Surveying == */
 
-    body { background: #fff; }
+    /* ══════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════ */
+    .ls-hero {
+      position: relative;
+      background: #fff;
+      min-height: clamp(480px, 70vh, 680px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
 
-    .cardx2-page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+    /* No photo overlay needed */
+    .ls-hero::before { display: none; }
 
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    /* Bottom red rule */
+    .ls-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: #CA2131;
+      z-index: 4;
+    }
 
-    /* HERO */
-    .sv-hero { display: grid; grid-template-columns: 1fr; min-height: 280px; border-radius: 12px; overflow: hidden; }
-    .sv-hero .hero-text { background: #CA2131; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; }
-    .sv-hero .hero-text::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px); pointer-events: none; z-index: 0; }
-    .sv-hero .hero-text > * { position: relative; z-index: 1; }
-    .sv-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ffffff; font-weight: 600; }
-    .sv-hero h1 { font-size: 2.25rem; font-weight: 700; color: #fff; line-height: 1.15; }
-    .sv-hero .vp { font-size: 1.05rem; color: rgba(255,255,255,.7); line-height: 1.5; }
-    .sv-hero .d { font-size: .875rem; color: rgba(255,255,255,.45); line-height: 1.65; }
+    .ls-hero .wrap {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+    }
 
-    /* Stat strip below hero */
-    .stat-strip { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: .75rem; }
-    .stat-strip-item { background: #CA2131; padding: 1.25rem 1.75rem; display: flex; flex-direction: column; gap: .25rem; border-right: 1px solid rgba(255,255,255,0.15); position: relative; overflow: hidden; }
-    .stat-strip-item::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px); pointer-events: none; z-index: 0; }
-    .stat-strip-item > * { position: relative; z-index: 1; }
-    .stat-strip-item:last-child { border-right: none; }
-    .stat-strip-item .num { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; }
-    .stat-strip-item .lbl { font-size: .72rem; color: #ffffff; text-transform: uppercase; letter-spacing: .07em; }
+    .ls-hero-copy { max-width: 520px; }
+    .ls-hero-copy .eyebrow { color: rgba(2,5,52,.5); margin-bottom: .75rem; }
+    .ls-hero-copy h1 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: #020534;
+      line-height: 1.02;
+      margin: 0 0 1rem;
+      transform: none;
+    }
+    .ls-hero-copy p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.9rem, 1.4vw, 1.05rem);
+      color: rgba(2,5,52,.65);
+      line-height: 1.7;
+      margin: 0 0 1.75rem;
+      max-width: 46ch;
+    }
+    .ls-hero-copy .btn-accent {
+      background: #020534 !important;
+      border-color: #020534 !important;
+      outline: 1.5px solid rgba(2,5,52,.2);
+      outline-offset: 4px;
+    }
+    .ls-hero-copy .btn-accent:hover { background: #0a0f57 !important; }
 
-    /* CTA button */
-    .btn-card-accent { display: inline-block; background: #020534; color: #fff; text-decoration: none; padding: .6rem 1.25rem; border-radius: 6px; font-size: .875rem; font-weight: 600; width: fit-content; }
-    .btn-card-accent:hover { background: #0a0f57; }
+    /* ── Contour SVG — red rings on white ── */
+    .ls-contour {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      opacity: .18;
+    }
+    .ls-contour .cring {
+      fill: none;
+      stroke: #CA2131;
+      stroke-width: 3.0;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+    }
+    .ls-contour .cring:nth-child(1)  { animation: draw-ring 1.8s ease .2s forwards; }
+    .ls-contour .cring:nth-child(2)  { animation: draw-ring 1.8s ease .5s forwards; }
+    .ls-contour .cring:nth-child(3)  { animation: draw-ring 1.8s ease .8s forwards; }
+    .ls-contour .cring:nth-child(4)  { animation: draw-ring 1.8s ease 1.1s forwards; }
+    .ls-contour .cring:nth-child(5)  { animation: draw-ring 1.8s ease 1.4s forwards; }
+    .ls-contour .cring:nth-child(6)  { animation: draw-ring 1.8s ease 1.7s forwards; }
+    .ls-contour .cring:nth-child(7)  { animation: draw-ring 1.8s ease 2.0s forwards; }
+    .ls-contour .cring:nth-child(8)  { animation: draw-ring 1.8s ease 2.3s forwards; }
+    .ls-contour .ctick {
+      stroke: #CA2131;
+      stroke-width: 2.5;
+      opacity: 0;
+      animation: fade-tick .6s ease 3s forwards;
+    }
+    @keyframes draw-ring { to { stroke-dashoffset: 0; } }
+    @keyframes fade-tick { to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ls-contour .cring  { animation: none; stroke-dashoffset: 0; }
+      .ls-contour .ctick  { animation: none; opacity: 1; }
+    }
 
-    /* Section shell */
-    .cardx2-sec { background: #CA2131; border-radius: 10px; padding: 1.75rem 2rem; margin-bottom: 0; color: #fff; }
-    .cardx2-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #ffffff; font-weight: 600; margin-bottom: .4rem; }
-    .cardx2-eyebrow.red { color: #ffffff; }
-    .cardx2-sec h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; }
+    /* Mobile hero */
+    @media (max-width: 768px) {
+      .ls-hero-copy p { display: none; }
+    }
 
-    /* NAVY DIVIDER */
-    .cardx2-divider { display: flex; align-items: center; margin: .65rem 0; }
-    .cardx2-divider .line { flex: 1; height: 1px; background: #020534; opacity: .35; }
-    .cardx2-divider .badge { display: flex; align-items: center; gap: .45rem; padding: .3rem .9rem; border: 1px solid #020534; border-radius: 20px; background: #fff; white-space: nowrap; }
-    .cardx2-divider .badge svg { width: 12px; height: 12px; color: #020534; flex-shrink: 0; }
-    .cardx2-divider .badge span { font-size: .65rem; font-weight: 700; color: #020534; letter-spacing: .09em; text-transform: uppercase; font-family: 'Roboto', sans-serif; }
+    /* ══════════════════════════════════════════
+       INTRO BAND
+       ══════════════════════════════════════════ */
+    .ls-intro {
+      background: #CA2131;
+      padding-block: clamp(32px, 4vw, 48px);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .ls-intro::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
+      pointer-events: none;
+    }
+    .ls-intro p {
+      position: relative;
+      z-index: 1;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(.92rem, 1.4vw, 1.08rem);
+      color: rgba(255,255,255,.88);
+      line-height: 1.72;
+      margin: 0;
+      max-width: 72ch;
+    }
+    .ls-intro p strong { color: #fff; font-weight: 600; }
 
-    /* OUTCOMES — 4-col icon cards */
-    .outcomes-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .65rem; }
-    .oc4 { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 1.5rem 1rem; display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; transition: background .2s; }
-    .oc4:hover { background: rgba(255,255,255,.2); }
-    .oc4 svg { width: 24px; height: 24px; color: #fff; }
-    .oc4 .oc-title { font-size: .82rem; font-weight: 700; color: #fff; line-height: 1.3; }
-    .oc4 .oc-sub { font-size: .75rem; color: rgba(255,255,255,.6); line-height: 1.4; }
+    /* ══════════════════════════════════════════
+       SERVICES SECTION
+       ══════════════════════════════════════════ */
+    .ls-services {
+      background: #fff;
+      padding-block: clamp(56px, 8vw, 104px);
+    }
 
-    /* SERVICES — 3-col pill list */
-    .svc-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
-    .svc-pill { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.15); border-radius: 8px; padding: .85rem 1.1rem; display: flex; align-items: center; gap: .7rem; transition: background .2s; }
-    .svc-pill:hover { background: rgba(255,255,255,.2); }
-    .svc-pill svg { width: 16px; height: 16px; color: rgba(255,255,255,.8); flex-shrink: 0; }
-    .svc-pill span { font-size: .82rem; font-weight: 600; color: #fff; }
+    /* Reordered: list LEFT, boxes sticky RIGHT */
+    .ls-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .ls-cols { grid-template-columns: 1fr; }
+      .ls-boxes { position: static !important; order: -1; }
+    }
 
-    /* ADVANTAGE */
-    .advantage-band { background: rgba(0,0,0,.15); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; position: relative; overflow: hidden; }
-    .advantage-band::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 1px, transparent 1px 12px); pointer-events: none; }
-    .advantage-band > * { position: relative; z-index: 1; }
-    .advantage-band h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
-    .flow-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
-    .step-pill { background: rgba(255,255,255,.15); color: rgba(255,255,255,.85); padding: .3rem .9rem; border-radius: 20px; font-size: .78rem; font-weight: 600; }
-    .arrow-sep { color: #ffffff; font-size: .85rem; font-weight: 700; }
-    .card-check3 { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .65rem; }
-    .card-check3 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.8); }
-    .card-check3 svg { width: 14px; height: 14px; color: rgba(255,255,255,.65); flex-shrink: 0; margin-top: 2px; }
+    /* ── Service list (left) ── */
+    .ls-list-eyebrow {
+      font-family: 'Roboto', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #CA2131;
+      display: block;
+      margin-bottom: clamp(16px, 2.5vw, 28px);
+    }
+    .svc-list { list-style: none; margin: 0; padding: 0; }
+    .svc-list li {
+      position: relative;
+      padding: 24px 0 24px 28px;
+      border-top: 1px solid rgba(2,5,52,.08);
+    }
+    .svc-list li:first-child { border-top: none; }
+    .svc-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 30px;
+      width: 8px; height: 8px;
+      background: #CA2131;
+    }
+    .svc-list strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #020534;
+      font-size: 1.05rem;
+      margin-bottom: 5px;
+    }
+    .svc-list span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      color: rgba(2,5,52,.5);
+      font-size: .9rem;
+      line-height: 1.6;
+    }
 
-    /* SPOTLIGHT */
-    .spot-card { border-radius: 10px; overflow: hidden; display: grid; grid-template-columns: 1fr 2fr; border: 1px solid rgba(255,255,255,.15); }
-    .spot-left { background: rgba(0,0,0,.25); padding: 2rem 1.75rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(255,255,255,.12); }
-    .spot-left h2 { font-size: 1.2rem; font-weight: 700; color: #fff; margin: .4rem 0 .5rem; line-height: 1.3; }
-    .spot-meta { font-size: .73rem; color: rgba(255,255,255,.4); line-height: 1.6; }
-    .stat-row { display: flex; flex-direction: column; gap: .6rem; margin-top: 1.5rem; }
-    .stat-item .num { font-size: 1.75rem; font-weight: 700; color: #fff; line-height: 1; display: block; }
-    .stat-item .lbl { font-size: .68rem; color: rgba(255,255,255,.4); margin-top: .2rem; text-transform: uppercase; letter-spacing: .06em; display: block; }
-    .spot-right { background: rgba(255,255,255,.1); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-    .story-beat { border-left: 2px solid rgba(255,255,255,.4); padding-left: 1rem; }
-    .beat-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.55); font-weight: 600; margin-bottom: .25rem; display: block; }
-    .story-beat p { font-size: .84rem; color: rgba(255,255,255,.8); line-height: 1.55; }
-
-    /* INDUSTRIES */
-    .ind-row2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: .65rem; }
-    .ind-item2 { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 1.1rem .5rem; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; font-size: .73rem; color: rgba(255,255,255,.7); text-align: center; background: rgba(255,255,255,.1); transition: background .2s; }
-    .ind-item2:hover { background: rgba(255,255,255,.18); }
-    .ind-item2 svg { width: 22px; height: 22px; color: rgba(255,255,255,.85); }
-
-    /* CTA */
-    .cta-band2 { background: rgba(0,0,0,.15); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 2.75rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; position: relative; overflow: hidden; }
-    .cta-band2::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px); pointer-events: none; z-index: 0; }
-    .cta-band2 > * { position: relative; z-index: 1; }
-    .cta-band2 h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin: .35rem 0 1rem; }
-    .cta-meta { display: flex; flex-direction: column; gap: .9rem; }
-    .cta-meta .lab { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); display: block; margin-bottom: .15rem; }
-    .cta-meta a, .cta-meta span { color: rgba(255,255,255,.8); font-size: .875rem; text-decoration: none; }
-    .cta-meta a:hover { color: #fff; }
-
-    /* FEATURED CAPABILITIES */
-    .feat-caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border-radius: 10px; overflow: hidden; background: rgba(2,5,52,.18); }
-    .feat-cap {
+    /* ── Capability boxes — RED, sticky right ── */
+    .ls-boxes {
+      position: sticky;
+      top: calc(76px + 24px);
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(202,33,49,.15);
+    }
+    .box-link {
       display: block;
       position: relative;
       background: #CA2131;
       color: #fff;
-      padding: 1.75rem 1.75rem 2.25rem;
+      padding: clamp(32px, 4.5vw, 52px) clamp(28px, 3.5vw, 40px);
       overflow: hidden;
       text-decoration: none;
       transition: background .2s;
-      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px);
+      background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 1px, transparent 1px 16px);
       background-color: #CA2131;
     }
-    .feat-cap:hover { background-color: #a81a28; }
-    .feat-cap .cap-label {
+    .box-link:hover { background-color: #a81a28; }
+    .box-link .card-label {
       font-family: 'Roboto', sans-serif;
       font-size: .6rem;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.45);
+      color: #ffffff;
       display: block;
-      margin-bottom: .55rem;
+      margin-bottom: .5rem;
     }
-    .feat-cap h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
+    .box-link h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(1.15rem, 1.8vw, 1.45rem);
       font-weight: 700;
       color: #fff;
-      margin: 0 0 .45rem;
-      line-height: 1.25;
+      margin: 0 0 .5rem;
+      transform: none;
     }
-    .feat-cap p {
+    .box-link p {
       font-family: 'Montserrat', sans-serif;
-      font-size: .78rem;
-      color: rgba(255,255,255,.68);
+      font-size: .82rem;
+      color: rgba(255,255,255,.88);
       line-height: 1.55;
       margin: 0;
-      padding-right: 1.5rem;
+      padding-right: 28px;
     }
-    .feat-cap::after {
+    /* Navy arrow bottom-right */
+    .box-link::after {
       content: '→';
       position: absolute;
-      right: 1.25rem;
-      bottom: 1.1rem;
+      right: clamp(18px, 2.5vw, 28px);
+      bottom: clamp(18px, 2.5vw, 26px);
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #020534;
       transition: transform .2s;
     }
-    .feat-cap:hover::after { transform: translateX(4px); }
+    .box-link:hover::after { transform: translateX(5px); }
 
-    /* Responsive */
-    @media (max-width: 700px) {
-      .sv-hero, .spot-card, .advantage-band, .cta-band2 { grid-template-columns: 1fr; }
-      .stat-strip { grid-template-columns: 1fr 1fr; }
-      .stat-strip-item:last-child { border-top: 1px solid rgba(255,255,255,0.08); grid-column: span 2; }
-      .outcomes-4 { grid-template-columns: 1fr 1fr; }
-      .svc-3col { grid-template-columns: 1fr 1fr; }
-      .feat-caps { grid-template-columns: 1fr; }
+    /* Related services in footer */
+    .f-related {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px,3vw,32px);
+      flex-wrap: wrap;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      width: 100%;
+      grid-column: 1 / -1;
     }
+    .f-related-label {
+      font-family: 'Roboto', sans-serif;
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .f-related a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .82rem;
+      color: rgba(255,255,255,.88);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .f-related a:hover { color: #fff; }
   </style>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Land Surveying — Georgia Civil">
+  <meta property="og:description" content="Boundary, topographic, ALTA/NSPS, LiDAR, and construction staking surveys across Georgia — in-house, fast, and accurate.">
+  <meta property="og:url" content="https://grantpeaster.github.io/gci.com/land-surveying.html">
+  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://grantpeaster.github.io/gci.com/land-surveying.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Land Surveying",
+    "name": "Land Surveying — Georgia Civil",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "Georgia Civil, Inc.",
+      "url": "https://grantpeaster.github.io/gci.com/"
+    },
+    "areaServed": {"@type": "State", "name": "Georgia"},
+    "description": "GCI delivers boundary, topographic, ALTA/NSPS, LiDAR, construction staking, and GPS/GNSS surveys across Georgia. In-house survey data feeds directly into planning and engineering.",
+    "url": "https://grantpeaster.github.io/gci.com/land-surveying.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://grantpeaster.github.io/gci.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Land Surveying", "item": "https://grantpeaster.github.io/gci.com/land-surveying.html"}
+    ]
+  }
+  </script>
   <link rel="preload" as="image" href="assets/img/logo.png">
   <script src="assets/js/main.js" defer></script>
 </head>
-<body data-page="card-land-surveying">
+<body data-page="land-surveying">
   <div data-header></div>
 
-  <div class="cardx2-page">
+  <!-- ══ HERO ══ -->
+  <section class="ls-hero">
 
-    <!-- HERO -->
-    <section class="reveal" id="rv0">
-      <div class="sv-hero">
-        <div class="hero-text">
-          <span class="eyebrow">Accurate Project Data</span>
-          <h1>Land Surveying</h1>
-          <p class="vp">Accurate Data That Drives Every Decision.</p>
-          <p class="d">Reliable field data and project control that every downstream planning and engineering decision depends on.</p>
-          <a class="btn-card-accent" href="contact.html">Talk With Our Team &rarr;</a>
-        </div>
-      </div>
-      <div class="stat-strip">
-        <div class="stat-strip-item">
-          <span class="num">700+</span>
-          <span class="lbl">Acres Captured on a Single Project</span>
-        </div>
-        <div class="stat-strip-item">
-          <span class="num">3</span>
-          <span class="lbl">Survey Technologies in Our Fleet</span>
-        </div>
-        <div class="stat-strip-item">
-          <span class="num">1</span>
-          <span class="lbl">Source of Truth Across All Disciplines</span>
-        </div>
-      </div>
-    </section>
+    <!-- Contour lines — draw in sequentially on load -->
+    <svg class="ls-contour" viewBox="0 0 1400 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <!-- Rings centered on right two-thirds of the hero -->
+      <ellipse class="cring" cx="920" cy="340" rx="80"  ry="55"/>
+      <ellipse class="cring" cx="920" cy="340" rx="145" ry="100"/>
+      <ellipse class="cring" cx="920" cy="340" rx="215" ry="148"/>
+      <ellipse class="cring" cx="920" cy="340" rx="290" ry="198"/>
+      <ellipse class="cring" cx="920" cy="340" rx="368" ry="252"/>
+      <ellipse class="cring" cx="920" cy="340" rx="450" ry="308"/>
+      <ellipse class="cring" cx="920" cy="340" rx="536" ry="366"/>
+      <ellipse class="cring" cx="920" cy="340" rx="625" ry="426"/>
+      <!-- Elevation tick marks -->
+      <line class="ctick" x1="920" y1="282" x2="928" y2="282"/>
+      <line class="ctick" x1="920" y1="238" x2="928" y2="238"/>
+      <line class="ctick" x1="920" y1="190" x2="928" y2="190"/>
+      <line class="ctick" x1="920" y1="138" x2="928" y2="138"/>
+      <line class="ctick" x1="920" y1="86"  x2="928" y2="86"/>
+    </svg>
 
-    <!-- FEATURED CAPABILITIES -->
-    <div class="feat-caps reveal" id="rv-feat">
-      <a class="feat-cap" href="lidar.html">
-        <span class="cap-label">Featured Capability</span>
-        <h3>LiDAR &amp; Drone Mapping</h3>
-        <p>Dense, high-accuracy point clouds for large or complex sites — faster than traditional methods.</p>
-      </a>
-      <a class="feat-cap" href="construction-staking.html">
-        <span class="cap-label">Featured Capability</span>
-        <h3>Construction Staking</h3>
-        <p>Keeping your crews on line and on grade through every phase of build-out.</p>
-      </a>
-      <a class="feat-cap" href="alta-surveys.html">
-        <span class="cap-label">Featured Capability</span>
-        <h3>ALTA / NSPS Surveys</h3>
-        <p>Land title surveys that meet the highest standards for commercial transactions.</p>
-      </a>
+    <div class="wrap">
+      <div class="ls-hero-copy">
+        <span class="eyebrow">Land Surveying</span>
+        <h1>Accurate Data.<br>Confident Decisions.</h1>
+        <p>GNSS, LiDAR, and drone-based survey — boundary, topographic, ALTA, and construction staking — delivered in-house from our Madison, GA office so your project moves forward without gaps between firms.</p>
+        <a class="btn btn-accent btn-arrow" href="contact.html">Start a Conversation</a>
+      </div>
     </div>
 
-    <!-- SERVICES -->
-    <section class="cardx2-sec reveal" id="rv4">
-      <div class="cardx2-eyebrow">Services Snapshot</div>
-      <h2>Find Your Need</h2>
-      <div class="svc-3col">
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Boundary Surveys</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h4l3-6 4 10 3-8 2 4h2"/></svg>
-          <span>Topographic Surveys</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-          <span>ALTA/NSPS Surveys</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/></svg>
-          <span>Construction Staking</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          <span>Drone Mapping</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          <span>LiDAR Services</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-          <span>Utility Location Support</span>
-        </div>
-        <div class="svc-pill">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Control Surveys</span>
-        </div>
-      </div>
-    </section>
+  </section>
 
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv1">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        <span>What We Deliver</span>
-      </div>
-      <div class="line"></div>
+  <!-- ══ INTRO BAND ══ -->
+  <section class="ls-intro">
+    <div class="wrap">
+      <p>Survey is where every project starts — and at GCI it feeds <strong>straight into planning and engineering</strong>, with no data lost in translation between firms. Explore our core surveying capabilities below.</p>
     </div>
+  </section>
 
-    <!-- OUTCOMES — 4-col icon cards -->
-    <section class="cardx2-sec reveal" id="rv2">
-      <div class="cardx2-eyebrow">Outcomes</div>
-      <h2>Data You Can Build On</h2>
-      <div class="outcomes-4">
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-          <span class="oc-title">Accurate From Day One</span>
-          <span class="oc-sub">Field data you can trust from the first deliverable</span>
-        </div>
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <span class="oc-title">Reliable Project Control</span>
-          <span class="oc-sub">Consistent positioning across all phases of work</span>
-        </div>
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          <span class="oc-title">Faster Turnaround</span>
-          <span class="oc-sub">Modern technology keeps your schedule moving</span>
-        </div>
-        <div class="oc4">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <span class="oc-title">Fewer Construction Conflicts</span>
-          <span class="oc-sub">Catch discrepancies before they hit the field</span>
-        </div>
-      </div>
-    </section>
+  <!-- ══ SERVICES ══ -->
+  <section class="ls-services">
+    <div class="wrap">
+      <div class="ls-cols">
 
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv5">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span>The GCI Advantage</span>
+        <!-- Service list — LEFT -->
+        <div class="ls-list-col">
+          <span class="ls-list-eyebrow">Full survey services</span>
+          <ul class="svc-list">
+            <li>
+              <strong>Boundary &amp; Topographic Surveys</strong>
+              <span>Property lines and existing site conditions documented with precision.</span>
+            </li>
+            <li>
+              <strong>GPS / GNSS Control Surveys</strong>
+              <span>Accurate geodetic control that anchors every dataset on the project.</span>
+            </li>
+            <li>
+              <strong>As-Built &amp; Record Surveys</strong>
+              <span>Verification of what was actually built against what was designed.</span>
+            </li>
+            <li>
+              <strong>Subdivision Platting</strong>
+              <span>Plats prepared for regulatory approval and county recording.</span>
+            </li>
+            <li>
+              <strong>Right-of-Way &amp; Easement Surveys</strong>
+              <span>Access and easement rights clearly defined and documented.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Capability boxes — RIGHT, sticky -->
+        <div class="ls-boxes">
+          <a class="box-link" href="lidar.html">
+            <span class="card-label">Capability</span>
+            <h3>LiDAR &amp; Drone Mapping</h3>
+            <p>Dense, high-accuracy point clouds for large or complex sites — faster than traditional methods.</p>
+          </a>
+          <a class="box-link" href="construction-staking.html">
+            <span class="card-label">Capability</span>
+            <h3>Construction Staking</h3>
+            <p>Keeping your crews on line and on grade through every phase of build-out.</p>
+          </a>
+          <a class="box-link" href="alta-surveys.html">
+            <span class="card-label">Capability</span>
+            <h3>ALTA / NSPS Surveys</h3>
+            <p>Land title surveys that meet the highest standards for commercial transactions.</p>
+          </a>
+        </div>
+
       </div>
-      <div class="line"></div>
     </div>
+  </section>
 
-    <!-- GCI ADVANTAGE -->
-    <section class="cardx2-sec reveal" id="rv6">
-      <div class="advantage-band">
-        <div>
-          <div class="cardx2-eyebrow red">One Team. Three Disciplines.</div>
-          <h2>Less Friction. Faster Delivery.</h2>
-          <div class="flow-steps">
-            <span class="step-pill">Planning</span>
-            <span class="arrow-sep">&rarr;</span>
-            <span class="step-pill">Surveying</span>
-            <span class="arrow-sep">&rarr;</span>
-            <span class="step-pill">Engineering</span>
-          </div>
-        </div>
-        <ul class="card-check3">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Less coordination between consultants</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Faster project delivery</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fewer communication gaps</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Better project visibility</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Reduced risk of redesigns</li>
-        </ul>
-      </div>
-    </section>
 
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv7">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Project Spotlight</span>
-      </div>
-      <div class="line"></div>
-    </div>
 
-    <!-- SPOTLIGHT -->
-    <section class="cardx2-sec reveal" id="rv8">
-      <div class="spot-card">
-        <div class="spot-left">
-          <div>
-            <div class="cardx2-eyebrow red">Project Spotlight</div>
-            <h2>Bana 85</h2>
-            <p class="spot-meta">Industrial &middot; Rooker &middot; 700+ Acres</p>
-          </div>
-          <div class="stat-row">
-            <div class="stat-item"><span class="num">700+</span><span class="lbl">Acres Captured</span></div>
-            <div class="stat-item"><span class="num">1</span><span class="lbl">Unified Dataset</span></div>
-          </div>
-        </div>
-        <div class="spot-right">
-          <div class="story-beat">
-            <span class="beat-label">Challenge</span>
-            <p>Capturing accurate ground truth across 700+ acres of complex terrain for a large-scale industrial development.</p>
-          </div>
-          <div class="story-beat">
-            <span class="beat-label">Solution</span>
-            <p>LiDAR, drone (UAS) capture, and GNSS control feeding planning and engineering directly — no data lost between firms.</p>
-          </div>
-          <div class="story-beat">
-            <span class="beat-label">Result</span>
-            <p>A single accurate dataset that reduced rework and kept the whole team on one source of truth throughout the project.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv9">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-        <span>Industries</span>
-      </div>
-      <div class="line"></div>
-    </div>
-
-    <!-- INDUSTRIES -->
-    <section class="cardx2-sec reveal" id="rv10">
-      <div class="cardx2-eyebrow">Industries We Serve</div>
-      <h2>Who We Work With</h2>
-      <div class="ind-row2">
-        <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg><div>Residential</div></div>
-        <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M10 21v-5h4v5"/></svg><div>Commercial</div></div>
-        <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V11l6 4V11l6 4V7l6 4v10z"/><path d="M3 21h18"/></svg><div>Industrial</div></div>
-        <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 9h18z"/><path d="M5 9v9M10 9v9M14 9v9M19 9v9M3 21h18"/></svg><div>Municipal</div></div>
-        <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11v5c0 1 3 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg><div>Education</div></div>
-        <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></svg><div>Mixed-Use</div></div>
-        <div class="ind-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg><div>Healthcare</div></div>
-      </div>
-    </section>
-
-    <!-- DIVIDER -->
-    <div class="cardx2-divider reveal" id="rv11">
-      <div class="line"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Get In Touch</span>
-      </div>
-      <div class="line"></div>
-    </div>
-
-    <!-- CTA -->
-    <section class="cardx2-sec reveal" id="rv12">
-      <div class="cta-band2">
-        <div>
-          <div class="cardx2-eyebrow red">Talk With Our Team</div>
-          <h2>Let’s Discuss Your Project.</h2>
-          <a class="btn-card-accent" href="contact.html">Schedule a Project Discussion &rarr;</a>
-        </div>
-        <div class="cta-meta">
-          <div><span class="lab">Direct Contact</span><span>Brandon Hightower, Survey Manager</span></div>
-        </div>
-      </div>
-    </section>
-
-  </div>
 
   <div data-footer></div>
-  <script>
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.07 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  </script>
 </body>
 </html>
