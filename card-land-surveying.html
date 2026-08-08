@@ -31,7 +31,7 @@
     .sv-hero .hero-text { background: #CA2131; padding: 3.5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; }
     .sv-hero .hero-text::after { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 1px, transparent 1px 16px); pointer-events: none; z-index: 0; }
     .sv-hero .hero-text > * { position: relative; z-index: 1; }
-    .sv-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 600; }
+    .sv-hero .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #ffffff; font-weight: 600; }
     .sv-hero h1 { font-size: 2.25rem; font-weight: 700; color: #fff; line-height: 1.15; }
     .sv-hero .vp { font-size: 1.05rem; color: rgba(255,255,255,.7); line-height: 1.5; }
     .sv-hero .d { font-size: .875rem; color: rgba(255,255,255,.45); line-height: 1.65; }
@@ -43,7 +43,7 @@
     .stat-strip-item > * { position: relative; z-index: 1; }
     .stat-strip-item:last-child { border-right: none; }
     .stat-strip-item .num { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; }
-    .stat-strip-item .lbl { font-size: .72rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .07em; }
+    .stat-strip-item .lbl { font-size: .72rem; color: #ffffff; text-transform: uppercase; letter-spacing: .07em; }
 
     /* CTA button */
     .btn-card-accent { display: inline-block; background: #020534; color: #fff; text-decoration: none; padding: .6rem 1.25rem; border-radius: 6px; font-size: .875rem; font-weight: 600; width: fit-content; }
@@ -51,8 +51,8 @@
 
     /* Section shell */
     .cardx2-sec { background: #CA2131; border-radius: 10px; padding: 1.75rem 2rem; margin-bottom: 0; color: #fff; }
-    .cardx2-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); font-weight: 600; margin-bottom: .4rem; }
-    .cardx2-eyebrow.red { color: rgba(255,255,255,.5); }
+    .cardx2-eyebrow { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #ffffff; font-weight: 600; margin-bottom: .4rem; }
+    .cardx2-eyebrow.red { color: #ffffff; }
     .cardx2-sec h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1.75rem; }
 
     /* NAVY DIVIDER */
@@ -84,7 +84,7 @@
     .advantage-band h2 { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
     .flow-steps { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
     .step-pill { background: rgba(255,255,255,.15); color: rgba(255,255,255,.85); padding: .3rem .9rem; border-radius: 20px; font-size: .78rem; font-weight: 600; }
-    .arrow-sep { color: rgba(255,255,255,.5); font-size: .85rem; font-weight: 700; }
+    .arrow-sep { color: #ffffff; font-size: .85rem; font-weight: 700; }
     .card-check3 { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .65rem; }
     .card-check3 li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; color: rgba(255,255,255,.8); }
     .card-check3 svg { width: 14px; height: 14px; color: rgba(255,255,255,.65); flex-shrink: 0; margin-top: 2px; }
@@ -181,6 +181,8 @@
       .feat-caps { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body data-page="card-land-surveying">
   <div data-header></div>
@@ -440,7 +442,6 @@
   </div>
 
   <div data-footer></div>
-  <script src="assets/js/main.js"></script>
   <script>
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
