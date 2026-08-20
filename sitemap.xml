@@ -80,4 +80,10 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://grantpeaster.github.io/gci.com/project-putnam-elementary.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
