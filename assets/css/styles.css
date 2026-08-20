@@ -157,9 +157,6 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 /* page hero */
 .page-hero { background: var(--red); color: #fff; position: relative; overflow: hidden;
   padding-block: clamp(64px, 11vw, 140px) clamp(48px, 8vw, 96px); }
-.page-hero .contour-emblem { position:absolute; right:-80px; top:-60px; width: 520px; max-width: 70%;
-  aspect-ratio: 1; opacity: 0.12;
-  background: url(../img/contour-site.svg) center/contain no-repeat; }
 .page-hero .wrap { position: relative; z-index: 1; }
 .page-hero h1 { max-width: 18ch; color: #fff; }
 .page-hero .eyebrow { color: #ffffff; display: block; margin-bottom: .6rem; }
