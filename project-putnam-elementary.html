@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Putnam County Elementary School — Georgia Civil</title>
+  <meta name="description" content="Putnam County Elementary School: construction staking for an award-winning K–12 facility in Eatonton, GA — 2025 American School & University Outstanding Design recipient.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="theme-color" content="#CA2131">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <style>
+    .proj-img-hero {
+      width: 100%; aspect-ratio: 16/7; background: var(--blue) center/cover no-repeat;
+      position: relative; overflow: hidden;
+    }
+    .proj-img-hero-inner {
+      position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .88;
+    }
+    .proj-img-caption {
+      position: absolute; right: 20px; bottom: 14px;
+      font-family: var(--utility); font-size: .58rem; letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,.65); background: rgba(2,5,52,.5); padding: 5px 12px;
+    }
+    .csr-band { background: #fff; border-bottom: 1px solid rgba(2,5,52,.08); }
+    .csr-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: rgba(2,5,52,.08);
+    }
+    .csr-cell {
+      background: #fff;
+      padding: clamp(28px,4vw,48px) clamp(24px,3.5vw,40px);
+      display: flex; flex-direction: column; gap: .6rem;
+    }
+    .csr-cell .csr-label {
+      font-family: var(--utility); font-size: .6rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: #CA2131;
+      display: block; margin-bottom: .2rem;
+    }
+    .csr-cell p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .84rem; color: #020534; line-height: 1.65; margin: 0;
+    }
+    .meta-strip {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 1px; background: var(--line);
+    }
+    .meta-cell {
+      padding: clamp(20px,3vw,32px); background: var(--paper);
+      display: flex; flex-direction: column; gap: .4rem;
+    }
+    /* Award banner */
+    .award-band {
+      background: #020534; padding: clamp(20px,3vw,32px);
+      display: flex; align-items: center; gap: clamp(16px,3vw,32px);
+      flex-wrap: wrap;
+    }
+    .award-icon {
+      width: 48px; height: 48px; border: 2px solid #CA2131; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-size: 1.4rem;
+    }
+    .award-text { flex: 1; }
+    .award-text .award-label {
+      font-family: var(--utility); font-size: .58rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: #CA2131; display: block; margin-bottom: .3rem;
+    }
+    .award-text p {
+      font-family: 'Montserrat', sans-serif; font-size: .88rem;
+      color: rgba(255,255,255,.88); line-height: 1.6; margin: 0;
+    }
+    .next-proj {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      flex-wrap: wrap;
+      background: #020534; padding: clamp(28px,4vw,44px) clamp(24px,4vw,48px);
+      position: relative; overflow: hidden; text-decoration: none; transition: background .2s;
+    }
+    .next-proj:hover { background: #0a0f57; }
+    .next-proj::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 1px,transparent 1px 16px);
+      pointer-events: none;
+    }
+    .next-proj > * { position: relative; z-index: 1; }
+    .next-proj .next-label {
+      font-family: var(--utility); font-size: .6rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.4);
+      display: block; margin-bottom: .4rem;
+    }
+    .next-proj h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(1.3rem,2.5vw,2rem); color: #fff; margin: 0; font-weight: 700;
+    }
+    .next-proj .next-arrow {
+      font-size: clamp(1.5rem,3vw,2.2rem); color: #CA2131; font-weight: 700; flex-shrink: 0;
+    }
+    @media (max-width: 760px) {
+      .csr-grid { grid-template-columns: 1fr; }
+      .meta-strip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .meta-strip { grid-template-columns: 1fr; }
+      .proj-img-hero { aspect-ratio: 4/3; }
+    }
+  </style>
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <link rel="preload" as="image" href="assets/img/putnam-county-elementary.webp">
+  <script src="assets/js/main.js" defer></script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Putnam County Elementary School — Georgia Civil">
+  <meta property="og:description" content="Construction staking for an award-winning K–12 facility in Eatonton, GA — 2025 American School & University Outstanding Design recipient.">
+  <meta property="og:url" content="https://grantpeaster.github.io/gci.com/project-putnam-elementary.html">
+  <meta property="og:image" content="https://grantpeaster.github.io/gci.com/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://grantpeaster.github.io/gci.com/project-putnam-elementary.html">
+</head>
+<body data-page="project-spotlight">
+  <div data-header></div>
+
+  <!-- HERO -->
+  <section class="page-hero" style="padding-block:clamp(36px,6vw,72px) clamp(28px,4vw,52px);">
+    <div class="contour-emblem"></div>
+    <div class="wrap">
+      <a class="crumb" href="project-spotlight.html">&larr; Project Spotlight</a>
+      <h1>Putnam County Elementary School</h1>
+      <div class="tags" style="margin-top:16px">
+        <span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Construction Staking</span>
+        <span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Institutional</span>
+        <span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">K&ndash;12</span>
+        <span class="tag" style="color:#fff;border-color:rgba(255,255,255,.3)">Eatonton, GA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE -->
+  <div class="proj-img-hero">
+    <div class="proj-img-hero-inner" style="background-image:url(assets/img/putnam-county-elementary.webp);background-position:center top;"></div>
+    <span class="proj-img-caption">Putnam County Elementary School · Eatonton, GA</span>
+  </div>
+
+  <!-- AWARD BANNER -->
+  <div class="award-band">
+    <div class="award-icon">&#9733;</div>
+    <div class="award-text">
+      <span class="award-label">2025 Recognition</span>
+      <p><strong style="color:#fff;">Outstanding Design Award</strong> &mdash; American School &amp; University Magazine &middot; Recognized for design excellence in K&ndash;12 educational facilities.</p>
+    </div>
+  </div>
+
+  <!-- CHALLENGE / SOLUTION / RESULT -->
+  <div class="csr-band">
+    <div class="csr-grid">
+      <div class="csr-cell">
+        <span class="csr-label">Challenge</span>
+        <p>A new K&ndash;12 facility required precision staking across a complex site — coordinating building layout, parking, utilities, and grading to match an award-winning architectural design and keep construction on schedule.</p>
+      </div>
+      <div class="csr-cell">
+        <span class="csr-label">Solution</span>
+        <p>GCI provided full construction staking services from clearing limits through building layout and fine grading — working directly with the contractor and coordinating with Breaux and Associates Architects to ensure the design intent was carried precisely into the field.</p>
+      </div>
+      <div class="csr-cell">
+        <span class="csr-label">Result</span>
+        <p>A facility delivered on grade and on schedule — and recognized by American School &amp; University Magazine with the 2025 Outstanding Design Award. A school the community can point to with pride.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section style="background:#CA2131;color:#fff;">
+    <div class="wrap">
+      <span class="eyebrow" style="color:#ffffff;">Overview</span>
+      <h2>Putting the Design Back on the Ground.</h2>
+      <p class="lead" style="color:rgba(255,255,255,.88);">The Putnam County Elementary School is a new K&ndash;12 facility serving the Putnam County School System in Eatonton, Georgia — designed by Breaux and Associates Architects and recognized with the 2025 Outstanding Design Award by American School &amp; University Magazine.</p>
+      <p style="color:rgba(255,255,255,.82);">GCI provided construction staking throughout the build — from initial clearing and grubbing limits through rough grading, utility layout, building corners, and fine grading. When GCI is involved in both the survey and staking, the field crew already knows the site. There's no re-familiarization with someone else's plans, and no translation errors between design and construction. The school was completed on schedule and stands as one of the more visible examples of GCI's institutional work in the region.</p>
+    </div>
+  </section>
+
+  <!-- META -->
+  <div class="meta-strip">
+    <div class="meta-cell">
+      <span class="card-label" style="color:var(--gray)">Owner</span>
+      <h3 class="mt-s" style="font-size:1.05rem">Putnam County School System</h3>
+    </div>
+    <div class="meta-cell">
+      <span class="card-label" style="color:var(--gray)">Architect</span>
+      <h3 class="mt-s" style="font-size:1.05rem">Breaux and Associates Architects</h3>
+    </div>
+    <div class="meta-cell">
+      <span class="card-label" style="color:var(--gray)">Sector / Location</span>
+      <h3 class="mt-s" style="font-size:1.05rem">K&ndash;12 Education &middot; Eatonton, GA</h3>
+    </div>
+    <div class="meta-cell">
+      <span class="card-label" style="color:var(--gray)">Services</span>
+      <h3 class="mt-s" style="font-size:1.05rem">Construction Staking</h3>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="center">
+    <div class="wrap">
+      <h2>Have a Site Like This?</h2>
+      <p class="lead" style="max-width:48ch;margin:16px auto 28px;">Let's find its value before costly commitments are made.</p>
+      <a class="btn btn-accent" href="contact.html">Start a Conversation &rarr;</a>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <a class="next-proj" href="project-adairsville.html">
+    <div>
+      <span class="next-label">Next Project</span>
+      <h3>Adairsville Logistics Center</h3>
+    </div>
+    <span class="next-arrow">&rarr;</span>
+  </a>
+
+  <div data-footer></div>
+</body>
+</html>
