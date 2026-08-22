@@ -420,127 +420,76 @@
     <svg class="ce-grading" viewBox="0 0 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <style>
     @keyframes ce{to{stroke-dashoffset:0;}}
-    .a1{animation:ce 2.0s cubic-bezier(.4,0,.2,1) 0s    forwards;}
-    .a2{animation:ce 1.6s cubic-bezier(.4,0,.2,1) .4s   forwards;}
-    .a3{animation:ce 1.2s cubic-bezier(.4,0,.2,1) .8s   forwards;}
-    .a4{animation:ce 1.0s cubic-bezier(.4,0,.2,1) 1.2s  forwards;}
-    @media(prefers-reduced-motion:reduce){.a1,.a2,.a3,.a4{animation:none;stroke-dashoffset:0;}}
+    .a1{animation:ce 2.0s cubic-bezier(.4,0,.2,1) 0s  forwards;}
+    .a2{animation:ce 1.4s cubic-bezier(.4,0,.2,1) .7s forwards;}
+    @media(prefers-reduced-motion:reduce){.a1,.a2{animation:none;stroke-dashoffset:0;}}
   </style>
+  <defs>
+    <clipPath id="north-clip">
+      <polygon points="229,94 764,94 764,135 714,135 714,256 764,256 764,311 311,311 311,278 229,278"/>
+    </clipPath>
+    <clipPath id="south-clip">
+      <polygon points="20,338 764,338 764,355 687,355 687,377 764,377 764,498 82,498 82,465 20,465"/>
+    </clipPath>
+  </defs>
 
+  <!-- North building — outer bold outline -->
+  <polygon fill="none" stroke="#CA2131" stroke-width="2.8" stroke-linejoin="round"
+    stroke-dasharray="3000" stroke-dashoffset="3000" class="a1"
+    points="229,94 764,94 764,135 714,135 714,256 764,256 764,311 311,311 311,278 229,278"/>
 
-
-  <path fill="rgba(202,33,49,.06)" stroke="#CA2131" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3000" stroke-dashoffset="3000" class="a1" d="M 229,94&#10;     L 764,94&#10;     L 764,110 L 698,110 L 698,135 L 764,135&#10;     L 764,234 L 715,234 L 715,256 L 764,256&#10;     L 764,311&#10;     L 311,311 L 311,278 L 229,278&#10;     Z"/>
-
-
-  <path fill="none" stroke="#CA2131" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" d="M 236,101&#10;     L 757,101&#10;     L 757,117 L 705,117 L 705,128 L 757,128&#10;     L 757,241 L 722,241 L 722,249 L 757,249&#10;     L 757,304&#10;     L 318,304 L 318,285 L 236,285&#10;     Z"/>
-
-
-  <g opacity="0.6">
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="229" y1="118" x2="270" y2="94"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="229" y1="158" x2="360" y2="94"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="229" y1="198" x2="450" y2="94"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="229" y1="238" x2="540" y2="94"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="229" y1="278" x2="630" y2="94"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="264" y1="311" x2="720" y2="94"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="354" y1="311" x2="764" y2="108"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="444" y1="311" x2="764" y2="145"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="534" y1="311" x2="764" y2="192"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="624" y1="311" x2="764" y2="242"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="714" y1="311" x2="764" y2="278"/>
+  <!-- North building — grid lines clipped inside outline -->
+  <g clip-path="url(#north-clip)" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="1200" stroke-dashoffset="1200" class="a2">
+    <line x1="311" y1="94"  x2="311" y2="311"/>
+    <line x1="400" y1="94"  x2="400" y2="311"/>
+    <line x1="489" y1="94"  x2="489" y2="311"/>
+    <line x1="578" y1="94"  x2="578" y2="311"/>
+    <line x1="667" y1="94"  x2="667" y2="311"/>
+    <line x1="229" y1="166" x2="764" y2="166"/>
+    <line x1="229" y1="238" x2="764" y2="238"/>
   </g>
 
-
-
-
-
-  <path fill="rgba(202,33,49,.06)" stroke="#CA2131" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3000" stroke-dashoffset="3000" class="a1" d="M 82,338&#10;     L 764,338&#10;     L 764,355 L 687,355 L 687,377 L 764,377&#10;     L 764,498&#10;     L 82,498&#10;     L 82,465 L 20,465 L 20,338&#10;     Z"/>
-
-
-  <path fill="none" stroke="#CA2131" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" d="M 89,345&#10;     L 757,345&#10;     L 757,362 L 694,362 L 694,370 L 757,370&#10;     L 757,491&#10;     L 89,491&#10;     L 89,458 L 27,458 L 27,345&#10;     Z"/>
-
-
-  <g opacity="0.6">
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="82" y1="360" x2="140" y2="338"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="82" y1="400" x2="230" y2="338"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="82" y1="440" x2="320" y2="338"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="82" y1="480" x2="410" y2="338"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="116" y1="498" x2="500" y2="338"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="206" y1="498" x2="590" y2="338"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="296" y1="498" x2="680" y2="338"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="386" y1="498" x2="764" y2="346"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="476" y1="498" x2="764" y2="384"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="566" y1="498" x2="764" y2="431"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="656" y1="498" x2="764" y2="471"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="20" y1="390" x2="82" y2="362"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="20" y1="430" x2="82" y2="402"/>
-  <line fill="none" stroke="#CA2131" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="800" stroke-dashoffset="800" class="a4" x1="20" y1="465" x2="82" y2="437"/>
+  <!-- North building — column circles clipped inside outline -->
+  <g clip-path="url(#north-clip)" fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
+    <circle cx="311" cy="166" r="5"/><circle cx="400" cy="166" r="5"/>
+    <circle cx="489" cy="166" r="5"/><circle cx="578" cy="166" r="5"/>
+    <circle cx="667" cy="166" r="5"/>
+    <circle cx="311" cy="238" r="5"/><circle cx="400" cy="238" r="5"/>
+    <circle cx="489" cy="238" r="5"/><circle cx="578" cy="238" r="5"/>
+    <circle cx="667" cy="238" r="5"/>
   </g>
 
+  <!-- South building — outer bold outline -->
+  <polygon fill="none" stroke="#CA2131" stroke-width="2.8" stroke-linejoin="round"
+    stroke-dasharray="3000" stroke-dashoffset="3000" class="a1"
+    points="20,338 764,338 764,355 687,355 687,377 764,377 764,498 82,498 82,465 20,465"/>
 
-
-  <g opacity="1">
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="310" y1="94" x2="310" y2="311"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="390" y1="94" x2="390" y2="311"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="470" y1="94" x2="470" y2="311"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="550" y1="94" x2="550" y2="311"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="630" y1="94" x2="630" y2="311"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="710" y1="94" x2="710" y2="278"/>
+  <!-- South building — grid lines clipped inside outline -->
+  <g clip-path="url(#south-clip)" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="1200" stroke-dashoffset="1200" class="a2">
+    <line x1="113" y1="338" x2="113" y2="498"/>
+    <line x1="206" y1="338" x2="206" y2="498"/>
+    <line x1="299" y1="338" x2="299" y2="498"/>
+    <line x1="392" y1="338" x2="392" y2="498"/>
+    <line x1="485" y1="338" x2="485" y2="498"/>
+    <line x1="578" y1="338" x2="578" y2="498"/>
+    <line x1="671" y1="338" x2="671" y2="498"/>
+    <line x1="20"  y1="418" x2="764" y2="418"/>
   </g>
 
-  <g opacity="1">
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="229" y1="150" x2="764" y2="150"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="229" y1="210" x2="764" y2="210"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="229" y1="270" x2="764" y2="270"/>
-  </g>
-
-
-  <g opacity="1">
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="160" y1="338" x2="160" y2="498"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="250" y1="338" x2="250" y2="498"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="340" y1="338" x2="340" y2="498"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="430" y1="338" x2="430" y2="498"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="520" y1="338" x2="520" y2="498"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="610" y1="338" x2="610" y2="498"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="700" y1="338" x2="700" y2="498"/>
-  </g>
-  <g opacity="1">
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="20" y1="400" x2="764" y2="400"/>
-  <line fill="none" stroke="#CA2131" stroke-width="1.0" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1500" stroke-dashoffset="1500" class="a3" x1="20" y1="450" x2="764" y2="450"/>
-  </g>
-
-
-  <g opacity="1">
-  
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="310" cy="150" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="390" cy="150" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="470" cy="150" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="550" cy="150" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="630" cy="150" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="310" cy="210" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="390" cy="210" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="470" cy="210" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="550" cy="210" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="630" cy="210" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="310" cy="270" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="390" cy="270" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="470" cy="270" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="550" cy="270" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="630" cy="270" r="4"/>
-  
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="160" cy="400" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="250" cy="400" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="340" cy="400" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="430" cy="400" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="520" cy="400" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="610" cy="400" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="700" cy="400" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="160" cy="450" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="250" cy="450" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="340" cy="450" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="430" cy="450" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="520" cy="450" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="610" cy="450" r="4"/>
-  <circle fill="none" stroke="#CA2131" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2000" stroke-dashoffset="2000" class="a2" cx="700" cy="450" r="4"/>
+  <!-- South building — column circles clipped inside outline -->
+  <g clip-path="url(#south-clip)" fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
+    <circle cx="113" cy="418" r="5"/><circle cx="206" cy="418" r="5"/>
+    <circle cx="299" cy="418" r="5"/><circle cx="392" cy="418" r="5"/>
+    <circle cx="485" cy="418" r="5"/><circle cx="578" cy="418" r="5"/>
+    <circle cx="671" cy="418" r="5"/>
+    <circle cx="113" cy="338" r="5"/><circle cx="206" cy="338" r="5"/>
+    <circle cx="299" cy="338" r="5"/><circle cx="392" cy="338" r="5"/>
+    <circle cx="485" cy="338" r="5"/><circle cx="578" cy="338" r="5"/>
+    <circle cx="671" cy="338" r="5"/>
+    <circle cx="113" cy="498" r="5"/><circle cx="206" cy="498" r="5"/>
+    <circle cx="299" cy="498" r="5"/><circle cx="392" cy="498" r="5"/>
+    <circle cx="485" cy="498" r="5"/><circle cx="578" cy="498" r="5"/>
+    <circle cx="671" cy="498" r="5"/>
   </g>
 </svg>
 
