@@ -147,7 +147,10 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 .hero h1 { color: #fff; max-width: 16ch; }
 .hero .eyebrow { color: var(--brass); }
 .hero-project { position: absolute; right: var(--gutter); bottom: clamp(48px,8vw,90px); z-index: 2;
-  font-family: var(--body); font-style: italic; color: rgba(255,255,255,0.8); font-size: 0.95rem; }
+  font-family: var(--utility); font-style: normal; font-size: .62rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #fff; background: #020534; border: 1px solid rgba(255,255,255,.15);
+  padding: 8px 16px; border-radius: 4px; }
 .scroll-cue { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 2;
   color: rgba(255,255,255,0.65); animation: bob 2.4s ease-in-out infinite; }
 .scroll-cue svg { width: 22px; display: block; }
