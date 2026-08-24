@@ -422,18 +422,25 @@
     <style>
       .lp-sp {
         position: absolute;
-        top: 0; left: 0;
-        width: 100%;
+        top: 0;
+        right: -35vw;
+        width: 140vw;
         height: 100%;
         z-index: 1;
         pointer-events: none;
         opacity: .28;
       }
       @media (max-width: 768px) {
-        .lp-sp { opacity: .25; }
+        .lp-sp {
+          top: 0;
+          right: -40vw;
+          width: 160vw;
+          height: 100%;
+          opacity: .25;
+        }
       }
       .lp-b  { fill:none; stroke:#CA2131; stroke-linecap:round; stroke-linejoin:round; }
-      .lp-da { stroke:#CA2131; stroke-width:1; stroke-dasharray:7 5; stroke-linecap:round; fill:none; }
+      .lp-da { stroke:#CA2131; stroke-width:2.5; stroke-dasharray:7 5; stroke-linecap:round; fill:none; }
       .lp-rd { fill:rgba(202,33,49,.12); stroke:#CA2131; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
       /* draw-in animation */
       .lp-d  { stroke-dasharray:3000; stroke-dashoffset:3000; }
@@ -455,71 +462,71 @@
     <svg class="lp-sp" viewBox="0 80 1060 380" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
 
       <!-- TOP LEFT building -->
-      <rect class="lp-b lp-d lp-d1" stroke-width="3.0" x="60" y="30" width="340" height="110" rx="1"/>
+      <rect class="lp-b lp-d lp-d1" stroke-width="4.0" x="60" y="30" width="340" height="110" rx="1"/>
       <!-- Parking below top-left building -->
-      <rect class="lp-b lp-d lp-d2" stroke-width="2.5" x="60" y="154" width="340" height="74" rx="1"/>
+      <rect class="lp-b lp-d lp-d2" stroke-width="3.5" x="60" y="154" width="340" height="74" rx="1"/>
       <line class="lp-da lp-d lp-d2" x1="60"  y1="191" x2="400" y2="191"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="96"  y1="154" x2="96"  y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="132" y1="154" x2="132" y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="168" y1="154" x2="168" y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="204" y1="154" x2="204" y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="240" y1="154" x2="240" y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="276" y1="154" x2="276" y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="312" y1="154" x2="312" y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="348" y1="154" x2="348" y2="228"/>
-      <line class="lp-b lp-d lp-d2" stroke-width="3.0" x1="384" y1="154" x2="384" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="96"  y1="154" x2="96"  y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="132" y1="154" x2="132" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="168" y1="154" x2="168" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="204" y1="154" x2="204" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="240" y1="154" x2="240" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="276" y1="154" x2="276" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="312" y1="154" x2="312" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="348" y1="154" x2="348" y2="228"/>
+      <line class="lp-b lp-d lp-d2" stroke-width="4.0" x1="384" y1="154" x2="384" y2="228"/>
 
       <!-- TOP MIDDLE small vertical parking -->
-      <rect class="lp-b lp-d lp-d3" stroke-width="2.5" x="430" y="30" width="100" height="198" rx="1"/>
+      <rect class="lp-b lp-d lp-d3" stroke-width="3.5" x="430" y="30" width="100" height="198" rx="1"/>
       <line class="lp-da lp-d lp-d3" x1="480" y1="30"  x2="480" y2="228"/>
-      <line class="lp-b lp-d lp-d3" stroke-width="3.0" x1="430" y1="70"  x2="530" y2="70"/>
-      <line class="lp-b lp-d lp-d3" stroke-width="3.0" x1="430" y1="110" x2="530" y2="110"/>
-      <line class="lp-b lp-d lp-d3" stroke-width="3.0" x1="430" y1="150" x2="530" y2="150"/>
-      <line class="lp-b lp-d lp-d3" stroke-width="3.0" x1="430" y1="190" x2="530" y2="190"/>
+      <line class="lp-b lp-d lp-d3" stroke-width="4.0" x1="430" y1="70"  x2="530" y2="70"/>
+      <line class="lp-b lp-d lp-d3" stroke-width="4.0" x1="430" y1="110" x2="530" y2="110"/>
+      <line class="lp-b lp-d lp-d3" stroke-width="4.0" x1="430" y1="150" x2="530" y2="150"/>
+      <line class="lp-b lp-d lp-d3" stroke-width="4.0" x1="430" y1="190" x2="530" y2="190"/>
 
       <!-- TOP RIGHT large parking -->
-      <rect class="lp-b lp-d lp-d4" stroke-width="2.5" x="570" y="30" width="430" height="198" rx="1"/>
+      <rect class="lp-b lp-d lp-d4" stroke-width="3.5" x="570" y="30" width="430" height="198" rx="1"/>
       <line class="lp-da lp-d lp-d4" x1="570" y1="129" x2="1000" y2="129"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="614" y1="30"  x2="614" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="658" y1="30"  x2="658" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="702" y1="30"  x2="702" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="746" y1="30"  x2="746" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="790" y1="30"  x2="790" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="834" y1="30"  x2="834" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="878" y1="30"  x2="878" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="922" y1="30"  x2="922" y2="228"/>
-      <line class="lp-b lp-d lp-d4" stroke-width="3.0" x1="966" y1="30"  x2="966" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="614" y1="30"  x2="614" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="658" y1="30"  x2="658" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="702" y1="30"  x2="702" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="746" y1="30"  x2="746" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="790" y1="30"  x2="790" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="834" y1="30"  x2="834" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="878" y1="30"  x2="878" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="922" y1="30"  x2="922" y2="228"/>
+      <line class="lp-b lp-d lp-d4" stroke-width="4.0" x1="966" y1="30"  x2="966" y2="228"/>
 
       <!-- ROAD -->
       <rect class="lp-rd lp-d lp-d5" x="60" y="242" width="940" height="48" rx="1"/>
       <line class="lp-da lp-d lp-d5" x1="60" y1="266" x2="1000" y2="266"/>
 
       <!-- BOTTOM LEFT small parking -->
-      <rect class="lp-b lp-d lp-d6" stroke-width="2.5" x="60" y="304" width="220" height="74" rx="1"/>
+      <rect class="lp-b lp-d lp-d6" stroke-width="3.5" x="60" y="304" width="220" height="74" rx="1"/>
       <line class="lp-da lp-d lp-d6" x1="60"  y1="341" x2="280" y2="341"/>
-      <line class="lp-b lp-d lp-d6" stroke-width="3.0" x1="104" y1="304" x2="104" y2="378"/>
-      <line class="lp-b lp-d lp-d6" stroke-width="3.0" x1="148" y1="304" x2="148" y2="378"/>
-      <line class="lp-b lp-d lp-d6" stroke-width="3.0" x1="192" y1="304" x2="192" y2="378"/>
-      <line class="lp-b lp-d lp-d6" stroke-width="3.0" x1="236" y1="304" x2="236" y2="378"/>
+      <line class="lp-b lp-d lp-d6" stroke-width="4.0" x1="104" y1="304" x2="104" y2="378"/>
+      <line class="lp-b lp-d lp-d6" stroke-width="4.0" x1="148" y1="304" x2="148" y2="378"/>
+      <line class="lp-b lp-d lp-d6" stroke-width="4.0" x1="192" y1="304" x2="192" y2="378"/>
+      <line class="lp-b lp-d lp-d6" stroke-width="4.0" x1="236" y1="304" x2="236" y2="378"/>
 
       <!-- BOTTOM RIGHT large parking -->
-      <rect class="lp-b lp-d lp-d7" stroke-width="2.5" x="430" y="304" width="570" height="74" rx="1"/>
+      <rect class="lp-b lp-d lp-d7" stroke-width="3.5" x="430" y="304" width="570" height="74" rx="1"/>
       <line class="lp-da lp-d lp-d7" x1="430" y1="341" x2="1000" y2="341"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="474" y1="304" x2="474" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="518" y1="304" x2="518" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="562" y1="304" x2="562" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="606" y1="304" x2="606" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="650" y1="304" x2="650" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="694" y1="304" x2="694" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="738" y1="304" x2="738" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="782" y1="304" x2="782" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="826" y1="304" x2="826" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="870" y1="304" x2="870" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="914" y1="304" x2="914" y2="378"/>
-      <line class="lp-b lp-d lp-d7" stroke-width="3.0" x1="958" y1="304" x2="958" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="474" y1="304" x2="474" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="518" y1="304" x2="518" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="562" y1="304" x2="562" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="606" y1="304" x2="606" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="650" y1="304" x2="650" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="694" y1="304" x2="694" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="738" y1="304" x2="738" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="782" y1="304" x2="782" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="826" y1="304" x2="826" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="870" y1="304" x2="870" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="914" y1="304" x2="914" y2="378"/>
+      <line class="lp-b lp-d lp-d7" stroke-width="4.0" x1="958" y1="304" x2="958" y2="378"/>
 
       <!-- BOTTOM RIGHT large building -->
-      <rect class="lp-b lp-d lp-d8" stroke-width="3.0" x="430" y="392" width="570" height="110" rx="1"/>
+      <rect class="lp-b lp-d lp-d8" stroke-width="4.0" x="430" y="392" width="570" height="110" rx="1"/>
 
     </svg>
 
