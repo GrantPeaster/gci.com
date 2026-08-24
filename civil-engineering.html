@@ -75,18 +75,22 @@
     /* ── Grading plan SVG — right side, bleeds behind text ── */
     .ce-grading {
       position: absolute;
-      top: 0; right: -80px;
-      width: 75%;
-      height: 100%;
+      top: 50%;
+      right: -35vw;
+      transform: translateY(-50%);
+      width: 110vw;
+      height: auto;
       z-index: 1;
       pointer-events: none;
       opacity: .28;
     }
     @media (max-width: 768px) {
       .ce-grading {
-        top: 0; left: 0; right: auto;
-        width: 100%;
-        height: 100%;
+        top: 50%;
+        right: -30vw;
+        transform: translateY(-50%);
+        width: 130vw;
+        height: auto;
         opacity: .25;
       }
     }
@@ -434,12 +438,12 @@
   </defs>
 
   <!-- North building — outer bold outline -->
-  <polygon fill="none" stroke="#CA2131" stroke-width="2.8" stroke-linejoin="round"
+  <polygon fill="none" stroke="#CA2131" stroke-width="4.0" stroke-linejoin="round"
     stroke-dasharray="3000" stroke-dashoffset="3000" class="a1"
     points="229,94 764,94 764,135 714,135 714,256 764,256 764,311 311,311 311,278 229,278"/>
 
   <!-- North building — grid lines clipped inside outline -->
-  <g clip-path="url(#north-clip)" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="1200" stroke-dashoffset="1200" class="a2">
+  <g clip-path="url(#north-clip)" stroke="#CA2131" stroke-width="4.0" stroke-dasharray="1200" stroke-dashoffset="1200" class="a2">
     <line x1="311" y1="94"  x2="311" y2="311"/>
     <line x1="400" y1="94"  x2="400" y2="311"/>
     <line x1="489" y1="94"  x2="489" y2="311"/>
@@ -450,7 +454,7 @@
   </g>
 
   <!-- North building — column circles clipped inside outline -->
-  <g clip-path="url(#north-clip)" fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
+  <g clip-path="url(#north-clip)" fill="none" stroke="#CA2131" stroke-width="4.0" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
     <circle cx="311" cy="166" r="5"/><circle cx="400" cy="166" r="5"/>
     <circle cx="489" cy="166" r="5"/><circle cx="578" cy="166" r="5"/>
     <circle cx="667" cy="166" r="5"/>
@@ -460,12 +464,12 @@
   </g>
 
   <!-- South building — outer bold outline -->
-  <polygon fill="none" stroke="#CA2131" stroke-width="2.8" stroke-linejoin="round"
+  <polygon fill="none" stroke="#CA2131" stroke-width="4.0" stroke-linejoin="round"
     stroke-dasharray="3000" stroke-dashoffset="3000" class="a1"
     points="20,338 764,338 764,355 687,355 687,377 764,377 764,498 82,498 82,465 20,465"/>
 
   <!-- South building — grid lines clipped inside outline -->
-  <g clip-path="url(#south-clip)" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="1200" stroke-dashoffset="1200" class="a2">
+  <g clip-path="url(#south-clip)" stroke="#CA2131" stroke-width="4.0" stroke-dasharray="1200" stroke-dashoffset="1200" class="a2">
     <line x1="113" y1="338" x2="113" y2="498"/>
     <line x1="206" y1="338" x2="206" y2="498"/>
     <line x1="299" y1="338" x2="299" y2="498"/>
@@ -477,7 +481,7 @@
   </g>
 
   <!-- South building — column circles clipped inside outline -->
-  <g clip-path="url(#south-clip)" fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
+  <g clip-path="url(#south-clip)" fill="none" stroke="#CA2131" stroke-width="4.0" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
     <circle cx="113" cy="418" r="5"/><circle cx="206" cy="418" r="5"/>
     <circle cx="299" cy="418" r="5"/><circle cx="392" cy="418" r="5"/>
     <circle cx="485" cy="418" r="5"/><circle cx="578" cy="418" r="5"/>
