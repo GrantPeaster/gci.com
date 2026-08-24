@@ -75,10 +75,10 @@
     /* ── Grading plan SVG — right side, bleeds behind text ── */
     .ce-grading {
       position: absolute;
-      top: -5%;
-      right: -25vw;
-      width: 100vw;
-      height: auto;
+      top: 0;
+      right: -30vw;
+      width: 160vw;
+      height: 100%;
       z-index: 1;
       pointer-events: none;
       opacity: .28;
@@ -87,10 +87,11 @@
       .ce-grading {
         top: 0;
         right: -10vw;
-        width: 100vw;
-        height: auto;
+        width: 120vw;
+        height: 100%;
         opacity: .25;
       }
+    }
     }
     }
     /* Draw-in animations */
@@ -420,7 +421,7 @@
   <section class="ce-hero">
 
     <!-- Grading plan SVG -->
-    <svg class="ce-grading" viewBox="-150 -50 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <svg class="ce-grading" viewBox="-150 -80 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <style>
     @keyframes ce{to{stroke-dashoffset:0;}}
     .a1{animation:ce 2.0s cubic-bezier(.4,0,.2,1) 0s  forwards;}
