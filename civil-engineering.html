@@ -75,10 +75,9 @@
     /* ── Grading plan SVG — right side, bleeds behind text ── */
     .ce-grading {
       position: absolute;
-      top: 50%;
-      right: -35vw;
-      transform: translateY(-50%);
-      width: 110vw;
+      top: -5%;
+      right: -25vw;
+      width: 100vw;
       height: auto;
       z-index: 1;
       pointer-events: none;
@@ -86,13 +85,13 @@
     }
     @media (max-width: 768px) {
       .ce-grading {
-        top: 50%;
-        right: -30vw;
-        transform: translateY(-50%);
-        width: 130vw;
+        top: 0;
+        right: -10vw;
+        width: 100vw;
         height: auto;
         opacity: .25;
       }
+    }
     }
     /* Draw-in animations */
     @media (prefers-reduced-motion: reduce) {
@@ -421,7 +420,7 @@
   <section class="ce-hero">
 
     <!-- Grading plan SVG -->
-    <svg class="ce-grading" viewBox="0 0 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <svg class="ce-grading" viewBox="-150 -50 900 520" fill="none" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
   <style>
     @keyframes ce{to{stroke-dashoffset:0;}}
     .a1{animation:ce 2.0s cubic-bezier(.4,0,.2,1) 0s  forwards;}
@@ -455,12 +454,12 @@
 
   <!-- North building — column circles clipped inside outline -->
   <g clip-path="url(#north-clip)" fill="none" stroke="#CA2131" stroke-width="4.0" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
-    <circle cx="311" cy="166" r="5"/><circle cx="400" cy="166" r="5"/>
-    <circle cx="489" cy="166" r="5"/><circle cx="578" cy="166" r="5"/>
-    <circle cx="667" cy="166" r="5"/>
-    <circle cx="311" cy="238" r="5"/><circle cx="400" cy="238" r="5"/>
-    <circle cx="489" cy="238" r="5"/><circle cx="578" cy="238" r="5"/>
-    <circle cx="667" cy="238" r="5"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="311" cy="166" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="400" cy="166" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="489" cy="166" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="578" cy="166" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="667" cy="166" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="311" cy="238" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="400" cy="238" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="489" cy="238" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="578" cy="238" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="667" cy="238" r="8"/>
   </g>
 
   <!-- South building — outer bold outline -->
@@ -482,18 +481,18 @@
 
   <!-- South building — column circles clipped inside outline -->
   <g clip-path="url(#south-clip)" fill="none" stroke="#CA2131" stroke-width="4.0" stroke-dasharray="50" stroke-dashoffset="50" class="a2">
-    <circle cx="113" cy="418" r="5"/><circle cx="206" cy="418" r="5"/>
-    <circle cx="299" cy="418" r="5"/><circle cx="392" cy="418" r="5"/>
-    <circle cx="485" cy="418" r="5"/><circle cx="578" cy="418" r="5"/>
-    <circle cx="671" cy="418" r="5"/>
-    <circle cx="113" cy="338" r="5"/><circle cx="206" cy="338" r="5"/>
-    <circle cx="299" cy="338" r="5"/><circle cx="392" cy="338" r="5"/>
-    <circle cx="485" cy="338" r="5"/><circle cx="578" cy="338" r="5"/>
-    <circle cx="671" cy="338" r="5"/>
-    <circle cx="113" cy="498" r="5"/><circle cx="206" cy="498" r="5"/>
-    <circle cx="299" cy="498" r="5"/><circle cx="392" cy="498" r="5"/>
-    <circle cx="485" cy="498" r="5"/><circle cx="578" cy="498" r="5"/>
-    <circle cx="671" cy="498" r="5"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="113" cy="418" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="206" cy="418" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="299" cy="418" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="392" cy="418" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="485" cy="418" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="578" cy="418" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="671" cy="418" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="113" cy="338" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="206" cy="338" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="299" cy="338" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="392" cy="338" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="485" cy="338" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="578" cy="338" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="671" cy="338" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="113" cy="498" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="206" cy="498" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="299" cy="498" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="392" cy="498" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="485" cy="498" r="8"/><circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="578" cy="498" r="8"/>
+    <circle fill="none" stroke="#CA2131" stroke-width="2.5" stroke-dasharray="80" stroke-dashoffset="80" class="a2" cx="671" cy="498" r="8"/>
   </g>
 </svg>
 
