@@ -381,7 +381,19 @@
   
     @media (max-height: 500px) and (orientation: landscape) {
       h1 { font-size: 2.8rem !important; }
-      .ls-contour-anim, .ce-grading { width: 90vw; right: -20vw; }
+      .ls-contour-anim {
+        width: 100vh;
+        height: 100vh;
+        right: -20vh;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .ce-grading {
+        width: 160vh;
+        height: 100%;
+        right: -30vh;
+        top: 0;
+      }
     }
   </style>
   <meta property="og:type" content="website">
