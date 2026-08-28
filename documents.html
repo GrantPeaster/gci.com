@@ -237,36 +237,34 @@
   </section>
 
   <!-- ── BODY ── -->
-  <section style="background:#fff; padding-block: clamp(36px,5vw,60px) clamp(24px,3vw,36px); overflow:visible;">
-    <div class="wrap" style="overflow:visible;">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; width:100%; box-sizing:border-box;">
-
-        <div class="doc-row" style="min-width:0;">
-          <div class="doc-info">
-            <h3>Business License</h3>
-            <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
-          </div>
-          <a class="doc-dl pending" href="assets/docs/business-license.pdf" download aria-label="Download Business License">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-        <div class="doc-row" style="min-width:0;">
-          <div class="doc-info">
-            <h3>Capability Statement</h3>
-            <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Available</span></div>
-          </div>
-          <a class="doc-dl" href="assets/docs/capability-statement.pdf" download aria-label="Download Capability Statement">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section style="background:#fff; padding-block: 0 clamp(48px,7vw,88px);">
+  <section style="background:#fff; padding-block: clamp(48px,7vw,88px);">
     <div class="wrap">
+
+      <!-- Download cards — same width as form below -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:32px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 18px; border:1.5px solid rgba(2,5,52,.12); border-radius:4px; background:#fff; box-sizing:border-box;">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:.92rem; font-weight:600; color:#020534; margin-bottom:3px;">Business License</div>
+            <div style="font-family:'Roboto',sans-serif; font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(2,5,52,.3);">PDF &middot; Pending upload</div>
+          </div>
+          <a href="assets/docs/business-license.pdf" download aria-label="Download Business License"
+             style="flex-shrink:0; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border:1.5px solid rgba(2,5,52,.14); color:#020534; text-decoration:none; pointer-events:none; opacity:.28;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+          </a>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 18px; border:1.5px solid rgba(2,5,52,.12); border-radius:4px; background:#fff; box-sizing:border-box;">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif; font-size:.92rem; font-weight:600; color:#020534; margin-bottom:3px;">Capability Statement</div>
+            <div style="font-family:'Roboto',sans-serif; font-size:.55rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(2,5,52,.3);">PDF &middot; Available</div>
+          </div>
+          <a href="assets/docs/capability-statement.pdf" download aria-label="Download Capability Statement"
+             style="flex-shrink:0; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border:1.5px solid rgba(2,5,52,.14); color:#020534; text-decoration:none; transition:border-color .2s, background .2s, color .2s;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Request form — same wrap, directly below -->
       <div class="doc-request-head">
         <span class="doc-request-eyebrow">Can't find what you need?</span>
         <h2>Request a Document</h2>
@@ -300,6 +298,7 @@
           <p class="doc-form-note">Requests are reviewed by our operations team and fulfilled within one business day.</p>
         </div>
       </form>
+
     </div>
   </section>
 
