@@ -67,7 +67,7 @@
       gap: clamp(48px, 7vw, 96px);
       align-items: start;
     }
-    @media (max-width: 860px) { .docs-layout { grid-template-columns: 1fr; } }
+    
 
     /* ── Document list ── */
     .doc-col-head {
@@ -80,7 +80,13 @@
       display: block;
       margin-bottom: clamp(20px, 3vw, 32px);
     }
-    .doc-list { display: flex; flex-direction: column; }
+    .doc-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 540px) { .doc-list { grid-template-columns: 1fr; } }
     .doc-section-label {
       font-family: 'Roboto', sans-serif;
       font-size: .58rem;
@@ -98,9 +104,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(2,5,52,.07);
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid rgba(2,5,52,.1);
+      border-radius: 4px;
+      background: #fff;
     }
     .doc-info h3 {
       font-family: 'Montserrat', sans-serif;
@@ -232,12 +240,8 @@
   <section class="docs-body">
     <div class="wrap docs-layout">
 
-      <!-- Left: document list -->
-      <div>
-        <span class="doc-col-head">Available documents</span>
-        <div class="doc-list">
-
-          <span class="doc-section-label">Registrations &amp; Licenses</span>
+      <!-- Documents + Form -->
+      <div class="doc-list">
 
           <div class="doc-row">
             <div class="doc-info">
@@ -251,62 +255,6 @@
 
           <div class="doc-row">
             <div class="doc-info">
-              <h3>Secretary of State — Certificate of Existence</h3>
-              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
-            </div>
-            <a class="doc-dl pending" href="assets/docs/certificate-of-existence.pdf" download aria-label="Download Certificate of Existence">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-            </a>
-          </div>
-
-          <div class="doc-row">
-            <div class="doc-info">
-              <h3>COA — Professional Engineering</h3>
-              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
-            </div>
-            <a class="doc-dl pending" href="assets/docs/coa-engineering.pdf" download aria-label="Download Engineering COA">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-            </a>
-          </div>
-
-          <div class="doc-row">
-            <div class="doc-info">
-              <h3>COA — Land Surveying</h3>
-              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
-            </div>
-            <a class="doc-dl pending" href="assets/docs/coa-surveying.pdf" download aria-label="Download Land Surveying COA">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-            </a>
-          </div>
-
-          <span class="doc-section-label">Insurance</span>
-
-          <div class="doc-row">
-            <div class="doc-info">
-              <h3>Professional Liability (E&amp;O) Insurance</h3>
-              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
-            </div>
-            <a class="doc-dl pending" href="assets/docs/professional-liability.pdf" download aria-label="Download E&O Insurance">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-            </a>
-          </div>
-
-          <span class="doc-section-label">Compliance</span>
-
-          <div class="doc-row">
-            <div class="doc-info">
-              <h3>Georgia E-Verify Affidavit</h3>
-              <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Pending upload</span></div>
-            </div>
-            <a class="doc-dl pending" href="assets/docs/e-verify-affidavit.pdf" download aria-label="Download E-Verify Affidavit">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
-            </a>
-          </div>
-
-          <span class="doc-section-label">Marketing</span>
-
-          <div class="doc-row">
-            <div class="doc-info">
               <h3>Capability Statement</h3>
               <div class="doc-meta"><span class="doc-type">PDF</span><span class="doc-status">&middot; Available</span></div>
             </div>
@@ -315,10 +263,8 @@
             </a>
           </div>
 
-        </div>
       </div>
 
-      <!-- Right: request form -->
       <div>
         <div class="doc-request-head">
           <span class="doc-request-eyebrow">Can't find what you need?</span>
