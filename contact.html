@@ -43,12 +43,8 @@
     .disc-option:hover { background: #fafaf9; }
     .disc-option.selected { background: #fafaf9; }
     .disc-option-inner { display: flex; align-items: center; padding: 16px 18px; gap: 12px; }
-    .disc-radio { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--line); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border-color .2s; }
-    .disc-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--red); opacity: 0; transition: opacity .15s; }
-    .disc-option.selected .disc-radio { border-color: var(--red); }
-    .disc-option.selected .disc-radio::after { opacity: 1; }
+    .disc-check { width: 15px; height: 15px; border-radius: 2px; border: 1.5px solid var(--line); flex-shrink: 0; accent-color: var(--red); cursor: pointer; }
     .disc-label { font-family: 'Roboto', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-    .disc-option.selected .disc-label { color: var(--red); }
 
     .contact-fields { display: grid; gap: 18px; }
     .contact-fields label { font-family: 'Roboto', sans-serif; text-transform: uppercase; letter-spacing: .08em; font-size: .65rem; color: var(--blue); font-weight: 700; display: block; margin-bottom: 7px; }
@@ -115,16 +111,25 @@
         <span class="eyebrow">Contact</span>
         <h2>Tell Us About Your Site.</h2>
         <p>Select a discipline and a principal will follow up promptly.</p>
-        <div class="disc-selector" id="disc-selector" role="group" aria-label="Select a discipline">
-          <button class="disc-option selected" type="button" data-discipline="Land Planning">
-            <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Planning</span></div>
-          </button>
-          <button class="disc-option" type="button" data-discipline="Civil Engineering">
-            <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Civil Engineering</span></div>
-          </button>
-          <button class="disc-option" type="button" data-discipline="Land Surveying">
-            <div class="disc-option-inner"><span class="disc-radio"></span><span class="disc-label">Land Surveying</span></div>
-          </button>
+        <div class="disc-selector" id="disc-selector" role="group" aria-label="Select disciplines">
+          <label class="disc-option">
+            <div class="disc-option-inner">
+              <input type="checkbox" name="discipline" value="Land Planning" class="disc-check">
+              <span class="disc-label">Land Planning</span>
+            </div>
+          </label>
+          <label class="disc-option">
+            <div class="disc-option-inner">
+              <input type="checkbox" name="discipline" value="Civil Engineering" class="disc-check">
+              <span class="disc-label">Civil Engineering</span>
+            </div>
+          </label>
+          <label class="disc-option">
+            <div class="disc-option-inner">
+              <input type="checkbox" name="discipline" value="Land Surveying" class="disc-check">
+              <span class="disc-label">Land Surveying</span>
+            </div>
+          </label>
         </div>
       </div>
 
@@ -174,20 +179,18 @@
   <div data-footer></div>
   <script>
     (function () {
-      var options   = Array.from(document.querySelectorAll('.disc-option'));
-      var toField   = document.getElementById('form-to');
+      var checks    = Array.from(document.querySelectorAll('.disc-check'));
       var subjField = document.getElementById('form-subject');
       var discField = document.getElementById('form-discipline');
 
-      function selectOption(btn) {
-        options.forEach(function (o) { o.classList.remove('selected'); });
-        btn.classList.add('selected');
-        toField.value   = btn.dataset.to;
-        subjField.value = 'New inquiry \u2014 ' + btn.dataset.discipline + ' \u2014 Georgia Civil';
-        discField.value = btn.dataset.discipline;
+      function updateDisciplines() {
+        var selected = checks.filter(function(c){ return c.checked; }).map(function(c){ return c.value; });
+        var label = selected.length ? selected.join(', ') : 'General';
+        subjField.value = 'New inquiry \u2014 ' + label + ' \u2014 Georgia Civil';
+        discField.value = label;
       }
-      options.forEach(function (btn) {
-        btn.addEventListener('click', function () { selectOption(btn); });
+      checks.forEach(function (cb) {
+        cb.addEventListener('change', updateDisciplines);
       });
 
       var form      = document.getElementById('contact-form');
