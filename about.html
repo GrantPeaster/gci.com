@@ -290,11 +290,11 @@
 
     /* ── Careers ── */
     /* Checkbox list */
-    .check-list { display: flex; flex-direction: column; border: 1px solid var(--line); }
-    .check-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; cursor: pointer; background: #fff; border-bottom: 1px solid var(--line); margin: 0; }
+    .check-list { display: flex; flex-direction: column; border: 1px solid #d8d0c8; }
+    .check-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: #fff; border-bottom: 1px solid #d8d0c8; }
     .check-item:last-child { border-bottom: none; }
-    .check-item input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; accent-color: #CA2131; margin: 0; }
-    .check-item span { font-family: var(--body); font-size: .88rem; color: var(--ink); text-transform: none; font-weight: 400; letter-spacing: 0; }
+    .check-item input[type="checkbox"] { -webkit-appearance: checkbox; appearance: checkbox; width: 16px; height: 16px; flex-shrink: 0; accent-color: #CA2131; margin: 0; cursor: pointer; }
+    .check-item label { font-family: 'Montserrat', sans-serif; font-size: .88rem; color: #020534; cursor: pointer; margin: 0; }
 
         .about-careers-head {
       margin-bottom: 24px;
@@ -584,22 +584,22 @@
           <div>
             <label>Area of interest</label>
             <div class="check-list">
-              <label class="check-item">
-                <input type="checkbox" name="interest" value="Land Planning">
-                <span>Land Planning</span>
-              </label>
-              <label class="check-item">
-                <input type="checkbox" name="interest" value="Land Surveying">
-                <span>Land Surveying</span>
-              </label>
-              <label class="check-item">
-                <input type="checkbox" name="interest" value="Civil Engineering">
-                <span>Civil Engineering</span>
-              </label>
-              <label class="check-item">
-                <input type="checkbox" name="interest" value="General inquiry">
-                <span>General inquiry</span>
-              </label>
+              <div class="check-item">
+                <input type="checkbox" id="int-lp" name="interest" value="Land Planning">
+                <label for="int-lp">Land Planning</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="int-ls" name="interest" value="Land Surveying">
+                <label for="int-ls">Land Surveying</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="int-ce" name="interest" value="Civil Engineering">
+                <label for="int-ce">Civil Engineering</label>
+              </div>
+              <div class="check-item">
+                <input type="checkbox" id="int-gi" name="interest" value="General inquiry">
+                <label for="int-gi">General inquiry</label>
+              </div>
             </div>
           </div>
           <div>
