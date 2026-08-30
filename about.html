@@ -575,21 +575,32 @@
             </div>
           </div>
           <div>
-            <label for="interest">Area of interest</label>
-            <select id="interest" name="interest">
-              <option>Land Planning</option>
-              <option>Land Surveying</option>
-              <option>Civil Engineering</option>
-              <option>General inquiry</option>
-            </select>
+            <label>Area of interest</label>
+            <div style="display:flex; flex-direction:column; gap:0; border:1px solid var(--line);">
+              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff; border-bottom:1px solid var(--line);">
+                <input type="checkbox" name="interest" value="Land Planning" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
+                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">Land Planning</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff; border-bottom:1px solid var(--line);">
+                <input type="checkbox" name="interest" value="Land Surveying" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
+                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">Land Surveying</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff; border-bottom:1px solid var(--line);">
+                <input type="checkbox" name="interest" value="Civil Engineering" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
+                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">Civil Engineering</span>
+              </label>
+              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff;">
+                <input type="checkbox" name="interest" value="General inquiry" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
+                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">General inquiry</span>
+              </label>
+            </div>
           </div>
           <div>
             <label for="c-message">Your message</label>
-            <textarea id="c-message" name="message" rows="5" placeholder="Tell us a little about yourself and what you're looking for."></textarea>
+            <textarea id="c-message" name="message" rows="5" placeholder=""></textarea>
           </div>
           <div class="about-form-submit">
             <button class="about-form-btn" type="submit">Send Message &rarr;</button>
-            <p class="about-form-note">Every message is reviewed. Qualified candidates hear back directly.</p>
           </div>
         </form>
       </div>
