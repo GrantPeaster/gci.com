@@ -570,6 +570,7 @@
         <form class="about-form" data-contact action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="access_key" value="4c1dc681-6cb8-4efa-bfb8-f94b2a7f37e3">
           <input type="hidden" name="subject" value="New careers inquiry — Georgia Civil">
+          <input type="hidden" name="to" value="stephanie@georgiacivil.com,chelsea@georgiacivil.com">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="about-form-row">
             <div>
@@ -616,6 +617,17 @@
   </section>
 
   <div data-footer></div>
+  <script>
+    (function() {
+      var checks = document.querySelectorAll('input[name="interest"]');
+      var subj   = document.querySelector('input[name="subject"]');
+      function updateSubject() {
+        var selected = Array.from(checks).filter(function(c){ return c.checked; }).map(function(c){ return c.value; });
+        subj.value = 'New careers inquiry' + (selected.length ? ' — ' + selected.join(', ') : '') + ' — Georgia Civil';
+      }
+      checks.forEach(function(cb){ cb.addEventListener('change', updateSubject); });
+    })();
+  </script>
   <script>
     (function () {
       var ROTATE_MS = 5000;
