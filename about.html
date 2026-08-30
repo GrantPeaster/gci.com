@@ -289,7 +289,14 @@
     }
 
     /* ── Careers ── */
-    .about-careers-head {
+    /* Checkbox list */
+    .check-list { display: flex; flex-direction: column; border: 1px solid var(--line); }
+    .check-item { display: flex; align-items: center; gap: 12px; padding: 13px 16px; cursor: pointer; background: #fff; border-bottom: 1px solid var(--line); margin: 0; }
+    .check-item:last-child { border-bottom: none; }
+    .check-item input[type="checkbox"] { width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; accent-color: #CA2131; margin: 0; }
+    .check-item span { font-family: var(--body); font-size: .88rem; color: var(--ink); text-transform: none; font-weight: 400; letter-spacing: 0; }
+
+        .about-careers-head {
       margin-bottom: 24px;
       padding-bottom: 18px;
       border-bottom: 1px solid rgba(2,5,52,.1);
@@ -576,22 +583,22 @@
           </div>
           <div>
             <label>Area of interest</label>
-            <div style="display:flex; flex-direction:column; gap:0; border:1px solid var(--line);">
-              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff; border-bottom:1px solid var(--line);">
-                <input type="checkbox" name="interest" value="Land Planning" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
-                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">Land Planning</span>
+            <div class="check-list">
+              <label class="check-item">
+                <input type="checkbox" name="interest" value="Land Planning">
+                <span>Land Planning</span>
               </label>
-              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff; border-bottom:1px solid var(--line);">
-                <input type="checkbox" name="interest" value="Land Surveying" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
-                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">Land Surveying</span>
+              <label class="check-item">
+                <input type="checkbox" name="interest" value="Land Surveying">
+                <span>Land Surveying</span>
               </label>
-              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff; border-bottom:1px solid var(--line);">
-                <input type="checkbox" name="interest" value="Civil Engineering" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
-                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">Civil Engineering</span>
+              <label class="check-item">
+                <input type="checkbox" name="interest" value="Civil Engineering">
+                <span>Civil Engineering</span>
               </label>
-              <label style="display:flex; align-items:center; gap:12px; padding:13px 16px; cursor:pointer; background:#fff;">
-                <input type="checkbox" name="interest" value="General inquiry" style="width:15px;height:15px;border-radius:2px;accent-color:var(--red);flex-shrink:0;">
-                <span style="font-family:var(--body);font-size:.88rem;color:var(--ink);">General inquiry</span>
+              <label class="check-item">
+                <input type="checkbox" name="interest" value="General inquiry">
+                <span>General inquiry</span>
               </label>
             </div>
           </div>
