@@ -39,12 +39,11 @@
     .contact-context p { font-size: .92rem; color: var(--ink-55); line-height: 1.65; margin: 0 0 1.8rem; max-width: 38ch; }
 
     .disc-selector { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); }
-    .disc-option { background: #fff; border: none; width: 100%; text-align: left; cursor: pointer; padding: 0; display: block; transition: background .15s; }
-    .disc-option:hover { background: #fafaf9; }
-    .disc-option.selected { background: #fafaf9; }
-    .disc-option-inner { display: flex; align-items: center; padding: 16px 18px; gap: 12px; }
-    .disc-check { width: 15px; height: 15px; border-radius: 2px; border: 1.5px solid var(--line); flex-shrink: 0; accent-color: var(--red); cursor: pointer; }
-    .disc-label { font-family: 'Roboto', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+    .disc-option { background: #fff; width: 100%; display: flex; }
+    .disc-option-inner { display: flex; align-items: center; padding: 16px 18px; gap: 12px; width: 100%; }
+    .disc-check { -webkit-appearance: checkbox; appearance: checkbox; width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; accent-color: #CA2131; margin: 0; }
+    .disc-label { font-family: var(--body); font-size: .9rem; color: var(--ink); cursor: pointer; margin: 0; }
+    .disc-label { font-family: var(--body); font-size: .9rem; color: var(--ink); cursor: pointer; margin: 0; }
 
     .contact-fields { display: grid; gap: 18px; }
     .contact-fields label { font-family: 'Roboto', sans-serif; text-transform: uppercase; letter-spacing: .08em; font-size: .65rem; color: var(--blue); font-weight: 700; display: block; margin-bottom: 7px; }
@@ -110,32 +109,33 @@
       <div class="contact-context">
         <span class="eyebrow">Contact</span>
         <h2>Tell Us About Your Site.</h2>
-        <p>Select disciplines and a principal will follow up promptly.</p>
+        <p>Select a discipline and a principal will follow up promptly.</p>
         <div class="disc-selector" id="disc-selector" role="group" aria-label="Select disciplines">
-          <label class="disc-option">
+          <div class="disc-option">
             <div class="disc-option-inner">
-              <input type="checkbox" name="discipline" value="Land Planning" class="disc-check">
-              <span class="disc-label">Land Planning</span>
+              <input type="checkbox" id="disc-lp" name="discipline" value="Land Planning" class="disc-check">
+              <label for="disc-lp" class="disc-label">Land Planning</label>
             </div>
-          </label>
-          <label class="disc-option">
+          </div>
+          <div class="disc-option">
             <div class="disc-option-inner">
-              <input type="checkbox" name="discipline" value="Civil Engineering" class="disc-check">
-              <span class="disc-label">Civil Engineering</span>
+              <input type="checkbox" id="disc-ce" name="discipline" value="Civil Engineering" class="disc-check">
+              <label for="disc-ce" class="disc-label">Civil Engineering</label>
             </div>
-          </label>
-          <label class="disc-option">
+          </div>
+          <div class="disc-option">
             <div class="disc-option-inner">
-              <input type="checkbox" name="discipline" value="Land Surveying" class="disc-check">
-              <span class="disc-label">Land Surveying</span>
+              <input type="checkbox" id="disc-ls" name="discipline" value="Land Surveying" class="disc-check">
+              <label for="disc-ls" class="disc-label">Land Surveying</label>
             </div>
-          </label>
+          </div>
         </div>
       </div>
 
       <div class="contact-form-wrap">
         <form class="contact-fields" id="contact-form">
-          <input type="hidden" id="form-discipline" name="discipline" value="Land Planning">
+          <input type="hidden" id="form-to" name="to" value="chelsea@georgiacivil.com">
+          <input type="hidden" id="form-discipline" name="discipline" value="">
 
           <div class="form-row">
             <div>
@@ -183,11 +183,27 @@
       var subjField = document.getElementById('form-subject');
       var discField = document.getElementById('form-discipline');
 
+      var DISC_EMAILS = {
+        'Land Planning':     ['todd@georgiacivil.com', 'chelsea@georgiacivil.com'],
+        'Civil Engineering': ['chelsea@georgiacivil.com', 'jason@georgiacivil.com'],
+        'Land Surveying':    ['stephanie@georgiacivil.com', 'brandon@georgiacivil.com']
+      };
+
       function updateDisciplines() {
         var selected = checks.filter(function(c){ return c.checked; }).map(function(c){ return c.value; });
         var label = selected.length ? selected.join(', ') : 'General';
         subjField.value = 'New inquiry \u2014 ' + label + ' \u2014 Georgia Civil';
         discField.value = label;
+        // Collect unique recipients for all checked disciplines
+        var emails = [];
+        selected.forEach(function(disc) {
+          (DISC_EMAILS[disc] || []).forEach(function(email) {
+            if (emails.indexOf(email) === -1) emails.push(email);
+          });
+        });
+        if (!emails.length) emails = ['chelsea@georgiacivil.com'];
+        var toField = document.getElementById('form-to');
+        if (toField) toField.value = emails.join(',');
       }
       checks.forEach(function (cb) {
         cb.addEventListener('change', updateDisciplines);
