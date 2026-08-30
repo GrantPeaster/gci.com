@@ -328,7 +328,7 @@
       display: block;
       margin-bottom: 5px;
     }
-    .about-form input,
+    .about-form input:not([type="checkbox"]),
     .about-form select,
     .about-form textarea {
       width: 100%;
@@ -343,7 +343,7 @@
       -webkit-appearance: none;
       transition: border-color .15s, box-shadow .15s;
     }
-    .about-form input:focus,
+    .about-form input:not([type="checkbox"]):focus,
     .about-form select:focus,
     .about-form textarea:focus {
       border-color: #CA2131;
