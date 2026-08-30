@@ -55,6 +55,9 @@ const RELATED = {
   'civil-engineering': [{ label: 'Land Planning',  href: 'land-planning.html'  }, { label: 'Land Surveying',   href: 'land-surveying.html'   }],
 };
 
+// Pages that show the surveying sub-services row
+const SURVEY_PAGES = new Set(['', 'project-spotlight', 'about', 'land-planning', 'land-surveying', 'civil-engineering']);
+
 function buildFooter(current) {
   const card = CARD_LINKS[current];
   const cardLink = card
@@ -69,17 +72,26 @@ function buildFooter(current) {
         ${related.map(r => `<a href="${r.href}">${r.label}</a>`).join('')}
       </div>` : '';
 
+  // Surveying sub-services row
+  const surveyRow = SURVEY_PAGES.has(current) ? `
+      <div class="f-related">
+        <span class="f-related-label">Land Surveying</span>
+        <a href="alta-surveys.html">ALTA/NSPS Surveys</a>
+        <a href="lidar.html">LiDAR &amp; UAV Mapping</a>
+        <a href="construction-staking.html">Construction Staking</a>
+      </div>` : '';
+
   return `
   <footer class="footer">
     <div class="wrap">
       <a href="index.html" class="footer-logo" aria-label="Georgia Civil home"><img src="assets/img/logo.png" alt="Georgia Civil" width="200" height="200"></a>
       <div class="f-right">
         ${cardLink}
-        <a href="documents.html" style="font-family:var(--utility);text-transform:uppercase;letter-spacing:.139em;font-size:.72rem;color:#fff">Registrations &amp; Documents</a>
-        <a href="contact.html" style="font-family:var(--utility);text-transform:uppercase;letter-spacing:.139em;font-size:.72rem;color:#fff">Contact Us</a>
+        <a href="documents.html" style="font-family:var(--utility);text-transform:uppercase;letter-spacing:.139em;font-size:.72rem;color:#fff">Request a Document</a>
         <a href="https://www.linkedin.com/company/georgia-civil-inc-/" target="_blank" rel="noopener" aria-label="GCI on LinkedIn">${LINKEDIN}</a>
       </div>
       ${relatedRow}
+      ${surveyRow}
       <div class="legal">
         <span>&copy; ${new Date().getFullYear()} Georgia Civil, Inc. &middot; Civil Engineering &middot; Land Planning &middot; Land Surveying &middot; Madison, GA</span>
         <span>Built on Better Planning.</span>
@@ -101,7 +113,6 @@ function mountChrome() {
   if (toggle && nav) {
     const isNavMobile = () => window.matchMedia('(max-width: 920px)').matches;
 
-    // Set initial inert state — hidden on mobile, accessible on desktop
     nav.inert = isNavMobile();
 
     toggle.addEventListener('click', () => {
@@ -110,7 +121,6 @@ function mountChrome() {
       nav.inert = !open;
     });
 
-    // Reset on resize — e.g. rotating phone to landscape
     window.addEventListener('resize', () => {
       if (!isNavMobile()) {
         nav.inert = false;
