@@ -85,22 +85,17 @@
       opacity: .28;
     }
     @media (max-width: 768px) {
+      .ce-hero-copy p { display: none; }
       .ce-grading {
         top: 0;
         right: -10vw;
-        width: 120vw;
+        width: 110vw;
         height: 100%;
-        opacity: .25;
+        opacity: .22;
       }
     }
-    }
-    }
-    /* Draw-in animations */
     @media (prefers-reduced-motion: reduce) {
       .ce-g-d { animation: none; stroke-dashoffset: 0; }
-    }
-    @media (max-width: 768px) {
-      .ce-hero-copy p { display: none; }
     }
 
     /* ══════════════════════════════════════════
@@ -381,6 +376,15 @@
   
     @media (max-height: 500px) and (orientation: landscape) {
       h1 { font-size: 2.8rem !important; }
+      .ce-grading {
+        width: 90vh;
+        height: 90vh;
+        right: -20vh;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: .18;
+      }
+    }
       .ls-contour-anim {
         width: 100vh;
         height: 100vh;
@@ -519,7 +523,7 @@
       <div class="ce-hero-copy">
         <span class="eyebrow">Civil Engineering</span>
         <h1>Optimize the Site.<br>Maximize the Outcome.</h1>
-        <p>From grading and drainage to utilities and permitting, Georgia Civil delivers constructible civil engineering designs across Georgia.</p>
+        <p>From grading and drainage to utilities and permitting, Georgia Civil delivers constructible civil engineering designs across Georgia — treating every site as one connected system from our Madison, GA base.</p>
         <a class="btn btn-accent btn-arrow" href="contact.html">Start a Conversation</a>
       </div>
     </div>
