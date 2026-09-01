@@ -92,6 +92,14 @@
     /* Mobile hero */
     @media (max-width: 768px) {
       .ls-hero-copy p { display: none; }
+      .ls-contour-anim {
+        width: 100vw;
+        height: 100vw;
+        right: -30vw;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: .20;
+      }
     }
 
     /* ══════════════════════════════════════════
@@ -275,6 +283,15 @@
   
     @media (max-height: 500px) and (orientation: landscape) {
       h1 { font-size: 2.8rem !important; }
+      .ls-contour-anim {
+        width: 90vh;
+        height: 90vh;
+        right: -20vh;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: .18;
+      }
+    }
       .ls-contour-anim {
         width: 100vh;
         height: 100vh;
