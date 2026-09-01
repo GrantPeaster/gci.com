@@ -74,8 +74,8 @@ function buildFooter(current) {
 
   // Surveying sub-services row
   const surveyRow = SURVEY_PAGES.has(current) ? `
-      <div class="f-related">
-        <span class="f-related-label">Land Surveying</span>
+      <div class="f-survey">
+        <span class="f-survey-label">Land Surveying</span>
         <a href="alta-surveys.html">ALTA/NSPS Surveys</a>
         <a href="lidar.html">LiDAR &amp; UAV Mapping</a>
         <a href="construction-staking.html">Construction Staking</a>
