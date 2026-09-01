@@ -363,6 +363,26 @@ section { padding-block: clamp(56px, 9vw, 120px); }
 .footer .legal { width: 100%; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 28px;
   padding-top: 22px; font-size: 0.74rem; color: rgba(255,255,255,0.45); display:flex;
   justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.footer .f-related { width: 100%; border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 22px; margin-top: 4px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.footer .f-related-label { font-family: var(--utility); font-size: .6rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.35);
+  margin-right: 8px; white-space: nowrap; }
+.footer .f-related a { font-family: var(--utility); font-size: .65rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65);
+  text-decoration: none; transition: color .2s; }
+.footer .f-related a:hover { color: var(--red); }
+.footer .f-survey { width: 100%; border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 20px; margin-top: 4px; display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
+.footer .f-survey-label { font-family: var(--utility); font-size: .6rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.35);
+  margin-right: 20px; white-space: nowrap; }
+.footer .f-survey a { font-family: var(--utility); font-size: .65rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65);
+  text-decoration: none; transition: color .2s; padding: 6px 16px;
+  border-left: 1px solid rgba(255,255,255,.12); }
+.footer .f-survey a:first-of-type { border-left: none; padding-left: 0; }
+.footer .f-survey a:hover { color: var(--red); }
 
 /* ---------- Misc ---------- */
 .divider-rule { height: 1px; background: var(--line); border: 0; }
